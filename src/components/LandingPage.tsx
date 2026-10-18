@@ -7,6 +7,7 @@ interface Props {
   onDemo: () => void
   onGuide: () => void
   onOpenGrantDeck?: () => void
+  onOpenHealthIntake?: () => void
 }
 
 const features = [
@@ -52,6 +53,19 @@ export default function LandingPage({ onStart, onDemo, onGuide, onOpenGrantDeck 
             </div>
           </div>
           <nav className="flex items-center gap-1 sm:gap-3">
+            {onOpenHealthIntake && (
+              <button
+                onClick={onOpenHealthIntake}
+                className="relative flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-emerald-400 bg-emerald-500/25 text-xs font-mono font-medium text-emerald-100 hover:bg-emerald-500/40 transition shadow-lg shadow-emerald-500/30"
+                title="Clinical Health Assessment & Vector Healing Plan"
+              >
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+                </span>
+                <span className="text-emerald-50 font-bold">🩺 Health Intake</span>
+              </button>
+            )}
             {onOpenGrantDeck && (
               <button
                 onClick={onOpenGrantDeck}
@@ -89,6 +103,24 @@ export default function LandingPage({ onStart, onDemo, onGuide, onOpenGrantDeck 
                   Garry Tan gstack & Charaka Samhita
                 </Badge>
               </div>
+
+              {/* Glowing Health Intake Callout Pill */}
+              {onOpenHealthIntake && (
+                <div
+                  onClick={onOpenHealthIntake}
+                  className="inline-flex cursor-pointer items-center gap-2 mb-4 px-4 py-2 rounded-2xl border border-emerald-500/60 bg-gradient-to-r from-emerald-950/90 via-[#0a2717] to-black/80 hover:border-emerald-400 text-xs text-emerald-100 transition shadow-xl group"
+                >
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+                  </span>
+                  <span className="font-medium text-emerald-200">
+                    Have existing health conditions? <span className="text-amber-300 font-semibold">(Blood Sugar, BP, PCOD, Raktapradar...)</span>
+                  </span>
+                  <span className="text-emerald-400 font-bold group-hover:translate-x-1 transition-transform">➔ Clinical Assessment</span>
+                </div>
+              )}
+
               <h1 className="text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
                 Your whole day,
                 <span className="block bg-gradient-to-r from-emerald-300 via-emerald-200 to-amber-200 bg-clip-text text-transparent">

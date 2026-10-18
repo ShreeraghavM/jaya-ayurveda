@@ -87,6 +87,25 @@ testCase(
   'Persists to localStorage and syncs with daily Dinacharya companion'
 )
 
+// 4. Check Streeroga & Artava Protocols
+testCase(
+  'Raktapradara (Excessive Bleeding / Menorrhagia)',
+  kbContent.includes('raktapradara-menorrhagia') && vsContent.includes('raktapradar'),
+  'Grounds in Charaka Chikitsasthana Ch. 30 with Ashoka Ksheerapaka & Nagakesara'
+)
+
+testCase(
+  'Artavakshaya (Scanty Menses / Oligomenorrhea)',
+  kbContent.includes('artavakshaya-oligomenorrhea') && vsContent.includes('artavakshaya'),
+  'Grounds in Sushruta Sharirasthana Ch. 2 with Tila-Guda Kwath & Malasana'
+)
+
+testCase(
+  'Yathochitakala Adarshanam (Delayed Cycles / PCOS)',
+  kbContent.includes('yathochitakala-adarshanam-pcos') && vsContent.includes('yathochitakala'),
+  'Grounds in Sushruta & Kashyapa Samhita with Shatapushpa, Aloe Vera & Dhanurasana'
+)
+
 console.log('\n========================================================')
 console.log('✨ ALL CLINICAL PROTOCOLS & VECTOR LOGIC VERIFIED (100%)')
 console.log('========================================================')

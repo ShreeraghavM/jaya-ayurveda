@@ -29,6 +29,9 @@ const COMMON_CONCERNS = [
   { label: '⚖️ Weight & Sluggish Agni', query: 'I am struggling with excess belly fat, sluggish metabolism, and weight gain.' },
   { label: '😰 Anxiety & Work Burnout', query: 'I feel chronic anxiety, panic, heart palpitations, and nervous exhaustion.' },
   { label: '🫁 Asthma & Wheezing', query: 'I have bronchial asthma, coughing at night, and paroxysmal wheezing.' },
+  { label: '🩸 Raktapradara / Heavy Bleeding', query: 'I have raktapradar with heavy menstrual bleeding, prolonged cycle, and clots.' },
+  { label: '🌸 Artavakshaya / Scanty Flow', query: 'I have artavakshaya with scanty periods, brown spotting, and pelvic ache.' },
+  { label: '🔄 Yathochitakala Adarshanam / PCOS', query: 'I suffer from yathochitakala adarshanam with delayed periods, missed cycles, and PCOS.' },
 ]
 
 export default function HealthIntakeConsultation({ profile, onClose, onNavigateTab }: Props) {

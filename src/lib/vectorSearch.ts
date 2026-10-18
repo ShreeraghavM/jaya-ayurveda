@@ -97,6 +97,19 @@ const SYNONYM_CLUSTERS: Record<string, string[]> = {
     'fatigue', 'chronic fatigue', 'exhaustion', 'low energy', 'weakness', 'low immunity',
     'vitality', 'ojas', 'post viral fatigue', 'burnout'
   ],
+  'raktapradara-menorrhagia': [
+    'raktapradar', 'raktapradara', 'asrigdara', 'menorrhagia', 'heavy bleeding', 'prolonged bleeding',
+    'uterine bleeding', 'clots', 'excessive periods', 'heavy period', 'flooding', 'ashoka'
+  ],
+  'artavakshaya-oligomenorrhea': [
+    'artavakshaya', 'oligomenorrhea', 'hypomenorrhea', 'scanty menses', 'scanty periods', 'light period',
+    'brown spotting', 'scanty flow', '1 day period', 'less bleeding', 'tila'
+  ],
+  'yathochitakala-adarshanam-pcos': [
+    'yathochitakala adarshanam', 'yathochitakala', 'adarshanam', 'pcos', 'pcod', 'delayed periods',
+    'delayed menses', 'irregular periods', 'irregular cycle', 'secondary amenorrhea', 'amenorrhea',
+    'missed period', 'anovulation', 'ovarian cysts', 'shatapushpa'
+  ],
 }
 
 // ─── VECTORIZER & COSINE SIMILARITY ENGINE ─────────────────────────────────

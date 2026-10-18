@@ -47,6 +47,7 @@ export default function KnowledgeHub({ profile }: Props) {
     'Metabolic & Endocrine',
     'Skin & Hair',
     'Immunity & Rasayana',
+    "Women's Health & Artava",
   ]
 
   const filteredDiseases = DISEASE_REPERTORY.filter(d => {

@@ -194,8 +194,24 @@ export default function App() {
           onDemo={handleDemo}
           onGuide={() => openGuide('landing')}
           onOpenGrantDeck={() => setShowGrantPitch(true)}
+          onOpenHealthIntake={() => setShowHealthIntake(true)}
         />
         <GrantPitchModal isOpen={showGrantPitch} onClose={() => setShowGrantPitch(false)} />
+        {showHealthIntake && (
+          <div className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md p-3 sm:p-6 animate-in fade-in">
+            <div className="max-w-4xl mx-auto">
+              <HealthIntakeConsultation
+                profile={DEMO_PROFILE}
+                onClose={() => setShowHealthIntake(false)}
+                onNavigateTab={nextTab => {
+                  setShowHealthIntake(false)
+                  handleDemo()
+                  setTab(nextTab as Tab)
+                }}
+              />
+            </div>
+          </div>
+        )}
       </>
     )
   }
@@ -258,11 +274,14 @@ export default function App() {
             {/* Clinical Health Assessment Trigger Badge */}
             <button
               onClick={() => setShowHealthIntake(true)}
-              className="flex items-center gap-1 px-2 py-0.5 rounded-full border border-emerald-500/50 bg-emerald-500/15 text-[10px] font-mono text-emerald-200 hover:bg-emerald-500/30 transition shadow-sm"
+              className="relative flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-emerald-400 bg-emerald-500/25 text-[11px] font-mono font-medium text-emerald-100 hover:bg-emerald-500/40 transition shadow-lg shadow-emerald-500/30 ring-1 ring-emerald-400/50"
               title="Clinical Health Assessment & Vector Healing Plan"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span>🩺 Health</span>
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+              </span>
+              <span className="font-bold text-emerald-50">🩺 Health</span>
             </button>
 
             {/* Grant Deck Trigger Badge */}
