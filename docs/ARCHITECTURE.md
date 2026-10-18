@@ -103,4 +103,6 @@ Every read/write goes through `lib/store.ts`, which wraps `JSON.parse` and quota
 
 ## Testing
 
-Type safety is enforced with `tsc --noEmit` in CI. The prompt engine is pure and deterministic, so it is the natural first target for unit tests (`buildDayPopups`, `getActivePopup`, `reviewDay`, `calculateBmi`). An end-to-end smoke path (landing → demo → dashboard → profile → guide → diet → goals → good night) is the current manual acceptance check.
+Type safety is enforced with `tsc --noEmit` in CI, scoped to application sources (`src/App.tsx`, `src/components`, `src/lib`). The generated Prisma/SDK layer under `src/generated/**` carries three known upstream type errors from the code generator; they are emitted, never hand-edited, and do not affect the running application — which is why CI filters them rather than silencing them.
+
+The prompt engine is pure and deterministic, so it is the natural first target for unit tests (`buildDayPopups`, `getActivePopup`, `reviewDay`, `calculateBmi`). An end-to-end smoke path (landing → demo → dashboard → profile → guide → diet → goals → good night) is the current manual acceptance check.
