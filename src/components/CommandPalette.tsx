@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Badge } from '@/components/ui/badge'
+import { DISEASE_REPERTORY } from '../lib/knowledgeBase'
 
 interface Props {
   isOpen: boolean
@@ -144,54 +145,14 @@ export default function CommandPalette({ isOpen, onClose, onNavigate, onOpenGran
       icon: '🌿',
       action: () => { onNavigate('remedies'); onClose() },
     },
-    {
-      id: 'rem-amlapitta',
-      title: 'Acid Reflux & GERD (Amlapitta)',
-      subtitle: 'Licorice (Yashtimadhu), Avipattikar & coriander infusion',
-      category: 'Remedies',
-      icon: '🍵',
+    ...DISEASE_REPERTORY.map(d => ({
+      id: `rep-${d.id}`,
+      title: `${d.condition}`,
+      subtitle: `${d.sanskrit} · Primary: ${d.primaryHerbs.slice(0, 3).join(', ')}`,
+      category: 'Remedies' as const,
+      icon: '📜',
       action: () => { onNavigate('remedies'); onClose() },
-    },
-    {
-      id: 'rem-grahani',
-      title: 'IBS & Gut Dysbiosis (Grahani Roga)',
-      subtitle: 'Takra Kalpana, Bilva & roasted cumin for digestive Agni',
-      category: 'Remedies',
-      icon: '🥣',
-      action: () => { onNavigate('remedies'); onClose() },
-    },
-    {
-      id: 'rem-sandhivata',
-      title: 'Osteoarthritis Joint Pain (Sandhivata)',
-      subtitle: 'Shallaki, Yogaraja Guggulu & warm Mahanarayana massage',
-      category: 'Remedies',
-      icon: '🦴',
-      action: () => { onNavigate('remedies'); onClose() },
-    },
-    {
-      id: 'rem-techneck',
-      title: 'Tech-Neck & Cervical Stiffness (Greeva Sthambha)',
-      subtitle: 'Nirgundi taila fomentation and trapezius retractions',
-      category: 'Remedies',
-      icon: '💻',
-      action: () => { onNavigate('remedies'); onClose() },
-    },
-    {
-      id: 'rem-prameha',
-      title: 'Pre-Diabetes & Glucose Spikes (Prameha)',
-      subtitle: 'Nisha-Amalaki (Turmeric + Amla) on empty stomach',
-      category: 'Remedies',
-      icon: '🩸',
-      action: () => { onNavigate('remedies'); onClose() },
-    },
-    {
-      id: 'rem-anidra',
-      title: 'Chronic Insomnia & Restless Sleep (Anidra)',
-      subtitle: 'Pada Abhyanga foot oiling & warm nutmeg Moon Milk',
-      category: 'Remedies',
-      icon: '🌙',
-      action: () => { onNavigate('remedies'); onClose() },
-    },
+    })),
   ]
 
   const filtered = items.filter(

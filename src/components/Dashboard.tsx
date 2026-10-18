@@ -120,6 +120,55 @@ export default function Dashboard({ profile, onNavigate }: Props) {
         </Card>
       </div>
 
+      {/* ─── QUICK PATHWAYS (gstack Fast Access) ─── */}
+      <div className="px-5 mb-6">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+          <button
+            onClick={() => onNavigate('remedies')}
+            className="flex items-center gap-2.5 p-3 rounded-2xl bg-gradient-to-br from-emerald-950/60 to-emerald-900/30 border border-emerald-800/40 text-left hover:border-emerald-500/50 hover:bg-emerald-900/40 transition-all group shadow-sm"
+          >
+            <span className="text-xl group-hover:scale-110 transition-transform">📚</span>
+            <div>
+              <p className="text-emerald-100 text-xs font-semibold">Clinical RAG</p>
+              <p className="text-emerald-400/60 text-[10px]">18 Protocols</p>
+            </div>
+          </button>
+
+          <button
+            onClick={() => onNavigate('yoga')}
+            className="flex items-center gap-2.5 p-3 rounded-2xl bg-gradient-to-br from-emerald-950/60 to-emerald-900/30 border border-emerald-800/40 text-left hover:border-emerald-500/50 hover:bg-emerald-900/40 transition-all group shadow-sm"
+          >
+            <span className="text-xl group-hover:scale-110 transition-transform">🫁</span>
+            <div>
+              <p className="text-emerald-100 text-xs font-semibold">Pranayama</p>
+              <p className="text-emerald-400/60 text-[10px]">Guided Sphere</p>
+            </div>
+          </button>
+
+          <button
+            onClick={() => onNavigate('chat')}
+            className="flex items-center gap-2.5 p-3 rounded-2xl bg-gradient-to-br from-emerald-950/60 to-emerald-900/30 border border-emerald-800/40 text-left hover:border-emerald-500/50 hover:bg-emerald-900/40 transition-all group shadow-sm"
+          >
+            <span className="text-xl group-hover:scale-110 transition-transform">💬</span>
+            <div>
+              <p className="text-emerald-100 text-xs font-semibold">AI Vaidya</p>
+              <p className="text-emerald-400/60 text-[10px]">Instant Consult</p>
+            </div>
+          </button>
+
+          <button
+            onClick={() => onNavigate('routine')}
+            className="flex items-center gap-2.5 p-3 rounded-2xl bg-gradient-to-br from-emerald-950/60 to-emerald-900/30 border border-emerald-800/40 text-left hover:border-emerald-500/50 hover:bg-emerald-900/40 transition-all group shadow-sm"
+          >
+            <span className="text-xl group-hover:scale-110 transition-transform">🕐</span>
+            <div>
+              <p className="text-emerald-100 text-xs font-semibold">Dinacharya</p>
+              <p className="text-emerald-400/60 text-[10px]">20 Timed Steps</p>
+            </div>
+          </button>
+        </div>
+      </div>
+
       {/* ─── AGNI STATUS ─── */}
       <div className="px-5 mb-6">
         <div className="bg-amber-900/20 border border-amber-800/20 rounded-xl px-4 py-3 flex items-center gap-3">
