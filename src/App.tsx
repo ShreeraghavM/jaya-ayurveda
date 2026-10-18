@@ -28,6 +28,7 @@ import GoodNightRitual from './components/GoodNightRitual'
 import GrantPitchModal from './components/GrantPitchModal'
 import PersonaSwitcher from './components/PersonaSwitcher'
 import CommandPalette from './components/CommandPalette'
+import HealthIntakeConsultation from './components/HealthIntakeConsultation'
 
 type View = 'landing' | 'onboarding' | 'guide' | 'profile' | 'plan' | 'app'
 type Tab = 'home' | 'chat' | 'routine' | 'goals' | 'yoga' | 'diet' | 'remedies' | 'progress'
@@ -53,6 +54,7 @@ export default function App() {
   const [showGoodNight, setShowGoodNight] = useState(false)
   const [showGrantPitch, setShowGrantPitch] = useState(false)
   const [showCommandPalette, setShowCommandPalette] = useState(false)
+  const [showHealthIntake, setShowHealthIntake] = useState(false)
   const [popupTick, setPopupTick] = useState(0)
 
   useEffect(() => {
@@ -218,7 +220,13 @@ export default function App() {
   const renderTab = () => {
     switch (tab) {
       case 'home':
-        return <Dashboard profile={profile} onNavigate={navigate} />
+        return (
+          <Dashboard
+            profile={profile}
+            onNavigate={navigate}
+            onOpenHealthIntake={() => setShowHealthIntake(true)}
+          />
+        )
       case 'chat':
         return <ChatCoach profile={profile} />
       case 'routine':
@@ -241,10 +249,20 @@ export default function App() {
       {/* Top bar with 2026 AI Standard Glassmorphism Header */}
       <header className="sticky top-0 z-30 border-b border-emerald-900/40 bg-[#08140c]/90 backdrop-blur-xl">
         <div className="mx-auto flex max-w-lg items-center justify-between px-3 py-2 sm:px-4 sm:py-2.5">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2">
             <button onClick={() => setTab('home')} className="flex items-center gap-1.5 group">
               <span className="text-base group-hover:scale-110 transition-transform">🌿</span>
               <span className="text-xs font-bold tracking-tight text-emerald-100">Jaya</span>
+            </button>
+
+            {/* Clinical Health Assessment Trigger Badge */}
+            <button
+              onClick={() => setShowHealthIntake(true)}
+              className="flex items-center gap-1 px-2 py-0.5 rounded-full border border-emerald-500/50 bg-emerald-500/15 text-[10px] font-mono text-emerald-200 hover:bg-emerald-500/30 transition shadow-sm"
+              title="Clinical Health Assessment & Vector Healing Plan"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span>🩺 Health</span>
             </button>
 
             {/* Grant Deck Trigger Badge */}
@@ -254,7 +272,7 @@ export default function App() {
               title="View $100k Seed / AYUSH Grant Pitch Deck"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping" />
-              <span>🌱 Pitch Deck</span>
+              <span>🌱 Pitch</span>
             </button>
           </div>
 
@@ -324,12 +342,29 @@ export default function App() {
       {/* AYUSH Grant & Seed Round Pitch Deck Modal */}
       <GrantPitchModal isOpen={showGrantPitch} onClose={() => setShowGrantPitch(false)} />
 
+      {/* Clinical Health Intake & Vector Matching Modal */}
+      {showHealthIntake && (
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md p-3 sm:p-6 animate-in fade-in">
+          <div className="max-w-4xl mx-auto">
+            <HealthIntakeConsultation
+              profile={profile}
+              onClose={() => setShowHealthIntake(false)}
+              onNavigateTab={nextTab => {
+                setShowHealthIntake(false)
+                setTab(nextTab as Tab)
+              }}
+            />
+          </div>
+        </div>
+      )}
+
       {/* Global Command Palette */}
       <CommandPalette
         isOpen={showCommandPalette}
         onClose={() => setShowCommandPalette(false)}
         onNavigate={navigate}
         onOpenGrantDeck={() => setShowGrantPitch(true)}
+        onOpenHealthIntake={() => setShowHealthIntake(true)}
       />
 
       {/* Bottom Floating Navigation */}

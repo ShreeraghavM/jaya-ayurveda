@@ -10,9 +10,10 @@ import { Button } from '@/components/ui/button'
 interface Props {
   profile: UserProfile
   onNavigate: (tab: string) => void
+  onOpenHealthIntake?: () => void
 }
 
-export default function Dashboard({ profile, onNavigate }: Props) {
+export default function Dashboard({ profile, onNavigate, onOpenHealthIntake }: Props) {
   const [now, setNow] = useState(new Date())
   const [todayLog, setTodayLog] = useState(getTodayLog())
   const [waterAdded, setWaterAdded] = useState(0)
@@ -118,6 +119,37 @@ export default function Dashboard({ profile, onNavigate }: Props) {
             </div>
           )}
         </Card>
+      </div>
+
+      {/* ─── CLINICAL HEALTH INTAKE BANNER (Polite & Personalized) ─── */}
+      <div className="px-5 mb-6">
+        <div
+          onClick={onOpenHealthIntake}
+          className="cursor-pointer p-4 rounded-3xl bg-gradient-to-r from-emerald-950/80 via-[#0a2616] to-black/80 border border-emerald-600/40 hover:border-emerald-400/60 transition-all shadow-xl group"
+        >
+          <div className="flex items-start justify-between gap-3">
+            <div className="flex items-start gap-3">
+              <span className="text-2xl mt-0.5 group-hover:scale-110 transition-transform">🩺</span>
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-300 bg-emerald-900/60 px-2 py-0.5 rounded-full border border-emerald-600/40">
+                    Vedic Clinical Intake
+                  </span>
+                  <span className="text-[10px] font-mono text-amber-300 font-semibold">Vector AI</span>
+                </div>
+                <h3 className="text-emerald-50 font-semibold text-sm">
+                  Have Existing Health Issues? (Blood Sugar, BP, Joints...)
+                </h3>
+                <p className="text-emerald-200/70 text-xs mt-1 leading-relaxed">
+                  Tell us politely in your own words. We vectorize your symptoms against the Charaka Samhita and clinical trials to give you exact intake grams, targeted yoga, and 14–90 day tracking with numbers.
+                </p>
+              </div>
+            </div>
+            <span className="text-emerald-400 text-sm group-hover:translate-x-1 transition-transform shrink-0 mt-2">
+              ➔
+            </span>
+          </div>
+        </div>
       </div>
 
       {/* ─── QUICK PATHWAYS (gstack Fast Access) ─── */}

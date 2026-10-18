@@ -7,6 +7,7 @@ interface Props {
   onClose: () => void
   onNavigate: (tab: string) => void
   onOpenGrantDeck: () => void
+  onOpenHealthIntake?: () => void
 }
 
 interface CommandItem {
@@ -18,7 +19,7 @@ interface CommandItem {
   action: () => void
 }
 
-export default function CommandPalette({ isOpen, onClose, onNavigate, onOpenGrantDeck }: Props) {
+export default function CommandPalette({ isOpen, onClose, onNavigate, onOpenGrantDeck, onOpenHealthIntake }: Props) {
   const [query, setQuery] = useState('')
 
   useEffect(() => {
@@ -112,6 +113,14 @@ export default function CommandPalette({ isOpen, onClose, onNavigate, onOpenGran
       category: 'Actions',
       icon: '🌱',
       action: () => { onClose(); onOpenGrantDeck() },
+    },
+    {
+      id: 'action-health-intake',
+      title: 'Clinical Health Issue Assessment & Vector Healing Plan',
+      subtitle: 'Polite AI Vaidya intake for Blood Sugar, BP, Joints, and exact diet/yoga metrics',
+      category: 'Actions',
+      icon: '🩺',
+      action: () => { onClose(); onOpenHealthIntake?.() },
     },
     {
       id: 'rem-ashwagandha',

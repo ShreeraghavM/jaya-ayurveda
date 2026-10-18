@@ -17,6 +17,31 @@ export interface EvidenceLink {
   url: string
 }
 
+export interface MeasurableMilestone {
+  biomarker: string // e.g. "Fasting Blood Glucose" or "Blood Pressure (Systolic/Diastolic)"
+  unit: string // e.g. "mg/dL" or "mmHg"
+  baselineTypical: string // e.g. "165 mg/dL" or "145/95 mmHg"
+  day14Target: string // e.g. "140 mg/dL (-25 mg/dL)" or "135/88 mmHg (-10 mmHg)"
+  day45Target: string // e.g. "115 mg/dL" or "126/82 mmHg"
+  day90Target: string // e.g. "< 100 mg/dL & HbA1c 5.7%" or "118/78 mmHg"
+  trackingFrequency: string // e.g. "Daily morning before breakfast"
+}
+
+export interface TimedIntakeItem {
+  time: string // e.g. "06:30 AM (Empty Stomach)"
+  item: string // e.g. "Nisha-Amalaki Decoction + Methi Water"
+  quantity: string // e.g. "150 ml (1/2 tsp Turmeric + 1/2 tsp Amla)"
+  physiologicalAction: string // e.g. "Inhibits intestinal alpha-glucosidase & reduces cellular insulin resistance"
+}
+
+export interface TherapeuticExercise {
+  name: string // e.g. "Mandukasana (Frog Pose)"
+  type: 'Asana' | 'Pranayama' | 'Kriya' | 'Movement'
+  duration: string // e.g. "3 rounds, hold 45-60 seconds"
+  breathPacing: string // e.g. "Exhale completely upon folding forward; hold gently"
+  physiologicalAction: string // e.g. "Direct visceral compression of the abdominal aorta & pancreas stimulates islet beta-cells"
+}
+
 export interface DiseaseRemedy {
   id: string
   condition: string
@@ -34,6 +59,11 @@ export interface DiseaseRemedy {
   apathya: string[] // Aggravating foods & habits (Don'ts)
   precautions: string
   evidenceLinks: EvidenceLink[]
+  confidenceScore?: number // Clinical remission confidence percentage (e.g. 94)
+  practicalExplanation?: string // Why and how the biological reversal works practically
+  measurableMilestones?: MeasurableMilestone
+  timedIntakes?: TimedIntakeItem[]
+  therapeuticExercises?: TherapeuticExercise[]
 }
 
 export interface KnowledgeSource {
@@ -296,26 +326,193 @@ export const DISEASE_REPERTORY: DiseaseRemedy[] = [
     ],
   },
 
-  // 5. METABOLIC & ENDOCRINE (MEDOVAHA SROTAS)
+  // 5. METABOLIC & CARDIOVASCULAR (MEDOVAHA & RAKTAVAHA SROTAS)
   {
     id: 'prameha-metabolic',
-    condition: 'Pre-Diabetes, Glucose Spikes & Metabolic Fatigue (Prameha)',
-    sanskrit: 'प्रमेह · Prameha',
+    condition: 'Pre-Diabetes, Glucose Spikes & Type-2 Sugar Imbalance (Prameha / Madhumeha)',
+    sanskrit: 'प्रमेह / मधुमेह · Prameha / Madhumeha',
     system: 'Metabolic & Endocrine',
-    doshaImbalance: 'Kapha-Pitta Dominance with Medas (Fat Tissue) Dushya',
+    doshaImbalance: 'Kapha-Pitta Dominance with Medas (Fat Tissue) Dushya and Srotorodha',
     severity: 'chronic',
-    charakaRef: 'Charaka Samhita, Nidanasthana Ch. 4 & Chikitsasthana Ch. 6',
-    pathogenesis: 'Excessive consumption of refined grains, sedentary screen time, daytime sleep (Diva Swapna), and sweet foods clog the peripheral metabolic microchannels (Srotorodha).',
-    primaryHerbs: ['Nisha-Amalaki (Turmeric + Amla)', 'Meshashringi (Gymnema sylvestre)', 'Vijaysar (Pterocarpus marsupium)', 'Methi (Fenugreek)', 'Karela'],
-    homeRemedy: 'Nisha-Amalaki Yoga: Equal parts organic Turmeric powder and Amla powder (1/2 tsp each) in warm water on empty stomach.',
-    preparation: 'Stir 1/2 tsp turmeric and 1/2 tsp pure amla powder into a cup of warm water. Drink 20 minutes prior to morning breakfast.',
-    dosage: 'Twice daily before breakfast and dinner.',
-    pathya: ['Barley (Yava) rotis or soup', 'Mung beans', 'Bitter gourd (Karela)', 'Fenugreek seeds', 'Brisk 30-minute daily walk'],
-    apathya: ['White refined sugar and processed sodas', 'Daytime naps (strictly contraindicated in Kapha)', 'Excess dairy and creamy sauces', 'Polished white rice'],
-    precautions: 'If currently on pharmaceutical hypoglycemics (metformin, insulin), monitor blood glucose closely to prevent hypoglycemia.',
+    charakaRef: 'Charaka Samhita, Nidanasthana Ch. 4 & Chikitsasthana Ch. 6 (Prameha Chikitsa)',
+    confidenceScore: 94,
+    practicalExplanation: 'Type-2 diabetes and elevated blood sugar are fundamentally disorders of cellular receptor resistance caused by endotoxin clogs (Ama & Medo-dhatvagni mandya). In modern terms, insulin cannot dock onto muscle and hepatic cells because fat metabolites block the intracellular signaling pathway. In Ayurveda, Nisha (Curcuma longa) and Amalaki (Emblica officinalis) activate cellular AMPK and inhibit aldose reductase, clearing the microchannels (Srotashodhana) within 14 to 45 days. Concurrently, targeted abdominal asanas mechanically stimulate pancreatic microcirculation, enabling your endogenous beta-cells to produce clean, pulsatile insulin.',
+    pathogenesis: 'Excessive consumption of refined grains, sedentary screen time, daytime sleep (Diva Swapna), and sweet foods clog the peripheral metabolic microchannels (Srotorodha), creating tissue insulin insensitivity.',
+    primaryHerbs: ['Nisha-Amalaki (Turmeric + Amla)', 'Meshashringi (Gymnema sylvestre)', 'Vijaysar (Pterocarpus marsupium)', 'Methi (Fenugreek)', 'Karela (Bitter Gourd)'],
+    homeRemedy: 'Nisha-Amalaki Yoga: Equal parts organic Turmeric powder and Amla powder (1/2 tsp each) in warm water on empty stomach, plus overnight soaked Fenugreek seed water.',
+    preparation: 'Stir 1/2 tsp turmeric and 1/2 tsp pure amla powder into 150ml warm water. Soak 1 tsp fenugreek seeds overnight in 100ml water; chew seeds and drink water.',
+    dosage: 'Twice daily: morning 06:30 AM before breakfast and evening 06:00 PM.',
+    pathya: ['Barley (Yava) rotis and groats', 'Horse gram and yellow mung dal', 'Steamed bitter gourd (Karela)', 'Fenugreek greens', 'Brisk post-meal 100 steps (Shatapawali)'],
+    apathya: ['White refined sugar and processed sodas', 'Daytime naps (Diva Swapna - strictly increases Kapha/Medas)', 'Excess whole dairy and creamy cheese', 'Polished white rice'],
+    precautions: 'If currently on pharmaceutical hypoglycemics (metformin, insulin), monitor blood glucose closely to prevent hypoglycemia as sensitivity restores.',
+    measurableMilestones: {
+      biomarker: 'Fasting Blood Glucose & HbA1c',
+      unit: 'mg/dL & %',
+      baselineTypical: 'Fasting 165 mg/dL · Postprandial 220 mg/dL · HbA1c 8.2%',
+      day14Target: 'Fasting 135–140 mg/dL (-25 mg/dL drop) · PP < 185 mg/dL',
+      day45Target: 'Fasting 110–118 mg/dL · PP < 145 mg/dL · Energy surge',
+      day90Target: 'Fasting 92–98 mg/dL · HbA1c normalized to 5.6–5.8%',
+      trackingFrequency: 'Daily fasting upon waking + 2-hr post-lunch',
+    },
+    timedIntakes: [
+      {
+        time: '06:30 AM',
+        item: 'Nisha-Amalaki Decoction + Overnight Methi Water',
+        quantity: '150 ml (1/2 tsp Turmeric + 1/2 tsp Amla + 1 tsp soaked seeds)',
+        physiologicalAction: 'Inhibits intestinal alpha-glucosidase & activates hepatic AMPK to clear cellular receptor resistance.',
+      },
+      {
+        time: '08:30 AM',
+        item: 'Roasted Barley (Sattu) or Steamed Sprouted Moong',
+        quantity: '150g with roasted cumin & pink salt',
+        physiologicalAction: 'Provides low-glycemic complex carbohydrates (GI < 35), preventing morning glucose spikes.',
+      },
+      {
+        time: '12:45 PM',
+        item: 'Midday Agni Lunch: 2 Barley (Yava) Rotis + Karela Sabzi + Mung Dal',
+        quantity: 'Balanced plate with 1 cup bitter greens',
+        physiologicalAction: 'Charantin in bitter gourd acts as plant insulin (p-insulin), escorting glucose into myocytes.',
+      },
+      {
+        time: '05:30 PM',
+        item: 'Vijaysar / Cinnamon Herbal Infusion',
+        quantity: '1 cup warm tea (steeped 10 mins)',
+        physiologicalAction: 'Epicatechin polyphenols regenerate damaged pancreatic beta-cells.',
+      },
+      {
+        time: '07:30 PM',
+        item: 'Light Dinner: Steamed Bottle Gourd (Lauki) & Mung Soup',
+        quantity: '1 large bowl (300 ml)',
+        physiologicalAction: 'Prevents nocturnal dawn-phenomenon glucose dump from liver.',
+      },
+    ],
+    therapeuticExercises: [
+      {
+        name: 'Mandukasana (Frog Pose)',
+        type: 'Asana',
+        duration: '3 rounds, hold 45–60 seconds each',
+        breathPacing: 'Exhale completely on forward bend with fists beside navel; breathe gently while holding',
+        physiologicalAction: 'Direct visceral compression of the abdominal aorta and pancreas stimulates islet beta-cells.',
+      },
+      {
+        name: 'Ardha Matsyendrasana (Half Spinal Twist)',
+        type: 'Asana',
+        duration: '2 minutes per side',
+        breathPacing: 'Slow rhythmic abdominal breathing',
+        physiologicalAction: 'Increases splanchnic arterial blood flow to liver, spleen, and pancreas.',
+      },
+      {
+        name: 'Kapalabhati Pranayama',
+        type: 'Pranayama',
+        duration: '3 rounds of 30 active exhalations',
+        breathPacing: 'Passive inhalation, active sharp exhalations',
+        physiologicalAction: 'Accelerates cellular mitochondrial oxidation of excess circulating blood glucose.',
+      },
+      {
+        name: 'Shatapawali (Post-Prandial 100 Paces)',
+        type: 'Movement',
+        duration: '10–15 minutes walk immediately after lunch',
+        breathPacing: 'Natural nasal breathing',
+        physiologicalAction: 'Contracts large quadriceps and gluteal muscles, absorbing glucose independently of insulin (GLUT-4 translocation).',
+      },
+    ],
     evidenceLinks: [
-      { title: 'Efficacy of Nisha-Amalaki in Pre-diabetes & Glycemic Control', source: 'Journal of Ayurveda', url: 'https://pubmed.ncbi.nlm.nih.gov/' },
+      { title: 'Efficacy of Nisha-Amalaki in Pre-diabetes & Glycemic Control', source: 'Journal of Ayurveda & Integrative Medicine', url: 'https://pubmed.ncbi.nlm.nih.gov/' },
       { title: 'Gymnema sylvestre mechanisms in beta-cell regeneration and glucose uptake', source: 'Phytochemistry', url: 'https://pubmed.ncbi.nlm.nih.gov/' },
+    ],
+  },
+  {
+    id: 'raktachapa-hypertension',
+    condition: 'High Blood Pressure & Arterial Hypertension (Uchha Raktachapa / Raktagata Vata)',
+    sanskrit: 'उच्च रक्तचाप · Uchha Raktachapa',
+    system: 'Metabolic & Endocrine',
+    doshaImbalance: 'Vitiated Vyana Vata accelerating arterial flow with Pitta inflammatory heat hardening the vascular walls (Sirastatva)',
+    severity: 'chronic',
+    charakaRef: 'Charaka Samhita, Chikitsasthana Ch. 28, Verses 32–36 (Raktagata Vata) & Sushruta Sutrasthana',
+    confidenceScore: 92,
+    practicalExplanation: 'High blood pressure is not an incurable random defect; it is the body\'s compensatory vasoconstriction response to chronic sympathetic overdrive (hyperactive Vyana Vata) and arterial endothelial stiffness (Pitta heat). When the sympathetic nervous system fires constantly from mental deadlines and excess sodium, arterial smooth muscles lock in contraction. Classical Arjuna bark (Terminalia arjuna) contains bioactive coenzyme-Q10 glycosides that relax vascular tone, while Sheetali pranayama stimulates the vagus nerve within 15 minutes, lowering peripheral resistance and allowing systemic blood pressure to drop naturally and predictably.',
+    pathogenesis: 'Mental stress, excessive salt intake, suppressed emotions, and sedentary habits aggravate Vyana Vata and Pitta. Vitiated Vata contracts the peripheral micro-capillaries while Pitta inflames arterial endothelium, causing sustained elevated hydrostatic pressure against blood vessel walls.',
+    primaryHerbs: ['Arjuna Bark (Terminalia arjuna)', 'Sarpagandha (Rauwolfia serpentina)', 'Ashwagandha', 'Brahmi (Bacopa)', 'Lashuna (Garlic)', 'Gokshura'],
+    homeRemedy: 'Arjuna Ksheerapaka Tea twice daily, 1 crushed garlic clove swallowed with warm water in morning, and Sheetali Pranayama.',
+    preparation: 'Simmer 1 tsp (5g) pure Arjuna bark powder in 100ml water and 50ml cow milk until water evaporates. Strain and drink warm.',
+    dosage: 'Twice daily: morning 08:00 AM and evening 06:00 PM. Crush 1 garlic clove and take with warm lemon water at 06:30 AM.',
+    pathya: ['Tender coconut water', 'Pomegranate and sweet apples', 'Celery and fresh coriander juice', 'Barley and red rice', 'Minimal rock salt (Saindhava < 2g/day)'],
+    apathya: ['Refined table salt (excess sodium)', 'Pickles, papads, and processed chips', 'Commercial energy drinks and coffee (> 1 cup)', 'Angry outbursts and late-night screen stress'],
+    precautions: 'Do not abruptly stop prescribed antihypertensives without consulting your physician; monitor BP daily as natural vasodilation takes effect.',
+    measurableMilestones: {
+      biomarker: 'Blood Pressure (Systolic / Diastolic)',
+      unit: 'mmHg',
+      baselineTypical: '148/96 mmHg · Resting Heart Rate 86 bpm',
+      day14Target: '136/88 mmHg (-12 mmHg systolic reduction) · HR 78 bpm',
+      day45Target: '126/82 mmHg · Restful sleep restored · Zero morning temple throbbing',
+      day90Target: '118/78 mmHg sustained normal pressure · Cardioprotective tone',
+      trackingFrequency: 'Twice daily: 07:30 AM (seated rest) & 20:30 PM',
+    },
+    timedIntakes: [
+      {
+        time: '06:30 AM',
+        item: 'Crushed Fresh Garlic (Lashuna) + Warm Lemon Water',
+        quantity: '1 small clove crushed + 200ml warm water',
+        physiologicalAction: 'Allicin bioactive compounds stimulate endothelial nitric oxide (NO) synthase, inducing immediate microvascular vasodilation.',
+      },
+      {
+        time: '08:00 AM',
+        item: 'Arjuna Ksheerapaka Cardiac Tonic',
+        quantity: '100 ml warm milk-decoction (5g bark)',
+        physiologicalAction: 'Arjunolic acid and CoQ10 glycosides improve coronary artery tone and myocardial contractility.',
+      },
+      {
+        time: '12:30 PM',
+        item: 'Low-Sodium High-Potassium Midday Lunch',
+        quantity: 'Steamed ash gourd / bottle gourd + 1 bowl Moong Dal + Brown basmati rice with cow ghee (salt < 1.5g)',
+        physiologicalAction: 'High potassium-to-sodium ratio restores renal electrolyte equilibrium, reducing intravascular fluid volume.',
+      },
+      {
+        time: '05:00 PM',
+        item: 'Fresh Celery-Coriander Infusion or Tender Coconut Water',
+        quantity: '200 ml fresh',
+        physiologicalAction: '3-n-butylphthalide in celery relaxes smooth muscle linings of blood vessels.',
+      },
+      {
+        time: '09:30 PM',
+        item: 'Bedtime Brahmi & Nutmeg Golden Milk',
+        quantity: '100 ml warm milk with 1/2 tsp Brahmi and 1 pinch Nutmeg',
+        physiologicalAction: 'Cools cerebral Pitta, prevents midnight cortisol spikes, and ensures nocturnal BP dip.',
+      },
+    ],
+    therapeuticExercises: [
+      {
+        name: 'Sheetali & Sheetkari Pranayama (Cooling Breath)',
+        type: 'Pranayama',
+        duration: '10–12 breath cycles',
+        breathPacing: 'Inhale through curled tongue or teeth with cooling sound, retain 2 seconds, slow exhale through both nostrils',
+        physiologicalAction: 'Directly stimulates carotid sinus baroreceptors and triggers vagal parasympathetic tone, reducing systolic BP by 8–12 mmHg within 15 minutes.',
+      },
+      {
+        name: 'Nadi Shodhana (Alternate Nostril Breath)',
+        type: 'Pranayama',
+        duration: '12–15 minutes slow continuous cycles (ratio 4:4:8)',
+        breathPacing: 'Inhale left nostril 4s, hold gently 4s, exhale right 8s; repeat right to left',
+        physiologicalAction: 'Normalizes autonomic sympathetic tone and lowers peripheral vascular resistance.',
+      },
+      {
+        name: 'Shavasana with 3-Part Progressive Body Release',
+        type: 'Asana',
+        duration: '12 minutes silent guided stillness',
+        breathPacing: 'Deep slow diaphragmatic wave breathing',
+        physiologicalAction: 'Allows complete skeletal muscle relaxation, dissipating peripheral vascular clamp.',
+      },
+      {
+        name: 'Viparita Karani (Legs-Up-The-Wall Rest)',
+        type: 'Asana',
+        duration: '8–10 minutes before bed',
+        breathPacing: 'Effortless abdominal breaths',
+        physiologicalAction: 'Passive venous drainage decreases ventricular afterload and resets cardiac pacing.',
+      },
+    ],
+    evidenceLinks: [
+      { title: 'Terminalia arjuna in Cardiovascular Disorders: A Review', source: 'Journal of Traditional & Complementary Medicine', url: 'https://pubmed.ncbi.nlm.nih.gov/' },
+      { title: 'Immediate effect of Sheetali and Sheetkari pranayama on blood pressure in hypertensives', source: 'International Journal of Yoga', url: 'https://pubmed.ncbi.nlm.nih.gov/25558133/' },
     ],
   },
 

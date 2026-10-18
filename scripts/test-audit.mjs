@@ -136,6 +136,22 @@ assert(kbContent.includes('Charaka Samhita — Volume 1'), 'Indexes Charaka Samh
 assert(kbContent.includes('Charaka Samhita — Volume 2'), 'Indexes Charaka Samhita Volume 2 from local research archive')
 assert(kbContent.includes('getCustomResearchItems') && kbContent.includes('saveCustomResearchItem'), 'Exports custom research item ingestion methods')
 
+// ─── SUITE 9: Semantic Vector Search & Health Intake Engine ────────────────
+console.log('\n► Suite 9: Semantic Vector Search & Health Intake Engine')
+const vsPath = path.join(ROOT, 'src/lib/vectorSearch.ts')
+assert(fs.existsSync(vsPath), 'vectorSearch.ts exists')
+const vsContent = fs.readFileSync(vsPath, 'utf8')
+assert(vsContent.includes('vectorizeAndMatchHealthIssues'), 'Exports vectorizeAndMatchHealthIssues function')
+assert(vsContent.includes('prameha-metabolic') && vsContent.includes('raktachapa-hypertension'), 'Matches Blood Sugar (Prameha) and Blood Pressure (Raktachapa)')
+assert(vsContent.includes('saveActiveHealingProtocol') && vsContent.includes('getActiveHealingProtocol'), 'Supports active healing protocol persistence')
+
+const intakeCompPath = path.join(ROOT, 'src/components/HealthIntakeConsultation.tsx')
+assert(fs.existsSync(intakeCompPath), 'HealthIntakeConsultation.tsx component exists')
+const intakeContent = fs.readFileSync(intakeCompPath, 'utf8')
+assert(intakeContent.includes('Tell Us How You Are Feeling'), 'Contains polite, compassionate bedside greeting')
+assert(intakeContent.includes('Exact Daily Intake') && intakeContent.includes('Therapeutic Yoga'), 'Provides intake grams and targeted yoga therapy')
+assert(intakeContent.includes('Numbers & Tracking'), 'Presents 14-to-90 day quantitative biomarker tracking')
+
 // ─── RESULTS SUMMARY ───────────────────────────────────────────────────────
 console.log('\n======================================================')
 console.log(`✨ TEST RESULTS: ${passed} PASSED / ${failed} FAILED`)
