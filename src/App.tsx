@@ -172,8 +172,24 @@ export default function App() {
           onDemo={handleDemo}
           onGuide={() => openGuide('landing')}
           onOpenGrantDeck={() => setShowGrantPitch(true)}
+          onOpenHealthIntake={() => setShowHealthIntake(true)}
         />
         <GrantPitchModal isOpen={showGrantPitch} onClose={() => setShowGrantPitch(false)} />
+        {showHealthIntake && (
+          <div className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md p-3 sm:p-6 animate-in fade-in">
+            <div className="max-w-4xl mx-auto">
+              <HealthIntakeConsultation
+                profile={DEMO_PROFILE}
+                onClose={() => setShowHealthIntake(false)}
+                onNavigateTab={nextTab => {
+                  setShowHealthIntake(false)
+                  handleDemo()
+                  setTab(nextTab as Tab)
+                }}
+              />
+            </div>
+          </div>
+        )}
       </>
     )
   }
