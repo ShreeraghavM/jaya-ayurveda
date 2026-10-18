@@ -6,6 +6,7 @@ interface Props {
   onStart: () => void
   onDemo: () => void
   onGuide: () => void
+  onOpenGrantDeck?: () => void
 }
 
 const features = [
@@ -30,7 +31,7 @@ const testimonials = [
   { quote: 'It woke me up and would not let me sit back down until I walked. I needed that.', name: 'Meera S.', role: 'Kapha · Doctor' },
 ]
 
-export default function LandingPage({ onStart, onDemo, onGuide }: Props) {
+export default function LandingPage({ onStart, onDemo, onGuide, onOpenGrantDeck }: Props) {
   return (
     <div className="min-h-screen bg-[#08140c] text-emerald-50">
       {/* ambient background */}
@@ -51,6 +52,15 @@ export default function LandingPage({ onStart, onDemo, onGuide }: Props) {
             </div>
           </div>
           <nav className="flex items-center gap-1 sm:gap-3">
+            {onOpenGrantDeck && (
+              <button
+                onClick={onOpenGrantDeck}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-amber-500/40 bg-amber-500/10 text-xs font-mono text-amber-300 hover:bg-amber-500/20 transition"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+                <span>$100k Grant Deck</span>
+              </button>
+            )}
             <button onClick={onGuide} className="rounded-lg px-3 py-2 text-xs text-emerald-300/80 transition hover:text-emerald-100 sm:text-sm">
               Guide
             </button>
@@ -71,9 +81,14 @@ export default function LandingPage({ onStart, onDemo, onGuide }: Props) {
         <section className="mx-auto max-w-6xl px-4 pb-14 pt-6 sm:px-6 sm:pt-12">
           <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
             <div>
-              <Badge className="mb-5 rounded-full border border-emerald-700/40 bg-emerald-900/40 px-3 py-1 text-[11px] font-medium text-emerald-300">
-                A companion, not another tracker
-              </Badge>
+              <div className="flex flex-wrap items-center gap-2 mb-4">
+                <Badge className="rounded-full border border-emerald-700/40 bg-emerald-900/40 px-3 py-1 text-[11px] font-medium text-emerald-300">
+                  A companion, not another tracker
+                </Badge>
+                <Badge className="rounded-full border border-amber-500/40 bg-amber-950/40 px-3 py-1 text-[11px] font-mono text-amber-300">
+                  Garry Tan gstack & Charaka Samhita
+                </Badge>
+              </div>
               <h1 className="text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
                 Your whole day,
                 <span className="block bg-gradient-to-r from-emerald-300 via-emerald-200 to-amber-200 bg-clip-text text-transparent">
@@ -96,10 +111,19 @@ export default function LandingPage({ onStart, onDemo, onGuide }: Props) {
                 <Button
                   onClick={onDemo}
                   variant="outline"
-                  className="h-12 rounded-2xl border-emerald-700/50 bg-emerald-950/40 px-7 text-base text-emerald-200 hover:bg-emerald-900/50 hover:text-emerald-100"
+                  className="h-12 rounded-2xl border-emerald-700/50 bg-emerald-950/40 px-6 text-base text-emerald-200 hover:bg-emerald-900/50 hover:text-emerald-100"
                 >
                   Try demo profile
                 </Button>
+                {onOpenGrantDeck && (
+                  <Button
+                    onClick={onOpenGrantDeck}
+                    variant="outline"
+                    className="h-12 rounded-2xl border-amber-500/50 bg-amber-950/20 px-5 text-sm text-amber-300 hover:bg-amber-900/40 hover:text-amber-100 font-mono shadow-sm"
+                  >
+                    🌱 Grant Pitch Deck
+                  </Button>
+                )}
               </div>
               <p className="mt-3 text-[11px] text-emerald-500/60">
                 No card, no email verification. Everything stays on your device.

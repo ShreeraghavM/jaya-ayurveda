@@ -25,6 +25,9 @@ import TomorrowPlanning from './components/TomorrowPlanning'
 import Profile from './components/UserProfile'
 import SmartPopups from './components/SmartPopups'
 import GoodNightRitual from './components/GoodNightRitual'
+import GrantPitchModal from './components/GrantPitchModal'
+import PersonaSwitcher from './components/PersonaSwitcher'
+import CommandPalette from './components/CommandPalette'
 
 type View = 'landing' | 'onboarding' | 'guide' | 'profile' | 'plan' | 'app'
 type Tab = 'home' | 'chat' | 'routine' | 'goals' | 'yoga' | 'diet' | 'remedies' | 'progress'
@@ -48,6 +51,8 @@ export default function App() {
   const [tab, setTab] = useState<Tab>('home')
   const [loading, setLoading] = useState(true)
   const [showGoodNight, setShowGoodNight] = useState(false)
+  const [showGrantPitch, setShowGrantPitch] = useState(false)
+  const [showCommandPalette, setShowCommandPalette] = useState(false)
   const [popupTick, setPopupTick] = useState(0)
 
   useEffect(() => {
@@ -59,6 +64,17 @@ export default function App() {
       setView('app')
     }
     setLoading(false)
+  }, [])
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault()
+        setShowCommandPalette(prev => !prev)
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
   }, [])
 
   useEffect(() => {
@@ -85,6 +101,20 @@ export default function App() {
     setSession(demoSession)
     setView('app')
     setTab('home')
+  }
+
+  const handleSelectPersona = (p: UserProfile) => {
+    saveUserProfile(p)
+    const demoSession: AuthSession = {
+      name: p.name,
+      email: p.email ?? '',
+      mode: 'demo',
+      signedInAt: new Date().toISOString(),
+    }
+    saveSession(demoSession)
+    setProfile(p)
+    setSession(demoSession)
+    setView('app')
   }
 
   const handleSignOut = () => {
@@ -134,11 +164,15 @@ export default function App() {
 
   if (view === 'landing') {
     return (
-      <LandingPage
-        onStart={() => setView('onboarding')}
-        onDemo={handleDemo}
-        onGuide={() => openGuide('landing')}
-      />
+      <>
+        <LandingPage
+          onStart={() => setView('onboarding')}
+          onDemo={handleDemo}
+          onGuide={() => openGuide('landing')}
+          onOpenGrantDeck={() => setShowGrantPitch(true)}
+        />
+        <GrantPitchModal isOpen={showGrantPitch} onClose={() => setShowGrantPitch(false)} />
+      </>
     )
   }
 
@@ -152,11 +186,15 @@ export default function App() {
 
   if (!profile) {
     return (
-      <LandingPage
-        onStart={() => setView('onboarding')}
-        onDemo={handleDemo}
-        onGuide={() => openGuide('landing')}
-      />
+      <>
+        <LandingPage
+          onStart={() => setView('onboarding')}
+          onDemo={handleDemo}
+          onGuide={() => openGuide('landing')}
+          onOpenGrantDeck={() => setShowGrantPitch(true)}
+        />
+        <GrantPitchModal isOpen={showGrantPitch} onClose={() => setShowGrantPitch(false)} />
+      </>
     )
   }
 
@@ -199,43 +237,80 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-[#08140c]">
-      {/* Top bar */}
-      <div className="sticky top-0 z-30 border-b border-emerald-900/40 bg-[#08140c]/90 backdrop-blur">
-        <div className="mx-auto flex max-w-lg items-center justify-between px-4 py-2.5">
-          <button onClick={() => setTab('home')} className="flex items-center gap-1.5">
-            <span className="text-base">🌿</span>
-            <span className="text-xs font-medium tracking-tight text-emerald-100">Jaya</span>
-          </button>
-          <div className="flex items-center gap-1">
+    <div className="min-h-screen bg-[#08140c] text-emerald-50 font-sans">
+      {/* Top bar with 2026 AI Standard Glassmorphism Header */}
+      <header className="sticky top-0 z-30 border-b border-emerald-900/40 bg-[#08140c]/90 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-lg items-center justify-between px-3 py-2 sm:px-4 sm:py-2.5">
+          <div className="flex items-center gap-2">
+            <button onClick={() => setTab('home')} className="flex items-center gap-1.5 group">
+              <span className="text-base group-hover:scale-110 transition-transform">🌿</span>
+              <span className="text-xs font-bold tracking-tight text-emerald-100">Jaya</span>
+            </button>
+
+            {/* Grant Deck Trigger Badge */}
+            <button
+              onClick={() => setShowGrantPitch(true)}
+              className="flex items-center gap-1 px-2 py-0.5 rounded-full border border-amber-500/40 bg-amber-500/10 text-[10px] font-mono text-amber-300 hover:bg-amber-500/20 transition shadow-sm"
+              title="View $100k Seed / AYUSH Grant Pitch Deck"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping" />
+              <span>🌱 Pitch Deck</span>
+            </button>
+          </div>
+
+          <div className="flex items-center gap-1 sm:gap-1.5">
+            {/* Quick Demo Persona Switcher */}
+            <PersonaSwitcher
+              currentProfile={profile}
+              onSelectPersona={handleSelectPersona}
+              onNewAssessment={() => setView('onboarding')}
+            />
+
+            {/* Quick Command Palette */}
+            <button
+              onClick={() => setShowCommandPalette(true)}
+              aria-label="Search"
+              className="rounded-lg p-1.5 text-xs text-emerald-400/70 hover:bg-emerald-900/40 hover:text-emerald-200 transition"
+              title="Search & Commands (⌘K)"
+            >
+              🔍
+            </button>
+
+            {/* User Guide */}
             <button
               onClick={() => openGuide('app')}
               aria-label="User guide"
-              className="rounded-lg px-2 py-1.5 text-xs text-emerald-400/70 transition hover:bg-emerald-900/40 hover:text-emerald-200"
+              className="rounded-lg px-2 py-1 text-xs text-emerald-400/70 transition hover:bg-emerald-900/40 hover:text-emerald-200"
             >
               ?
             </button>
+
+            {/* Night Ritual */}
             <button
               onClick={() => setShowGoodNight(v => !v)}
               aria-label="Close the day"
-              className="rounded-lg px-2 py-1.5 text-sm transition hover:bg-emerald-900/40"
+              className="rounded-lg px-1.5 py-1 text-sm transition hover:bg-emerald-900/40"
+              title="Bedtime Closing Ritual"
             >
               🌙
             </button>
+
+            {/* User Avatar */}
             <button
               onClick={() => setView('profile')}
               aria-label="Profile"
-              className="flex h-7 w-7 items-center justify-center rounded-full border border-emerald-700/50 bg-emerald-900/60 text-[11px] font-medium text-emerald-200 transition hover:bg-emerald-800/60"
+              className="flex h-7 w-7 items-center justify-center rounded-full border border-emerald-700/50 bg-emerald-900/60 text-[11px] font-medium text-emerald-200 transition hover:bg-emerald-800/60 shadow-sm"
             >
               {(profile.name || 'J').charAt(0).toUpperCase()}
             </button>
           </div>
         </div>
-      </div>
+      </header>
 
-      <div className="mx-auto max-w-lg">{renderTab()}</div>
+      {/* Main Tab Content */}
+      <main className="mx-auto max-w-lg">{renderTab()}</main>
 
-      {/* Living companion prompts */}
+      {/* Living companion proactive smart popups */}
       <SmartPopups
         profile={profile}
         onNavigate={navigate}
@@ -243,12 +318,24 @@ export default function App() {
         refreshKey={popupTick}
       />
 
+      {/* Good Night Bedtime Ritual */}
       {showGoodNight && <GoodNightRitual profile={profile} onClose={() => setShowGoodNight(false)} />}
 
-      {/* Bottom nav */}
+      {/* AYUSH Grant & Seed Round Pitch Deck Modal */}
+      <GrantPitchModal isOpen={showGrantPitch} onClose={() => setShowGrantPitch(false)} />
+
+      {/* Global Command Palette */}
+      <CommandPalette
+        isOpen={showCommandPalette}
+        onClose={() => setShowCommandPalette(false)}
+        onNavigate={navigate}
+        onOpenGrantDeck={() => setShowGrantPitch(true)}
+      />
+
+      {/* Bottom Floating Navigation */}
       <div className="fixed bottom-0 left-0 right-0 z-50">
         <div className="mx-auto max-w-lg">
-          <div className="mx-2 mb-2 rounded-2xl border border-emerald-800/30 bg-[#0a1a0a]/95 backdrop-blur-xl">
+          <div className="mx-2 mb-2 rounded-2xl border border-emerald-800/30 bg-[#0a1a0a]/95 backdrop-blur-xl shadow-2xl">
             <div className="flex items-center gap-0.5 overflow-x-auto px-1.5 py-1.5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               {tabs.map(t => (
                 <button
@@ -256,7 +343,7 @@ export default function App() {
                   onClick={() => setTab(t.key)}
                   className={`flex min-w-[46px] flex-1 flex-col items-center gap-0.5 rounded-xl px-1 py-1.5 transition ${
                     tab === t.key
-                      ? 'bg-emerald-800/50 text-emerald-100'
+                      ? 'bg-emerald-800/50 text-emerald-100 shadow-inner'
                       : 'text-emerald-500/50 hover:text-emerald-300/80'
                   }`}
                 >

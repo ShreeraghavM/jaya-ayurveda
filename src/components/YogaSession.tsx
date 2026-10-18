@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { yogaPoses, pranayamaTechniques, type UserProfile, type YogaPose } from '../lib/data'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
+import BreathingSphere from './BreathingSphere'
 
 interface Props {
   profile: UserProfile
@@ -112,21 +113,7 @@ export default function YogaSession({ profile }: Props) {
 
       {activeTab === 'pranayama' && (
         <div className="px-5 mb-4">
-          <Card className="bg-gradient-to-r from-sky-900/20 to-emerald-900/20 border-sky-800/20 p-4">
-            <div className="flex items-center gap-2 mb-1">
-              <span className="text-sm">⭐</span>
-              <h3 className="text-sky-200/80 text-xs font-semibold tracking-wider uppercase">
-                Start Here
-              </h3>
-            </div>
-            <p className="text-emerald-200/60 text-xs leading-relaxed">
-              {dosha === 'Vata'
-                ? 'Nadi Shodhana (Alternate Nostril) is your primary practice. It balances the left and right hemispheres and calms anxious energy. Start with 5 minutes daily.'
-                : dosha === 'Pitta'
-                ? 'Sheetali (Cooling Breath) is essential for you. It literally cools your body temperature and calms fiery emotions. Practice 5-10 minutes daily.'
-                : 'Kapalabhati (Skull Shining) is your energizer. Start with 3 rounds of 30 pumps each morning. It clears fog and ignites your metabolism.'}
-            </p>
-          </Card>
+          <BreathingSphere userDosha={dosha} />
         </div>
       )}
 
