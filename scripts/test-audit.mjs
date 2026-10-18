@@ -123,6 +123,19 @@ assert(fs.existsSync(distIndex), 'dist/index.html exists and is compiled')
 const distRedirects = path.join(ROOT, 'dist/_redirects')
 assert(fs.existsSync(distRedirects), 'dist/_redirects is properly copied into build output')
 
+// ─── SUITE 8: Clinical Knowledge Base & Disease Repertory ──────────────────
+console.log('\n► Suite 8: Clinical Knowledge Base & Disease Repertory')
+const kbPath = path.join(ROOT, 'src/lib/knowledgeBase.ts')
+assert(fs.existsSync(kbPath), 'knowledgeBase.ts exists')
+const kbContent = fs.readFileSync(kbPath, 'utf8')
+assert(kbContent.includes('Amlapitta'), 'Includes Amlapitta (Acid Reflux) protocol')
+assert(kbContent.includes('Grahani'), 'Includes Grahani (IBS & gut dysbiosis) protocol')
+assert(kbContent.includes('Sandhivata'), 'Includes Sandhivata (Osteoarthritis) protocol')
+assert(kbContent.includes('Anidra'), 'Includes Anidra (Insomnia) protocol')
+assert(kbContent.includes('Charaka Samhita — Volume 1'), 'Indexes Charaka Samhita Volume 1 from local research archive')
+assert(kbContent.includes('Charaka Samhita — Volume 2'), 'Indexes Charaka Samhita Volume 2 from local research archive')
+assert(kbContent.includes('getCustomResearchItems') && kbContent.includes('saveCustomResearchItem'), 'Exports custom research item ingestion methods')
+
 // ─── RESULTS SUMMARY ───────────────────────────────────────────────────────
 console.log('\n======================================================')
 console.log(`✨ TEST RESULTS: ${passed} PASSED / ${failed} FAILED`)

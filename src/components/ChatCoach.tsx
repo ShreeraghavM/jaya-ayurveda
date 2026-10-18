@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { type UserProfile, doshaProfiles, coachResponses, getCurrentTimePeriod, getSeason } from '../lib/data'
+import { DISEASE_REPERTORY } from '../lib/knowledgeBase'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 
@@ -81,6 +82,32 @@ function generateCoachResponse(userMessage: string, profile: UserProfile): strin
     if (lower.includes(key)) return generator(profile)
   }
 
+  // Check Clinical Disease Repertory (Charaka Samhita RAG Grounding)
+  const matchedDisease = DISEASE_REPERTORY.find(d => {
+    const condName = d.condition.toLowerCase()
+    const sansk = d.sanskrit.toLowerCase()
+    const id = d.id.toLowerCase()
+    const sys = d.system.toLowerCase()
+    return (
+      lower.includes(id) ||
+      condName.split('(')[0].trim().split(' ').some(w => w.length > 3 && lower.includes(w)) ||
+      lower.includes(sansk.split('·')[0].trim()) ||
+      lower.includes(sys) ||
+      d.primaryHerbs.some(h => lower.includes(h.toLowerCase().split(' ')[0]))
+    )
+  })
+
+  if (matchedDisease) {
+    return `🌿 **${matchedDisease.condition}** (${matchedDisease.sanskrit})\n\n` +
+      `📖 *Classical Reference:* ${matchedDisease.charakaRef}\n\n` +
+      `⚖️ *Dosha Root:* ${matchedDisease.doshaImbalance}.\n\n` +
+      `🍵 *First-Line Remedy:* ${matchedDisease.homeRemedy}\n\n` +
+      `🥣 *Method & Dosage:* ${matchedDisease.preparation} (${matchedDisease.dosage})\n\n` +
+      `✅ *Pathya (Beneficial):* ${matchedDisease.pathya.slice(0, 3).join(', ')}.\n` +
+      `⚠️ *Apathya (Avoid):* ${matchedDisease.apathya.slice(0, 3).join(', ')}.\n\n` +
+      `💡 *Clinical Safety Note:* ${matchedDisease.precautions}`
+  }
+
   // Keyword matching for broader responses
   if (lower.includes('food') || lower.includes('eat') || lower.includes('meal') || lower.includes('recipe'))
     return coachKnowledge['what should i eat'](profile)
@@ -133,7 +160,7 @@ export default function ChatCoach({ profile }: Props) {
         role: 'coach',
         content: `${greeting}\n\nI'm your personal Ayurvedic companion. I know you're a ${dosha} type${profile.name ? `, ${profile.name}` : ''}. I'm here to guide you — ask me anything about your health, diet, routine, yoga, or remedies.`,
         timestamp: new Date().toISOString(),
-        suggestions: ['Tell me about my dosha', 'What should I eat today?', 'Help me sleep', 'Daily routine guidance'],
+        suggestions: ['Acid Reflux remedy', 'IBS & digestion care', 'Help me sleep (Anidra)', 'Tech-neck stiffness', 'What should I eat today?'],
       }])
     }
   }, [])

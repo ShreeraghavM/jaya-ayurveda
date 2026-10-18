@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { remediesDatabase, type UserProfile, type Remedy } from '../lib/data'
 import { Card } from '@/components/ui/card'
 import CharakaSamhitaVault from './CharakaSamhitaVault'
+import KnowledgeHub from './KnowledgeHub'
 
 interface Props {
   profile: UserProfile
@@ -9,7 +10,7 @@ interface Props {
 
 export default function Remedies({ profile }: Props) {
   const dosha = profile.doshaType || 'Vata'
-  const [activeSubTab, setActiveSubTab] = useState<'remedies' | 'charaka'>('remedies')
+  const [activeSubTab, setActiveSubTab] = useState<'remedies' | 'knowledge' | 'charaka'>('knowledge')
   const [search, setSearch] = useState('')
   const [selectedRemedy, setSelectedRemedy] = useState<Remedy | null>(null)
 
@@ -33,42 +34,62 @@ export default function Remedies({ profile }: Props) {
       {/* Header */}
       <div className="px-5 pt-12 pb-4">
         <h1 className="text-2xl font-bold text-emerald-100 mb-1">
-          {activeSubTab === 'remedies' ? 'Ayurvedic Remedies Vault' : 'Charaka Samhita Manuscripts'}
+          {activeSubTab === 'knowledge'
+            ? 'Ayurvedic Clinical Knowledge Hub'
+            : activeSubTab === 'charaka'
+            ? 'Charaka Samhita Manuscripts'
+            : 'Everyday Home Remedies'}
         </h1>
         <p className="text-emerald-300/60 text-sm">
-          {activeSubTab === 'remedies'
-            ? 'Natural healing wisdom & preparations for everyday ailments'
-            : 'Classical Sanskrit sutras with clinical chronobiology insights'}
+          {activeSubTab === 'knowledge'
+            ? 'Evidence-based disease management with web links & research ingestion'
+            : activeSubTab === 'charaka'
+            ? 'Classical Sanskrit shlokas with chronobiological mechanisms'
+            : 'Gentle, natural home preparations for minor daily imbalances'}
         </p>
       </div>
 
       {/* Tab Switcher */}
       <div className="px-5 mb-4">
-        <div className="flex gap-2 bg-emerald-950/40 rounded-xl p-1 border border-emerald-800/20">
+        <div className="flex gap-1.5 bg-emerald-950/40 rounded-2xl p-1 border border-emerald-800/30 overflow-x-auto [scrollbar-width:none]">
           <button
-            onClick={() => { setActiveSubTab('remedies'); setSelectedRemedy(null) }}
-            className={`flex-1 py-2 rounded-lg text-center transition-all text-sm font-medium ${
-              activeSubTab === 'remedies'
-                ? 'bg-emerald-700/50 text-emerald-100 shadow-sm'
-                : 'text-emerald-400/50 hover:text-emerald-300/70'
+            onClick={() => { setActiveSubTab('knowledge'); setSelectedRemedy(null) }}
+            className={`flex-1 py-2 px-2.5 rounded-xl text-center transition-all text-xs font-medium whitespace-nowrap ${
+              activeSubTab === 'knowledge'
+                ? 'bg-emerald-600/60 text-white shadow-sm border border-emerald-500/40'
+                : 'text-emerald-400/60 hover:text-emerald-200'
             }`}
           >
-            🌿 Home Remedies ({remediesDatabase.length})
+            📚 Disease Repertory & RAG
+          </button>
+          <button
+            onClick={() => { setActiveSubTab('remedies'); setSelectedRemedy(null) }}
+            className={`flex-1 py-2 px-2.5 rounded-xl text-center transition-all text-xs font-medium whitespace-nowrap ${
+              activeSubTab === 'remedies'
+                ? 'bg-emerald-700/60 text-white shadow-sm border border-emerald-500/40'
+                : 'text-emerald-400/60 hover:text-emerald-200'
+            }`}
+          >
+            🌿 Quick Remedies ({remediesDatabase.length})
           </button>
           <button
             onClick={() => { setActiveSubTab('charaka'); setSelectedRemedy(null) }}
-            className={`flex-1 py-2 rounded-lg text-center transition-all text-sm font-medium ${
+            className={`flex-1 py-2 px-2.5 rounded-xl text-center transition-all text-xs font-medium whitespace-nowrap ${
               activeSubTab === 'charaka'
-                ? 'bg-amber-700/50 text-amber-100 shadow-sm'
-                : 'text-emerald-400/50 hover:text-amber-300/70'
+                ? 'bg-amber-700/60 text-white shadow-sm border border-amber-500/40'
+                : 'text-emerald-400/60 hover:text-amber-300'
             }`}
           >
-            📜 Classical Sutras (RAG)
+            📜 Classical Sutras
           </button>
         </div>
       </div>
 
-      {activeSubTab === 'charaka' ? (
+      {activeSubTab === 'knowledge' ? (
+        <div className="px-5">
+          <KnowledgeHub profile={profile} />
+        </div>
+      ) : activeSubTab === 'charaka' ? (
         <div className="px-5">
           <CharakaSamhitaVault />
         </div>
