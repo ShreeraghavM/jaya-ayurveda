@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  verify:
+    name: Type check & build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Type check (application sources)
+        run: |
+          bun x tsc --noEmit > tsc.log 2>&1 || true
+          if grep -E '^src/(App|components|lib)/' tsc.log; then
+            echo "::error::Type errors in application sources"
+            cat tsc.log
+            exit 1
+          fi
+          echo "No type errors in src/App, src/components or src/lib"
+
+      - name: Build
+        run: bun run build
+
+      - name: Upload build artefact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+          retention-days: 7

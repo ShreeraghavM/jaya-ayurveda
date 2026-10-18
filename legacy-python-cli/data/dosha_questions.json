@@ -1,0 +1,4 @@
+[
+  {"question": "What is your body type? (a) Thin (b) Medium (c) Solid", "scores": {"a": {"Vata": 2}, "b": {"Pitta": 2}, "c": {"Kapha": 2}}},
+  {"question": "How is your skin? (a) Dry (b) Sensitive (c) Oily", "scores": {"a": {"Vata": 2}, "b": {"Pitta": 2}, "c": {"Kapha": 2}}}
+]
