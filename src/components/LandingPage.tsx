@@ -32,7 +32,7 @@ const testimonials = [
   { quote: 'It woke me up and would not let me sit back down until I walked. I needed that.', name: 'Meera S.', role: 'Kapha · Doctor' },
 ]
 
-export default function LandingPage({ onStart, onDemo, onGuide, onOpenGrantDeck }: Props) {
+export default function LandingPage({ onStart, onDemo, onGuide, onOpenGrantDeck, onOpenHealthIntake }: Props) {
   return (
     <div className="min-h-screen bg-[#08140c] text-emerald-50">
       {/* ambient background */}
