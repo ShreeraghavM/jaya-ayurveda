@@ -8,6 +8,7 @@ interface Props {
   onNavigate: (tab: string) => void
   onOpenGrantDeck: () => void
   onOpenHealthIntake?: () => void
+  onOpenChapters?: () => void
 }
 
 interface CommandItem {
@@ -19,7 +20,7 @@ interface CommandItem {
   action: () => void
 }
 
-export default function CommandPalette({ isOpen, onClose, onNavigate, onOpenGrantDeck, onOpenHealthIntake }: Props) {
+export default function CommandPalette({ isOpen, onClose, onNavigate, onOpenGrantDeck, onOpenHealthIntake, onOpenChapters }: Props) {
   const [query, setQuery] = useState('')
 
   useEffect(() => {
@@ -113,6 +114,18 @@ export default function CommandPalette({ isOpen, onClose, onNavigate, onOpenGran
       category: 'Actions',
       icon: '🌱',
       action: () => { onClose(); onOpenGrantDeck() },
+    },
+    {
+      id: 'action-charaka-120',
+      title: 'Charaka Samhita 120 Chapters Explorer',
+      subtitle: 'Canonical Adhyayas across Sutra, Nidana, Vimana, Chikitsa, Kalpa, Siddhi',
+      category: 'Actions',
+      icon: '📜',
+      action: () => {
+        onClose()
+        if (onOpenChapters) onOpenChapters()
+        else onNavigate('remedies')
+      },
     },
     {
       id: 'action-health-intake',

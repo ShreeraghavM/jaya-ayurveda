@@ -13,9 +13,10 @@ import { Button } from '@/components/ui/button'
 
 interface Props {
   onSelectCondition?: (condition: DiseaseRemedy) => void
+  onClose?: () => void
 }
 
-export default function CharakaExplorer({ onSelectCondition }: Props) {
+export default function CharakaExplorer({ onSelectCondition, onClose }: Props) {
   const [selectedSthana, setSelectedSthana] = useState<string>('all')
   const [searchQuery, setSearchQuery] = useState<string>('')
   const [onlyClinicallyLinked, setOnlyClinicallyLinked] = useState<boolean>(false)
@@ -92,6 +93,16 @@ export default function CharakaExplorer({ onSelectCondition }: Props) {
                 Chapters Listed
               </div>
             </div>
+            {onClose && (
+              <Button
+                onClick={onClose}
+                variant="outline"
+                size="sm"
+                className="border-emerald-700/60 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900 hover:text-white rounded-xl text-xs font-mono ml-2"
+              >
+                ✕ Close
+              </Button>
+            )}
           </div>
         </div>
 

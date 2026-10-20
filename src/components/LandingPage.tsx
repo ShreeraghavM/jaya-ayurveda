@@ -8,6 +8,7 @@ interface Props {
   onGuide: () => void
   onOpenGrantDeck?: () => void
   onOpenHealthIntake?: () => void
+  onOpenChapters?: () => void
 }
 
 const features = [
@@ -32,7 +33,7 @@ const testimonials = [
   { quote: 'It woke me up and would not let me sit back down until I walked. I needed that.', name: 'Meera S.', role: 'Kapha · Doctor' },
 ]
 
-export default function LandingPage({ onStart, onDemo, onGuide, onOpenGrantDeck, onOpenHealthIntake }: Props) {
+export default function LandingPage({ onStart, onDemo, onGuide, onOpenGrantDeck, onOpenHealthIntake, onOpenChapters }: Props) {
   return (
     <div className="min-h-screen bg-[#08140c] text-emerald-50">
       {/* ambient background */}
@@ -53,6 +54,16 @@ export default function LandingPage({ onStart, onDemo, onGuide, onOpenGrantDeck,
             </div>
           </div>
           <nav className="flex items-center gap-1 sm:gap-3">
+            {onOpenChapters && (
+              <button
+                onClick={onOpenChapters}
+                className="relative flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-amber-500/50 bg-amber-500/20 text-xs font-mono font-medium text-amber-200 hover:bg-amber-500/35 transition shadow-lg shadow-amber-500/20"
+                title="Charaka Samhita 120 Chapters Explorer"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+                <span className="text-amber-100 font-bold">📜 120 Chapters</span>
+              </button>
+            )}
             {onOpenHealthIntake && (
               <button
                 onClick={onOpenHealthIntake}
@@ -108,7 +119,7 @@ export default function LandingPage({ onStart, onDemo, onGuide, onOpenGrantDeck,
               {onOpenHealthIntake && (
                 <div
                   onClick={onOpenHealthIntake}
-                  className="inline-flex cursor-pointer items-center gap-2 mb-4 px-4 py-2 rounded-2xl border border-emerald-500/60 bg-gradient-to-r from-emerald-950/90 via-[#0a2717] to-black/80 hover:border-emerald-400 text-xs text-emerald-100 transition shadow-xl group"
+                  className="inline-flex cursor-pointer items-center gap-2 mb-2 px-4 py-2 rounded-2xl border border-emerald-500/60 bg-gradient-to-r from-emerald-950/90 via-[#0a2717] to-black/80 hover:border-emerald-400 text-xs text-emerald-100 transition shadow-xl group"
                 >
                   <span className="relative flex h-2 w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -118,6 +129,20 @@ export default function LandingPage({ onStart, onDemo, onGuide, onOpenGrantDeck,
                     Have existing health conditions? <span className="text-amber-300 font-semibold">(Blood Sugar, BP, PCOD, Raktapradar...)</span>
                   </span>
                   <span className="text-emerald-400 font-bold group-hover:translate-x-1 transition-transform">➔ Clinical Assessment</span>
+                </div>
+              )}
+
+              {/* Charaka Samhita 120 Chapters Callout Pill */}
+              {onOpenChapters && (
+                <div
+                  onClick={onOpenChapters}
+                  className="inline-flex cursor-pointer items-center gap-2 mb-4 px-4 py-2 rounded-2xl border border-amber-500/60 bg-gradient-to-r from-amber-950/80 via-[#1e1909] to-black/80 hover:border-amber-400 text-xs text-amber-100 transition shadow-xl group"
+                >
+                  <span className="text-sm">📜</span>
+                  <span className="font-medium text-amber-200">
+                    Complete Charaka Samhita Explorer <span className="text-emerald-300 font-semibold">(120 Chapters across VIII Sthanas)</span>
+                  </span>
+                  <span className="text-amber-400 font-bold group-hover:translate-x-1 transition-transform">➔ Explore 120 Adhyayas</span>
                 </div>
               )}
 
@@ -147,6 +172,15 @@ export default function LandingPage({ onStart, onDemo, onGuide, onOpenGrantDeck,
                 >
                   Try demo profile
                 </Button>
+                {onOpenChapters && (
+                  <Button
+                    onClick={onOpenChapters}
+                    variant="outline"
+                    className="h-12 rounded-2xl border-amber-500/50 bg-amber-950/30 px-5 text-sm text-amber-200 hover:bg-amber-900/50 hover:text-amber-100 font-mono shadow-sm"
+                  >
+                    📜 120 Chapters
+                  </Button>
+                )}
                 {onOpenGrantDeck && (
                   <Button
                     onClick={onOpenGrantDeck}
@@ -244,6 +278,16 @@ export default function LandingPage({ onStart, onDemo, onGuide, onOpenGrantDeck,
               To preserve the health of the healthy, and to relieve the disorder of the unwell.
               The two promises Ayurveda has made for three thousand years — and the two Jaya is built on.
             </p>
+            {onOpenChapters && (
+              <div className="mt-4">
+                <button
+                  onClick={onOpenChapters}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/40 bg-amber-500/10 text-xs font-mono text-amber-300 hover:bg-amber-500/25 transition shadow-md"
+                >
+                  <span>📜 Browse all 120 Chapters of Charaka Samhita (Sutra to Siddhi Sthana) ➔</span>
+                </button>
+              </div>
+            )}
           </div>
         </section>
 

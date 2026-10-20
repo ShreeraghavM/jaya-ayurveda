@@ -11,9 +11,10 @@ interface Props {
   profile: UserProfile
   onNavigate: (tab: string) => void
   onOpenHealthIntake?: () => void
+  onOpenChapters?: () => void
 }
 
-export default function Dashboard({ profile, onNavigate, onOpenHealthIntake }: Props) {
+export default function Dashboard({ profile, onNavigate, onOpenHealthIntake, onOpenChapters }: Props) {
   const [now, setNow] = useState(new Date())
   const [todayLog, setTodayLog] = useState(getTodayLog())
   const [waterAdded, setWaterAdded] = useState(0)
@@ -122,7 +123,7 @@ export default function Dashboard({ profile, onNavigate, onOpenHealthIntake }: P
       </div>
 
       {/* ─── CLINICAL HEALTH INTAKE BANNER (Polite & Personalized) ─── */}
-      <div className="px-5 mb-6">
+      <div className="px-5 mb-3">
         <div
           onClick={onOpenHealthIntake}
           className="cursor-pointer p-4 rounded-3xl bg-gradient-to-r from-emerald-950/80 via-[#0a2616] to-black/80 border border-emerald-600/40 hover:border-emerald-400/60 transition-all shadow-xl group"
@@ -152,17 +153,54 @@ export default function Dashboard({ profile, onNavigate, onOpenHealthIntake }: P
         </div>
       </div>
 
+      {/* ─── CHARAKA SAMHITA 120 CHAPTERS EXPLORER BANNER ─── */}
+      <div className="px-5 mb-6">
+        <div
+          onClick={() => {
+            if (onOpenChapters) onOpenChapters()
+            else onNavigate('remedies')
+          }}
+          className="cursor-pointer p-4 rounded-3xl bg-gradient-to-r from-amber-950/80 via-[#1b1909] to-black/80 border border-amber-500/50 hover:border-amber-400/80 transition-all shadow-xl group"
+        >
+          <div className="flex items-start justify-between gap-3">
+            <div className="flex items-start gap-3">
+              <span className="text-2xl mt-0.5 group-hover:scale-110 transition-transform">📜</span>
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-amber-300 bg-amber-950/90 px-2 py-0.5 rounded-full border border-amber-500/50">
+                    Canonical Samhita
+                  </span>
+                  <span className="text-[10px] font-mono text-emerald-300 font-semibold">VIII Sthanas · 120 Chapters</span>
+                </div>
+                <h3 className="text-amber-100 font-semibold text-sm">
+                  Charaka Samhita 120 Chapters Explorer
+                </h3>
+                <p className="text-emerald-200/70 text-xs mt-1 leading-relaxed">
+                  Canonical encyclopedia from carakasamhitaonline.com indexed across Sutra, Nidana, Vimana, Sharira, Indriya, Chikitsa, Kalpa & Siddhi Sthanas.
+                </p>
+              </div>
+            </div>
+            <span className="text-amber-400 text-sm group-hover:translate-x-1 transition-transform shrink-0 mt-2">
+              ➔
+            </span>
+          </div>
+        </div>
+      </div>
+
       {/* ─── QUICK PATHWAYS (gstack Fast Access) ─── */}
       <div className="px-5 mb-6">
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
           <button
-            onClick={() => onNavigate('remedies')}
-            className="flex items-center gap-2.5 p-3 rounded-2xl bg-gradient-to-br from-emerald-950/60 to-emerald-900/30 border border-emerald-800/40 text-left hover:border-emerald-500/50 hover:bg-emerald-900/40 transition-all group shadow-sm"
+            onClick={() => {
+              if (onOpenChapters) onOpenChapters()
+              else onNavigate('remedies')
+            }}
+            className="flex items-center gap-2.5 p-3 rounded-2xl bg-gradient-to-br from-amber-950/40 via-emerald-950/60 to-emerald-900/30 border border-amber-500/40 text-left hover:border-amber-400 hover:bg-emerald-900/40 transition-all group shadow-sm"
           >
-            <span className="text-xl group-hover:scale-110 transition-transform">📚</span>
+            <span className="text-xl group-hover:scale-110 transition-transform">📜</span>
             <div>
-              <p className="text-emerald-100 text-xs font-semibold">Clinical RAG</p>
-              <p className="text-emerald-400/60 text-[10px]">18 Protocols</p>
+              <p className="text-amber-200 text-xs font-semibold">120 Chapters</p>
+              <p className="text-emerald-400/60 text-[10px]">Charaka Samhita</p>
             </div>
           </button>
 

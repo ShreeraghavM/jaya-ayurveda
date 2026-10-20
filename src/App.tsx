@@ -29,6 +29,7 @@ import GrantPitchModal from './components/GrantPitchModal'
 import PersonaSwitcher from './components/PersonaSwitcher'
 import CommandPalette from './components/CommandPalette'
 import HealthIntakeConsultation from './components/HealthIntakeConsultation'
+import CharakaExplorer from './components/CharakaExplorer'
 
 type View = 'landing' | 'onboarding' | 'guide' | 'profile' | 'plan' | 'app'
 type Tab = 'home' | 'chat' | 'routine' | 'goals' | 'yoga' | 'diet' | 'remedies' | 'progress'
@@ -55,6 +56,7 @@ export default function App() {
   const [showGrantPitch, setShowGrantPitch] = useState(false)
   const [showCommandPalette, setShowCommandPalette] = useState(false)
   const [showHealthIntake, setShowHealthIntake] = useState(false)
+  const [showCharakaExplorer, setShowCharakaExplorer] = useState(false)
   const [popupTick, setPopupTick] = useState(0)
 
   useEffect(() => {
@@ -173,6 +175,7 @@ export default function App() {
           onGuide={() => openGuide('landing')}
           onOpenGrantDeck={() => setShowGrantPitch(true)}
           onOpenHealthIntake={() => setShowHealthIntake(true)}
+          onOpenChapters={() => setShowCharakaExplorer(true)}
         />
         <GrantPitchModal isOpen={showGrantPitch} onClose={() => setShowGrantPitch(false)} />
         {showHealthIntake && (
@@ -185,6 +188,20 @@ export default function App() {
                   setShowHealthIntake(false)
                   handleDemo()
                   setTab(nextTab as Tab)
+                }}
+              />
+            </div>
+          </div>
+        )}
+        {showCharakaExplorer && (
+          <div className="fixed inset-0 z-50 overflow-y-auto bg-black/90 backdrop-blur-md p-3 sm:p-6 animate-in fade-in">
+            <div className="max-w-4xl mx-auto">
+              <CharakaExplorer
+                onClose={() => setShowCharakaExplorer(false)}
+                onSelectCondition={() => {
+                  setShowCharakaExplorer(false)
+                  handleDemo()
+                  setTab('remedies')
                 }}
               />
             </div>
@@ -211,6 +228,7 @@ export default function App() {
           onGuide={() => openGuide('landing')}
           onOpenGrantDeck={() => setShowGrantPitch(true)}
           onOpenHealthIntake={() => setShowHealthIntake(true)}
+          onOpenChapters={() => setShowCharakaExplorer(true)}
         />
         <GrantPitchModal isOpen={showGrantPitch} onClose={() => setShowGrantPitch(false)} />
         {showHealthIntake && (
@@ -223,6 +241,20 @@ export default function App() {
                   setShowHealthIntake(false)
                   handleDemo()
                   setTab(nextTab as Tab)
+                }}
+              />
+            </div>
+          </div>
+        )}
+        {showCharakaExplorer && (
+          <div className="fixed inset-0 z-50 overflow-y-auto bg-black/90 backdrop-blur-md p-3 sm:p-6 animate-in fade-in">
+            <div className="max-w-4xl mx-auto">
+              <CharakaExplorer
+                onClose={() => setShowCharakaExplorer(false)}
+                onSelectCondition={() => {
+                  setShowCharakaExplorer(false)
+                  handleDemo()
+                  setTab('remedies')
                 }}
               />
             </div>
@@ -257,6 +289,7 @@ export default function App() {
             profile={profile}
             onNavigate={navigate}
             onOpenHealthIntake={() => setShowHealthIntake(true)}
+            onOpenChapters={() => setShowCharakaExplorer(true)}
           />
         )
       case 'chat':
@@ -308,6 +341,17 @@ export default function App() {
             >
               <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping" />
               <span>🌱 Pitch</span>
+            </button>
+
+            {/* Charaka Samhita 120 Chapters Explorer Trigger Badge */}
+            <button
+              onClick={() => setShowCharakaExplorer(true)}
+              className="flex items-center gap-1 px-2 py-0.5 rounded-full border border-amber-500/50 bg-amber-500/15 text-[10px] font-mono text-amber-200 hover:bg-amber-500/30 transition shadow-sm"
+              title="Charaka Samhita 120 Chapters Explorer"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+              <span className="font-bold text-amber-100 sm:hidden">📜 120</span>
+              <span className="font-bold text-amber-100 hidden sm:inline">📜 120 Chapters</span>
             </button>
           </div>
 
@@ -393,6 +437,21 @@ export default function App() {
         </div>
       )}
 
+      {/* Canonical Charaka Samhita 120 Chapters Explorer Modal */}
+      {showCharakaExplorer && (
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-black/90 backdrop-blur-md p-3 sm:p-6 animate-in fade-in">
+          <div className="max-w-4xl mx-auto">
+            <CharakaExplorer
+              onClose={() => setShowCharakaExplorer(false)}
+              onSelectCondition={() => {
+                setShowCharakaExplorer(false)
+                setTab('remedies')
+              }}
+            />
+          </div>
+        </div>
+      )}
+
       {/* Global Command Palette */}
       <CommandPalette
         isOpen={showCommandPalette}
@@ -400,6 +459,7 @@ export default function App() {
         onNavigate={navigate}
         onOpenGrantDeck={() => setShowGrantPitch(true)}
         onOpenHealthIntake={() => setShowHealthIntake(true)}
+        onOpenChapters={() => setShowCharakaExplorer(true)}
       />
 
       {/* Bottom Floating Navigation */}
