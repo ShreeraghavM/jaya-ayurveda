@@ -1,0 +1,2113 @@
+{
+  "source": "Charaka Samhita Online (carakasamhitaonline.com)",
+  "totalSthanas": 8,
+  "totalChapters": 120,
+  "sthanas": {
+    "sutra-sthana": {
+      "name": "Sutra Sthana",
+      "sanskritName": "सूत्रस्थानम्",
+      "englishName": "Section on Fundamental Principles",
+      "description": "Foundational philosophy of health, 6 tastes (Shad Rasa), daily regimen (Dinacharya), seasonal regimen (Ritucharya), dietetics, non-suppressible natural urges, and the four pillars of healthcare.",
+      "chapterCount": 30,
+      "themeIcon": "📜"
+    },
+    "nidana-sthana": {
+      "name": "Nidana Sthana",
+      "sanskritName": "निदानस्थानम्",
+      "englishName": "Section on Diagnostic Principles & Pathology",
+      "description": "Comprehensive etiology, pathogenesis (Samprapti), prodromal symptoms (Poorvaroopa), and clinical manifestations of major diseases (Fever, Diabetes, Skin, Phthisis, etc.).",
+      "chapterCount": 8,
+      "themeIcon": "🔬"
+    },
+    "vimana-sthana": {
+      "name": "Vimana Sthana",
+      "sanskritName": "विमानस्थानम्",
+      "englishName": "Section on Specific Medical Principles & Dietetics",
+      "description": "Quantitative pharmacology, dosha assessment, gastric capacity rules, microchannels (Srotas), epidemiology (Janapadodhvamsa), and clinical examination methodology.",
+      "chapterCount": 8,
+      "themeIcon": "⚖️"
+    },
+    "sharira-sthana": {
+      "name": "Sharira Sthana",
+      "sanskritName": "शारीरस्थानम्",
+      "englishName": "Section on Human Anatomy, Embryology & Genesis",
+      "description": "Creation of human life, embryogenesis, maternal care, macrocosm-microcosm relationship, anatomical enumerations, and psycho-somatic doshic prakriti.",
+      "chapterCount": 8,
+      "themeIcon": "🧬"
+    },
+    "indriya-sthana": {
+      "name": "Indriya Sthana",
+      "sanskritName": "इन्द्रियस्थानम्",
+      "englishName": "Section on Sensorial Prognosis & Clinical Signs",
+      "description": "Prognostic assessment, sensory cues, olfactory/visual changes, aura shifts, and indicators of vitality or terminal state.",
+      "chapterCount": 12,
+      "themeIcon": "👁️"
+    },
+    "chikitsa-sthana": {
+      "name": "Chikitsa Sthana",
+      "sanskritName": "चिकित्सास्थानम्",
+      "englishName": "Section on Therapeutic Principles & Disease Management",
+      "description": "The master therapeutic heart of Ayurveda: comprehensive clinical management, herbal formulations, dietary therapy, Rasayana longevity, and Vajikarana fertility for 30 clinical disorders.",
+      "chapterCount": 30,
+      "themeIcon": "🌿"
+    },
+    "kalpa-sthana": {
+      "name": "Kalpa Sthana",
+      "sanskritName": "कल्पस्थानम्",
+      "englishName": "Section on Pharmaceutical Preparations & Formulations",
+      "description": "Formulation pharmacy, processing, decoctions, medicated ghee/oils, and safe administration of therapeutic emetics and purgatives.",
+      "chapterCount": 12,
+      "themeIcon": "🧪"
+    },
+    "siddhi-sthana": {
+      "name": "Siddhi Sthana",
+      "sanskritName": "सिद्धिस्थानम्",
+      "englishName": "Section on Therapeutic Procedures & Panchakarma Management",
+      "description": "Successful outcomes in Panchakarma (Basti, Vamana, Virechana), prevention of procedural complications, and management of emergencies in vital organs (Marmas).",
+      "chapterCount": 12,
+      "themeIcon": "✨"
+    }
+  },
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "sthanaId": "sutra-sthana",
+      "sthanaName": "Sutra Sthana",
+      "sanskritTitle": "Deerghanjiviteeya",
+      "englishTitle": "Longevity",
+      "fullTitle": "Longevity (Deerghanjiviteeya Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Deerghanjiviteeya_Adhyaya",
+      "sthanaDetails": {
+        "name": "Sutra Sthana",
+        "sanskritName": "सूत्रस्थानम्",
+        "englishName": "Section on Fundamental Principles",
+        "description": "Foundational philosophy of health, 6 tastes (Shad Rasa), daily regimen (Dinacharya), seasonal regimen (Ritucharya), dietetics, non-suppressible natural urges, and the four pillars of healthcare.",
+        "chapterCount": 30,
+        "themeIcon": "📜"
+      }
+    },
+    {
+      "chapterNumber": 2,
+      "sthanaId": "sutra-sthana",
+      "sthanaName": "Sutra Sthana",
+      "sanskritTitle": "Apamarga Tanduliya",
+      "englishTitle": "Dehusked Seeds of Apamarga and other medicines",
+      "fullTitle": "Dehusked Seeds of Apamarga and other medicines (Apamarga Tanduliya Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Apamarga_Tanduliya_Adhyaya",
+      "sthanaDetails": {
+        "name": "Sutra Sthana",
+        "sanskritName": "सूत्रस्थानम्",
+        "englishName": "Section on Fundamental Principles",
+        "description": "Foundational philosophy of health, 6 tastes (Shad Rasa), daily regimen (Dinacharya), seasonal regimen (Ritucharya), dietetics, non-suppressible natural urges, and the four pillars of healthcare.",
+        "chapterCount": 30,
+        "themeIcon": "📜"
+      }
+    },
+    {
+      "chapterNumber": 3,
+      "sthanaId": "sutra-sthana",
+      "sthanaName": "Sutra Sthana",
+      "sanskritTitle": "cassia",
+      "englishTitle": "Aragvadha and other medicines (Aragvadhiya Adhyaya)",
+      "fullTitle": "Aragvadha(cassia) and other medicines (Aragvadhiya Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Aragvadhiya_Adhyaya",
+      "sthanaDetails": {
+        "name": "Sutra Sthana",
+        "sanskritName": "सूत्रस्थानम्",
+        "englishName": "Section on Fundamental Principles",
+        "description": "Foundational philosophy of health, 6 tastes (Shad Rasa), daily regimen (Dinacharya), seasonal regimen (Ritucharya), dietetics, non-suppressible natural urges, and the four pillars of healthcare.",
+        "chapterCount": 30,
+        "themeIcon": "📜"
+      }
+    },
+    {
+      "chapterNumber": 4,
+      "sthanaId": "sutra-sthana",
+      "sthanaName": "Sutra Sthana",
+      "sanskritTitle": "Shadvirechanashatashritiya",
+      "englishTitle": "The Resources of Six Hundred Evacuatives",
+      "fullTitle": "The Resources of Six Hundred Evacuatives (Shadvirechanashatashritiya Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Shadvirechanashatashritiya_Adhyaya",
+      "sthanaDetails": {
+        "name": "Sutra Sthana",
+        "sanskritName": "सूत्रस्थानम्",
+        "englishName": "Section on Fundamental Principles",
+        "description": "Foundational philosophy of health, 6 tastes (Shad Rasa), daily regimen (Dinacharya), seasonal regimen (Ritucharya), dietetics, non-suppressible natural urges, and the four pillars of healthcare.",
+        "chapterCount": 30,
+        "themeIcon": "📜"
+      }
+    },
+    {
+      "chapterNumber": 5,
+      "sthanaId": "sutra-sthana",
+      "sthanaName": "Sutra Sthana",
+      "sanskritTitle": "Matrashiteeya",
+      "englishTitle": "The proper quantity of food and daily regimen for preserving health",
+      "fullTitle": "The proper quantity of food and daily regimen for preserving health (Matrashiteeya Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Matrashiteeya_Adhyaya",
+      "sthanaDetails": {
+        "name": "Sutra Sthana",
+        "sanskritName": "सूत्रस्थानम्",
+        "englishName": "Section on Fundamental Principles",
+        "description": "Foundational philosophy of health, 6 tastes (Shad Rasa), daily regimen (Dinacharya), seasonal regimen (Ritucharya), dietetics, non-suppressible natural urges, and the four pillars of healthcare.",
+        "chapterCount": 30,
+        "themeIcon": "📜"
+      }
+    },
+    {
+      "chapterNumber": 6,
+      "sthanaId": "sutra-sthana",
+      "sthanaName": "Sutra Sthana",
+      "sanskritTitle": "Tasyashiteeya",
+      "englishTitle": "Seasonal regimen of diet and lifestyle",
+      "fullTitle": "Seasonal regimen of diet and lifestyle (Tasyashiteeya Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Tasyashiteeya_Adhyaya",
+      "sthanaDetails": {
+        "name": "Sutra Sthana",
+        "sanskritName": "सूत्रस्थानम्",
+        "englishName": "Section on Fundamental Principles",
+        "description": "Foundational philosophy of health, 6 tastes (Shad Rasa), daily regimen (Dinacharya), seasonal regimen (Ritucharya), dietetics, non-suppressible natural urges, and the four pillars of healthcare.",
+        "chapterCount": 30,
+        "themeIcon": "📜"
+      }
+    },
+    {
+      "chapterNumber": 7,
+      "sthanaId": "sutra-sthana",
+      "sthanaName": "Sutra Sthana",
+      "sanskritTitle": "Naveganadharaniya",
+      "englishTitle": "Non-suppressible and suppressible natural urges and other factors for health",
+      "fullTitle": "Non-suppressible and suppressible natural urges and other factors for health (Naveganadharaniya Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Naveganadharaniya_Adhyaya",
+      "sthanaDetails": {
+        "name": "Sutra Sthana",
+        "sanskritName": "सूत्रस्थानम्",
+        "englishName": "Section on Fundamental Principles",
+        "description": "Foundational philosophy of health, 6 tastes (Shad Rasa), daily regimen (Dinacharya), seasonal regimen (Ritucharya), dietetics, non-suppressible natural urges, and the four pillars of healthcare.",
+        "chapterCount": 30,
+        "themeIcon": "📜"
+      }
+    },
+    {
+      "chapterNumber": 8,
+      "sthanaId": "sutra-sthana",
+      "sthanaName": "Sutra Sthana",
+      "sanskritTitle": "Indriyopakramaniya",
+      "englishTitle": "The Disciplinary Protocol for Sense and Motor Organs",
+      "fullTitle": "The Disciplinary Protocol for Sense and Motor Organs (Indriyopakramaniya Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Indriyopakramaniya_Adhyaya",
+      "sthanaDetails": {
+        "name": "Sutra Sthana",
+        "sanskritName": "सूत्रस्थानम्",
+        "englishName": "Section on Fundamental Principles",
+        "description": "Foundational philosophy of health, 6 tastes (Shad Rasa), daily regimen (Dinacharya), seasonal regimen (Ritucharya), dietetics, non-suppressible natural urges, and the four pillars of healthcare.",
+        "chapterCount": 30,
+        "themeIcon": "📜"
+      }
+    },
+    {
+      "chapterNumber": 9,
+      "sthanaId": "sutra-sthana",
+      "sthanaName": "Sutra Sthana",
+      "sanskritTitle": "Khuddakachatushpada",
+      "englishTitle": "The four fundamental components of Healthcare",
+      "fullTitle": "The four fundamental components of Healthcare (Khuddakachatushpada Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Khuddakachatushpada_Adhyaya",
+      "sthanaDetails": {
+        "name": "Sutra Sthana",
+        "sanskritName": "सूत्रस्थानम्",
+        "englishName": "Section on Fundamental Principles",
+        "description": "Foundational philosophy of health, 6 tastes (Shad Rasa), daily regimen (Dinacharya), seasonal regimen (Ritucharya), dietetics, non-suppressible natural urges, and the four pillars of healthcare.",
+        "chapterCount": 30,
+        "themeIcon": "📜"
+      }
+    },
+    {
+      "chapterNumber": 10,
+      "sthanaId": "sutra-sthana",
+      "sthanaName": "Sutra Sthana",
+      "sanskritTitle": "Mahachatushpada",
+      "englishTitle": "The four important components of Therapeutics",
+      "fullTitle": "The four important components of Therapeutics (Mahachatushpada Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Mahachatushpada_Adhyaya",
+      "sthanaDetails": {
+        "name": "Sutra Sthana",
+        "sanskritName": "सूत्रस्थानम्",
+        "englishName": "Section on Fundamental Principles",
+        "description": "Foundational philosophy of health, 6 tastes (Shad Rasa), daily regimen (Dinacharya), seasonal regimen (Ritucharya), dietetics, non-suppressible natural urges, and the four pillars of healthcare.",
+        "chapterCount": 30,
+        "themeIcon": "📜"
+      }
+    },
+    {
+      "chapterNumber": 11,
+      "sthanaId": "sutra-sthana",
+      "sthanaName": "Sutra Sthana",
+      "sanskritTitle": "Tistraishaniya",
+      "englishTitle": "The Three Desires of Life and important triads",
+      "fullTitle": "The Three Desires of Life and important triads (Tistraishaniya Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Tistraishaniya_Adhyaya",
+      "sthanaDetails": {
+        "name": "Sutra Sthana",
+        "sanskritName": "सूत्रस्थानम्",
+        "englishName": "Section on Fundamental Principles",
+        "description": "Foundational philosophy of health, 6 tastes (Shad Rasa), daily regimen (Dinacharya), seasonal regimen (Ritucharya), dietetics, non-suppressible natural urges, and the four pillars of healthcare.",
+        "chapterCount": 30,
+        "themeIcon": "📜"
+      }
+    },
+    {
+      "chapterNumber": 12,
+      "sthanaId": "sutra-sthana",
+      "sthanaName": "Sutra Sthana",
+      "sanskritTitle": "Vatakalakaliya",
+      "englishTitle": "The merits and demerits of Vata",
+      "fullTitle": "The merits and demerits of Vata (Vatakalakaliya Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Vatakalakaliya_Adhyaya",
+      "sthanaDetails": {
+        "name": "Sutra Sthana",
+        "sanskritName": "सूत्रस्थानम्",
+        "englishName": "Section on Fundamental Principles",
+        "description": "Foundational philosophy of health, 6 tastes (Shad Rasa), daily regimen (Dinacharya), seasonal regimen (Ritucharya), dietetics, non-suppressible natural urges, and the four pillars of healthcare.",
+        "chapterCount": 30,
+        "themeIcon": "📜"
+      }
+    },
+    {
+      "chapterNumber": 13,
+      "sthanaId": "sutra-sthana",
+      "sthanaName": "Sutra Sthana",
+      "sanskritTitle": "Sneha",
+      "englishTitle": "Oleation therapies",
+      "fullTitle": "Oleation therapies (Sneha Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Sneha_Adhyaya",
+      "sthanaDetails": {
+        "name": "Sutra Sthana",
+        "sanskritName": "सूत्रस्थानम्",
+        "englishName": "Section on Fundamental Principles",
+        "description": "Foundational philosophy of health, 6 tastes (Shad Rasa), daily regimen (Dinacharya), seasonal regimen (Ritucharya), dietetics, non-suppressible natural urges, and the four pillars of healthcare.",
+        "chapterCount": 30,
+        "themeIcon": "📜"
+      }
+    },
+    {
+      "chapterNumber": 14,
+      "sthanaId": "sutra-sthana",
+      "sthanaName": "Sutra Sthana",
+      "sanskritTitle": "Sweda",
+      "englishTitle": "Sudation Therapies",
+      "fullTitle": "Sudation Therapies (Sweda Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Sweda_Adhyaya",
+      "sthanaDetails": {
+        "name": "Sutra Sthana",
+        "sanskritName": "सूत्रस्थानम्",
+        "englishName": "Section on Fundamental Principles",
+        "description": "Foundational philosophy of health, 6 tastes (Shad Rasa), daily regimen (Dinacharya), seasonal regimen (Ritucharya), dietetics, non-suppressible natural urges, and the four pillars of healthcare.",
+        "chapterCount": 30,
+        "themeIcon": "📜"
+      }
+    },
+    {
+      "chapterNumber": 15,
+      "sthanaId": "sutra-sthana",
+      "sthanaName": "Sutra Sthana",
+      "sanskritTitle": "Upakalpaniya",
+      "englishTitle": "Guidelines for Hospital Management and Purification Treatment",
+      "fullTitle": "Guidelines for Hospital Management and Purification Treatment (Upakalpaniya Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Upakalpaniya_Adhyaya",
+      "sthanaDetails": {
+        "name": "Sutra Sthana",
+        "sanskritName": "सूत्रस्थानम्",
+        "englishName": "Section on Fundamental Principles",
+        "description": "Foundational philosophy of health, 6 tastes (Shad Rasa), daily regimen (Dinacharya), seasonal regimen (Ritucharya), dietetics, non-suppressible natural urges, and the four pillars of healthcare.",
+        "chapterCount": 30,
+        "themeIcon": "📜"
+      }
+    },
+    {
+      "chapterNumber": 16,
+      "sthanaId": "sutra-sthana",
+      "sthanaName": "Sutra Sthana",
+      "sanskritTitle": "Chikitsaprabhritiya",
+      "englishTitle": "Assessment and care in Panchakarma therapies",
+      "fullTitle": "Assessment and care in Panchakarma therapies (Chikitsaprabhritiya Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Chikitsaprabhritiya_Adhyaya",
+      "sthanaDetails": {
+        "name": "Sutra Sthana",
+        "sanskritName": "सूत्रस्थानम्",
+        "englishName": "Section on Fundamental Principles",
+        "description": "Foundational philosophy of health, 6 tastes (Shad Rasa), daily regimen (Dinacharya), seasonal regimen (Ritucharya), dietetics, non-suppressible natural urges, and the four pillars of healthcare.",
+        "chapterCount": 30,
+        "themeIcon": "📜"
+      }
+    },
+    {
+      "chapterNumber": 17,
+      "sthanaId": "sutra-sthana",
+      "sthanaName": "Sutra Sthana",
+      "sanskritTitle": "Kiyanta Shiraseeya",
+      "englishTitle": "Diseases of three vital organs including Head and other conditions",
+      "fullTitle": "Diseases of three vital organs including Head and other conditions (Kiyanta Shiraseeya Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Kiyanta_Shiraseeya_Adhyaya",
+      "sthanaDetails": {
+        "name": "Sutra Sthana",
+        "sanskritName": "सूत्रस्थानम्",
+        "englishName": "Section on Fundamental Principles",
+        "description": "Foundational philosophy of health, 6 tastes (Shad Rasa), daily regimen (Dinacharya), seasonal regimen (Ritucharya), dietetics, non-suppressible natural urges, and the four pillars of healthcare.",
+        "chapterCount": 30,
+        "themeIcon": "📜"
+      }
+    },
+    {
+      "chapterNumber": 18,
+      "sthanaId": "sutra-sthana",
+      "sthanaName": "Sutra Sthana",
+      "sanskritTitle": "Trishothiya",
+      "englishTitle": "Three Types of Swellings and other conditions",
+      "fullTitle": "Three Types of Swellings and other conditions (Trishothiya Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Trishothiya_Adhyaya",
+      "sthanaDetails": {
+        "name": "Sutra Sthana",
+        "sanskritName": "सूत्रस्थानम्",
+        "englishName": "Section on Fundamental Principles",
+        "description": "Foundational philosophy of health, 6 tastes (Shad Rasa), daily regimen (Dinacharya), seasonal regimen (Ritucharya), dietetics, non-suppressible natural urges, and the four pillars of healthcare.",
+        "chapterCount": 30,
+        "themeIcon": "📜"
+      }
+    },
+    {
+      "chapterNumber": 19,
+      "sthanaId": "sutra-sthana",
+      "sthanaName": "Sutra Sthana",
+      "sanskritTitle": "Ashtodariya",
+      "englishTitle": "Numerical Classification of Diseases",
+      "fullTitle": "Numerical Classification of Diseases (Ashtodariya Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Ashtodariya_Adhyaya",
+      "sthanaDetails": {
+        "name": "Sutra Sthana",
+        "sanskritName": "सूत्रस्थानम्",
+        "englishName": "Section on Fundamental Principles",
+        "description": "Foundational philosophy of health, 6 tastes (Shad Rasa), daily regimen (Dinacharya), seasonal regimen (Ritucharya), dietetics, non-suppressible natural urges, and the four pillars of healthcare.",
+        "chapterCount": 30,
+        "themeIcon": "📜"
+      }
+    },
+    {
+      "chapterNumber": 20,
+      "sthanaId": "sutra-sthana",
+      "sthanaName": "Sutra Sthana",
+      "sanskritTitle": "Maharoga",
+      "englishTitle": "Dosha specific classification of diseases",
+      "fullTitle": "Dosha specific classification of diseases (Maharoga Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Maharoga_Adhyaya",
+      "sthanaDetails": {
+        "name": "Sutra Sthana",
+        "sanskritName": "सूत्रस्थानम्",
+        "englishName": "Section on Fundamental Principles",
+        "description": "Foundational philosophy of health, 6 tastes (Shad Rasa), daily regimen (Dinacharya), seasonal regimen (Ritucharya), dietetics, non-suppressible natural urges, and the four pillars of healthcare.",
+        "chapterCount": 30,
+        "themeIcon": "📜"
+      }
+    },
+    {
+      "chapterNumber": 21,
+      "sthanaId": "sutra-sthana",
+      "sthanaName": "Sutra Sthana",
+      "sanskritTitle": "Ashtauninditiya",
+      "englishTitle": "Eight Undesirable Physical Constitutions",
+      "fullTitle": "Eight Undesirable Physical Constitutions (Ashtauninditiya Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Ashtauninditiya_Adhyaya",
+      "sthanaDetails": {
+        "name": "Sutra Sthana",
+        "sanskritName": "सूत्रस्थानम्",
+        "englishName": "Section on Fundamental Principles",
+        "description": "Foundational philosophy of health, 6 tastes (Shad Rasa), daily regimen (Dinacharya), seasonal regimen (Ritucharya), dietetics, non-suppressible natural urges, and the four pillars of healthcare.",
+        "chapterCount": 30,
+        "themeIcon": "📜"
+      }
+    },
+    {
+      "chapterNumber": 22,
+      "sthanaId": "sutra-sthana",
+      "sthanaName": "Sutra Sthana",
+      "sanskritTitle": "Langhanabrimhaniya",
+      "englishTitle": "Reduction and nourishing therapies",
+      "fullTitle": "Reduction and nourishing therapies (Langhanabrimhaniya Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Langhanabrimhaniya_Adhyaya",
+      "sthanaDetails": {
+        "name": "Sutra Sthana",
+        "sanskritName": "सूत्रस्थानम्",
+        "englishName": "Section on Fundamental Principles",
+        "description": "Foundational philosophy of health, 6 tastes (Shad Rasa), daily regimen (Dinacharya), seasonal regimen (Ritucharya), dietetics, non-suppressible natural urges, and the four pillars of healthcare.",
+        "chapterCount": 30,
+        "themeIcon": "📜"
+      }
+    },
+    {
+      "chapterNumber": 23,
+      "sthanaId": "sutra-sthana",
+      "sthanaName": "Sutra Sthana",
+      "sanskritTitle": "Santarpaniya",
+      "englishTitle": "Over-nutrition, under-nutrition and its disorders",
+      "fullTitle": "Over-nutrition, under-nutrition and its disorders (Santarpaniya Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Santarpaniya_Adhyaya",
+      "sthanaDetails": {
+        "name": "Sutra Sthana",
+        "sanskritName": "सूत्रस्थानम्",
+        "englishName": "Section on Fundamental Principles",
+        "description": "Foundational philosophy of health, 6 tastes (Shad Rasa), daily regimen (Dinacharya), seasonal regimen (Ritucharya), dietetics, non-suppressible natural urges, and the four pillars of healthcare.",
+        "chapterCount": 30,
+        "themeIcon": "📜"
+      }
+    },
+    {
+      "chapterNumber": 24,
+      "sthanaId": "sutra-sthana",
+      "sthanaName": "Sutra Sthana",
+      "sanskritTitle": "Blood",
+      "englishTitle": "Characteristics of Shonita , its vitiation and disorders (Vidhishonitiya Adhyaya)",
+      "fullTitle": "Characteristics of Shonita (Blood), its vitiation and disorders (Vidhishonitiya Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Vidhishonitiya_Adhyaya",
+      "sthanaDetails": {
+        "name": "Sutra Sthana",
+        "sanskritName": "सूत्रस्थानम्",
+        "englishName": "Section on Fundamental Principles",
+        "description": "Foundational philosophy of health, 6 tastes (Shad Rasa), daily regimen (Dinacharya), seasonal regimen (Ritucharya), dietetics, non-suppressible natural urges, and the four pillars of healthcare.",
+        "chapterCount": 30,
+        "themeIcon": "📜"
+      }
+    },
+    {
+      "chapterNumber": 25,
+      "sthanaId": "sutra-sthana",
+      "sthanaName": "Sutra Sthana",
+      "sanskritTitle": "Yajjah Purushiya",
+      "englishTitle": "Origin of Human Beings and the best things for life",
+      "fullTitle": "Origin of Human Beings and the best things for life (Yajjah Purushiya Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Yajjah_Purushiya_Adhyaya",
+      "sthanaDetails": {
+        "name": "Sutra Sthana",
+        "sanskritName": "सूत्रस्थानम्",
+        "englishName": "Section on Fundamental Principles",
+        "description": "Foundational philosophy of health, 6 tastes (Shad Rasa), daily regimen (Dinacharya), seasonal regimen (Ritucharya), dietetics, non-suppressible natural urges, and the four pillars of healthcare.",
+        "chapterCount": 30,
+        "themeIcon": "📜"
+      }
+    },
+    {
+      "chapterNumber": 26,
+      "sthanaId": "sutra-sthana",
+      "sthanaName": "Sutra Sthana",
+      "sanskritTitle": "Atreyabhadrakapyiya",
+      "englishTitle": "Pharmacological principles of wholesome and unwholesome diet",
+      "fullTitle": "Pharmacological principles of wholesome and unwholesome diet (Atreyabhadrakapyiya Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Atreyabhadrakapyiya_Adhyaya",
+      "sthanaDetails": {
+        "name": "Sutra Sthana",
+        "sanskritName": "सूत्रस्थानम्",
+        "englishName": "Section on Fundamental Principles",
+        "description": "Foundational philosophy of health, 6 tastes (Shad Rasa), daily regimen (Dinacharya), seasonal regimen (Ritucharya), dietetics, non-suppressible natural urges, and the four pillars of healthcare.",
+        "chapterCount": 30,
+        "themeIcon": "📜"
+      }
+    },
+    {
+      "chapterNumber": 27,
+      "sthanaId": "sutra-sthana",
+      "sthanaName": "Sutra Sthana",
+      "sanskritTitle": "Annapanavidhi",
+      "englishTitle": "Classification and Regimen of food and beverages",
+      "fullTitle": "Classification and Regimen of food and beverages (Annapanavidhi Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Annapanavidhi_Adhyaya",
+      "sthanaDetails": {
+        "name": "Sutra Sthana",
+        "sanskritName": "सूत्रस्थानम्",
+        "englishName": "Section on Fundamental Principles",
+        "description": "Foundational philosophy of health, 6 tastes (Shad Rasa), daily regimen (Dinacharya), seasonal regimen (Ritucharya), dietetics, non-suppressible natural urges, and the four pillars of healthcare.",
+        "chapterCount": 30,
+        "themeIcon": "📜"
+      }
+    },
+    {
+      "chapterNumber": 28,
+      "sthanaId": "sutra-sthana",
+      "sthanaName": "Sutra Sthana",
+      "sanskritTitle": "Vividhashitapitiya",
+      "englishTitle": "Sequential effects of food and beverages",
+      "fullTitle": "Sequential effects of food and beverages (Vividhashitapitiya Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Vividhashitapitiya_Adhyaya",
+      "sthanaDetails": {
+        "name": "Sutra Sthana",
+        "sanskritName": "सूत्रस्थानम्",
+        "englishName": "Section on Fundamental Principles",
+        "description": "Foundational philosophy of health, 6 tastes (Shad Rasa), daily regimen (Dinacharya), seasonal regimen (Ritucharya), dietetics, non-suppressible natural urges, and the four pillars of healthcare.",
+        "chapterCount": 30,
+        "themeIcon": "📜"
+      }
+    },
+    {
+      "chapterNumber": 29,
+      "sthanaId": "sutra-sthana",
+      "sthanaName": "Sutra Sthana",
+      "sanskritTitle": "Dashapranayataneeya",
+      "englishTitle": "The Ten Seats of Life Forces",
+      "fullTitle": "The Ten Seats of Life Forces (Dashapranayataneeya Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Dashapranayataneeya_Adhyaya",
+      "sthanaDetails": {
+        "name": "Sutra Sthana",
+        "sanskritName": "सूत्रस्थानम्",
+        "englishName": "Section on Fundamental Principles",
+        "description": "Foundational philosophy of health, 6 tastes (Shad Rasa), daily regimen (Dinacharya), seasonal regimen (Ritucharya), dietetics, non-suppressible natural urges, and the four pillars of healthcare.",
+        "chapterCount": 30,
+        "themeIcon": "📜"
+      }
+    },
+    {
+      "chapterNumber": 30,
+      "sthanaId": "sutra-sthana",
+      "sthanaName": "Sutra Sthana",
+      "sanskritTitle": "Arthedashmahamooliya",
+      "englishTitle": "The Ten great vessels arising from Heart and aspects of healthy life",
+      "fullTitle": "The Ten great vessels arising from Heart and aspects of healthy life (Arthedashmahamooliya Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Arthedashmahamooliya_Adhyaya",
+      "sthanaDetails": {
+        "name": "Sutra Sthana",
+        "sanskritName": "सूत्रस्थानम्",
+        "englishName": "Section on Fundamental Principles",
+        "description": "Foundational philosophy of health, 6 tastes (Shad Rasa), daily regimen (Dinacharya), seasonal regimen (Ritucharya), dietetics, non-suppressible natural urges, and the four pillars of healthcare.",
+        "chapterCount": 30,
+        "themeIcon": "📜"
+      }
+    },
+    {
+      "chapterNumber": 1,
+      "sthanaId": "nidana-sthana",
+      "sthanaName": "Nidana Sthana",
+      "sanskritTitle": "Jwara Nidana",
+      "englishTitle": "Fundamental Principles of Diagnosis and Jwara",
+      "fullTitle": "Fundamental Principles of Diagnosis and Jwara (Jwara Nidana Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Jwara_Nidana_Adhyaya",
+      "sthanaDetails": {
+        "name": "Nidana Sthana",
+        "sanskritName": "निदानस्थानम्",
+        "englishName": "Section on Diagnostic Principles & Pathology",
+        "description": "Comprehensive etiology, pathogenesis (Samprapti), prodromal symptoms (Poorvaroopa), and clinical manifestations of major diseases (Fever, Diabetes, Skin, Phthisis, etc.).",
+        "chapterCount": 8,
+        "themeIcon": "🔬"
+      }
+    },
+    {
+      "chapterNumber": 2,
+      "sthanaId": "nidana-sthana",
+      "sthanaName": "Nidana Sthana",
+      "sanskritTitle": "Raktapitta Nidana",
+      "englishTitle": "Diagnosis and etiopathogenesis of Bleeding Disorders",
+      "fullTitle": "Diagnosis and etiopathogenesis of Bleeding Disorders (Raktapitta Nidana Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Raktapitta_Nidana_Adhyaya",
+      "sthanaDetails": {
+        "name": "Nidana Sthana",
+        "sanskritName": "निदानस्थानम्",
+        "englishName": "Section on Diagnostic Principles & Pathology",
+        "description": "Comprehensive etiology, pathogenesis (Samprapti), prodromal symptoms (Poorvaroopa), and clinical manifestations of major diseases (Fever, Diabetes, Skin, Phthisis, etc.).",
+        "chapterCount": 8,
+        "themeIcon": "🔬"
+      }
+    },
+    {
+      "chapterNumber": 3,
+      "sthanaId": "nidana-sthana",
+      "sthanaName": "Nidana Sthana",
+      "sanskritTitle": "Gulma Nidana",
+      "englishTitle": "Diagnosis and etio-pathogenesis of Abdominal lumps",
+      "fullTitle": "Diagnosis and etio-pathogenesis of Abdominal lumps (Gulma Nidana Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Gulma_Nidana_Adhyaya",
+      "sthanaDetails": {
+        "name": "Nidana Sthana",
+        "sanskritName": "निदानस्थानम्",
+        "englishName": "Section on Diagnostic Principles & Pathology",
+        "description": "Comprehensive etiology, pathogenesis (Samprapti), prodromal symptoms (Poorvaroopa), and clinical manifestations of major diseases (Fever, Diabetes, Skin, Phthisis, etc.).",
+        "chapterCount": 8,
+        "themeIcon": "🔬"
+      }
+    },
+    {
+      "chapterNumber": 4,
+      "sthanaId": "nidana-sthana",
+      "sthanaName": "Nidana Sthana",
+      "sanskritTitle": "Prameha Nidana",
+      "englishTitle": "Diagnosis and etiopatheogenesis of Obstinate Urinary Disorders including diabetes",
+      "fullTitle": "Diagnosis and etiopatheogenesis of Obstinate Urinary Disorders including diabetes (Prameha Nidana Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Prameha_Nidana_Adhyaya",
+      "sthanaDetails": {
+        "name": "Nidana Sthana",
+        "sanskritName": "निदानस्थानम्",
+        "englishName": "Section on Diagnostic Principles & Pathology",
+        "description": "Comprehensive etiology, pathogenesis (Samprapti), prodromal symptoms (Poorvaroopa), and clinical manifestations of major diseases (Fever, Diabetes, Skin, Phthisis, etc.).",
+        "chapterCount": 8,
+        "themeIcon": "🔬"
+      }
+    },
+    {
+      "chapterNumber": 5,
+      "sthanaId": "nidana-sthana",
+      "sthanaName": "Nidana Sthana",
+      "sanskritTitle": "Kushtha Nidana",
+      "englishTitle": "Diagnosis and etiopathogenesis of Skin diseases",
+      "fullTitle": "Diagnosis and etiopathogenesis of Skin diseases (Kushtha Nidana Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Kushtha_Nidana_Adhyaya",
+      "sthanaDetails": {
+        "name": "Nidana Sthana",
+        "sanskritName": "निदानस्थानम्",
+        "englishName": "Section on Diagnostic Principles & Pathology",
+        "description": "Comprehensive etiology, pathogenesis (Samprapti), prodromal symptoms (Poorvaroopa), and clinical manifestations of major diseases (Fever, Diabetes, Skin, Phthisis, etc.).",
+        "chapterCount": 8,
+        "themeIcon": "🔬"
+      }
+    },
+    {
+      "chapterNumber": 6,
+      "sthanaId": "nidana-sthana",
+      "sthanaName": "Nidana Sthana",
+      "sanskritTitle": "Shosha Nidana",
+      "englishTitle": "Diagnosis and etiopathogenesis of Progressive wasting disease",
+      "fullTitle": "Diagnosis and etiopathogenesis of Progressive wasting disease (Shosha Nidana Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Shosha_Nidana_Adhyaya",
+      "sthanaDetails": {
+        "name": "Nidana Sthana",
+        "sanskritName": "निदानस्थानम्",
+        "englishName": "Section on Diagnostic Principles & Pathology",
+        "description": "Comprehensive etiology, pathogenesis (Samprapti), prodromal symptoms (Poorvaroopa), and clinical manifestations of major diseases (Fever, Diabetes, Skin, Phthisis, etc.).",
+        "chapterCount": 8,
+        "themeIcon": "🔬"
+      }
+    },
+    {
+      "chapterNumber": 7,
+      "sthanaId": "nidana-sthana",
+      "sthanaName": "Nidana Sthana",
+      "sanskritTitle": "Unmada Nidana",
+      "englishTitle": "Diagnosis and etiopathogenesis of psychosis disorders",
+      "fullTitle": "Diagnosis and etiopathogenesis of psychosis disorders (Unmada Nidana Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Unmada_Nidana_Adhyaya",
+      "sthanaDetails": {
+        "name": "Nidana Sthana",
+        "sanskritName": "निदानस्थानम्",
+        "englishName": "Section on Diagnostic Principles & Pathology",
+        "description": "Comprehensive etiology, pathogenesis (Samprapti), prodromal symptoms (Poorvaroopa), and clinical manifestations of major diseases (Fever, Diabetes, Skin, Phthisis, etc.).",
+        "chapterCount": 8,
+        "themeIcon": "🔬"
+      }
+    },
+    {
+      "chapterNumber": 8,
+      "sthanaId": "nidana-sthana",
+      "sthanaName": "Nidana Sthana",
+      "sanskritTitle": "Apasmara Nidana",
+      "englishTitle": "Diagnosis and etiopathogenesis of seizure disorders",
+      "fullTitle": "Diagnosis and etiopathogenesis of seizure disorders (Apasmara Nidana Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Apasmara_Nidana_Adhyaya",
+      "sthanaDetails": {
+        "name": "Nidana Sthana",
+        "sanskritName": "निदानस्थानम्",
+        "englishName": "Section on Diagnostic Principles & Pathology",
+        "description": "Comprehensive etiology, pathogenesis (Samprapti), prodromal symptoms (Poorvaroopa), and clinical manifestations of major diseases (Fever, Diabetes, Skin, Phthisis, etc.).",
+        "chapterCount": 8,
+        "themeIcon": "🔬"
+      }
+    },
+    {
+      "chapterNumber": 1,
+      "sthanaId": "vimana-sthana",
+      "sthanaName": "Vimana Sthana",
+      "sanskritTitle": "Rasa Vimana",
+      "englishTitle": "Taste-based factors for the measurement of diseases and drugs",
+      "fullTitle": "Taste-based factors for the measurement of diseases and drugs (Rasa Vimana Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Rasa_Vimana_Adhyaya",
+      "sthanaDetails": {
+        "name": "Vimana Sthana",
+        "sanskritName": "विमानस्थानम्",
+        "englishName": "Section on Specific Medical Principles & Dietetics",
+        "description": "Quantitative pharmacology, dosha assessment, gastric capacity rules, microchannels (Srotas), epidemiology (Janapadodhvamsa), and clinical examination methodology.",
+        "chapterCount": 8,
+        "themeIcon": "⚖️"
+      }
+    },
+    {
+      "chapterNumber": 2,
+      "sthanaId": "vimana-sthana",
+      "sthanaName": "Vimana Sthana",
+      "sanskritTitle": "Trividhakukshiya Vimana",
+      "englishTitle": "Three parts of abdomen and principles of diet",
+      "fullTitle": "Three parts of abdomen and principles of diet (Trividhakukshiya Vimana Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Trividhakukshiya_Vimana_Adhyaya",
+      "sthanaDetails": {
+        "name": "Vimana Sthana",
+        "sanskritName": "विमानस्थानम्",
+        "englishName": "Section on Specific Medical Principles & Dietetics",
+        "description": "Quantitative pharmacology, dosha assessment, gastric capacity rules, microchannels (Srotas), epidemiology (Janapadodhvamsa), and clinical examination methodology.",
+        "chapterCount": 8,
+        "themeIcon": "⚖️"
+      }
+    },
+    {
+      "chapterNumber": 3,
+      "sthanaId": "vimana-sthana",
+      "sthanaName": "Vimana Sthana",
+      "sanskritTitle": "Janapadodhvansaniya Vimana",
+      "englishTitle": "Determination of specific characteristics of destruction of communities",
+      "fullTitle": "Determination of specific characteristics of destruction of communities (Janapadodhvansaniya Vimana Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Janapadodhvansaniya_Vimana_Adhyaya",
+      "sthanaDetails": {
+        "name": "Vimana Sthana",
+        "sanskritName": "विमानस्थानम्",
+        "englishName": "Section on Specific Medical Principles & Dietetics",
+        "description": "Quantitative pharmacology, dosha assessment, gastric capacity rules, microchannels (Srotas), epidemiology (Janapadodhvamsa), and clinical examination methodology.",
+        "chapterCount": 8,
+        "themeIcon": "⚖️"
+      }
+    },
+    {
+      "chapterNumber": 4,
+      "sthanaId": "vimana-sthana",
+      "sthanaName": "Vimana Sthana",
+      "sanskritTitle": "Trividha Roga Vishesha Vijnaniya Vimana",
+      "englishTitle": "Three methods for knowledge of disease",
+      "fullTitle": "Three methods for knowledge of disease (Trividha Roga Vishesha Vijnaniya Vimana Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Trividha_Roga_Vishesha_Vijnaniya_Vimana_Adhyaya",
+      "sthanaDetails": {
+        "name": "Vimana Sthana",
+        "sanskritName": "विमानस्थानम्",
+        "englishName": "Section on Specific Medical Principles & Dietetics",
+        "description": "Quantitative pharmacology, dosha assessment, gastric capacity rules, microchannels (Srotas), epidemiology (Janapadodhvamsa), and clinical examination methodology.",
+        "chapterCount": 8,
+        "themeIcon": "⚖️"
+      }
+    },
+    {
+      "chapterNumber": 5,
+      "sthanaId": "vimana-sthana",
+      "sthanaName": "Vimana Sthana",
+      "sanskritTitle": "Sroto Vimana",
+      "englishTitle": "Specific features of channels of transport and transformation",
+      "fullTitle": "Specific features of channels of transport and transformation (Sroto Vimana Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Sroto_Vimana_Adhyaya",
+      "sthanaDetails": {
+        "name": "Vimana Sthana",
+        "sanskritName": "विमानस्थानम्",
+        "englishName": "Section on Specific Medical Principles & Dietetics",
+        "description": "Quantitative pharmacology, dosha assessment, gastric capacity rules, microchannels (Srotas), epidemiology (Janapadodhvamsa), and clinical examination methodology.",
+        "chapterCount": 8,
+        "themeIcon": "⚖️"
+      }
+    },
+    {
+      "chapterNumber": 6,
+      "sthanaId": "vimana-sthana",
+      "sthanaName": "Vimana Sthana",
+      "sanskritTitle": "Roganika Vimana",
+      "englishTitle": "Classification of Diseases",
+      "fullTitle": "Classification of Diseases (Roganika Vimana Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Roganika_Vimana_Adhyaya",
+      "sthanaDetails": {
+        "name": "Vimana Sthana",
+        "sanskritName": "विमानस्थानम्",
+        "englishName": "Section on Specific Medical Principles & Dietetics",
+        "description": "Quantitative pharmacology, dosha assessment, gastric capacity rules, microchannels (Srotas), epidemiology (Janapadodhvamsa), and clinical examination methodology.",
+        "chapterCount": 8,
+        "themeIcon": "⚖️"
+      }
+    },
+    {
+      "chapterNumber": 7,
+      "sthanaId": "vimana-sthana",
+      "sthanaName": "Vimana Sthana",
+      "sanskritTitle": "Vyadhita Rupiya Vimana",
+      "englishTitle": "Types of patients and organisms affecting Human Body",
+      "fullTitle": "Types of patients and organisms affecting Human Body (Vyadhita Rupiya Vimana Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Vyadhita_Rupiya_Vimana_Adhyaya",
+      "sthanaDetails": {
+        "name": "Vimana Sthana",
+        "sanskritName": "विमानस्थानम्",
+        "englishName": "Section on Specific Medical Principles & Dietetics",
+        "description": "Quantitative pharmacology, dosha assessment, gastric capacity rules, microchannels (Srotas), epidemiology (Janapadodhvamsa), and clinical examination methodology.",
+        "chapterCount": 8,
+        "themeIcon": "⚖️"
+      }
+    },
+    {
+      "chapterNumber": 8,
+      "sthanaId": "vimana-sthana",
+      "sthanaName": "Vimana Sthana",
+      "sanskritTitle": "Rogabhishagjitiya Vimana",
+      "englishTitle": "Methods of conquering debate and disease",
+      "fullTitle": "Methods of conquering debate and disease (Rogabhishagjitiya Vimana Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Rogabhishagjitiya_Vimana_Adhyaya",
+      "sthanaDetails": {
+        "name": "Vimana Sthana",
+        "sanskritName": "विमानस्थानम्",
+        "englishName": "Section on Specific Medical Principles & Dietetics",
+        "description": "Quantitative pharmacology, dosha assessment, gastric capacity rules, microchannels (Srotas), epidemiology (Janapadodhvamsa), and clinical examination methodology.",
+        "chapterCount": 8,
+        "themeIcon": "⚖️"
+      }
+    },
+    {
+      "chapterNumber": 1,
+      "sthanaId": "sharira-sthana",
+      "sthanaName": "Sharira Sthana",
+      "sanskritTitle": "Katidhapurusha Sharira",
+      "englishTitle": "Knowledge of holistic human being",
+      "fullTitle": "Knowledge of holistic human being (Katidhapurusha Sharira Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Katidhapurusha_Sharira_Adhyaya",
+      "sthanaDetails": {
+        "name": "Sharira Sthana",
+        "sanskritName": "शारीरस्थानम्",
+        "englishName": "Section on Human Anatomy, Embryology & Genesis",
+        "description": "Creation of human life, embryogenesis, maternal care, macrocosm-microcosm relationship, anatomical enumerations, and psycho-somatic doshic prakriti.",
+        "chapterCount": 8,
+        "themeIcon": "🧬"
+      }
+    },
+    {
+      "chapterNumber": 2,
+      "sthanaId": "sharira-sthana",
+      "sthanaName": "Sharira Sthana",
+      "sanskritTitle": "Atulyagotriya Sharira",
+      "englishTitle": "Different clans and aspects of the Human Birth",
+      "fullTitle": "Different clans and aspects of the Human Birth (Atulyagotriya Sharira Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Atulyagotriya_Sharira_Adhyaya",
+      "sthanaDetails": {
+        "name": "Sharira Sthana",
+        "sanskritName": "शारीरस्थानम्",
+        "englishName": "Section on Human Anatomy, Embryology & Genesis",
+        "description": "Creation of human life, embryogenesis, maternal care, macrocosm-microcosm relationship, anatomical enumerations, and psycho-somatic doshic prakriti.",
+        "chapterCount": 8,
+        "themeIcon": "🧬"
+      }
+    },
+    {
+      "chapterNumber": 3,
+      "sthanaId": "sharira-sthana",
+      "sthanaName": "Sharira Sthana",
+      "sanskritTitle": "Khuddika Garbhavakranti Sharira",
+      "englishTitle": "Factors responsible for Embryogenesis",
+      "fullTitle": "Factors responsible for Embryogenesis (Khuddika Garbhavakranti Sharira Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Khuddika_Garbhavakranti_Sharira_Adhyaya",
+      "sthanaDetails": {
+        "name": "Sharira Sthana",
+        "sanskritName": "शारीरस्थानम्",
+        "englishName": "Section on Human Anatomy, Embryology & Genesis",
+        "description": "Creation of human life, embryogenesis, maternal care, macrocosm-microcosm relationship, anatomical enumerations, and psycho-somatic doshic prakriti.",
+        "chapterCount": 8,
+        "themeIcon": "🧬"
+      }
+    },
+    {
+      "chapterNumber": 4,
+      "sthanaId": "sharira-sthana",
+      "sthanaName": "Sharira Sthana",
+      "sanskritTitle": "Mahatigarbhavakranti Sharira",
+      "englishTitle": "Detail description on embryonic development",
+      "fullTitle": "Detail description on embryonic development (Mahatigarbhavakranti Sharira Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Mahatigarbhavakranti_Sharira_Adhyaya",
+      "sthanaDetails": {
+        "name": "Sharira Sthana",
+        "sanskritName": "शारीरस्थानम्",
+        "englishName": "Section on Human Anatomy, Embryology & Genesis",
+        "description": "Creation of human life, embryogenesis, maternal care, macrocosm-microcosm relationship, anatomical enumerations, and psycho-somatic doshic prakriti.",
+        "chapterCount": 8,
+        "themeIcon": "🧬"
+      }
+    },
+    {
+      "chapterNumber": 5,
+      "sthanaId": "sharira-sthana",
+      "sthanaName": "Sharira Sthana",
+      "sanskritTitle": "Purusha Vichaya Sharira",
+      "englishTitle": "Detailed Study of holistic human being",
+      "fullTitle": "Detailed Study of holistic human being (Purusha Vichaya Sharira Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Purusha_Vichaya_Sharira_Adhyaya",
+      "sthanaDetails": {
+        "name": "Sharira Sthana",
+        "sanskritName": "शारीरस्थानम्",
+        "englishName": "Section on Human Anatomy, Embryology & Genesis",
+        "description": "Creation of human life, embryogenesis, maternal care, macrocosm-microcosm relationship, anatomical enumerations, and psycho-somatic doshic prakriti.",
+        "chapterCount": 8,
+        "themeIcon": "🧬"
+      }
+    },
+    {
+      "chapterNumber": 6,
+      "sthanaId": "sharira-sthana",
+      "sthanaName": "Sharira Sthana",
+      "sanskritTitle": "Sharira Vichaya Sharira",
+      "englishTitle": "Analytical study of the Human body",
+      "fullTitle": "Analytical study of the Human body (Sharira Vichaya Sharira Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Sharira_Vichaya_Sharira_Adhyaya",
+      "sthanaDetails": {
+        "name": "Sharira Sthana",
+        "sanskritName": "शारीरस्थानम्",
+        "englishName": "Section on Human Anatomy, Embryology & Genesis",
+        "description": "Creation of human life, embryogenesis, maternal care, macrocosm-microcosm relationship, anatomical enumerations, and psycho-somatic doshic prakriti.",
+        "chapterCount": 8,
+        "themeIcon": "🧬"
+      }
+    },
+    {
+      "chapterNumber": 7,
+      "sthanaId": "sharira-sthana",
+      "sthanaName": "Sharira Sthana",
+      "sanskritTitle": "Sharira Sankhya Sharira",
+      "englishTitle": "Numerological account of human body constituents",
+      "fullTitle": "Numerological account of human body constituents (Sharira Sankhya Sharira Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Sharira_Sankhya_Sharira_Adhyaya",
+      "sthanaDetails": {
+        "name": "Sharira Sthana",
+        "sanskritName": "शारीरस्थानम्",
+        "englishName": "Section on Human Anatomy, Embryology & Genesis",
+        "description": "Creation of human life, embryogenesis, maternal care, macrocosm-microcosm relationship, anatomical enumerations, and psycho-somatic doshic prakriti.",
+        "chapterCount": 8,
+        "themeIcon": "🧬"
+      }
+    },
+    {
+      "chapterNumber": 8,
+      "sthanaId": "sharira-sthana",
+      "sthanaName": "Sharira Sthana",
+      "sanskritTitle": "Jatisutriya Sharira",
+      "englishTitle": "Obstetrics, Maternal Health and Neonatal Care",
+      "fullTitle": "Obstetrics, Maternal Health and Neonatal Care (Jatisutriya Sharira Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Jatisutriya_Sharira_Adhyaya",
+      "sthanaDetails": {
+        "name": "Sharira Sthana",
+        "sanskritName": "शारीरस्थानम्",
+        "englishName": "Section on Human Anatomy, Embryology & Genesis",
+        "description": "Creation of human life, embryogenesis, maternal care, macrocosm-microcosm relationship, anatomical enumerations, and psycho-somatic doshic prakriti.",
+        "chapterCount": 8,
+        "themeIcon": "🧬"
+      }
+    },
+    {
+      "chapterNumber": 1,
+      "sthanaId": "indriya-sthana",
+      "sthanaName": "Indriya Sthana",
+      "sanskritTitle": "Varnasvariyam Indriyam",
+      "englishTitle": "Fatal signs in complexion and voice",
+      "fullTitle": "Fatal signs in complexion and voice (Varnasvariyam Indriyam Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Varnasvariyam_Indriyam_Adhyaya",
+      "sthanaDetails": {
+        "name": "Indriya Sthana",
+        "sanskritName": "इन्द्रियस्थानम्",
+        "englishName": "Section on Sensorial Prognosis & Clinical Signs",
+        "description": "Prognostic assessment, sensory cues, olfactory/visual changes, aura shifts, and indicators of vitality or terminal state.",
+        "chapterCount": 12,
+        "themeIcon": "👁️"
+      }
+    },
+    {
+      "chapterNumber": 2,
+      "sthanaId": "indriya-sthana",
+      "sthanaName": "Indriya Sthana",
+      "sanskritTitle": "Pushpitakam Indriyam",
+      "englishTitle": "Fatal signs of Tactile and Olfactory perception",
+      "fullTitle": "Fatal signs of Tactile and Olfactory perception (Pushpitakam Indriyam Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Pushpitakam_Indriyam_Adhyaya",
+      "sthanaDetails": {
+        "name": "Indriya Sthana",
+        "sanskritName": "इन्द्रियस्थानम्",
+        "englishName": "Section on Sensorial Prognosis & Clinical Signs",
+        "description": "Prognostic assessment, sensory cues, olfactory/visual changes, aura shifts, and indicators of vitality or terminal state.",
+        "chapterCount": 12,
+        "themeIcon": "👁️"
+      }
+    },
+    {
+      "chapterNumber": 3,
+      "sthanaId": "indriya-sthana",
+      "sthanaName": "Indriya Sthana",
+      "sanskritTitle": "Parimarshaneeyam Indriyam",
+      "englishTitle": "Palpable signs of Imminent Death",
+      "fullTitle": "Palpable signs of Imminent Death (Parimarshaneeyam Indriyam Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Parimarshaneeyam_Indriyam_Adhyaya",
+      "sthanaDetails": {
+        "name": "Indriya Sthana",
+        "sanskritName": "इन्द्रियस्थानम्",
+        "englishName": "Section on Sensorial Prognosis & Clinical Signs",
+        "description": "Prognostic assessment, sensory cues, olfactory/visual changes, aura shifts, and indicators of vitality or terminal state.",
+        "chapterCount": 12,
+        "themeIcon": "👁️"
+      }
+    },
+    {
+      "chapterNumber": 4,
+      "sthanaId": "indriya-sthana",
+      "sthanaName": "Indriya Sthana",
+      "sanskritTitle": "Indriyaneekam Indriyam",
+      "englishTitle": "Fatal signs in five sense organs",
+      "fullTitle": "Fatal signs in five sense organs (Indriyaneekam Indriyam Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Indriyaneekam_Indriyam_Adhyaya",
+      "sthanaDetails": {
+        "name": "Indriya Sthana",
+        "sanskritName": "इन्द्रियस्थानम्",
+        "englishName": "Section on Sensorial Prognosis & Clinical Signs",
+        "description": "Prognostic assessment, sensory cues, olfactory/visual changes, aura shifts, and indicators of vitality or terminal state.",
+        "chapterCount": 12,
+        "themeIcon": "👁️"
+      }
+    },
+    {
+      "chapterNumber": 5,
+      "sthanaId": "indriya-sthana",
+      "sthanaName": "Indriya Sthana",
+      "sanskritTitle": "Purvarupeeyam Indriyam",
+      "englishTitle": "Predicting prognosis of diseases by prodromal symptoms",
+      "fullTitle": "Predicting prognosis of diseases by prodromal symptoms (Purvarupeeyam Indriyam Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Purvarupeeyam_Indriyam_Adhyaya",
+      "sthanaDetails": {
+        "name": "Indriya Sthana",
+        "sanskritName": "इन्द्रियस्थानम्",
+        "englishName": "Section on Sensorial Prognosis & Clinical Signs",
+        "description": "Prognostic assessment, sensory cues, olfactory/visual changes, aura shifts, and indicators of vitality or terminal state.",
+        "chapterCount": 12,
+        "themeIcon": "👁️"
+      }
+    },
+    {
+      "chapterNumber": 6,
+      "sthanaId": "indriya-sthana",
+      "sthanaName": "Indriya Sthana",
+      "sanskritTitle": "Katamanisharireeyam Indriyam",
+      "englishTitle": "Specific fatal clinical features",
+      "fullTitle": "Specific fatal clinical features (Katamanisharireeyam Indriyam Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Katamanisharireeyam_Indriyam_Adhyaya",
+      "sthanaDetails": {
+        "name": "Indriya Sthana",
+        "sanskritName": "इन्द्रियस्थानम्",
+        "englishName": "Section on Sensorial Prognosis & Clinical Signs",
+        "description": "Prognostic assessment, sensory cues, olfactory/visual changes, aura shifts, and indicators of vitality or terminal state.",
+        "chapterCount": 12,
+        "themeIcon": "👁️"
+      }
+    },
+    {
+      "chapterNumber": 7,
+      "sthanaId": "indriya-sthana",
+      "sthanaName": "Indriya Sthana",
+      "sanskritTitle": "Pannarupiyam Indriyam",
+      "englishTitle": "Fatal signs of changes in shadows, complexion, and luster",
+      "fullTitle": "Fatal signs of changes in shadows, complexion, and luster (Pannarupiyam Indriyam Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Pannarupiyam_Indriyam_Adhyaya",
+      "sthanaDetails": {
+        "name": "Indriya Sthana",
+        "sanskritName": "इन्द्रियस्थानम्",
+        "englishName": "Section on Sensorial Prognosis & Clinical Signs",
+        "description": "Prognostic assessment, sensory cues, olfactory/visual changes, aura shifts, and indicators of vitality or terminal state.",
+        "chapterCount": 12,
+        "themeIcon": "👁️"
+      }
+    },
+    {
+      "chapterNumber": 8,
+      "sthanaId": "indriya-sthana",
+      "sthanaName": "Indriya Sthana",
+      "sanskritTitle": "Avakshiraseeyam Indriyam",
+      "englishTitle": "Fatal signs like inverted shadow of dying person",
+      "fullTitle": "Fatal signs like inverted shadow of dying person (Avakshiraseeyam Indriyam Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Avakshiraseeyam_Indriyam_Adhyaya",
+      "sthanaDetails": {
+        "name": "Indriya Sthana",
+        "sanskritName": "इन्द्रियस्थानम्",
+        "englishName": "Section on Sensorial Prognosis & Clinical Signs",
+        "description": "Prognostic assessment, sensory cues, olfactory/visual changes, aura shifts, and indicators of vitality or terminal state.",
+        "chapterCount": 12,
+        "themeIcon": "👁️"
+      }
+    },
+    {
+      "chapterNumber": 9,
+      "sthanaId": "indriya-sthana",
+      "sthanaName": "Indriya Sthana",
+      "sanskritTitle": "Yasyashyavanimittiyam Indriyam",
+      "englishTitle": "Signs and Symptoms useful for Palliative Care among Patients approaching Death",
+      "fullTitle": "Signs and Symptoms useful for Palliative Care among Patients approaching Death (Yasyashyavanimittiyam Indriyam Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Yasyashyavanimittiyam_Indriyam_Adhyaya",
+      "sthanaDetails": {
+        "name": "Indriya Sthana",
+        "sanskritName": "इन्द्रियस्थानम्",
+        "englishName": "Section on Sensorial Prognosis & Clinical Signs",
+        "description": "Prognostic assessment, sensory cues, olfactory/visual changes, aura shifts, and indicators of vitality or terminal state.",
+        "chapterCount": 12,
+        "themeIcon": "👁️"
+      }
+    },
+    {
+      "chapterNumber": 10,
+      "sthanaId": "indriya-sthana",
+      "sthanaName": "Indriya Sthana",
+      "sanskritTitle": "Sadyomaraneeyam Indriyam",
+      "englishTitle": "Signs of instant death and incurable complications of several diseases",
+      "fullTitle": "Signs of instant death and incurable complications of several diseases (Sadyomaraneeyam Indriyam Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Sadyomaraneeyam_Indriyam_Adhyaya",
+      "sthanaDetails": {
+        "name": "Indriya Sthana",
+        "sanskritName": "इन्द्रियस्थानम्",
+        "englishName": "Section on Sensorial Prognosis & Clinical Signs",
+        "description": "Prognostic assessment, sensory cues, olfactory/visual changes, aura shifts, and indicators of vitality or terminal state.",
+        "chapterCount": 12,
+        "themeIcon": "👁️"
+      }
+    },
+    {
+      "chapterNumber": 11,
+      "sthanaId": "indriya-sthana",
+      "sthanaName": "Indriya Sthana",
+      "sanskritTitle": "Anujyotiyam Indriyam",
+      "englishTitle": "Signs and Symptoms of Imminent Death caused due to diminution of Agni",
+      "fullTitle": "Signs and Symptoms of Imminent Death caused due to diminution of Agni (Anujyotiyam Indriyam Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Anujyotiyam_Indriyam_Adhyaya",
+      "sthanaDetails": {
+        "name": "Indriya Sthana",
+        "sanskritName": "इन्द्रियस्थानम्",
+        "englishName": "Section on Sensorial Prognosis & Clinical Signs",
+        "description": "Prognostic assessment, sensory cues, olfactory/visual changes, aura shifts, and indicators of vitality or terminal state.",
+        "chapterCount": 12,
+        "themeIcon": "👁️"
+      }
+    },
+    {
+      "chapterNumber": 12,
+      "sthanaId": "indriya-sthana",
+      "sthanaName": "Indriya Sthana",
+      "sanskritTitle": "Gomayachurniyam Indriyam",
+      "englishTitle": "Auspicious and Inauspicious Characteristics of the messenger",
+      "fullTitle": "Auspicious and Inauspicious Characteristics of the messenger (Gomayachurniyam Indriyam Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Gomayachurniyam_Indriyam_Adhyaya",
+      "sthanaDetails": {
+        "name": "Indriya Sthana",
+        "sanskritName": "इन्द्रियस्थानम्",
+        "englishName": "Section on Sensorial Prognosis & Clinical Signs",
+        "description": "Prognostic assessment, sensory cues, olfactory/visual changes, aura shifts, and indicators of vitality or terminal state.",
+        "chapterCount": 12,
+        "themeIcon": "👁️"
+      }
+    },
+    {
+      "chapterNumber": 1,
+      "sthanaId": "chikitsa-sthana",
+      "sthanaName": "Chikitsa Sthana",
+      "sanskritTitle": "Rasayana",
+      "englishTitle": "Rejuvenation therapy",
+      "fullTitle": "Rejuvenation therapy (Rasayana Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Rasayana_Adhyaya",
+      "sthanaDetails": {
+        "name": "Chikitsa Sthana",
+        "sanskritName": "चिकित्सास्थानम्",
+        "englishName": "Section on Therapeutic Principles & Disease Management",
+        "description": "The master therapeutic heart of Ayurveda: comprehensive clinical management, herbal formulations, dietary therapy, Rasayana longevity, and Vajikarana fertility for 30 clinical disorders.",
+        "chapterCount": 30,
+        "themeIcon": "🌿"
+      }
+    },
+    {
+      "chapterNumber": 2,
+      "sthanaId": "chikitsa-sthana",
+      "sthanaName": "Chikitsa Sthana",
+      "sanskritTitle": "Vajikarana",
+      "englishTitle": "Aphrodisiac therapy, virility and treatment of sexual dysfunctions",
+      "fullTitle": "Aphrodisiac therapy, virility and treatment of sexual dysfunctions (Vajikarana Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Vajikarana_Adhyaya",
+      "sthanaDetails": {
+        "name": "Chikitsa Sthana",
+        "sanskritName": "चिकित्सास्थानम्",
+        "englishName": "Section on Therapeutic Principles & Disease Management",
+        "description": "The master therapeutic heart of Ayurveda: comprehensive clinical management, herbal formulations, dietary therapy, Rasayana longevity, and Vajikarana fertility for 30 clinical disorders.",
+        "chapterCount": 30,
+        "themeIcon": "🌿"
+      }
+    },
+    {
+      "chapterNumber": 3,
+      "sthanaId": "chikitsa-sthana",
+      "sthanaName": "Chikitsa Sthana",
+      "sanskritTitle": "different types of fever",
+      "englishTitle": "Management of Jwara  (Jwara Chikitsa Adhyaya)",
+      "fullTitle": "Management of Jwara (different types of fever) (Jwara Chikitsa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Jwara_Chikitsa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Chikitsa Sthana",
+        "sanskritName": "चिकित्सास्थानम्",
+        "englishName": "Section on Therapeutic Principles & Disease Management",
+        "description": "The master therapeutic heart of Ayurveda: comprehensive clinical management, herbal formulations, dietary therapy, Rasayana longevity, and Vajikarana fertility for 30 clinical disorders.",
+        "chapterCount": 30,
+        "themeIcon": "🌿"
+      }
+    },
+    {
+      "chapterNumber": 4,
+      "sthanaId": "chikitsa-sthana",
+      "sthanaName": "Chikitsa Sthana",
+      "sanskritTitle": "Bleeding Disorders",
+      "englishTitle": "Management of Raktapitta  (Raktapitta Chikitsa Adhyaya)",
+      "fullTitle": "Management of Raktapitta (Bleeding Disorders) (Raktapitta Chikitsa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Raktapitta_Chikitsa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Chikitsa Sthana",
+        "sanskritName": "चिकित्सास्थानम्",
+        "englishName": "Section on Therapeutic Principles & Disease Management",
+        "description": "The master therapeutic heart of Ayurveda: comprehensive clinical management, herbal formulations, dietary therapy, Rasayana longevity, and Vajikarana fertility for 30 clinical disorders.",
+        "chapterCount": 30,
+        "themeIcon": "🌿"
+      }
+    },
+    {
+      "chapterNumber": 5,
+      "sthanaId": "chikitsa-sthana",
+      "sthanaName": "Chikitsa Sthana",
+      "sanskritTitle": "Gulma Chikitsa",
+      "englishTitle": "Management of Gulma",
+      "fullTitle": "Management of Gulma  (Gulma Chikitsa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Gulma_Chikitsa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Chikitsa Sthana",
+        "sanskritName": "चिकित्सास्थानम्",
+        "englishName": "Section on Therapeutic Principles & Disease Management",
+        "description": "The master therapeutic heart of Ayurveda: comprehensive clinical management, herbal formulations, dietary therapy, Rasayana longevity, and Vajikarana fertility for 30 clinical disorders.",
+        "chapterCount": 30,
+        "themeIcon": "🌿"
+      }
+    },
+    {
+      "chapterNumber": 6,
+      "sthanaId": "chikitsa-sthana",
+      "sthanaName": "Chikitsa Sthana",
+      "sanskritTitle": "Urinary Diseases including diabetes",
+      "englishTitle": "Management of Prameha  (Prameha Chikitsa Adhyaya)",
+      "fullTitle": "Management of Prameha (Urinary Diseases including diabetes) (Prameha Chikitsa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Prameha_Chikitsa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Chikitsa Sthana",
+        "sanskritName": "चिकित्सास्थानम्",
+        "englishName": "Section on Therapeutic Principles & Disease Management",
+        "description": "The master therapeutic heart of Ayurveda: comprehensive clinical management, herbal formulations, dietary therapy, Rasayana longevity, and Vajikarana fertility for 30 clinical disorders.",
+        "chapterCount": 30,
+        "themeIcon": "🌿"
+      }
+    },
+    {
+      "chapterNumber": 7,
+      "sthanaId": "chikitsa-sthana",
+      "sthanaName": "Chikitsa Sthana",
+      "sanskritTitle": "Skin Diseases",
+      "englishTitle": "Management of Kushtha  (Kushtha Chikitsa Adhyaya)",
+      "fullTitle": "Management of Kushtha (Skin Diseases) (Kushtha Chikitsa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Kushtha_Chikitsa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Chikitsa Sthana",
+        "sanskritName": "चिकित्सास्थानम्",
+        "englishName": "Section on Therapeutic Principles & Disease Management",
+        "description": "The master therapeutic heart of Ayurveda: comprehensive clinical management, herbal formulations, dietary therapy, Rasayana longevity, and Vajikarana fertility for 30 clinical disorders.",
+        "chapterCount": 30,
+        "themeIcon": "🌿"
+      }
+    },
+    {
+      "chapterNumber": 8,
+      "sthanaId": "chikitsa-sthana",
+      "sthanaName": "Chikitsa Sthana",
+      "sanskritTitle": "Wasting Diseases",
+      "englishTitle": "Management of Rajayakshma  (Rajayakshma Chikitsa Adhyaya)",
+      "fullTitle": "Management of Rajayakshma (Wasting Diseases) (Rajayakshma Chikitsa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Rajayakshma_Chikitsa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Chikitsa Sthana",
+        "sanskritName": "चिकित्सास्थानम्",
+        "englishName": "Section on Therapeutic Principles & Disease Management",
+        "description": "The master therapeutic heart of Ayurveda: comprehensive clinical management, herbal formulations, dietary therapy, Rasayana longevity, and Vajikarana fertility for 30 clinical disorders.",
+        "chapterCount": 30,
+        "themeIcon": "🌿"
+      }
+    },
+    {
+      "chapterNumber": 9,
+      "sthanaId": "chikitsa-sthana",
+      "sthanaName": "Chikitsa Sthana",
+      "sanskritTitle": "Psychosis Disorders",
+      "englishTitle": "Management of Unmada  (Unmada Chikitsa Adhyaya)",
+      "fullTitle": "Management of Unmada (Psychosis Disorders) (Unmada Chikitsa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Unmada_Chikitsa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Chikitsa Sthana",
+        "sanskritName": "चिकित्सास्थानम्",
+        "englishName": "Section on Therapeutic Principles & Disease Management",
+        "description": "The master therapeutic heart of Ayurveda: comprehensive clinical management, herbal formulations, dietary therapy, Rasayana longevity, and Vajikarana fertility for 30 clinical disorders.",
+        "chapterCount": 30,
+        "themeIcon": "🌿"
+      }
+    },
+    {
+      "chapterNumber": 10,
+      "sthanaId": "chikitsa-sthana",
+      "sthanaName": "Chikitsa Sthana",
+      "sanskritTitle": "Seizure disorders",
+      "englishTitle": "Management of Apasmara  (Apasmara Chikitsa Adhyaya)",
+      "fullTitle": "Management of Apasmara (Seizure disorders) (Apasmara Chikitsa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Apasmara_Chikitsa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Chikitsa Sthana",
+        "sanskritName": "चिकित्सास्थानम्",
+        "englishName": "Section on Therapeutic Principles & Disease Management",
+        "description": "The master therapeutic heart of Ayurveda: comprehensive clinical management, herbal formulations, dietary therapy, Rasayana longevity, and Vajikarana fertility for 30 clinical disorders.",
+        "chapterCount": 30,
+        "themeIcon": "🌿"
+      }
+    },
+    {
+      "chapterNumber": 11,
+      "sthanaId": "chikitsa-sthana",
+      "sthanaName": "Chikitsa Sthana",
+      "sanskritTitle": "Emaciation due to Trauma",
+      "englishTitle": "Management of Kshata-kshina  (Kshatakshina Chikitsa Adhyaya)",
+      "fullTitle": "Management of Kshata-kshina (Emaciation due to Trauma) (Kshatakshina Chikitsa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Kshatakshina_Chikitsa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Chikitsa Sthana",
+        "sanskritName": "चिकित्सास्थानम्",
+        "englishName": "Section on Therapeutic Principles & Disease Management",
+        "description": "The master therapeutic heart of Ayurveda: comprehensive clinical management, herbal formulations, dietary therapy, Rasayana longevity, and Vajikarana fertility for 30 clinical disorders.",
+        "chapterCount": 30,
+        "themeIcon": "🌿"
+      }
+    },
+    {
+      "chapterNumber": 12,
+      "sthanaId": "chikitsa-sthana",
+      "sthanaName": "Chikitsa Sthana",
+      "sanskritTitle": "Various types of Swellings",
+      "englishTitle": "Management of Shvayathu  (Shvayathu Chikitsa Adhyaya)",
+      "fullTitle": "Management of Shvayathu (Various types of Swellings) (Shvayathu Chikitsa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Shvayathu_Chikitsa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Chikitsa Sthana",
+        "sanskritName": "चिकित्सास्थानम्",
+        "englishName": "Section on Therapeutic Principles & Disease Management",
+        "description": "The master therapeutic heart of Ayurveda: comprehensive clinical management, herbal formulations, dietary therapy, Rasayana longevity, and Vajikarana fertility for 30 clinical disorders.",
+        "chapterCount": 30,
+        "themeIcon": "🌿"
+      }
+    },
+    {
+      "chapterNumber": 13,
+      "sthanaId": "chikitsa-sthana",
+      "sthanaName": "Chikitsa Sthana",
+      "sanskritTitle": "Generalized enlargement of Abdomen",
+      "englishTitle": "Management of Udara  (Udara Chikitsa Adhyaya)",
+      "fullTitle": "Management of Udara (Generalized enlargement of Abdomen) (Udara Chikitsa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Udara_Chikitsa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Chikitsa Sthana",
+        "sanskritName": "चिकित्सास्थानम्",
+        "englishName": "Section on Therapeutic Principles & Disease Management",
+        "description": "The master therapeutic heart of Ayurveda: comprehensive clinical management, herbal formulations, dietary therapy, Rasayana longevity, and Vajikarana fertility for 30 clinical disorders.",
+        "chapterCount": 30,
+        "themeIcon": "🌿"
+      }
+    },
+    {
+      "chapterNumber": 14,
+      "sthanaId": "chikitsa-sthana",
+      "sthanaName": "Chikitsa Sthana",
+      "sanskritTitle": "Hemorrhoids",
+      "englishTitle": "Management of Arsha  (Arsha Chikitsa Adhyaya)",
+      "fullTitle": "Management of Arsha (Hemorrhoids) (Arsha Chikitsa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Arsha_Chikitsa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Chikitsa Sthana",
+        "sanskritName": "चिकित्सास्थानम्",
+        "englishName": "Section on Therapeutic Principles & Disease Management",
+        "description": "The master therapeutic heart of Ayurveda: comprehensive clinical management, herbal formulations, dietary therapy, Rasayana longevity, and Vajikarana fertility for 30 clinical disorders.",
+        "chapterCount": 30,
+        "themeIcon": "🌿"
+      }
+    },
+    {
+      "chapterNumber": 15,
+      "sthanaId": "chikitsa-sthana",
+      "sthanaName": "Chikitsa Sthana",
+      "sanskritTitle": "Diseases of digestion and metabolism",
+      "englishTitle": "Management of Grahani (Grahani Chikitsa Adhyaya)",
+      "fullTitle": "Management of Grahani(Diseases of digestion and metabolism) (Grahani Chikitsa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Grahani_Chikitsa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Chikitsa Sthana",
+        "sanskritName": "चिकित्सास्थानम्",
+        "englishName": "Section on Therapeutic Principles & Disease Management",
+        "description": "The master therapeutic heart of Ayurveda: comprehensive clinical management, herbal formulations, dietary therapy, Rasayana longevity, and Vajikarana fertility for 30 clinical disorders.",
+        "chapterCount": 30,
+        "themeIcon": "🌿"
+      }
+    },
+    {
+      "chapterNumber": 16,
+      "sthanaId": "chikitsa-sthana",
+      "sthanaName": "Chikitsa Sthana",
+      "sanskritTitle": "Anemia and diseases due to blood deficiency",
+      "englishTitle": "Management of Pandu (Pandu Chikitsa Adhyaya)",
+      "fullTitle": "Management of Pandu(Anemia and diseases due to blood deficiency) (Pandu Chikitsa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Pandu_Chikitsa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Chikitsa Sthana",
+        "sanskritName": "चिकित्सास्थानम्",
+        "englishName": "Section on Therapeutic Principles & Disease Management",
+        "description": "The master therapeutic heart of Ayurveda: comprehensive clinical management, herbal formulations, dietary therapy, Rasayana longevity, and Vajikarana fertility for 30 clinical disorders.",
+        "chapterCount": 30,
+        "themeIcon": "🌿"
+      }
+    },
+    {
+      "chapterNumber": 17,
+      "sthanaId": "chikitsa-sthana",
+      "sthanaName": "Chikitsa Sthana",
+      "sanskritTitle": "Hiccups",
+      "englishTitle": "Management of Hikka  and Shwasa (Dyspnea) (Hikka Shwasa Chikitsa Adhyaya)",
+      "fullTitle": "Management of Hikka (Hiccups) and Shwasa (Dyspnea) (Hikka Shwasa Chikitsa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Hikka_Shwasa_Chikitsa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Chikitsa Sthana",
+        "sanskritName": "चिकित्सास्थानम्",
+        "englishName": "Section on Therapeutic Principles & Disease Management",
+        "description": "The master therapeutic heart of Ayurveda: comprehensive clinical management, herbal formulations, dietary therapy, Rasayana longevity, and Vajikarana fertility for 30 clinical disorders.",
+        "chapterCount": 30,
+        "themeIcon": "🌿"
+      }
+    },
+    {
+      "chapterNumber": 18,
+      "sthanaId": "chikitsa-sthana",
+      "sthanaName": "Chikitsa Sthana",
+      "sanskritTitle": "Cough of various origins",
+      "englishTitle": "Management of Kasa  (Kasa Chikitsa Adhyaya)",
+      "fullTitle": "Management of Kasa (Cough of various origins) (Kasa Chikitsa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Kasa_Chikitsa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Chikitsa Sthana",
+        "sanskritName": "चिकित्सास्थानम्",
+        "englishName": "Section on Therapeutic Principles & Disease Management",
+        "description": "The master therapeutic heart of Ayurveda: comprehensive clinical management, herbal formulations, dietary therapy, Rasayana longevity, and Vajikarana fertility for 30 clinical disorders.",
+        "chapterCount": 30,
+        "themeIcon": "🌿"
+      }
+    },
+    {
+      "chapterNumber": 19,
+      "sthanaId": "chikitsa-sthana",
+      "sthanaName": "Chikitsa Sthana",
+      "sanskritTitle": "diarrhea and associated disorders",
+      "englishTitle": "Management of Atisara  (Atisara Chikitsa Adhyaya)",
+      "fullTitle": "Management of Atisara (diarrhea and associated disorders) (Atisara Chikitsa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Atisara_Chikitsa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Chikitsa Sthana",
+        "sanskritName": "चिकित्सास्थानम्",
+        "englishName": "Section on Therapeutic Principles & Disease Management",
+        "description": "The master therapeutic heart of Ayurveda: comprehensive clinical management, herbal formulations, dietary therapy, Rasayana longevity, and Vajikarana fertility for 30 clinical disorders.",
+        "chapterCount": 30,
+        "themeIcon": "🌿"
+      }
+    },
+    {
+      "chapterNumber": 20,
+      "sthanaId": "chikitsa-sthana",
+      "sthanaName": "Chikitsa Sthana",
+      "sanskritTitle": "vomiting",
+      "englishTitle": "Management of Chhardi  (Chhardi Chikitsa Adhyaya)",
+      "fullTitle": "Management of Chhardi (vomiting) (Chhardi Chikitsa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Chhardi_Chikitsa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Chikitsa Sthana",
+        "sanskritName": "चिकित्सास्थानम्",
+        "englishName": "Section on Therapeutic Principles & Disease Management",
+        "description": "The master therapeutic heart of Ayurveda: comprehensive clinical management, herbal formulations, dietary therapy, Rasayana longevity, and Vajikarana fertility for 30 clinical disorders.",
+        "chapterCount": 30,
+        "themeIcon": "🌿"
+      }
+    },
+    {
+      "chapterNumber": 21,
+      "sthanaId": "chikitsa-sthana",
+      "sthanaName": "Chikitsa Sthana",
+      "sanskritTitle": "acute spreading erysepalas",
+      "englishTitle": "Management of Visarpa  (Visarpa Chikitsa Adhyaya)",
+      "fullTitle": "Management of Visarpa (acute spreading erysepalas) (Visarpa Chikitsa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Visarpa_Chikitsa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Chikitsa Sthana",
+        "sanskritName": "चिकित्सास्थानम्",
+        "englishName": "Section on Therapeutic Principles & Disease Management",
+        "description": "The master therapeutic heart of Ayurveda: comprehensive clinical management, herbal formulations, dietary therapy, Rasayana longevity, and Vajikarana fertility for 30 clinical disorders.",
+        "chapterCount": 30,
+        "themeIcon": "🌿"
+      }
+    },
+    {
+      "chapterNumber": 22,
+      "sthanaId": "chikitsa-sthana",
+      "sthanaName": "Chikitsa Sthana",
+      "sanskritTitle": "Morbid thirst",
+      "englishTitle": "Management of Trishna  (Trishna Chikitsa Adhyaya)",
+      "fullTitle": "Management of Trishna (Morbid thirst) (Trishna Chikitsa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Trishna_Chikitsa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Chikitsa Sthana",
+        "sanskritName": "चिकित्सास्थानम्",
+        "englishName": "Section on Therapeutic Principles & Disease Management",
+        "description": "The master therapeutic heart of Ayurveda: comprehensive clinical management, herbal formulations, dietary therapy, Rasayana longevity, and Vajikarana fertility for 30 clinical disorders.",
+        "chapterCount": 30,
+        "themeIcon": "🌿"
+      }
+    },
+    {
+      "chapterNumber": 23,
+      "sthanaId": "chikitsa-sthana",
+      "sthanaName": "Chikitsa Sthana",
+      "sanskritTitle": "various types of poisoning",
+      "englishTitle": "Management of Visha  (Visha Chikitsa Adhyaya)",
+      "fullTitle": "Management of Visha (various types of poisoning) (Visha Chikitsa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Visha_Chikitsa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Chikitsa Sthana",
+        "sanskritName": "चिकित्सास्थानम्",
+        "englishName": "Section on Therapeutic Principles & Disease Management",
+        "description": "The master therapeutic heart of Ayurveda: comprehensive clinical management, herbal formulations, dietary therapy, Rasayana longevity, and Vajikarana fertility for 30 clinical disorders.",
+        "chapterCount": 30,
+        "themeIcon": "🌿"
+      }
+    },
+    {
+      "chapterNumber": 24,
+      "sthanaId": "chikitsa-sthana",
+      "sthanaName": "Chikitsa Sthana",
+      "sanskritTitle": "Intoxication",
+      "englishTitle": "Management of Madatyaya  (Madatyaya Chikitsa Adhyaya)",
+      "fullTitle": "Management of Madatyaya (Intoxication) (Madatyaya Chikitsa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Madatyaya_Chikitsa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Chikitsa Sthana",
+        "sanskritName": "चिकित्सास्थानम्",
+        "englishName": "Section on Therapeutic Principles & Disease Management",
+        "description": "The master therapeutic heart of Ayurveda: comprehensive clinical management, herbal formulations, dietary therapy, Rasayana longevity, and Vajikarana fertility for 30 clinical disorders.",
+        "chapterCount": 30,
+        "themeIcon": "🌿"
+      }
+    },
+    {
+      "chapterNumber": 25,
+      "sthanaId": "chikitsa-sthana",
+      "sthanaName": "Chikitsa Sthana",
+      "sanskritTitle": "ulcers",
+      "englishTitle": "Management of two types of Vrana  (Dwivraniya Chikitsa Adhyaya)",
+      "fullTitle": "Management of two types of Vrana (ulcers) (Dwivraniya Chikitsa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Dwivraniya_Chikitsa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Chikitsa Sthana",
+        "sanskritName": "चिकित्सास्थानम्",
+        "englishName": "Section on Therapeutic Principles & Disease Management",
+        "description": "The master therapeutic heart of Ayurveda: comprehensive clinical management, herbal formulations, dietary therapy, Rasayana longevity, and Vajikarana fertility for 30 clinical disorders.",
+        "chapterCount": 30,
+        "themeIcon": "🌿"
+      }
+    },
+    {
+      "chapterNumber": 26,
+      "sthanaId": "chikitsa-sthana",
+      "sthanaName": "Chikitsa Sthana",
+      "sanskritTitle": "diseases of three vital organs",
+      "englishTitle": "Management of Trimarma  (Trimarmiya Chikitsa Adhyaya)",
+      "fullTitle": "Management of Trimarma (diseases of three vital organs) (Trimarmiya Chikitsa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Trimarmiya_Chikitsa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Chikitsa Sthana",
+        "sanskritName": "चिकित्सास्थानम्",
+        "englishName": "Section on Therapeutic Principles & Disease Management",
+        "description": "The master therapeutic heart of Ayurveda: comprehensive clinical management, herbal formulations, dietary therapy, Rasayana longevity, and Vajikarana fertility for 30 clinical disorders.",
+        "chapterCount": 30,
+        "themeIcon": "🌿"
+      }
+    },
+    {
+      "chapterNumber": 27,
+      "sthanaId": "chikitsa-sthana",
+      "sthanaName": "Chikitsa Sthana",
+      "sanskritTitle": "Diseases of thigh and hip",
+      "englishTitle": "Management of Urustambha  (Urustambha Chikitsa Adhyaya)",
+      "fullTitle": "Management of Urustambha (Diseases of thigh and hip) (Urustambha Chikitsa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Urustambha_Chikitsa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Chikitsa Sthana",
+        "sanskritName": "चिकित्सास्थानम्",
+        "englishName": "Section on Therapeutic Principles & Disease Management",
+        "description": "The master therapeutic heart of Ayurveda: comprehensive clinical management, herbal formulations, dietary therapy, Rasayana longevity, and Vajikarana fertility for 30 clinical disorders.",
+        "chapterCount": 30,
+        "themeIcon": "🌿"
+      }
+    },
+    {
+      "chapterNumber": 28,
+      "sthanaId": "chikitsa-sthana",
+      "sthanaName": "Chikitsa Sthana",
+      "sanskritTitle": "Vatavyadhi Chikitsa",
+      "englishTitle": "Management of diseases caused by vata dosha",
+      "fullTitle": "Management of diseases caused by vata dosha (Vatavyadhi Chikitsa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Vatavyadhi_Chikitsa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Chikitsa Sthana",
+        "sanskritName": "चिकित्सास्थानम्",
+        "englishName": "Section on Therapeutic Principles & Disease Management",
+        "description": "The master therapeutic heart of Ayurveda: comprehensive clinical management, herbal formulations, dietary therapy, Rasayana longevity, and Vajikarana fertility for 30 clinical disorders.",
+        "chapterCount": 30,
+        "themeIcon": "🌿"
+      }
+    },
+    {
+      "chapterNumber": 29,
+      "sthanaId": "chikitsa-sthana",
+      "sthanaName": "Chikitsa Sthana",
+      "sanskritTitle": "Vatarakta Chikitsa",
+      "englishTitle": "Management of diseases involving vata and rakta",
+      "fullTitle": "Management of diseases involving vata and rakta (Vatarakta Chikitsa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Vatarakta_Chikitsa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Chikitsa Sthana",
+        "sanskritName": "चिकित्सास्थानम्",
+        "englishName": "Section on Therapeutic Principles & Disease Management",
+        "description": "The master therapeutic heart of Ayurveda: comprehensive clinical management, herbal formulations, dietary therapy, Rasayana longevity, and Vajikarana fertility for 30 clinical disorders.",
+        "chapterCount": 30,
+        "themeIcon": "🌿"
+      }
+    },
+    {
+      "chapterNumber": 30,
+      "sthanaId": "chikitsa-sthana",
+      "sthanaName": "Chikitsa Sthana",
+      "sanskritTitle": "Yonivyapat Chikitsa",
+      "englishTitle": "Management of disorders of genital tract",
+      "fullTitle": "Management of disorders of genital tract (Yonivyapat Chikitsa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Yonivyapat_Chikitsa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Chikitsa Sthana",
+        "sanskritName": "चिकित्सास्थानम्",
+        "englishName": "Section on Therapeutic Principles & Disease Management",
+        "description": "The master therapeutic heart of Ayurveda: comprehensive clinical management, herbal formulations, dietary therapy, Rasayana longevity, and Vajikarana fertility for 30 clinical disorders.",
+        "chapterCount": 30,
+        "themeIcon": "🌿"
+      }
+    },
+    {
+      "chapterNumber": 1,
+      "sthanaId": "kalpa-sthana",
+      "sthanaName": "Kalpa Sthana",
+      "sanskritTitle": "Madana Kalpa",
+      "englishTitle": "Pharmaceutical preparations of Madanaphala",
+      "fullTitle": "Pharmaceutical preparations of Madanaphala (Madana Kalpa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Madana_Kalpa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Kalpa Sthana",
+        "sanskritName": "कल्पस्थानम्",
+        "englishName": "Section on Pharmaceutical Preparations & Formulations",
+        "description": "Formulation pharmacy, processing, decoctions, medicated ghee/oils, and safe administration of therapeutic emetics and purgatives.",
+        "chapterCount": 12,
+        "themeIcon": "🧪"
+      }
+    },
+    {
+      "chapterNumber": 2,
+      "sthanaId": "kalpa-sthana",
+      "sthanaName": "Kalpa Sthana",
+      "sanskritTitle": "Jimutaka Kalpa",
+      "englishTitle": "Pharmaceutical preparations of Jimutaka",
+      "fullTitle": "Pharmaceutical preparations of Jimutaka (Jimutaka Kalpa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Jimutaka_Kalpa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Kalpa Sthana",
+        "sanskritName": "कल्पस्थानम्",
+        "englishName": "Section on Pharmaceutical Preparations & Formulations",
+        "description": "Formulation pharmacy, processing, decoctions, medicated ghee/oils, and safe administration of therapeutic emetics and purgatives.",
+        "chapterCount": 12,
+        "themeIcon": "🧪"
+      }
+    },
+    {
+      "chapterNumber": 3,
+      "sthanaId": "kalpa-sthana",
+      "sthanaName": "Kalpa Sthana",
+      "sanskritTitle": "Ikshvaku Kalpa",
+      "englishTitle": "Pharmaceutical preparations of Ikshvaku",
+      "fullTitle": "Pharmaceutical preparations of Ikshvaku (Ikshvaku Kalpa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Ikshvaku_Kalpa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Kalpa Sthana",
+        "sanskritName": "कल्पस्थानम्",
+        "englishName": "Section on Pharmaceutical Preparations & Formulations",
+        "description": "Formulation pharmacy, processing, decoctions, medicated ghee/oils, and safe administration of therapeutic emetics and purgatives.",
+        "chapterCount": 12,
+        "themeIcon": "🧪"
+      }
+    },
+    {
+      "chapterNumber": 4,
+      "sthanaId": "kalpa-sthana",
+      "sthanaName": "Kalpa Sthana",
+      "sanskritTitle": "Dhamargava Kalpa",
+      "englishTitle": "Pharmaceutical preparations of Dhamargava",
+      "fullTitle": "Pharmaceutical preparations of Dhamargava (Dhamargava Kalpa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Dhamargava_Kalpa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Kalpa Sthana",
+        "sanskritName": "कल्पस्थानम्",
+        "englishName": "Section on Pharmaceutical Preparations & Formulations",
+        "description": "Formulation pharmacy, processing, decoctions, medicated ghee/oils, and safe administration of therapeutic emetics and purgatives.",
+        "chapterCount": 12,
+        "themeIcon": "🧪"
+      }
+    },
+    {
+      "chapterNumber": 5,
+      "sthanaId": "kalpa-sthana",
+      "sthanaName": "Kalpa Sthana",
+      "sanskritTitle": "Vatsaka Kalpa",
+      "englishTitle": "Pharmaceutical preparations of Vatsaka",
+      "fullTitle": "Pharmaceutical preparations of Vatsaka (Vatsaka Kalpa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Vatsaka_Kalpa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Kalpa Sthana",
+        "sanskritName": "कल्पस्थानम्",
+        "englishName": "Section on Pharmaceutical Preparations & Formulations",
+        "description": "Formulation pharmacy, processing, decoctions, medicated ghee/oils, and safe administration of therapeutic emetics and purgatives.",
+        "chapterCount": 12,
+        "themeIcon": "🧪"
+      }
+    },
+    {
+      "chapterNumber": 6,
+      "sthanaId": "kalpa-sthana",
+      "sthanaName": "Kalpa Sthana",
+      "sanskritTitle": "Kritavedhana Kalpa",
+      "englishTitle": "Pharmaceutical preparations of Kritavedhana",
+      "fullTitle": "Pharmaceutical preparations of Kritavedhana (Kritavedhana Kalpa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Kritavedhana_Kalpa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Kalpa Sthana",
+        "sanskritName": "कल्पस्थानम्",
+        "englishName": "Section on Pharmaceutical Preparations & Formulations",
+        "description": "Formulation pharmacy, processing, decoctions, medicated ghee/oils, and safe administration of therapeutic emetics and purgatives.",
+        "chapterCount": 12,
+        "themeIcon": "🧪"
+      }
+    },
+    {
+      "chapterNumber": 7,
+      "sthanaId": "kalpa-sthana",
+      "sthanaName": "Kalpa Sthana",
+      "sanskritTitle": "Shyamatrivrita Kalpa",
+      "englishTitle": "Pharmaceutical preparations of Shyama Trivrita",
+      "fullTitle": "Pharmaceutical preparations of Shyama Trivrita (Shyamatrivrita Kalpa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Shyamatrivrita_Kalpa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Kalpa Sthana",
+        "sanskritName": "कल्पस्थानम्",
+        "englishName": "Section on Pharmaceutical Preparations & Formulations",
+        "description": "Formulation pharmacy, processing, decoctions, medicated ghee/oils, and safe administration of therapeutic emetics and purgatives.",
+        "chapterCount": 12,
+        "themeIcon": "🧪"
+      }
+    },
+    {
+      "chapterNumber": 8,
+      "sthanaId": "kalpa-sthana",
+      "sthanaName": "Kalpa Sthana",
+      "sanskritTitle": "Chaturangula Kalpa",
+      "englishTitle": "Pharmaceutical preparations of Chaturangula",
+      "fullTitle": "Pharmaceutical preparations of Chaturangula (Chaturangula Kalpa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Chaturangula_Kalpa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Kalpa Sthana",
+        "sanskritName": "कल्पस्थानम्",
+        "englishName": "Section on Pharmaceutical Preparations & Formulations",
+        "description": "Formulation pharmacy, processing, decoctions, medicated ghee/oils, and safe administration of therapeutic emetics and purgatives.",
+        "chapterCount": 12,
+        "themeIcon": "🧪"
+      }
+    },
+    {
+      "chapterNumber": 9,
+      "sthanaId": "kalpa-sthana",
+      "sthanaName": "Kalpa Sthana",
+      "sanskritTitle": "Tilvaka Kalpa",
+      "englishTitle": "Pharmaceutical preparations of Tilvaka",
+      "fullTitle": "Pharmaceutical preparations of Tilvaka (Tilvaka Kalpa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Tilvaka_Kalpa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Kalpa Sthana",
+        "sanskritName": "कल्पस्थानम्",
+        "englishName": "Section on Pharmaceutical Preparations & Formulations",
+        "description": "Formulation pharmacy, processing, decoctions, medicated ghee/oils, and safe administration of therapeutic emetics and purgatives.",
+        "chapterCount": 12,
+        "themeIcon": "🧪"
+      }
+    },
+    {
+      "chapterNumber": 10,
+      "sthanaId": "kalpa-sthana",
+      "sthanaName": "Kalpa Sthana",
+      "sanskritTitle": "Sudha Kalpa",
+      "englishTitle": "Pharmaceutical preparations of Sudha",
+      "fullTitle": "Pharmaceutical preparations of Sudha (Sudha Kalpa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Sudha_Kalpa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Kalpa Sthana",
+        "sanskritName": "कल्पस्थानम्",
+        "englishName": "Section on Pharmaceutical Preparations & Formulations",
+        "description": "Formulation pharmacy, processing, decoctions, medicated ghee/oils, and safe administration of therapeutic emetics and purgatives.",
+        "chapterCount": 12,
+        "themeIcon": "🧪"
+      }
+    },
+    {
+      "chapterNumber": 11,
+      "sthanaId": "kalpa-sthana",
+      "sthanaName": "Kalpa Sthana",
+      "sanskritTitle": "Saptalashankhini Kalpa",
+      "englishTitle": "Pharmaceutical preparations of Saptala and Shankhini",
+      "fullTitle": "Pharmaceutical preparations of Saptala and Shankhini (Saptalashankhini Kalpa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Saptalashankhini_Kalpa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Kalpa Sthana",
+        "sanskritName": "कल्पस्थानम्",
+        "englishName": "Section on Pharmaceutical Preparations & Formulations",
+        "description": "Formulation pharmacy, processing, decoctions, medicated ghee/oils, and safe administration of therapeutic emetics and purgatives.",
+        "chapterCount": 12,
+        "themeIcon": "🧪"
+      }
+    },
+    {
+      "chapterNumber": 12,
+      "sthanaId": "kalpa-sthana",
+      "sthanaName": "Kalpa Sthana",
+      "sanskritTitle": "Dantidravanti Kalpa",
+      "englishTitle": "Pharmaceutical preparations of Danti and Dravanti",
+      "fullTitle": "Pharmaceutical preparations of Danti and Dravanti (Dantidravanti Kalpa Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Dantidravanti_Kalpa_Adhyaya",
+      "sthanaDetails": {
+        "name": "Kalpa Sthana",
+        "sanskritName": "कल्पस्थानम्",
+        "englishName": "Section on Pharmaceutical Preparations & Formulations",
+        "description": "Formulation pharmacy, processing, decoctions, medicated ghee/oils, and safe administration of therapeutic emetics and purgatives.",
+        "chapterCount": 12,
+        "themeIcon": "🧪"
+      }
+    },
+    {
+      "chapterNumber": 1,
+      "sthanaId": "siddhi-sthana",
+      "sthanaName": "Siddhi Sthana",
+      "sanskritTitle": "Kalpana Siddhi",
+      "englishTitle": "Standard administration of purification procedures",
+      "fullTitle": "Standard administration of purification procedures (Kalpana Siddhi Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Kalpana_Siddhi_Adhyaya",
+      "sthanaDetails": {
+        "name": "Siddhi Sthana",
+        "sanskritName": "सिद्धिस्थानम्",
+        "englishName": "Section on Therapeutic Procedures & Panchakarma Management",
+        "description": "Successful outcomes in Panchakarma (Basti, Vamana, Virechana), prevention of procedural complications, and management of emergencies in vital organs (Marmas).",
+        "chapterCount": 12,
+        "themeIcon": "✨"
+      }
+    },
+    {
+      "chapterNumber": 2,
+      "sthanaId": "siddhi-sthana",
+      "sthanaName": "Siddhi Sthana",
+      "sanskritTitle": "Panchakarmiya Siddhi",
+      "englishTitle": "Successful administration of Panchakarma therapies",
+      "fullTitle": "Successful administration of Panchakarma therapies (Panchakarmiya Siddhi Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Panchakarmiya_Siddhi_Adhyaya",
+      "sthanaDetails": {
+        "name": "Siddhi Sthana",
+        "sanskritName": "सिद्धिस्थानम्",
+        "englishName": "Section on Therapeutic Procedures & Panchakarma Management",
+        "description": "Successful outcomes in Panchakarma (Basti, Vamana, Virechana), prevention of procedural complications, and management of emergencies in vital organs (Marmas).",
+        "chapterCount": 12,
+        "themeIcon": "✨"
+      }
+    },
+    {
+      "chapterNumber": 3,
+      "sthanaId": "siddhi-sthana",
+      "sthanaName": "Siddhi Sthana",
+      "sanskritTitle": "therapeutic enema",
+      "englishTitle": "Standard practices of Basti  (Bastisutriyam Siddhi Adhyaya)",
+      "fullTitle": "Standard practices of Basti (therapeutic enema) (Bastisutriyam Siddhi Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Bastisutriyam_Siddhi_Adhyaya",
+      "sthanaDetails": {
+        "name": "Siddhi Sthana",
+        "sanskritName": "सिद्धिस्थानम्",
+        "englishName": "Section on Therapeutic Procedures & Panchakarma Management",
+        "description": "Successful outcomes in Panchakarma (Basti, Vamana, Virechana), prevention of procedural complications, and management of emergencies in vital organs (Marmas).",
+        "chapterCount": 12,
+        "themeIcon": "✨"
+      }
+    },
+    {
+      "chapterNumber": 4,
+      "sthanaId": "siddhi-sthana",
+      "sthanaName": "Siddhi Sthana",
+      "sanskritTitle": "Snehavyapat Siddhi",
+      "englishTitle": "Complications of unctuous enema and their successful management",
+      "fullTitle": "Complications of unctuous enema and their successful management (Snehavyapat Siddhi Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Snehavyapat_Siddhi_Adhyaya",
+      "sthanaDetails": {
+        "name": "Siddhi Sthana",
+        "sanskritName": "सिद्धिस्थानम्",
+        "englishName": "Section on Therapeutic Procedures & Panchakarma Management",
+        "description": "Successful outcomes in Panchakarma (Basti, Vamana, Virechana), prevention of procedural complications, and management of emergencies in vital organs (Marmas).",
+        "chapterCount": 12,
+        "themeIcon": "✨"
+      }
+    },
+    {
+      "chapterNumber": 5,
+      "sthanaId": "siddhi-sthana",
+      "sthanaName": "Siddhi Sthana",
+      "sanskritTitle": "Netrabastivyapat Siddhi",
+      "englishTitle": "Management of complications due to enema nozzle",
+      "fullTitle": "Management of complications due to enema nozzle (Netrabastivyapat Siddhi Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Netrabastivyapat_Siddhi_Adhyaya",
+      "sthanaDetails": {
+        "name": "Siddhi Sthana",
+        "sanskritName": "सिद्धिस्थानम्",
+        "englishName": "Section on Therapeutic Procedures & Panchakarma Management",
+        "description": "Successful outcomes in Panchakarma (Basti, Vamana, Virechana), prevention of procedural complications, and management of emergencies in vital organs (Marmas).",
+        "chapterCount": 12,
+        "themeIcon": "✨"
+      }
+    },
+    {
+      "chapterNumber": 6,
+      "sthanaId": "siddhi-sthana",
+      "sthanaName": "Siddhi Sthana",
+      "sanskritTitle": "Vamana Virechana Vyapat Siddhi",
+      "englishTitle": "Management of complications of improper therapeutic emesis and purgation",
+      "fullTitle": "Management of complications of improper therapeutic emesis and purgation (Vamana Virechana Vyapat Siddhi Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Vamana_Virechana_Vyapat_Siddhi_Adhyaya",
+      "sthanaDetails": {
+        "name": "Siddhi Sthana",
+        "sanskritName": "सिद्धिस्थानम्",
+        "englishName": "Section on Therapeutic Procedures & Panchakarma Management",
+        "description": "Successful outcomes in Panchakarma (Basti, Vamana, Virechana), prevention of procedural complications, and management of emergencies in vital organs (Marmas).",
+        "chapterCount": 12,
+        "themeIcon": "✨"
+      }
+    },
+    {
+      "chapterNumber": 7,
+      "sthanaId": "siddhi-sthana",
+      "sthanaName": "Siddhi Sthana",
+      "sanskritTitle": "Bastivyapat Siddhi",
+      "englishTitle": "Management of complications of therapeutic enema",
+      "fullTitle": "Management of complications of therapeutic enema (Bastivyapat Siddhi Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Bastivyapat_Siddhi_Adhyaya",
+      "sthanaDetails": {
+        "name": "Siddhi Sthana",
+        "sanskritName": "सिद्धिस्थानम्",
+        "englishName": "Section on Therapeutic Procedures & Panchakarma Management",
+        "description": "Successful outcomes in Panchakarma (Basti, Vamana, Virechana), prevention of procedural complications, and management of emergencies in vital organs (Marmas).",
+        "chapterCount": 12,
+        "themeIcon": "✨"
+      }
+    },
+    {
+      "chapterNumber": 8,
+      "sthanaId": "siddhi-sthana",
+      "sthanaName": "Siddhi Sthana",
+      "sanskritTitle": "Prasrita Yogiyam Siddhi",
+      "englishTitle": "Standardized therapeutic enema formulations in a dose of Prasrita Unit",
+      "fullTitle": "Standardized therapeutic enema formulations in a dose of Prasrita Unit (Prasrita Yogiyam Siddhi Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Prasrita_Yogiyam_Siddhi_Adhyaya",
+      "sthanaDetails": {
+        "name": "Siddhi Sthana",
+        "sanskritName": "सिद्धिस्थानम्",
+        "englishName": "Section on Therapeutic Procedures & Panchakarma Management",
+        "description": "Successful outcomes in Panchakarma (Basti, Vamana, Virechana), prevention of procedural complications, and management of emergencies in vital organs (Marmas).",
+        "chapterCount": 12,
+        "themeIcon": "✨"
+      }
+    },
+    {
+      "chapterNumber": 9,
+      "sthanaId": "siddhi-sthana",
+      "sthanaName": "Siddhi Sthana",
+      "sanskritTitle": "Trimarmiya Siddhi",
+      "englishTitle": "Management of diseases of three vital organs",
+      "fullTitle": "Management of diseases of three vital organs (Trimarmiya Siddhi Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Trimarmiya_Siddhi_Adhyaya",
+      "sthanaDetails": {
+        "name": "Siddhi Sthana",
+        "sanskritName": "सिद्धिस्थानम्",
+        "englishName": "Section on Therapeutic Procedures & Panchakarma Management",
+        "description": "Successful outcomes in Panchakarma (Basti, Vamana, Virechana), prevention of procedural complications, and management of emergencies in vital organs (Marmas).",
+        "chapterCount": 12,
+        "themeIcon": "✨"
+      }
+    },
+    {
+      "chapterNumber": 10,
+      "sthanaId": "siddhi-sthana",
+      "sthanaName": "Siddhi Sthana",
+      "sanskritTitle": "Basti Siddhi",
+      "englishTitle": "Successful administration of therapeutic enema",
+      "fullTitle": "Successful administration of therapeutic enema (Basti Siddhi Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Basti_Siddhi_Adhyaya",
+      "sthanaDetails": {
+        "name": "Siddhi Sthana",
+        "sanskritName": "सिद्धिस्थानम्",
+        "englishName": "Section on Therapeutic Procedures & Panchakarma Management",
+        "description": "Successful outcomes in Panchakarma (Basti, Vamana, Virechana), prevention of procedural complications, and management of emergencies in vital organs (Marmas).",
+        "chapterCount": 12,
+        "themeIcon": "✨"
+      }
+    },
+    {
+      "chapterNumber": 11,
+      "sthanaId": "siddhi-sthana",
+      "sthanaName": "Siddhi Sthana",
+      "sanskritTitle": "Phalamatra Siddhi",
+      "englishTitle": "Utility of medicinal fruits and other factors in standard therapeutic enema",
+      "fullTitle": "Utility of medicinal fruits and other factors in standard therapeutic enema (Phalamatra Siddhi Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Phalamatra_Siddhi_Adhyaya",
+      "sthanaDetails": {
+        "name": "Siddhi Sthana",
+        "sanskritName": "सिद्धिस्थानम्",
+        "englishName": "Section on Therapeutic Procedures & Panchakarma Management",
+        "description": "Successful outcomes in Panchakarma (Basti, Vamana, Virechana), prevention of procedural complications, and management of emergencies in vital organs (Marmas).",
+        "chapterCount": 12,
+        "themeIcon": "✨"
+      }
+    },
+    {
+      "chapterNumber": 12,
+      "sthanaId": "siddhi-sthana",
+      "sthanaName": "Siddhi Sthana",
+      "sanskritTitle": "Uttar Basti Siddhi",
+      "englishTitle": "Standard administration of best effective therapeutic enema",
+      "fullTitle": "Standard administration of best effective therapeutic enema (Uttar Basti Siddhi Adhyaya)",
+      "canonicalUrl": "https://www.carakasamhitaonline.com/index.php?title=Uttar_Basti_Siddhi_Adhyaya",
+      "sthanaDetails": {
+        "name": "Siddhi Sthana",
+        "sanskritName": "सिद्धिस्थानम्",
+        "englishName": "Section on Therapeutic Procedures & Panchakarma Management",
+        "description": "Successful outcomes in Panchakarma (Basti, Vamana, Virechana), prevention of procedural complications, and management of emergencies in vital organs (Marmas).",
+        "chapterCount": 12,
+        "themeIcon": "✨"
+      }
+    }
+  ]
+}

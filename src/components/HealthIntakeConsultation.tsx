@@ -205,6 +205,23 @@ export default function HealthIntakeConsultation({ profile, onClose, onNavigateT
                       <p className="text-emerald-300/60 text-xs font-serif italic">
                         {selectedResult.remedy.sanskrit} · {selectedResult.remedy.charakaRef}
                       </p>
+                      {selectedResult.canonicalChapter && (
+                        <div className="mt-2 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-950/80 border border-emerald-700/50 text-[11px] font-mono">
+                          <span>📜</span>
+                          <span className="text-emerald-300 font-bold">
+                            {selectedResult.canonicalChapter.sthanaName} · #{selectedResult.canonicalChapter.chapterNumber}
+                          </span>
+                          <span className="text-emerald-400/80">({selectedResult.canonicalChapter.sanskritTitle})</span>
+                          <a
+                            href={selectedResult.canonicalChapter.canonicalUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-amber-300 hover:text-amber-200 underline ml-1 font-semibold"
+                          >
+                            Canonical Shlokas ↗
+                          </a>
+                        </div>
+                      )}
                     </div>
 
                     {/* Confidence Score Pill */}

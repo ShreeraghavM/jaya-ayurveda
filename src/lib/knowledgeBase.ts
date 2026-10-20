@@ -959,3 +959,95 @@ export function deleteCustomResearchItem(id: string): void {
     /* storage fallback */
   }
 }
+
+// ─── CHARAKA SAMHITA CANONICAL REGISTRY & 120 CHAPTER ACCESSORS ─────────────
+
+import charakaData from '@/data/charaka_samhita_120_chapters.json'
+
+export interface CharakaSthanaMeta {
+  name: string
+  sanskritName: string
+  englishName: string
+  description: string
+  chapterCount: number
+  themeIcon: string
+}
+
+export interface CharakaChapter {
+  chapterNumber: number
+  sthanaId: string
+  sthanaName: string
+  sanskritTitle: string
+  englishTitle: string
+  fullTitle: string
+  canonicalUrl: string
+  sthanaDetails?: CharakaSthanaMeta
+  matchedConditionId?: string
+}
+
+// Map key clinical conditions directly to their primary Chikitsa / Nidana / Sutra chapter
+const CONDITION_TO_CHAPTER_MAP: Record<string, { sthanaId: string; chapterNumber: number }> = {
+  'prameha-diabetes': { sthanaId: 'chikitsa-sthana', chapterNumber: 6 }, // Prameha Chikitsa
+  'raktachapa-hypertension': { sthanaId: 'chikitsa-sthana', chapterNumber: 28 }, // Vatavyadhi Chikitsa
+  'amlapitta-gerd': { sthanaId: 'chikitsa-sthana', chapterNumber: 15 }, // Grahani / Agni Chikitsa
+  'grahani-ibs': { sthanaId: 'chikitsa-sthana', chapterNumber: 15 }, // Grahani Dosha Chikitsa
+  'sandhivata-osteoarthritis': { sthanaId: 'chikitsa-sthana', chapterNumber: 28 }, // Vatavyadhi Chikitsa
+  'anidra-insomnia': { sthanaId: 'sutra-sthana', chapterNumber: 21 }, // Ashtau Ninditiya (Sleep physiology)
+  'kasa-cough': { sthanaId: 'chikitsa-sthana', chapterNumber: 18 }, // Kasa Chikitsa
+  'pratishyaya-sinusitis': { sthanaId: 'chikitsa-sthana', chapterNumber: 26 }, // Trimarmiya Chikitsa (Shiras/Head)
+  'greeva-sthambha': { sthanaId: 'chikitsa-sthana', chapterNumber: 28 }, // Vatavyadhi Chikitsa
+  'chittodvega-anxiety': { sthanaId: 'chikitsa-sthana', chapterNumber: 9 }, // Unmada Chikitsa (Mind/Manas)
+  'vicharchika-eczema': { sthanaId: 'chikitsa-sthana', chapterNumber: 7 }, // Kushtha Chikitsa
+  'khalitya-hairfall': { sthanaId: 'chikitsa-sthana', chapterNumber: 26 }, // Trimarmiya Chikitsa (Shiro Roga)
+  'ojas-kshaya': { sthanaId: 'chikitsa-sthana', chapterNumber: 1 }, // Rasayana Adhyaya
+  'vibandha-constipation': { sthanaId: 'sutra-sthana', chapterNumber: 7 }, // Naveganadharaniya Adhyaya
+  'swasa-asthma': { sthanaId: 'chikitsa-sthana', chapterNumber: 17 }, // Hikka Swasa Chikitsa
+  'raktapradara-menorrhagia': { sthanaId: 'chikitsa-sthana', chapterNumber: 30 }, // Yonivyapat Chikitsa
+  'artavakshaya-oligomenorrhea': { sthanaId: 'chikitsa-sthana', chapterNumber: 30 }, // Yonivyapat Chikitsa
+  'yathochitakala-adarshanam-pcos': { sthanaId: 'chikitsa-sthana', chapterNumber: 30 }, // Yonivyapat Chikitsa
+}
+
+export function getCharakaSthanas(): { id: string; meta: CharakaSthanaMeta }[] {
+  const sthanas = charakaData.sthanas as Record<string, CharakaSthanaMeta>
+  return Object.entries(sthanas).map(([id, meta]) => ({ id, meta }))
+}
+
+export function getAllCharakaChapters(): CharakaChapter[] {
+  const chapters = charakaData.chapters as CharakaChapter[]
+  return chapters.map(ch => {
+    // Check if this chapter is linked to a condition
+    const matchedEntry = Object.entries(CONDITION_TO_CHAPTER_MAP).find(
+      ([, target]) => target.sthanaId === ch.sthanaId && target.chapterNumber === ch.chapterNumber
+    )
+    return {
+      ...ch,
+      matchedConditionId: matchedEntry ? matchedEntry[0] : undefined,
+    }
+  })
+}
+
+export function getChaptersBySthana(sthanaId: string): CharakaChapter[] {
+  const all = getAllCharakaChapters()
+  return all.filter(c => c.sthanaId === sthanaId)
+}
+
+export function searchCharakaChapters(query: string): CharakaChapter[] {
+  const q = query.trim().toLowerCase()
+  if (!q) return getAllCharakaChapters()
+  const all = getAllCharakaChapters()
+  return all.filter(c =>
+    c.sanskritTitle.toLowerCase().includes(q) ||
+    c.englishTitle.toLowerCase().includes(q) ||
+    c.fullTitle.toLowerCase().includes(q) ||
+    c.sthanaName.toLowerCase().includes(q) ||
+    (c.sthanaDetails?.description.toLowerCase().includes(q) ?? false)
+  )
+}
+
+export function getChapterByCondition(conditionId: string): CharakaChapter | undefined {
+  const target = CONDITION_TO_CHAPTER_MAP[conditionId]
+  if (!target) return undefined
+  const all = getAllCharakaChapters()
+  return all.find(c => c.sthanaId === target.sthanaId && c.chapterNumber === target.chapterNumber)
+}
+

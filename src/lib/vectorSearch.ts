@@ -4,10 +4,12 @@
 
 import {
   DISEASE_REPERTORY,
+  getChapterByCondition,
   type DiseaseRemedy,
   type MeasurableMilestone,
   type TimedIntakeItem,
   type TherapeuticExercise,
+  type CharakaChapter,
 } from './knowledgeBase'
 
 export interface VectorMatchResult {
@@ -21,6 +23,7 @@ export interface VectorMatchResult {
   exercisePrescription: TherapeuticExercise[]
   milestoneScorecard: MeasurableMilestone
   disclaimer: string
+  canonicalChapter?: CharakaChapter
 }
 
 // ─── AYURVEDIC DOMAIN SYNONYMS & INTENT EXPANSION ──────────────────────────
@@ -230,6 +233,7 @@ export function vectorizeAndMatchHealthIssues(userInput: string): VectorMatchRes
       intakePrescription: intakes,
       exercisePrescription: exercises,
       milestoneScorecard: milestones,
+      canonicalChapter: getChapterByCondition(remedy.id),
       disclaimer: 'This personalized protocol is grounded in the classical Charaka Samhita and clinical phytotherapy trials. It supports natural biological homeostasis and does not substitute for acute emergency medical care.',
     }
   })

@@ -4,6 +4,7 @@ import { Card } from '@/components/ui/card'
 import CharakaSamhitaVault from './CharakaSamhitaVault'
 import KnowledgeHub from './KnowledgeHub'
 import HealthIntakeConsultation from './HealthIntakeConsultation'
+import CharakaExplorer from './CharakaExplorer'
 
 interface Props {
   profile: UserProfile
@@ -11,7 +12,7 @@ interface Props {
 
 export default function Remedies({ profile }: Props) {
   const dosha = profile.doshaType || 'Vata'
-  const [activeSubTab, setActiveSubTab] = useState<'intake' | 'knowledge' | 'remedies' | 'charaka'>('intake')
+  const [activeSubTab, setActiveSubTab] = useState<'intake' | 'chapters' | 'knowledge' | 'remedies' | 'charaka'>('chapters')
   const [search, setSearch] = useState('')
   const [selectedRemedy, setSelectedRemedy] = useState<Remedy | null>(null)
 
@@ -35,7 +36,9 @@ export default function Remedies({ profile }: Props) {
       {/* Header */}
       <div className="px-5 pt-12 pb-4">
         <h1 className="text-2xl font-bold text-emerald-100 mb-1">
-          {activeSubTab === 'intake'
+          {activeSubTab === 'chapters'
+            ? 'Charaka Samhita 120 Chapters Explorer'
+            : activeSubTab === 'intake'
             ? 'Vedic Clinical Intake & Vector AI'
             : activeSubTab === 'knowledge'
             ? 'Ayurvedic Clinical Knowledge Hub'
@@ -44,7 +47,9 @@ export default function Remedies({ profile }: Props) {
             : 'Everyday Home Remedies'}
         </h1>
         <p className="text-emerald-300/60 text-sm">
-          {activeSubTab === 'intake'
+          {activeSubTab === 'chapters'
+            ? 'Canonical 120 chapters across VIII Sthanas indexed from carakasamhitaonline.com'
+            : activeSubTab === 'intake'
             ? 'Polite bedside assessment, Charaka vector matching, and quantitative healing dossiers'
             : activeSubTab === 'knowledge'
             ? 'Evidence-based disease management with web links & research ingestion'
@@ -57,6 +62,16 @@ export default function Remedies({ profile }: Props) {
       {/* Tab Switcher */}
       <div className="px-5 mb-4">
         <div className="flex gap-1.5 bg-emerald-950/40 rounded-2xl p-1 border border-emerald-800/30 overflow-x-auto [scrollbar-width:none]">
+          <button
+            onClick={() => { setActiveSubTab('chapters'); setSelectedRemedy(null) }}
+            className={`flex-1 py-2 px-2.5 rounded-xl text-center transition-all text-xs font-medium whitespace-nowrap ${
+              activeSubTab === 'chapters'
+                ? 'bg-emerald-500 text-white shadow-sm border border-emerald-400/50'
+                : 'text-emerald-400/70 hover:text-emerald-200'
+            }`}
+          >
+            📜 120 Chapters
+          </button>
           <button
             onClick={() => { setActiveSubTab('intake'); setSelectedRemedy(null) }}
             className={`flex-1 py-2 px-2.5 rounded-xl text-center transition-all text-xs font-medium whitespace-nowrap ${
@@ -100,7 +115,15 @@ export default function Remedies({ profile }: Props) {
         </div>
       </div>
 
-      {activeSubTab === 'intake' ? (
+      {activeSubTab === 'chapters' ? (
+        <div className="px-5">
+          <CharakaExplorer
+            onSelectCondition={() => {
+              setActiveSubTab('intake')
+            }}
+          />
+        </div>
+      ) : activeSubTab === 'intake' ? (
         <div className="px-5">
           <HealthIntakeConsultation profile={profile} />
         </div>

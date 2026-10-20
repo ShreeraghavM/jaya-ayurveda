@@ -157,6 +157,49 @@ assert(intakeContent.includes('Tell Us How You Are Feeling'), 'Contains polite, 
 assert(intakeContent.includes('Exact Daily Intake') && intakeContent.includes('Therapeutic Yoga'), 'Provides intake grams and targeted yoga therapy')
 assert(intakeContent.includes('Numbers & Tracking'), 'Presents 14-to-90 day quantitative biomarker tracking')
 
+// ─── SUITE 10: Charaka Samhita 120 Chapters & 8 Sthanas Canonical Registry ───
+console.log('\n► Suite 10: Charaka Samhita 120 Chapters & 8 Sthanas Canonical Registry')
+const charakaJsonPath = path.join(ROOT, 'src/data/charaka_samhita_120_chapters.json')
+assert(fs.existsSync(charakaJsonPath), 'charaka_samhita_120_chapters.json master index exists')
+
+const charakaJson = JSON.parse(fs.readFileSync(charakaJsonPath, 'utf8'))
+assert(charakaJson.totalSthanas === 8, 'Contains all 8 classical Sthanas')
+assert(charakaJson.totalChapters === 120, 'Contains exactly 120 canonical chapters')
+assert(charakaJson.chapters.length === 120, '120 individual chapter records populated')
+
+// Verify exact Sthana chapter counts
+const sutraCount = charakaJson.chapters.filter(c => c.sthanaId === 'sutra-sthana').length
+assert(sutraCount === 30, `Sutra Sthana has exactly 30 chapters (got ${sutraCount})`)
+
+const nidanaCount = charakaJson.chapters.filter(c => c.sthanaId === 'nidana-sthana').length
+assert(nidanaCount === 8, `Nidana Sthana has exactly 8 chapters (got ${nidanaCount})`)
+
+const vimanaCount = charakaJson.chapters.filter(c => c.sthanaId === 'vimana-sthana').length
+assert(vimanaCount === 8, `Vimana Sthana has exactly 8 chapters (got ${vimanaCount})`)
+
+const shariraCount = charakaJson.chapters.filter(c => c.sthanaId === 'sharira-sthana').length
+assert(shariraCount === 8, `Sharira Sthana has exactly 8 chapters (got ${shariraCount})`)
+
+const indriyaCount = charakaJson.chapters.filter(c => c.sthanaId === 'indriya-sthana').length
+assert(indriyaCount === 12, `Indriya Sthana has exactly 12 chapters (got ${indriyaCount})`)
+
+const chikitsaCount = charakaJson.chapters.filter(c => c.sthanaId === 'chikitsa-sthana').length
+assert(chikitsaCount === 30, `Chikitsa Sthana has exactly 30 chapters (got ${chikitsaCount})`)
+
+const kalpaCount = charakaJson.chapters.filter(c => c.sthanaId === 'kalpa-sthana').length
+assert(kalpaCount === 12, `Kalpa Sthana has exactly 12 chapters (got ${kalpaCount})`)
+
+const siddhiCount = charakaJson.chapters.filter(c => c.sthanaId === 'siddhi-sthana').length
+assert(siddhiCount === 12, `Siddhi Sthana has exactly 12 chapters (got ${siddhiCount})`)
+
+// Verify component exists
+const explorerPath = path.join(ROOT, 'src/components/CharakaExplorer.tsx')
+assert(fs.existsSync(explorerPath), 'CharakaExplorer.tsx component exists')
+
+// Verify knowledgeBase helper exports
+assert(kbContent.includes('getAllCharakaChapters') && kbContent.includes('getChaptersBySthana'), 'Exports getAllCharakaChapters & getChaptersBySthana')
+assert(kbContent.includes('searchCharakaChapters') && kbContent.includes('getChapterByCondition'), 'Exports searchCharakaChapters & getChapterByCondition')
+
 // ─── RESULTS SUMMARY ───────────────────────────────────────────────────────
 console.log('\n======================================================')
 console.log(`✨ TEST RESULTS: ${passed} PASSED / ${failed} FAILED`)

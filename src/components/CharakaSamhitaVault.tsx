@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+import CharakaExplorer from './CharakaExplorer'
 
 interface Shloka {
   id: string
@@ -91,6 +92,7 @@ const CLASSICAL_SHLOKAS: Shloka[] = [
 ]
 
 export default function CharakaSamhitaVault() {
+  const [viewMode, setViewMode] = useState<'shlokas' | '120chapters'>('shlokas')
   const [activeFilter, setActiveFilter] = useState<'All' | 'Dinacharya' | 'Agni & Diet' | 'Ritucharya' | 'Longevity'>('All')
 
   const filtered = activeFilter === 'All'
@@ -99,7 +101,7 @@ export default function CharakaSamhitaVault() {
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
           <Badge className="bg-amber-500/20 text-amber-300 border-amber-500/40 text-[10px] font-mono uppercase">
             Classical Sanskrit Manuscripts
@@ -111,32 +113,60 @@ export default function CharakaSamhitaVault() {
             Ancient chronobiological principles verified against modern clinical physiology.
           </p>
         </div>
-      </div>
 
-      {/* Category Pills */}
-      <div className="flex gap-1.5 overflow-x-auto pb-1 [scrollbar-width:none]">
-        {['All', 'Dinacharya', 'Agni & Diet', 'Ritucharya', 'Longevity'].map(cat => (
+        {/* View Mode Switcher */}
+        <div className="flex p-1 rounded-xl bg-black/50 border border-emerald-900/60 gap-1 self-start sm:self-auto">
           <button
-            key={cat}
-            onClick={() => setActiveFilter(cat as any)}
-            className={`px-3 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap transition border ${
-              activeFilter === cat
-                ? 'bg-amber-600/30 text-amber-200 border-amber-500/60 shadow-sm'
-                : 'bg-black/30 text-emerald-400/60 border-emerald-900/40 hover:text-emerald-200'
+            onClick={() => setViewMode('shlokas')}
+            className={`px-3 py-1.5 rounded-lg text-xs font-mono transition ${
+              viewMode === 'shlokas'
+                ? 'bg-amber-600/40 text-amber-200 border border-amber-500/50 shadow-sm'
+                : 'text-emerald-400/60 hover:text-emerald-200'
             }`}
           >
-            {cat}
+            Key Shlokas
           </button>
-        ))}
+          <button
+            onClick={() => setViewMode('120chapters')}
+            className={`px-3 py-1.5 rounded-lg text-xs font-mono transition ${
+              viewMode === '120chapters'
+                ? 'bg-emerald-600/40 text-emerald-200 border border-emerald-500/50 shadow-sm'
+                : 'text-emerald-400/60 hover:text-emerald-200'
+            }`}
+          >
+            120 Chapters Explorer
+          </button>
+        </div>
       </div>
 
-      {/* Shloka Cards */}
-      <div className="space-y-3">
-        {filtered.map(s => (
-          <Card
-            key={s.id}
-            className="p-5 bg-gradient-to-br from-[#0c1c11] to-[#07150c] border border-emerald-800/40 rounded-3xl space-y-3 shadow-lg"
-          >
+      {viewMode === '120chapters' ? (
+        <CharakaExplorer />
+      ) : (
+        <>
+          {/* Category Pills */}
+          <div className="flex gap-1.5 overflow-x-auto pb-1 [scrollbar-width:none]">
+            {['All', 'Dinacharya', 'Agni & Diet', 'Ritucharya', 'Longevity'].map(cat => (
+              <button
+                key={cat}
+                onClick={() => setActiveFilter(cat as any)}
+                className={`px-3 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap transition border ${
+                  activeFilter === cat
+                    ? 'bg-amber-600/30 text-amber-200 border-amber-500/60 shadow-sm'
+                    : 'bg-black/30 text-emerald-400/60 border-emerald-900/40 hover:text-emerald-200'
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          {/* Shloka Cards */}
+          <div className="space-y-3">
+            {filtered.map(s => (
+              <Card
+                key={s.id}
+                className="p-5 bg-gradient-to-br from-[#0c1c11] to-[#07150c] border border-emerald-800/40 rounded-3xl space-y-3 shadow-lg"
+              >
             <div className="flex items-center justify-between text-xs">
               <span className="font-mono text-amber-400/90 font-semibold">{s.chapter} · {s.verse}</span>
               <Badge variant="outline" className="border-emerald-700/40 text-emerald-300 text-[10px]">
@@ -170,6 +200,8 @@ export default function CharakaSamhitaVault() {
           </Card>
         ))}
       </div>
+      </>
+      )}
     </div>
   )
 }

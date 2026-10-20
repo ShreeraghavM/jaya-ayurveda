@@ -5,6 +5,7 @@ import {
   getCustomResearchItems,
   saveCustomResearchItem,
   deleteCustomResearchItem,
+  getChapterByCondition,
   type BodySystem,
   type DiseaseRemedy,
   type CustomResearchItem,
@@ -13,6 +14,7 @@ import type { UserProfile } from '../lib/data'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
+import CharakaExplorer from './CharakaExplorer'
 
 interface Props {
   profile: UserProfile
@@ -20,7 +22,7 @@ interface Props {
 
 export default function KnowledgeHub({ profile }: Props) {
   const userDosha = profile.doshaType || 'Vata'
-  const [activeTab, setActiveTab] = useState<'diseases' | 'sources' | 'custom'>('diseases')
+  const [activeTab, setActiveTab] = useState<'diseases' | 'chapters' | 'sources' | 'custom'>('chapters')
   const [systemFilter, setSystemFilter] = useState<'All' | BodySystem>('All')
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedDisease, setSelectedDisease] = useState<DiseaseRemedy | null>(null)
@@ -121,6 +123,16 @@ export default function KnowledgeHub({ profile }: Props) {
           🌿 Disease Repertory ({DISEASE_REPERTORY.length})
         </button>
         <button
+          onClick={() => setActiveTab('chapters')}
+          className={`flex-1 py-2 px-3 rounded-xl text-xs font-medium whitespace-nowrap transition ${
+            activeTab === 'chapters'
+              ? 'bg-emerald-700/60 text-white shadow-sm border border-emerald-500/40'
+              : 'text-emerald-400/60 hover:text-emerald-200'
+          }`}
+        >
+          📜 120 Chapters Explorer (120)
+        </button>
+        <button
           onClick={() => setActiveTab('sources')}
           className={`flex-1 py-2 px-3 rounded-xl text-xs font-medium whitespace-nowrap transition ${
             activeTab === 'sources'
@@ -128,7 +140,7 @@ export default function KnowledgeHub({ profile }: Props) {
               : 'text-emerald-400/60 hover:text-emerald-200'
           }`}
         >
-          📜 Master Source Texts ({KNOWLEDGE_SOURCES.length})
+          📖 Manuscripts & PDFs ({KNOWLEDGE_SOURCES.length})
         </button>
         <button
           onClick={() => setActiveTab('custom')}
@@ -214,11 +226,34 @@ export default function KnowledgeHub({ profile }: Props) {
               </div>
 
               {/* Classical Reference Banner */}
-              <div className="p-3 rounded-2xl bg-black/40 border border-emerald-900/60 text-xs">
-                <span className="text-[10px] font-mono text-amber-400 uppercase tracking-wider block mb-0.5">
-                  Classical Literature Grounding
-                </span>
-                <p className="text-emerald-200/90 font-medium">{selectedDisease.charakaRef}</p>
+              <div className="p-3 rounded-2xl bg-black/40 border border-emerald-900/60 text-xs space-y-2">
+                <div>
+                  <span className="text-[10px] font-mono text-amber-400 uppercase tracking-wider block mb-0.5">
+                    Classical Literature Grounding
+                  </span>
+                  <p className="text-emerald-200/90 font-medium">{selectedDisease.charakaRef}</p>
+                </div>
+                {(() => {
+                  const linkedChapter = getChapterByCondition(selectedDisease.id)
+                  if (!linkedChapter) return null
+                  return (
+                    <div className="flex items-center justify-between p-2 rounded-xl bg-emerald-950/80 border border-emerald-700/40 text-xs font-mono">
+                      <div className="flex items-center gap-1.5 truncate">
+                        <span>📜</span>
+                        <span className="text-emerald-300 font-bold">{linkedChapter.sthanaName} · #{linkedChapter.chapterNumber}</span>
+                        <span className="text-emerald-400/70 truncate">({linkedChapter.sanskritTitle})</span>
+                      </div>
+                      <a
+                        href={linkedChapter.canonicalUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-amber-300 hover:text-amber-200 underline text-[11px] shrink-0 ml-2"
+                      >
+                        Read Shlokas ↗
+                      </a>
+                    </div>
+                  )
+                })()}
               </div>
 
               {/* Pathogenesis (Samprapti) */}
@@ -368,7 +403,17 @@ export default function KnowledgeHub({ profile }: Props) {
         </div>
       )}
 
-      {/* ─── TAB 2: MASTER SOURCE TEXTS ─── */}
+      {/* ─── TAB 2: 120 CHAPTERS EXPLORER ─── */}
+      {activeTab === 'chapters' && (
+        <CharakaExplorer
+          onSelectCondition={disease => {
+            setSelectedDisease(disease)
+            setActiveTab('diseases')
+          }}
+        />
+      )}
+
+      {/* ─── TAB 3: MASTER SOURCE TEXTS ─── */}
       {activeTab === 'sources' && (
         <div className="space-y-3">
           <p className="text-xs text-emerald-300/70">
