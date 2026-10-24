@@ -91,12 +91,15 @@ export default function App() {
   }
 
   useEffect(() => {
+    const isLandingRequested = window.location.hash === '#landing' || window.location.search.includes('landing')
     const saved = getUserProfile()
     const savedSession = getSession()
-    if (saved?.completedOnboarding) {
+    if (saved?.completedOnboarding && !isLandingRequested) {
       setProfile(saved)
       setSession(savedSession)
       setView('app')
+    } else {
+      setView('landing')
     }
     setLoading(false)
   }, [])
@@ -358,9 +361,19 @@ export default function App() {
       <header className="sticky top-0 z-30 border-b border-emerald-900/40 bg-[#08140c]/90 backdrop-blur-xl">
         <div className="mx-auto flex max-w-lg items-center justify-between px-3 py-2 sm:px-4 sm:py-2.5">
           <div className="flex items-center gap-1.5 sm:gap-2">
-            <button onClick={() => setTab('home')} className="flex items-center gap-1.5 group">
+            <button onClick={() => setView('landing')} className="flex items-center gap-1.5 group" title="Go to Landing Page">
               <span className="text-base group-hover:scale-110 transition-transform">🌿</span>
               <span className="text-xs font-bold tracking-tight text-emerald-100">Jaya</span>
+            </button>
+
+            {/* Direct Landing Page Button */}
+            <button
+              onClick={() => setView('landing')}
+              className="flex items-center gap-1 px-2 py-0.5 rounded-full border border-emerald-600/50 bg-emerald-950/60 text-[10px] font-semibold text-emerald-200 hover:bg-emerald-900/60 transition shadow-sm"
+              title="Return to Welcome & Landing Page"
+            >
+              <span>🏠</span>
+              <span className="hidden sm:inline">Landing</span>
             </button>
 
             {/* Clinical Health Assessment Trigger Badge */}
@@ -457,6 +470,15 @@ export default function App() {
       {/* ─── 2026 CORE PILLARS FAST BAR ─── */}
       <div className="bg-[#051108]/95 border-b border-emerald-900/40 px-3 py-1.5 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sticky top-[47px] z-20 backdrop-blur-md">
         <div className="mx-auto max-w-lg flex items-center gap-1.5 min-w-max">
+          <button
+            onClick={() => setView('landing')}
+            className="flex items-center gap-1 px-2.5 py-1 rounded-xl bg-emerald-950/80 border border-emerald-500/60 text-[11px] font-bold text-emerald-100 hover:bg-emerald-900/80 transition shadow-sm"
+            title="Return to Welcome / Landing Page"
+          >
+            <span>🏠</span>
+            <span>Landing Page</span>
+          </button>
+
           <button
             onClick={handleOpenAnatomy}
             className={`flex items-center gap-1 px-2.5 py-1 rounded-xl border text-[11px] font-medium transition shadow-sm ${

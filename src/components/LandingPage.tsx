@@ -62,103 +62,105 @@ export default function LandingPage({
 
       <div className="relative">
         {/* NAV */}
-        <header className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6">
-          <div className="flex items-center gap-2">
-            <span className="text-2xl">🌿</span>
-            <div className="leading-tight">
-              <p className="text-lg font-semibold tracking-tight">Jaya</p>
-              <p className="text-[10px] uppercase tracking-[0.2em] text-emerald-400/60">Ayurveda</p>
+        <header className="sticky top-0 z-40 border-b border-emerald-900/40 bg-[#08140c]/90 backdrop-blur-xl">
+          <div className="mx-auto flex max-w-7xl items-center justify-between px-3 py-3 sm:px-6 sm:py-4">
+            <div className="flex items-center gap-2">
+              <span className="text-2xl">🌿</span>
+              <div className="leading-tight">
+                <p className="text-lg font-bold tracking-tight text-emerald-100">Jaya</p>
+                <p className="text-[10px] uppercase tracking-[0.2em] text-emerald-400/70">Ayurveda</p>
+              </div>
+            </div>
+
+            {/* Quick action buttons & Primary Begin Button */}
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              {/* Core nav shortcuts - hidden on small mobile, visible on md+ */}
+              <div className="hidden md:flex items-center gap-1.5">
+                {onOpenSpringShield && (
+                  <button
+                    onClick={onOpenSpringShield}
+                    className="flex items-center gap-1 px-2.5 py-1.5 rounded-full border border-rose-500/60 bg-rose-950/60 text-xs font-medium text-rose-200 hover:bg-rose-900/60 transition shadow-md"
+                    title="Charaka Spring Bio-Shield & Agni-BMR Calculator"
+                  >
+                    <span>🌸</span>
+                    <span className="font-semibold text-rose-100">Spring Shield</span>
+                  </button>
+                )}
+                {onOpenAnatomy && (
+                  <button
+                    onClick={onOpenAnatomy}
+                    className="flex items-center gap-1 px-2.5 py-1.5 rounded-full border border-emerald-400/60 bg-emerald-950/60 text-xs font-medium text-emerald-200 hover:bg-emerald-900/60 transition shadow-md"
+                    title="Human Anatomy & Srotas Digital Twin"
+                  >
+                    <span>🧬</span>
+                    <span className="font-semibold text-emerald-100">Anatomy</span>
+                  </button>
+                )}
+                {onOpenAharaMatra && (
+                  <button
+                    onClick={onOpenAharaMatra}
+                    className="flex items-center gap-1 px-2.5 py-1.5 rounded-full border border-amber-500/60 bg-amber-950/60 text-xs font-medium text-amber-200 hover:bg-amber-900/60 transition shadow-md"
+                    title="Charaka Ahara Matra 1/3 Stomach Calculator"
+                  >
+                    <span>🌾</span>
+                    <span className="font-semibold text-amber-100">Ahara Matra</span>
+                  </button>
+                )}
+                {onOpenDietPlan && (
+                  <button
+                    onClick={onOpenDietPlan}
+                    className="flex items-center gap-1 px-2.5 py-1.5 rounded-full border border-emerald-700/60 bg-emerald-950/40 text-xs font-medium text-emerald-300 hover:bg-emerald-900/40 transition"
+                  >
+                    <span>🍽️</span>
+                    <span>Diet</span>
+                  </button>
+                )}
+                {onOpenProfile && (
+                  <button
+                    onClick={onOpenProfile}
+                    className="flex items-center gap-1 px-2.5 py-1.5 rounded-full border border-indigo-700/60 bg-indigo-950/40 text-xs font-medium text-indigo-200 hover:bg-indigo-900/40 transition"
+                  >
+                    <span>👤</span>
+                    <span>Profile</span>
+                  </button>
+                )}
+                {onOpenChapters && (
+                  <button
+                    onClick={onOpenChapters}
+                    className="flex items-center gap-1 px-2.5 py-1.5 rounded-full border border-amber-500/50 bg-amber-500/20 text-xs font-medium text-amber-200 hover:bg-amber-500/35 transition"
+                  >
+                    <span>📜</span>
+                    <span className="text-amber-100 font-bold">120 Chapters</span>
+                  </button>
+                )}
+              </div>
+
+              {/* Demo button */}
+              <button
+                onClick={onDemo}
+                className="hidden xs:inline-flex items-center gap-1 px-3 py-1.5 rounded-full border border-emerald-700/60 bg-emerald-950/40 text-xs font-semibold text-emerald-200 hover:bg-emerald-900/50 transition"
+              >
+                <span>⚡</span>
+                <span>Demo</span>
+              </button>
+
+              {/* ALWAYS PROMINENT BEGIN BUTTON IN HEADER */}
+              <Button
+                onClick={onStart}
+                size="sm"
+                className="rounded-full bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold px-4 sm:px-5 py-2 text-xs sm:text-sm shadow-lg shadow-emerald-500/30 ring-2 ring-emerald-300/40 transition hover:scale-105 active:scale-95"
+              >
+                🌿 Begin Free
+              </Button>
             </div>
           </div>
-          <nav className="flex items-center gap-1 sm:gap-2 flex-wrap justify-end">
-            {onOpenAnatomy && (
-              <button
-                onClick={onOpenAnatomy}
-                className="flex items-center gap-1 px-2.5 py-1.5 rounded-full border border-emerald-400/60 bg-emerald-950/60 text-xs font-medium text-emerald-200 hover:bg-emerald-900/60 transition shadow-md"
-                title="Human Anatomy & Srotas Digital Twin"
-              >
-                <span>🧬</span>
-                <span className="font-semibold text-emerald-100">Anatomy Twin</span>
-              </button>
-            )}
-            {onOpenAharaMatra && (
-              <button
-                onClick={onOpenAharaMatra}
-                className="flex items-center gap-1 px-2.5 py-1.5 rounded-full border border-amber-500/60 bg-amber-950/60 text-xs font-medium text-amber-200 hover:bg-amber-900/60 transition shadow-md"
-                title="Charaka Ahara Matra 1/3 Stomach Calculator"
-              >
-                <span>🌾</span>
-                <span className="font-semibold text-amber-100">Ahara Matra</span>
-              </button>
-            )}
-            {onOpenSpringShield && (
-              <button
-                onClick={onOpenSpringShield}
-                className="flex items-center gap-1 px-2.5 py-1.5 rounded-full border border-rose-500/60 bg-rose-950/60 text-xs font-medium text-rose-200 hover:bg-rose-900/60 transition shadow-md"
-                title="Charaka Spring Bio-Shield & Agni-BMR Calculator"
-              >
-                <span>🌸</span>
-                <span className="font-semibold text-rose-100">Spring Shield</span>
-              </button>
-            )}
-            {onOpenDietPlan && (
-              <button
-                onClick={onOpenDietPlan}
-                className="flex items-center gap-1 px-2.5 py-1.5 rounded-full border border-emerald-700/60 bg-emerald-950/40 text-xs font-medium text-emerald-300 hover:bg-emerald-900/40 transition"
-                title="Dosha-Specific Diet Plan & Recipes"
-              >
-                <span>🍽️</span>
-                <span>Diet</span>
-              </button>
-            )}
-            {onOpenProfile && (
-              <button
-                onClick={onOpenProfile}
-                className="flex items-center gap-1 px-2.5 py-1.5 rounded-full border border-indigo-700/60 bg-indigo-950/40 text-xs font-medium text-indigo-200 hover:bg-indigo-900/40 transition"
-                title="User Profile & Ayurvedic Sharira Hub"
-              >
-                <span>👤</span>
-                <span>Profile</span>
-              </button>
-            )}
-            {onOpenChapters && (
-              <button
-                onClick={onOpenChapters}
-                className="relative flex items-center gap-1.5 px-2.5 py-1.5 rounded-full border border-amber-500/50 bg-amber-500/20 text-xs font-mono font-medium text-amber-200 hover:bg-amber-500/35 transition shadow-sm"
-                title="Charaka Samhita 120 Chapters Explorer"
-              >
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
-                <span className="text-amber-100 font-bold">📜 120 Chapters</span>
-              </button>
-            )}
-            {onOpenHealthIntake && (
-              <button
-                onClick={onOpenHealthIntake}
-                className="relative flex items-center gap-1.5 px-2.5 py-1.5 rounded-full border border-emerald-400 bg-emerald-500/25 text-xs font-mono font-medium text-emerald-100 hover:bg-emerald-500/40 transition shadow-sm"
-                title="Clinical Health Assessment & Vector Healing Plan"
-              >
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
-                </span>
-                <span className="text-emerald-50 font-bold">🩺 Health</span>
-              </button>
-            )}
-            <Button
-              onClick={onStart}
-              size="sm"
-              className="rounded-full bg-emerald-600 px-4 text-emerald-50 hover:bg-emerald-500"
-            >
-              Begin
-            </Button>
-          </nav>
         </header>
 
         {/* HERO */}
-        <section className="mx-auto max-w-6xl px-4 pb-14 pt-6 sm:px-6 sm:pt-12">
+        <section className="mx-auto max-w-6xl px-4 pb-14 pt-4 sm:px-6 sm:pt-8">
           <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
             <div>
-              <div className="flex flex-wrap items-center gap-2 mb-4">
+              <div className="flex flex-wrap items-center gap-2 mb-3">
                 <Badge className="rounded-full border border-emerald-700/40 bg-emerald-900/40 px-3 py-1 text-[11px] font-medium text-emerald-300">
                   A companion, not another tracker
                 </Badge>
@@ -167,13 +169,121 @@ export default function LandingPage({
                 </Badge>
               </div>
 
-              {/* 4 CORE FEATURE CALLOUT PILLS */}
-              <div className="flex flex-col gap-2 mb-4">
-                {/* 1. Human Anatomy Visualizer Pill */}
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold leading-[1.15] tracking-tight">
+                Your whole day,
+                <span className="block bg-gradient-to-r from-emerald-300 via-emerald-200 to-amber-200 bg-clip-text text-transparent">
+                  guided the Ayurvedic way.
+                </span>
+              </h1>
+              <p className="mt-4 max-w-xl text-sm leading-relaxed text-emerald-200/70 sm:text-base">
+                Jaya walks with you from the moment you wake to the moment you sleep — meals, breath,
+                movement, work breaks and rest, all tuned to your constitution and your profession.
+                You only confirm what you did.
+              </p>
+
+              {/* PRIMARY ACTION BUTTONS (IMMEDIATELY VISIBLE AT TOP) */}
+              <div className="mt-6 flex flex-wrap items-center gap-2.5">
+                <Button
+                  onClick={onStart}
+                  className="h-12 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold px-7 text-sm sm:text-base shadow-xl shadow-emerald-500/25 ring-2 ring-emerald-300/50 transition hover:scale-[1.02]"
+                >
+                  🌿 Begin your journey
+                </Button>
+                <Button
+                  onClick={onDemo}
+                  variant="outline"
+                  className="h-12 rounded-2xl border-emerald-500/50 bg-emerald-950/50 px-5 text-sm font-semibold text-emerald-200 hover:bg-emerald-900/60 hover:text-white transition shadow-sm"
+                >
+                  ⚡ Try demo profile
+                </Button>
+                {onOpenSpringShield && (
+                  <Button
+                    onClick={onOpenSpringShield}
+                    variant="outline"
+                    className="h-12 rounded-2xl border-rose-500/60 bg-rose-950/50 px-4 text-xs sm:text-sm text-rose-200 hover:bg-rose-900/60 font-semibold shadow-md transition"
+                  >
+                    🌸 Spring Shield & BMR
+                  </Button>
+                )}
+                {onOpenAnatomy && (
+                  <Button
+                    onClick={onOpenAnatomy}
+                    variant="outline"
+                    className="h-12 rounded-2xl border-emerald-500/60 bg-emerald-950/60 px-4 text-xs sm:text-sm text-emerald-200 hover:bg-emerald-900/60 font-semibold shadow-sm"
+                  >
+                    🧬 Anatomy Visualizer
+                  </Button>
+                )}
+                {onOpenAharaMatra && (
+                  <Button
+                    onClick={onOpenAharaMatra}
+                    variant="outline"
+                    className="h-12 rounded-2xl border-amber-500/60 bg-amber-950/60 px-4 text-xs sm:text-sm text-amber-200 hover:bg-amber-900/60 font-semibold shadow-sm"
+                  >
+                    🌾 Ahara Matra (1/3)
+                  </Button>
+                )}
+                {onOpenDietPlan && (
+                  <Button
+                    onClick={onOpenDietPlan}
+                    variant="outline"
+                    className="h-12 rounded-2xl border-emerald-600/50 bg-emerald-950/30 px-4 text-xs text-emerald-300 hover:bg-emerald-900/50 font-semibold shadow-sm"
+                  >
+                    🍽️ Diet Plan
+                  </Button>
+                )}
+                {onOpenProfile && (
+                  <Button
+                    onClick={onOpenProfile}
+                    variant="outline"
+                    className="h-12 rounded-2xl border-indigo-500/50 bg-indigo-950/30 px-4 text-xs text-indigo-200 hover:bg-indigo-900/50 font-semibold shadow-sm"
+                  >
+                    👤 User Profile
+                  </Button>
+                )}
+                {onOpenChapters && (
+                  <Button
+                    onClick={onOpenChapters}
+                    variant="outline"
+                    className="h-12 rounded-2xl border-amber-500/50 bg-amber-950/30 px-4 text-xs text-amber-200 hover:bg-amber-900/50 hover:text-amber-100 font-mono shadow-sm"
+                  >
+                    📜 120 Chapters
+                  </Button>
+                )}
+                {onOpenGrantDeck && (
+                  <Button
+                    onClick={onOpenGrantDeck}
+                    variant="outline"
+                    className="h-12 rounded-2xl border-amber-500/50 bg-amber-950/20 px-4 text-xs text-amber-300 hover:bg-amber-900/40 hover:text-amber-100 font-mono shadow-sm"
+                  >
+                    🌱 Grant Deck
+                  </Button>
+                )}
+              </div>
+
+              {/* 5 CORE FEATURE CALLOUT PILLS GRID (UNDER BUTTONS) */}
+              <div className="mt-6 flex flex-col gap-2">
+                {/* 1. Spring Shield & Ardha-Shakti Pill */}
+                {onOpenSpringShield && (
+                  <div
+                    onClick={onOpenSpringShield}
+                    className="inline-flex cursor-pointer items-center justify-between gap-2 px-3.5 py-2.5 rounded-2xl border border-rose-500/60 bg-gradient-to-r from-[#200d14] via-[#1a0a10] to-emerald-950/60 hover:border-rose-400 text-xs text-rose-100 transition shadow-lg group"
+                  >
+                    <div className="flex items-center gap-2">
+                      <span className="text-base group-hover:scale-110 transition-transform">🌸</span>
+                      <span className="font-semibold text-rose-200">
+                        Spring Vasanta Ritu Bio-Shield & Agni-BMR: <span className="text-rose-300/90 font-normal">Kapha Liquefaction Defense & Ardha-Shakti Law</span>
+                      </span>
+                    </div>
+                    <span className="text-rose-400 font-bold group-hover:translate-x-1 transition-transform shrink-0">➔ Spring Shield</span>
+                  </div>
+                )}
+
+                {/* 2. Human Anatomy Visualizer Pill */}
                 {onOpenAnatomy && (
                   <div
                     onClick={onOpenAnatomy}
-                    className="inline-flex cursor-pointer items-center justify-between gap-2 px-3.5 py-2 rounded-2xl border border-emerald-500/60 bg-gradient-to-r from-emerald-950/90 via-[#062413] to-indigo-950/70 hover:border-emerald-400 text-xs text-emerald-100 transition shadow-lg group"
+                    className="inline-flex cursor-pointer items-center justify-between gap-2 px-3.5 py-2.5 rounded-2xl border border-emerald-500/60 bg-gradient-to-r from-emerald-950/90 via-[#062413] to-indigo-950/70 hover:border-emerald-400 text-xs text-emerald-100 transition shadow-lg group"
                   >
                     <div className="flex items-center gap-2">
                       <span className="text-base group-hover:scale-110 transition-transform">🧬</span>
@@ -185,11 +295,11 @@ export default function LandingPage({
                   </div>
                 )}
 
-                {/* 2. Charaka Ahara Matra (1/3 Division) Pill */}
+                {/* 3. Charaka Ahara Matra (1/3 Division) Pill */}
                 {onOpenAharaMatra && (
                   <div
                     onClick={onOpenAharaMatra}
-                    className="inline-flex cursor-pointer items-center justify-between gap-2 px-3.5 py-2 rounded-2xl border border-amber-500/60 bg-gradient-to-r from-[#1c1305] via-[#2a1d08] to-emerald-950/60 hover:border-amber-400 text-xs text-amber-100 transition shadow-lg group"
+                    className="inline-flex cursor-pointer items-center justify-between gap-2 px-3.5 py-2.5 rounded-2xl border border-amber-500/60 bg-gradient-to-r from-[#1c1305] via-[#2a1d08] to-emerald-950/60 hover:border-amber-400 text-xs text-amber-100 transition shadow-lg group"
                   >
                     <div className="flex items-center gap-2">
                       <span className="text-base group-hover:scale-110 transition-transform">🌾</span>
@@ -201,11 +311,11 @@ export default function LandingPage({
                   </div>
                 )}
 
-                {/* 3. Glowing Health Intake Callout Pill */}
+                {/* 4. Glowing Health Intake Callout Pill */}
                 {onOpenHealthIntake && (
                   <div
                     onClick={onOpenHealthIntake}
-                    className="inline-flex cursor-pointer items-center justify-between gap-2 px-3.5 py-2 rounded-2xl border border-emerald-500/50 bg-gradient-to-r from-emerald-950/80 via-[#0a2717] to-black/80 hover:border-emerald-400 text-xs text-emerald-100 transition shadow-md group"
+                    className="inline-flex cursor-pointer items-center justify-between gap-2 px-3.5 py-2.5 rounded-2xl border border-emerald-500/50 bg-gradient-to-r from-emerald-950/80 via-[#0a2717] to-black/80 hover:border-emerald-400 text-xs text-emerald-100 transition shadow-md group"
                   >
                     <div className="flex items-center gap-2">
                       <span className="relative flex h-2 w-2 shrink-0">
@@ -220,11 +330,11 @@ export default function LandingPage({
                   </div>
                 )}
 
-                {/* 4. Charaka Samhita 120 Chapters Callout Pill */}
+                {/* 5. Charaka Samhita 120 Chapters Callout Pill */}
                 {onOpenChapters && (
                   <div
                     onClick={onOpenChapters}
-                    className="inline-flex cursor-pointer items-center justify-between gap-2 px-3.5 py-2 rounded-2xl border border-amber-500/50 bg-gradient-to-r from-amber-950/70 via-[#1e1909] to-black/80 hover:border-amber-400 text-xs text-amber-100 transition shadow-md group"
+                    className="inline-flex cursor-pointer items-center justify-between gap-2 px-3.5 py-2.5 rounded-2xl border border-amber-500/50 bg-gradient-to-r from-amber-950/70 via-[#1e1909] to-black/80 hover:border-amber-400 text-xs text-amber-100 transition shadow-md group"
                   >
                     <div className="flex items-center gap-2">
                       <span className="text-sm">📜</span>
@@ -235,115 +345,9 @@ export default function LandingPage({
                     <span className="text-amber-400 font-bold group-hover:translate-x-1 transition-transform shrink-0">➔ Explore 120 Adhyayas</span>
                   </div>
                 )}
-
-                {/* 5. Vasanta Ritu Spring Bio-Shield & Ardha-Shakti Pill */}
-                {onOpenSpringShield && (
-                  <div
-                    onClick={onOpenSpringShield}
-                    className="inline-flex cursor-pointer items-center justify-between gap-2 px-3.5 py-2 rounded-2xl border border-rose-500/60 bg-gradient-to-r from-[#200d14] via-[#1a0a10] to-emerald-950/60 hover:border-rose-400 text-xs text-rose-100 transition shadow-md group"
-                  >
-                    <div className="flex items-center gap-2">
-                      <span className="text-base group-hover:scale-110 transition-transform">🌸</span>
-                      <span className="font-semibold text-rose-200">
-                        Spring Vasanta Ritu Bio-Shield & Agni-BMR: <span className="text-rose-300/90 font-normal">Kapha Liquefaction Defense & Ardha-Shakti Law</span>
-                      </span>
-                    </div>
-                    <span className="text-rose-400 font-bold group-hover:translate-x-1 transition-transform shrink-0">➔ Spring Shield</span>
-                  </div>
-                )}
               </div>
 
-              <h1 className="text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
-                Your whole day,
-                <span className="block bg-gradient-to-r from-emerald-300 via-emerald-200 to-amber-200 bg-clip-text text-transparent">
-                  guided the Ayurvedic way.
-                </span>
-              </h1>
-              <p className="mt-5 max-w-xl text-sm leading-relaxed text-emerald-200/70 sm:text-base">
-                Jaya walks with you from the moment you wake to the moment you sleep — meals, breath,
-                movement, work breaks and rest, all tuned to your constitution and your profession.
-                You only confirm what you did.
-              </p>
-
-              <div className="mt-8 flex flex-wrap gap-2.5">
-                <Button
-                  onClick={onStart}
-                  className="h-11 rounded-2xl bg-emerald-600 px-6 text-sm text-emerald-50 shadow-lg shadow-emerald-900/40 transition hover:bg-emerald-500 font-semibold"
-                >
-                  Begin your journey
-                </Button>
-                <Button
-                  onClick={onDemo}
-                  variant="outline"
-                  className="h-11 rounded-2xl border-emerald-700/50 bg-emerald-950/40 px-5 text-sm text-emerald-200 hover:bg-emerald-900/50 hover:text-emerald-100 font-semibold"
-                >
-                  Try demo profile
-                </Button>
-                {onOpenAnatomy && (
-                  <Button
-                    onClick={onOpenAnatomy}
-                    variant="outline"
-                    className="h-11 rounded-2xl border-emerald-500/60 bg-emerald-950/60 px-4 text-xs text-emerald-200 hover:bg-emerald-900/60 font-semibold shadow-sm"
-                  >
-                    🧬 Anatomy Visualizer
-                  </Button>
-                )}
-                {onOpenAharaMatra && (
-                  <Button
-                    onClick={onOpenAharaMatra}
-                    variant="outline"
-                    className="h-11 rounded-2xl border-amber-500/60 bg-amber-950/60 px-4 text-xs text-amber-200 hover:bg-amber-900/60 font-semibold shadow-sm"
-                  >
-                    🌾 Ahara Matra (1/3)
-                  </Button>
-                )}
-                {onOpenSpringShield && (
-                  <Button
-                    onClick={onOpenSpringShield}
-                    variant="outline"
-                    className="h-11 rounded-2xl border-rose-500/60 bg-rose-950/60 px-4 text-xs text-rose-200 hover:bg-rose-900/60 font-semibold shadow-sm"
-                  >
-                    🌸 Spring Shield & BMR
-                  </Button>
-                )}
-                {onOpenDietPlan && (
-                  <Button
-                    onClick={onOpenDietPlan}
-                    variant="outline"
-                    className="h-11 rounded-2xl border-emerald-600/50 bg-emerald-950/30 px-4 text-xs text-emerald-300 hover:bg-emerald-900/50 font-semibold shadow-sm"
-                  >
-                    🍽️ Diet Plan
-                  </Button>
-                )}
-                {onOpenProfile && (
-                  <Button
-                    onClick={onOpenProfile}
-                    variant="outline"
-                    className="h-11 rounded-2xl border-indigo-500/50 bg-indigo-950/30 px-4 text-xs text-indigo-200 hover:bg-indigo-900/50 font-semibold shadow-sm"
-                  >
-                    👤 User Profile
-                  </Button>
-                )}
-                {onOpenChapters && (
-                  <Button
-                    onClick={onOpenChapters}
-                    variant="outline"
-                    className="h-11 rounded-2xl border-amber-500/50 bg-amber-950/30 px-4 text-xs text-amber-200 hover:bg-amber-900/50 hover:text-amber-100 font-mono shadow-sm"
-                  >
-                    📜 120 Chapters
-                  </Button>
-                )}
-                {onOpenGrantDeck && (
-                  <Button
-                    onClick={onOpenGrantDeck}
-                    variant="outline"
-                    className="h-11 rounded-2xl border-amber-500/50 bg-amber-950/20 px-4 text-xs text-amber-300 hover:bg-amber-900/40 hover:text-amber-100 font-mono shadow-sm"
-                  >
-                    🌱 Grant Deck
-                  </Button>
-                )}
-              </div>
-              <p className="mt-3 text-[11px] text-emerald-500/60">
+              <p className="mt-4 text-[11px] text-emerald-500/60">
                 No card, no email verification. Everything stays on your device.
               </p>
 
@@ -527,7 +531,7 @@ export default function LandingPage({
           </div>
         </section>
 
-        <footer className="border-t border-emerald-900/40 px-4 py-8 sm:px-6">
+        <footer className="border-t border-emerald-900/40 px-4 py-8 sm:px-6 mb-16 sm:mb-0">
           <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 text-center sm:flex-row sm:text-left">
             <p className="text-xs text-emerald-500/50">© {new Date().getFullYear()} Jaya Ayurveda</p>
             <p className="max-w-lg text-[10px] leading-relaxed text-emerald-600/40">
@@ -536,6 +540,23 @@ export default function LandingPage({
             </p>
           </div>
         </footer>
+
+        {/* ALWAYS VISIBLE STICKY MOBILE BOTTOM BAR */}
+        <div className="sm:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#08140c]/95 border-t border-emerald-900/60 p-2.5 backdrop-blur-xl flex items-center gap-2 shadow-2xl">
+          <Button
+            onClick={onStart}
+            className="flex-1 h-12 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold text-sm shadow-lg shadow-emerald-500/25 ring-2 ring-emerald-300/40"
+          >
+            🌿 Begin Free
+          </Button>
+          <Button
+            onClick={onDemo}
+            variant="outline"
+            className="h-12 rounded-xl border-emerald-600/60 bg-emerald-950/80 px-4 text-xs font-semibold text-emerald-200"
+          >
+            ⚡ Demo
+          </Button>
+        </div>
       </div>
     </div>
   )
