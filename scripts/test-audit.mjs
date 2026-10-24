@@ -329,6 +329,37 @@ const appWeather = fs.readFileSync(path.join(ROOT, 'src/App.tsx'), 'utf-8')
 assert(appWeather.includes('WeatherHealthTracker') && appWeather.includes('AnimatedJourneyVideo'), 'App.tsx imports WeatherHealthTracker & AnimatedJourneyVideo')
 assert(appWeather.includes('showWeatherTracker') && appWeather.includes('showAnimatedTour'), 'App.tsx maintains modals for WeatherTracker & AnimatedTour')
 
+// ─── SUITE 15: Charaka Cooking Science, Bhojana Krama & Macronutrients ──────
+console.log('\n► Suite 15: Ayurvedic Culinary Science, Bhojana Krama (3-Course Plate) & Macronutrients')
+const culinaryEnginePath = path.join(ROOT, 'src/lib/culinaryEngine.ts')
+assert(fs.existsSync(culinaryEnginePath), 'culinaryEngine.ts exists')
+const culinaryEngineContent = fs.readFileSync(culinaryEnginePath, 'utf-8')
+
+assert(culinaryEngineContent.includes('NITYA_SEVANIYA_ESSENTIALS'), 'Defines NITYA_SEVANIYA_ESSENTIALS 10 mandatory daily longevity foods (Charaka Sutra 5.12)')
+assert(culinaryEngineContent.includes('getBhojanaKramaCourses'), 'Exports getBhojanaKramaCourses 3-course plate sequence')
+assert(culinaryEngineContent.includes('Agra Bhojana') && culinaryEngineContent.includes('Shigru') && culinaryEngineContent.includes('Curry leaf'), 'Course 1 matches Rice + Drumstick, Agastya, Curry leaf, Toor dal podi + A2 Cow Ghee')
+assert(culinaryEngineContent.includes('Madhya Bhojana') && culinaryEngineContent.includes('Sambar'), 'Course 2 matches Rice + Vegetable Curry / Sambar + Ghee')
+assert(culinaryEngineContent.includes('Anta Bhojana') && culinaryEngineContent.includes('Rasam') && culinaryEngineContent.includes('Pickle'), 'Course 3 matches Rice + Digestive Rasam / Buttermilk + Pickles')
+assert(culinaryEngineContent.includes('calculateMealMacronutrients'), 'Exports calculateMealMacronutrients (Carbs, Protein, Healthy Fats, Fiber)')
+assert(culinaryEngineContent.includes('getAyurvedicCookingInstructions'), 'Exports getAyurvedicCookingInstructions (Samskara)')
+
+const cookingGuidePath = path.join(ROOT, 'src/components/AyurvedicCookingGuide.tsx')
+assert(fs.existsSync(cookingGuidePath), 'AyurvedicCookingGuide.tsx exists')
+
+const dietPlanCulinaryContent = fs.readFileSync(path.join(ROOT, 'src/components/DietPlan.tsx'), 'utf-8')
+assert(dietPlanCulinaryContent.includes('AyurvedicCookingGuide') && dietPlanCulinaryContent.includes('BHOJANA KRAMA (3-COURSE ORDER)'), 'DietPlan.tsx features top Bhojana Krama card')
+assert(dietPlanCulinaryContent.includes('getAyurvedicCookingInstructions') && dietPlanCulinaryContent.includes('Ghrita Samskara'), 'DietPlan.tsx expands recipes with classical cooking method & macros')
+
+const appCulinaryContent = fs.readFileSync(path.join(ROOT, 'src/App.tsx'), 'utf-8')
+assert(appCulinaryContent.includes('AyurvedicCookingGuide') && appCulinaryContent.includes('showCookingGuide'), 'App.tsx imports AyurvedicCookingGuide and manages modal')
+assert(appCulinaryContent.includes('Cooking & 3-Course Plate'), 'App.tsx Fast Bar provides direct Cooking & 3-Course Plate shortcut')
+
+const dashboardCulinaryContent = fs.readFileSync(path.join(ROOT, 'src/components/Dashboard.tsx'), 'utf-8')
+assert(dashboardCulinaryContent.includes('Charaka Samskāra & Bhojana Krama') && dashboardCulinaryContent.includes('onOpenCookingGuide'), 'Dashboard.tsx renders Cooking Science & 3-Course banner')
+
+const profileTabContent = fs.readFileSync(path.join(ROOT, 'src/components/UserProfile.tsx'), 'utf-8')
+assert(profileTabContent.includes('AyurvedicCookingGuide') && profileTabContent.includes('culinary'), 'UserProfile.tsx provides dedicated Cooking & 3-Course Plate tab')
+
 // ─── RESULTS SUMMARY ───────────────────────────────────────────────────────
 console.log('\n======================================================')
 console.log(`✨ TEST RESULTS: ${passed} PASSED / ${failed} FAILED`)

@@ -14,6 +14,7 @@ interface Props {
   onOpenDietPlan?: () => void
   onOpenProfile?: () => void
   onOpenSpringShield?: () => void
+  onOpenCookingGuide?: () => void
   onOpenWeatherTracker?: () => void
   onOpenAnimatedTour?: () => void
 }
@@ -52,6 +53,7 @@ export default function LandingPage({
   onOpenDietPlan,
   onOpenProfile,
   onOpenSpringShield,
+  onOpenCookingGuide,
   onOpenWeatherTracker,
   onOpenAnimatedTour,
 }: Props) {
@@ -88,6 +90,16 @@ export default function LandingPage({
                   >
                     <span>🌸</span>
                     <span className="font-semibold text-rose-100">Spring Shield</span>
+                  </button>
+                )}
+                {onOpenCookingGuide && (
+                  <button
+                    onClick={onOpenCookingGuide}
+                    className="flex items-center gap-1 px-2.5 py-1.5 rounded-full border border-amber-500/60 bg-amber-950/60 text-xs font-medium text-amber-200 hover:bg-amber-900/60 transition shadow-md"
+                    title="Charaka Cooking Science, 3-Course Plate Order & Daily 10 Essentials"
+                  >
+                    <span>🍳</span>
+                    <span className="font-semibold text-amber-100">Cooking & 3-Course</span>
                   </button>
                 )}
                 {onOpenWeatherTracker && (
@@ -227,6 +239,15 @@ export default function LandingPage({
                     className="h-12 rounded-2xl border-rose-500/60 bg-rose-950/50 px-4 text-xs sm:text-sm text-rose-200 hover:bg-rose-900/60 font-semibold shadow-md transition"
                   >
                     🌸 Spring Shield & BMR
+                  </Button>
+                )}
+                {onOpenCookingGuide && (
+                  <Button
+                    onClick={onOpenCookingGuide}
+                    variant="outline"
+                    className="h-12 rounded-2xl border-amber-500/60 bg-amber-950/50 px-4 text-xs sm:text-sm text-amber-200 hover:bg-amber-900/60 font-semibold shadow-md transition"
+                  >
+                    🍳 Cooking & 3-Course Plate
                   </Button>
                 )}
                 {onOpenWeatherTracker && (

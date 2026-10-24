@@ -14,8 +14,10 @@ import {
   getDeshaSatmyaProfile,
 } from '../lib/deshaSatmyaEngine'
 import { calculateAyurvedicMetabolism } from '../lib/metabolicEngine'
+import { calculateMealMacronutrients, getAyurvedicCookingInstructions } from '../lib/culinaryEngine'
 import CharakaMatraCalculator from './CharakaMatraCalculator'
 import MetabolicArdhaShaktiCalculator from './MetabolicArdhaShaktiCalculator'
+import AyurvedicCookingGuide from './AyurvedicCookingGuide'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Textarea } from '@/components/ui/textarea'
@@ -48,6 +50,7 @@ export default function DietPlan({ profile }: Props) {
   const [draft, setDraft] = useState('')
   const [showMatraCalculator, setShowMatraCalculator] = useState(false)
   const [showMetabolicCalc, setShowMetabolicCalc] = useState(false)
+  const [showCookingGuide, setShowCookingGuide] = useState(false)
   const [deshaProfile, setDeshaProfile] = useState(() => getDeshaSatmyaProfile(profile))
 
   // Charaka Ahara Matra portioning and Desha-Satmya adaptation
@@ -55,6 +58,9 @@ export default function DietPlan({ profile }: Props) {
 
   // Charaka Agni-BMR, TDEE, Ardha-Shakti & Vasanta Ritu (Spring) Bio-Shield
   const metabolism = useMemo(() => calculateAyurvedicMetabolism(profile, undefined, true), [profile])
+
+  // Charaka Culinary Science, Macronutrient Targets (Carbs, Protein, Fats, Fiber) & Bhojana Krama
+  const macroGoals = useMemo(() => calculateMealMacronutrients(profile), [profile])
 
   const meals = mealPlans[dosha]
   const currentMeals = meals[activeMeal] || []
@@ -203,6 +209,62 @@ export default function DietPlan({ profile }: Props) {
                 <strong className="text-rose-100">Spring Kapha Defense:</strong> Sun rays liquefy winter mucus. 15% fat reduction applied. Barley, roasted moong & honey activated.
                 <span className="block text-red-300 font-semibold mt-0.5">🚫 Diva-swapna strictly prohibited (No daytime naps in spring).</span>
               </div>
+            </div>
+          </>
+        )}
+      </Card>
+
+      {/* ─── CHARAKA COOKING SCIENCE (SAMSKARA) & 3-COURSE PLATE (BHOJANA KRAMA) ─── */}
+      <Card className="mb-4 overflow-hidden rounded-2xl border-amber-600/40 bg-gradient-to-br from-[#1b1206] via-[#110b03] to-[#070401] p-4 text-amber-50 shadow-lg">
+        <div className="flex items-center justify-between gap-2">
+          <div className="flex items-center gap-1.5 flex-wrap">
+            <span className="text-lg">🍛</span>
+            <Badge className="bg-amber-500/20 text-amber-300 border-amber-500/30 text-[9px] font-mono">
+              BHOJANA KRAMA (3-COURSE ORDER)
+            </Badge>
+            <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30 text-[9px] font-mono">
+              CHARAKA SAMSKĀRA SCIENCE
+            </Badge>
+          </div>
+          <button
+            onClick={() => setShowCookingGuide(!showCookingGuide)}
+            className="text-[11px] text-amber-400 font-medium underline underline-offset-2 hover:text-amber-200"
+          >
+            {showCookingGuide ? 'Minimize ✕' : 'View Cooking Science & 3 Courses ➔'}
+          </button>
+        </div>
+
+        {showCookingGuide ? (
+          <div className="mt-4 pt-3 border-t border-amber-900/40">
+            <AyurvedicCookingGuide
+              profile={profile}
+              mealSlot={activeMeal === 'snacks' ? 'snack' : activeMeal}
+              onClose={() => setShowCookingGuide(false)}
+            />
+          </div>
+        ) : (
+          <>
+            <div className="mt-3 grid grid-cols-3 gap-2 text-center text-xs">
+              <div className="rounded-xl border border-amber-800/40 bg-amber-950/40 p-2">
+                <span className="block text-[9px] uppercase tracking-wider text-amber-400/80 font-mono">Course 1 (Agra)</span>
+                <span className="mt-0.5 block text-xs font-bold text-amber-100">Rice + Podis + Ghee</span>
+                <span className="block text-[8px] text-amber-300/60 font-sans">Mucosal Guard & Amylase</span>
+              </div>
+              <div className="rounded-xl border border-rose-800/40 bg-rose-950/40 p-2">
+                <span className="block text-[9px] uppercase tracking-wider text-rose-400/80 font-mono">Course 2 (Madhya)</span>
+                <span className="mt-0.5 block text-xs font-bold text-rose-100">Rice + Curry + Ghee</span>
+                <span className="block text-[8px] text-rose-300/60 font-sans">Enzymatic Agni Peak</span>
+              </div>
+              <div className="rounded-xl border border-cyan-800/40 bg-cyan-950/40 p-2">
+                <span className="block text-[9px] uppercase tracking-wider text-cyan-400/80 font-mono">Course 3 (Anta)</span>
+                <span className="mt-0.5 block text-xs font-bold text-cyan-100">Rasam / Takra + Pickle</span>
+                <span className="block text-[8px] text-cyan-300/60 font-sans">Kapha Scraper & Pylorus Seal</span>
+              </div>
+            </div>
+
+            <div className="mt-2.5 flex items-center justify-between text-[10px] text-amber-200/80 flex-wrap gap-1">
+              <span>📊 Lunch Target: <strong className="text-amber-100">~{macroGoals.mealBreakdown.lunch.carbohydratesGrams}g Carbs · ~{macroGoals.mealBreakdown.lunch.proteinGrams}g Protein · ~{macroGoals.mealBreakdown.lunch.healthyFatsGrams}g Fats · ~{macroGoals.mealBreakdown.lunch.dietaryFiberGrams}g Fiber</strong></span>
+              <span>🔥 Rule: <strong className="text-amber-100">Eat Hot (Ushnam Ashniyat) & No Reheating</strong></span>
             </div>
           </>
         )}
@@ -360,26 +422,101 @@ export default function DietPlan({ profile }: Props) {
               </div>
             </button>
 
-            {expandedRecipe === i && (
-              <div className="border-t border-emerald-900/40 px-4 pb-4">
-                {meal.recipe && (
-                  <div className="mt-3">
-                    <p className="text-[9px] uppercase tracking-wider text-emerald-500/70">Method</p>
-                    <p className="mt-1 text-[11px] leading-relaxed text-emerald-200/70">{meal.recipe}</p>
+            {expandedRecipe === i && (() => {
+              const cooking = getAyurvedicCookingInstructions(meal.name, dosha)
+              const slotKey = activeMeal === 'snacks' ? 'snack' : activeMeal
+              const macros = macroGoals.mealBreakdown[slotKey]
+
+              return (
+                <div className="border-t border-emerald-900/40 px-4 pb-4 space-y-3 pt-3">
+                  {/* Macronutrient Pill Badges */}
+                  <div className="rounded-xl border border-amber-900/40 bg-amber-950/30 p-2.5">
+                    <div className="flex items-center justify-between text-[10px] text-amber-300 font-bold mb-1.5">
+                      <span>📊 Ayurvedic Macronutrients ({activeMeal.toUpperCase()})</span>
+                      <span className="font-mono text-amber-200">~{macros.caloriesKcal} kcal</span>
+                    </div>
+                    <div className="grid grid-cols-4 gap-1.5 text-center text-xs">
+                      <div className="rounded-lg bg-black/40 border border-amber-500/20 p-1">
+                        <span className="block text-[8px] uppercase tracking-wider text-amber-400 font-mono">Carbs</span>
+                        <span className="font-bold text-amber-100 font-mono">{macros.carbohydratesGrams}g</span>
+                        <span className="block text-[8px] text-amber-300/60 font-sans">Energy/Bulk</span>
+                      </div>
+                      <div className="rounded-lg bg-black/40 border border-emerald-500/20 p-1">
+                        <span className="block text-[8px] uppercase tracking-wider text-emerald-400 font-mono">Protein</span>
+                        <span className="font-bold text-emerald-100 font-mono">{macros.proteinGrams}g</span>
+                        <span className="block text-[8px] text-emerald-300/60 font-sans">Mamsa Dhatu</span>
+                      </div>
+                      <div className="rounded-lg bg-black/40 border border-yellow-500/20 p-1">
+                        <span className="block text-[8px] uppercase tracking-wider text-yellow-400 font-mono">Fats (Ghee)</span>
+                        <span className="font-bold text-yellow-100 font-mono">{macros.healthyFatsGrams}g</span>
+                        <span className="block text-[8px] text-yellow-300/60 font-sans">Sneha/Ojas</span>
+                      </div>
+                      <div className="rounded-lg bg-black/40 border border-teal-500/20 p-1">
+                        <span className="block text-[8px] uppercase tracking-wider text-teal-400 font-mono">Fiber</span>
+                        <span className="font-bold text-teal-100 font-mono">{macros.dietaryFiberGrams}g</span>
+                        <span className="block text-[8px] text-teal-300/60 font-sans">Purisha Bulk</span>
+                      </div>
+                    </div>
                   </div>
-                )}
-                <div className="mt-3">
-                  <p className="text-[9px] uppercase tracking-wider text-emerald-500/70">Ingredients</p>
-                  <div className="mt-1 flex flex-wrap gap-1">
-                    {meal.ingredients.map(ing => (
-                      <span key={ing} className="rounded-full border border-amber-800/20 bg-amber-900/20 px-2 py-0.5 text-[9px] text-amber-200/60">
-                        {ing}
+
+                  {/* Classical Samskara Cooking Method */}
+                  <div className="rounded-xl border border-emerald-800/40 bg-emerald-950/30 p-2.5 text-[11px] space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="font-bold text-emerald-200 uppercase tracking-wider text-[10px]">
+                        🍳 Classical Samskāra Cooking Method (Charaka Vimana 1)
                       </span>
-                    ))}
+                      <span className="text-[9px] text-emerald-400 font-mono">Agni: {cooking.agniProcessing.fireIntensity}</span>
+                    </div>
+
+                    <div className="space-y-1.5 text-emerald-100/80 leading-relaxed text-[11px]">
+                      <div>
+                        <strong className="text-amber-200">1. Soaking & Washing:</strong> {cooking.prepPhase.washingAndSoaking}
+                        <span className="block text-[10px] text-amber-300/60 italic">{cooking.prepPhase.scientificAyurvedicReason}</span>
+                      </div>
+                      <div>
+                        <strong className="text-amber-200">2. Water & Heat:</strong> {cooking.agniProcessing.waterRatio} · {cooking.agniProcessing.cookingMethod} for ~{cooking.agniProcessing.durationMinutes} mins.
+                      </div>
+                      <div>
+                        <strong className="text-amber-200">3. Cow Ghee Tadka (Ghrita Samskara):</strong>
+                        <ul className="mt-1 space-y-0.5 pl-2 text-[10px] text-amber-100/90 font-mono">
+                          {cooking.ghritaSamskaraTadka.spiceOrder.slice(0, 3).map((step, idx) => (
+                            <li key={idx}>• {step}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="text-[10px] text-emerald-300/90 font-semibold pt-1 border-t border-emerald-900/40">
+                        ⚡ Rule: {cooking.servingRule}
+                      </div>
+                    </div>
+
+                    <button
+                      onClick={() => setShowCookingGuide(true)}
+                      className="mt-1.5 w-full py-1.5 rounded-lg border border-amber-500/40 bg-amber-950/40 text-center text-[10px] font-bold text-amber-200 hover:bg-amber-900/50 hover:text-white transition"
+                    >
+                      🍛 View Full Bhojana Krama (3-Course Plate Order) & Daily 10 Essentials ➔
+                    </button>
+                  </div>
+
+                  {meal.recipe && (
+                    <div>
+                      <p className="text-[9px] uppercase tracking-wider text-emerald-500/70">Traditional Method</p>
+                      <p className="mt-1 text-[11px] leading-relaxed text-emerald-200/70">{meal.recipe}</p>
+                    </div>
+                  )}
+
+                  <div>
+                    <p className="text-[9px] uppercase tracking-wider text-emerald-500/70">Ingredients</p>
+                    <div className="mt-1 flex flex-wrap gap-1">
+                      {meal.ingredients.map(ing => (
+                        <span key={ing} className="rounded-full border border-amber-800/20 bg-amber-900/20 px-2 py-0.5 text-[9px] text-amber-200/60">
+                          {ing}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-            )}
+              )
+            })()}
           </Card>
         ))}
       </div>

@@ -12,6 +12,7 @@ import LabReportTracker from './LabReportTracker'
 import BedtimePainCheckin from './BedtimePainCheckin'
 import CharakaMatraCalculator from './CharakaMatraCalculator'
 import MetabolicArdhaShaktiCalculator from './MetabolicArdhaShaktiCalculator'
+import AyurvedicCookingGuide from './AyurvedicCookingGuide'
 
 interface Props {
   profile: UserProfile
@@ -24,7 +25,7 @@ interface Props {
   initialTab?: ProfileTab
 }
 
-export type ProfileTab = 'anatomy' | 'lab_reports' | 'bedtime_review' | 'desha_satmya' | 'metabolic' | 'details'
+export type ProfileTab = 'anatomy' | 'lab_reports' | 'bedtime_review' | 'desha_satmya' | 'metabolic' | 'culinary' | 'details'
 
 export default function UserProfile({ profile, session, onSave, onSignOut, onOpenGuide, onBack, onOpenHealthIntake, initialTab = 'anatomy' }: Props) {
   const [activeTab, setActiveTab] = useState<ProfileTab>(initialTab)
@@ -124,6 +125,16 @@ export default function UserProfile({ profile, session, onSave, onSignOut, onOpe
             🔥 Agni-BMR & Spring Ritu
           </button>
           <button
+            onClick={() => setActiveTab('culinary')}
+            className={`flex-1 min-w-[150px] py-2 px-3 rounded-xl text-center text-xs font-medium transition ${
+              activeTab === 'culinary'
+                ? 'bg-amber-600 text-white shadow-sm font-bold'
+                : 'text-amber-400/70 hover:text-amber-200'
+            }`}
+          >
+            🍳 Cooking & 3-Course Plate
+          </button>
+          <button
             onClick={() => setActiveTab('details')}
             className={`flex-1 min-w-[120px] py-2 px-3 rounded-xl text-center text-xs font-medium transition ${
               activeTab === 'details'
@@ -174,7 +185,15 @@ export default function UserProfile({ profile, session, onSave, onSignOut, onOpe
           />
         )}
 
-        {/* ─── TAB 6: ACCOUNT & BMI DETAILS ─── */}
+        {/* ─── TAB 6: CHARAKA SAMSKARA COOKING SCIENCE & 3-COURSE PLATE ─── */}
+        {activeTab === 'culinary' && (
+          <AyurvedicCookingGuide
+            profile={draft}
+            onClose={() => setActiveTab('anatomy')}
+          />
+        )}
+
+        {/* ─── TAB 7: ACCOUNT & BMI DETAILS ─── */}
         {activeTab === 'details' && (
           <div className="max-w-lg mx-auto">
             {/* ACCOUNT */}

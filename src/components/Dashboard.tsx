@@ -14,6 +14,7 @@ interface Props {
   onOpenChapters?: () => void
   onOpenWeatherTracker?: () => void
   onOpenAnimatedTour?: () => void
+  onOpenCookingGuide?: () => void
 }
 
 export default function Dashboard({
@@ -23,6 +24,7 @@ export default function Dashboard({
   onOpenChapters,
   onOpenWeatherTracker,
   onOpenAnimatedTour,
+  onOpenCookingGuide,
 }: Props) {
   const [now, setNow] = useState(new Date())
   const [todayLog, setTodayLog] = useState(getTodayLog())
@@ -290,6 +292,39 @@ export default function Dashboard({
         </div>
       )}
 
+      {/* ─── CHARAKA COOKING SCIENCE & 3-COURSE PLATE BANNER ─── */}
+      {onOpenCookingGuide && (
+        <div className="px-5 mb-3">
+          <div
+            onClick={onOpenCookingGuide}
+            className="cursor-pointer p-4 rounded-3xl bg-gradient-to-r from-amber-950/80 via-[#261806] to-[#120a02] border border-amber-500/50 hover:border-amber-400/80 transition-all shadow-xl group"
+          >
+            <div className="flex items-start justify-between gap-3">
+              <div className="flex items-start gap-3">
+                <span className="text-2xl mt-0.5 group-hover:scale-110 transition-transform">🍳</span>
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-amber-300 bg-amber-950/90 px-2 py-0.5 rounded-full border border-amber-600/40">
+                      Charaka Samskāra & Bhojana Krama
+                    </span>
+                    <span className="text-[10px] font-mono text-emerald-300 font-semibold">3-Course Plate & Daily 10</span>
+                  </div>
+                  <h3 className="text-amber-100 font-semibold text-sm">
+                    Ayurvedic Cooking Science & 3-Course Plate Order
+                  </h3>
+                  <p className="text-amber-200/70 text-xs mt-1 leading-relaxed">
+                    Course 1 (Rice + Herbal Podis + Cow Ghee), Course 2 (Rice + Curry/Sambar + Ghee), Course 3 (Rice + Rasam/Takra + Pickle). Daily Carbs, Protein, Fats & Fiber breakdown.
+                  </p>
+                </div>
+              </div>
+              <span className="text-amber-400 text-sm group-hover:translate-x-1 transition-transform shrink-0 mt-2 font-bold">
+                ➔ View
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* ─── CLINICAL HEALTH INTAKE BANNER (Polite & Personalized) ─── */}
       <div className="px-5 mb-3">
         <div
@@ -358,7 +393,7 @@ export default function Dashboard({
       {/* ─── QUICK PATHWAYS (gstack Fast Access) ─── */}
       <div className="px-5 mb-6">
         <p className="text-[10px] font-mono uppercase tracking-wider text-emerald-400/70 mb-2">Direct Feature Access</p>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+        <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
           <button
             onClick={() => onNavigate('profile')}
             className="flex items-center gap-2.5 p-3 rounded-2xl bg-gradient-to-br from-emerald-950/60 via-indigo-950/40 to-emerald-900/30 border border-emerald-500/40 text-left hover:border-emerald-400 hover:bg-emerald-900/40 transition-all group shadow-sm"
@@ -382,6 +417,20 @@ export default function Dashboard({
           </button>
 
           <button
+            onClick={() => {
+              if (onOpenCookingGuide) onOpenCookingGuide()
+              else onNavigate('diet')
+            }}
+            className="flex items-center gap-2.5 p-3 rounded-2xl bg-gradient-to-br from-amber-950/60 via-[#261806] to-emerald-900/30 border border-amber-500/40 text-left hover:border-amber-400 hover:bg-emerald-900/40 transition-all group shadow-sm"
+          >
+            <span className="text-xl group-hover:scale-110 transition-transform">🍳</span>
+            <div>
+              <p className="text-amber-100 text-xs font-semibold">3-Course Plate</p>
+              <p className="text-amber-300/60 text-[10px]">Cooking Science</p>
+            </div>
+          </button>
+
+          <button
             onClick={() => onNavigate('diet')}
             className="flex items-center gap-2.5 p-3 rounded-2xl bg-gradient-to-br from-emerald-950/60 to-emerald-900/30 border border-emerald-800/40 text-left hover:border-emerald-500/50 hover:bg-emerald-900/40 transition-all group shadow-sm"
           >
@@ -397,7 +446,7 @@ export default function Dashboard({
               if (onOpenChapters) onOpenChapters()
               else onNavigate('remedies')
             }}
-            className="flex items-center gap-2.5 p-3 rounded-2xl bg-gradient-to-br from-amber-950/40 via-emerald-950/60 to-emerald-900/30 border border-amber-500/40 text-left hover:border-amber-400 hover:bg-emerald-900/40 transition-all group shadow-sm"
+            className="flex items-center gap-2.5 p-3 rounded-2xl bg-gradient-to-br from-amber-950/40 via-emerald-950/60 to-emerald-900/30 border border-amber-500/40 text-left hover:border-amber-400 hover:bg-emerald-900/40 transition-all group shadow-sm col-span-2 sm:col-span-1"
           >
             <span className="text-xl group-hover:scale-110 transition-transform">📜</span>
             <div>

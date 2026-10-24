@@ -32,6 +32,7 @@ import HealthIntakeConsultation from './components/HealthIntakeConsultation'
 import CharakaExplorer from './components/CharakaExplorer'
 import WeatherHealthTracker from './components/WeatherHealthTracker'
 import AnimatedJourneyVideo from './components/AnimatedJourneyVideo'
+import AyurvedicCookingGuide from './components/AyurvedicCookingGuide'
 
 type View = 'landing' | 'onboarding' | 'guide' | 'profile' | 'plan' | 'app'
 type Tab = 'home' | 'chat' | 'routine' | 'goals' | 'yoga' | 'diet' | 'remedies' | 'progress'
@@ -61,8 +62,9 @@ export default function App() {
   const [showCharakaExplorer, setShowCharakaExplorer] = useState(false)
   const [showWeatherTracker, setShowWeatherTracker] = useState(false)
   const [showAnimatedTour, setShowAnimatedTour] = useState(false)
+  const [showCookingGuide, setShowCookingGuide] = useState(false)
   const [popupTick, setPopupTick] = useState(0)
-  const [profileInitialTab, setProfileInitialTab] = useState<'anatomy' | 'lab_reports' | 'bedtime_review' | 'desha_satmya' | 'metabolic' | 'details'>('anatomy')
+  const [profileInitialTab, setProfileInitialTab] = useState<'anatomy' | 'lab_reports' | 'bedtime_review' | 'desha_satmya' | 'metabolic' | 'culinary' | 'details'>('anatomy')
 
   const handleOpenAnatomy = () => {
     if (!profile) handleDemo()
@@ -82,13 +84,18 @@ export default function App() {
     setView('profile')
   }
 
+  const handleOpenCookingGuide = () => {
+    if (!profile) handleDemo()
+    setShowCookingGuide(true)
+  }
+
   const handleOpenDietPlan = () => {
     if (!profile) handleDemo()
     setTab('diet')
     setView('app')
   }
 
-  const handleOpenProfile = (initialTab: 'anatomy' | 'lab_reports' | 'bedtime_review' | 'desha_satmya' | 'metabolic' | 'details' = 'anatomy') => {
+  const handleOpenProfile = (initialTab: 'anatomy' | 'lab_reports' | 'bedtime_review' | 'desha_satmya' | 'metabolic' | 'culinary' | 'details' = 'anatomy') => {
     if (!profile) handleDemo()
     setProfileInitialTab(initialTab)
     setView('profile')
@@ -219,10 +226,21 @@ export default function App() {
           onOpenDietPlan={handleOpenDietPlan}
           onOpenProfile={() => handleOpenProfile('anatomy')}
           onOpenSpringShield={handleOpenMetabolic}
+          onOpenCookingGuide={handleOpenCookingGuide}
           onOpenWeatherTracker={() => setShowWeatherTracker(true)}
           onOpenAnimatedTour={() => setShowAnimatedTour(true)}
         />
         <GrantPitchModal isOpen={showGrantPitch} onClose={() => setShowGrantPitch(false)} />
+        {showCookingGuide && (
+          <div className="fixed inset-0 z-50 overflow-y-auto bg-black/90 backdrop-blur-md p-3 sm:p-6 animate-in fade-in">
+            <div className="max-w-4xl mx-auto">
+              <AyurvedicCookingGuide
+                profile={profile || DEMO_PROFILE}
+                onClose={() => setShowCookingGuide(false)}
+              />
+            </div>
+          </div>
+        )}
         {showWeatherTracker && (
           <div className="fixed inset-0 z-50 overflow-y-auto bg-black/90 backdrop-blur-md p-3 sm:p-6 animate-in fade-in">
             <div className="max-w-4xl mx-auto">
@@ -307,10 +325,21 @@ export default function App() {
           onOpenDietPlan={handleOpenDietPlan}
           onOpenProfile={() => handleOpenProfile('anatomy')}
           onOpenSpringShield={handleOpenMetabolic}
+          onOpenCookingGuide={handleOpenCookingGuide}
           onOpenWeatherTracker={() => setShowWeatherTracker(true)}
           onOpenAnimatedTour={() => setShowAnimatedTour(true)}
         />
         <GrantPitchModal isOpen={showGrantPitch} onClose={() => setShowGrantPitch(false)} />
+        {showCookingGuide && (
+          <div className="fixed inset-0 z-50 overflow-y-auto bg-black/90 backdrop-blur-md p-3 sm:p-6 animate-in fade-in">
+            <div className="max-w-4xl mx-auto">
+              <AyurvedicCookingGuide
+                profile={profile || DEMO_PROFILE}
+                onClose={() => setShowCookingGuide(false)}
+              />
+            </div>
+          </div>
+        )}
         {showWeatherTracker && (
           <div className="fixed inset-0 z-50 overflow-y-auto bg-black/90 backdrop-blur-md p-3 sm:p-6 animate-in fade-in">
             <div className="max-w-4xl mx-auto">
@@ -402,6 +431,7 @@ export default function App() {
             onOpenChapters={() => setShowCharakaExplorer(true)}
             onOpenWeatherTracker={() => setShowWeatherTracker(true)}
             onOpenAnimatedTour={() => setShowAnimatedTour(true)}
+            onOpenCookingGuide={handleOpenCookingGuide}
           />
         )
       case 'chat':
@@ -582,6 +612,15 @@ export default function App() {
           </button>
 
           <button
+            onClick={handleOpenCookingGuide}
+            className="flex items-center gap-1 px-2.5 py-1 rounded-xl bg-amber-950/70 border border-amber-500/50 text-[11px] font-semibold text-amber-200 hover:bg-amber-900/70 hover:text-white transition shadow-sm"
+            title="Charaka Cooking Science, 3-Course Bhojana Krama & Daily 10 Essentials"
+          >
+            <span>🍳</span>
+            <span>Cooking & 3-Course Plate</span>
+          </button>
+
+          <button
             onClick={() => setShowWeatherTracker(true)}
             className="flex items-center gap-1 px-2.5 py-1 rounded-xl bg-sky-950/70 border border-sky-500/50 text-[11px] font-semibold text-sky-200 hover:bg-sky-900/70 hover:text-white transition shadow-sm"
             title="Real-Time Weather & Walking/Running Activity Tracker"
@@ -684,6 +723,18 @@ export default function App() {
                 setShowCharakaExplorer(false)
                 setTab('remedies')
               }}
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Ayurvedic Culinary Science & 3-Course Bhojana Krama Modal */}
+      {showCookingGuide && (
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-black/90 backdrop-blur-md p-3 sm:p-6 animate-in fade-in">
+          <div className="max-w-4xl mx-auto">
+            <AyurvedicCookingGuide
+              profile={profile || DEMO_PROFILE}
+              onClose={() => setShowCookingGuide(false)}
             />
           </div>
         </div>
