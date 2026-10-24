@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Jaya Ayurveda — Animated 24-Hour Journey (Register to Sleep)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 0.2; transform: scale(1); }
+      50% { opacity: 0.35; transform: scale(1.05); }
+    }
+    .ambient-glow {
+      animation: pulse-glow 6s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="bg-[#06140c] text-emerald-50 antialiased min-h-screen p-4 sm:p-8 flex flex-col justify-center items-center font-sans">
+
+  <!-- Main Container -->
+  <div class="w-full max-w-4xl mx-auto space-y-5">
+    
+    <!-- Top Header -->
+    <div class="flex flex-wrap items-center justify-between gap-3 border-b border-emerald-900/50 pb-4">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">🌿</span>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-xl sm:text-2xl font-bold tracking-tight text-white">Jaya Ayurveda: The Full 24-Hour Journey</h1>
+            <span class="px-2.5 py-0.5 rounded-full text-xs font-mono bg-amber-500/20 text-amber-200 border border-amber-500/40 font-bold">
+              Register to Sleep
+            </span>
+          </div>
+          <p class="text-xs text-emerald-300/70">
+            Interactive Animated Walkthrough · Charaka Samhita Clinical Prevention
+          </p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2 text-xs">
+        <span class="px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-600/40 text-emerald-200 font-mono" id="timeBadge">
+          Day 0 · 08:00 AM
+        </span>
+      </div>
+    </div>
+
+    <!-- Cinematic Video Player Screen -->
+    <div class="relative overflow-hidden rounded-3xl border border-emerald-600/50 bg-gradient-to-br from-[#051c10] via-[#082617] to-[#031107] p-6 sm:p-9 shadow-2xl">
+      <div class="ambient-glow pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-emerald-500/20 blur-3xl"></div>
+      <div class="ambient-glow pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-amber-500/15 blur-3xl"></div>
+
+      <!-- Video Progress & Indicator -->
+      <div class="flex items-center justify-between text-xs mb-5">
+        <div class="flex items-center gap-2">
+          <span class="flex h-3 w-3 relative">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+          </span>
+          <span class="font-mono text-emerald-300/80 tracking-widest text-[11px] uppercase font-bold" id="sceneIndicator">
+            SCENE 1 OF 8 · REGISTRATION
+          </span>
+        </div>
+        <span class="text-xs text-emerald-400/80 font-mono" id="sceneCounter">01 / 08</span>
+      </div>
+
+      <!-- Stage Grid -->
+      <div class="grid gap-6 md:grid-cols-[1.15fr_0.85fr] items-center">
+        <!-- Narrative Side -->
+        <div class="space-y-4">
+          <div class="flex items-center gap-3">
+            <span class="text-4xl" id="sceneIcon">📝</span>
+            <div>
+              <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight" id="sceneTitle">
+                Registration & Prakriti Discovery
+              </h2>
+              <p class="text-xs font-mono text-amber-300/90 font-medium" id="sceneSanskrit">
+                प्रकृति परीक्षा (Prakriti Pariksha)
+              </p>
+            </div>
+          </div>
+
+          <p class="text-sm text-emerald-100/90 leading-relaxed" id="sceneDesc">
+            The user begins by discovering their unique mind-body constitution through classical dosha scoring, WHO BMI calibration, and profession analysis.
+          </p>
+
+          <!-- Triggered Features Box -->
+          <div class="rounded-2xl bg-black/50 border border-emerald-900/60 p-4 space-y-2">
+            <p class="text-[11px] uppercase tracking-wider text-emerald-400 font-mono font-bold">
+              Active System Features Triggered:
+            </p>
+            <ul class="space-y-1.5 text-xs text-emerald-200/90 list-disc list-inside" id="featureList">
+              <li>Prakriti Composition (Vata-Pitta-Kapha %)</li>
+              <li>WHO Healthy Weight Band & BMI</li>
+              <li>Profession Fatigue Countermeasures</li>
+            </ul>
+          </div>
+
+          <!-- Ayurvedic Benefit Box -->
+          <div class="p-3.5 rounded-2xl bg-emerald-950/70 border border-emerald-600/40 flex items-start gap-2.5 text-xs text-emerald-200">
+            <span class="text-lg shrink-0">🌿</span>
+            <div>
+              <span class="font-bold text-white">Ayurvedic Health Benefit:</span>
+              <p class="mt-0.5 leading-relaxed" id="benefitText">
+                Eliminates guesswork. Every single meal, remedy, and pose is calibrated to your cellular digestion (Agni).
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Biometric Holographic Graphic Box -->
+        <div class="relative mx-auto w-full max-w-xs">
+          <div class="rounded-3xl border border-emerald-500/40 bg-black/80 p-6 backdrop-blur-xl shadow-2xl text-center space-y-4">
+            <div class="mx-auto flex h-24 w-24 items-center justify-center rounded-3xl border border-emerald-400/40 bg-emerald-950/70 text-5xl shadow-inner shadow-emerald-500/30" id="hologramIcon">
+              🧬
+            </div>
+            <div>
+              <p class="text-[11px] uppercase tracking-widest text-emerald-400/70 font-mono">Real-Time Metrics</p>
+              <h3 class="mt-1 text-lg font-bold text-white tracking-tight" id="metricHighlight">
+                Pitta 64% · Vata 21% · Kapha 15%
+              </h3>
+            </div>
+            <div class="p-2.5 rounded-2xl bg-emerald-950/80 border border-emerald-700/50 text-xs font-semibold text-emerald-200" id="detailPill">
+              Normal BMI 24.5 · Desk Engineer
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Playback Scrubber & Navigation Controls -->
+      <div class="mt-8 border-t border-emerald-900/60 pt-4 space-y-3">
+        <!-- 8 Scene Dots -->
+        <div class="grid grid-cols-8 gap-2" id="dotsContainer">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Control Buttons -->
+        <div class="flex flex-wrap items-center justify-between gap-3 text-xs">
+          <div class="flex items-center gap-2">
+            <button id="playBtn" class="px-5 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold text-xs shadow-md transition">
+              ⏸ Pause
+            </button>
+            <button id="prevBtn" class="px-4 py-2 rounded-xl border border-emerald-700/60 text-emerald-200 hover:bg-emerald-900/40 font-semibold transition">
+              ⏮ Prev
+            </button>
+            <button id="nextBtn" class="px-4 py-2 rounded-xl border border-emerald-700/60 text-emerald-200 hover:bg-emerald-900/40 font-semibold transition">
+              Next ⏭
+            </button>
+          </div>
+
+          <!-- Speed Controls -->
+          <div class="flex items-center gap-1.5 text-xs text-emerald-300/80">
+            <span>Speed:</span>
+            <button class="speed-btn px-2.5 py-1 rounded-lg bg-emerald-950 border border-emerald-800/40 hover:bg-emerald-800 text-[11px]" data-speed="7000">Slow</button>
+            <button class="speed-btn px-2.5 py-1 rounded-lg bg-emerald-600 font-bold text-white text-[11px]" data-speed="4500">Normal</button>
+            <button class="speed-btn px-2.5 py-1 rounded-lg bg-emerald-950 border border-emerald-800/40 hover:bg-emerald-800 text-[11px]" data-speed="2500">Fast</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8 Scene Selector Grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5" id="sceneCardsGrid">
+      <!-- Populated by JS -->
+    </div>
+
+  </div>
+
+  <script>
+    const scenes = [
+      {
+        id: 1,
+        time: 'Day 0 · 08:00 AM',
+        title: 'Registration & Prakriti Discovery',
+        sanskrit: 'प्रकृति परीक्षा (Prakriti Pariksha)',
+        icon: '📝',
+        hologram: '🧬',
+        desc: 'The user begins by discovering their unique mind-body constitution through classical dosha scoring, WHO BMI calibration, and profession analysis (Software Engineer, Doctor, Teacher).',
+        features: [
+          'Prakriti Assessment (Vata, Pitta, Kapha %)',
+          'WHO Healthy Weight Band & BMI calibration',
+          'Profession-specific movement & screen fatigue countermeasures',
+          'Charaka Samhita 120 Chapters indexation'
+        ],
+        benefit: 'Eliminates generic advice. Every single recommendation is now personalized to your individual cellular metabolism.',
+        metric: 'Pitta 64% · Vata 21% · Kapha 15%',
+        pill: 'Normal BMI 24.5 · Desk Engineer Calibrated'
+      },
+      {
+        id: 2,
+        time: '05:00 AM',
+        title: 'Brahma Muhurta & Morning Dinacharya',
+        sanskrit: 'ब्राह्मे मुहूर्ते उत्तिष्ठेत् (Brahma Muhurta)',
+        icon: '🌅',
+        hologram: '🧘',
+        desc: 'Jaya gently wakes the user at the auspicious cosmic hour (45 mins before sunrise) when Vata promotes effortless bowel evacuation and mental clarity. Dinacharya guides oral and sensory detox.',
+        features: [
+          'Proactive Morning Prompt (No searching needed)',
+          'Jihva Nirlekhana (Copper tongue scraping to eliminate Ama)',
+          'Ushnodaka (Warm water to spark Jatharagni)',
+          'Anu Taila Nasya (Nasal oil barrier for brain and sinus micro-channels)'
+        ],
+        benefit: 'Clears metabolic endotoxins (Ama) accumulated overnight, preventing morning brain fog and sluggishness.',
+        metric: '05:00 AM · Vata Phase (Active Cleansing)',
+        pill: 'Jatharagni Ignited · Micro-Channels Cleared'
+      },
+      {
+        id: 3,
+        time: '06:30 AM',
+        title: 'Live Weather Shield & Ardha-Shakti Walk/Run',
+        sanskrit: 'ऋतु अनुकूल व्यायाम (Ritu Vyayama & Ardha-Shakti)',
+        icon: '🌦️',
+        hologram: '🏃',
+        desc: 'The app checks outdoor weather (24°C, 58% humidity, AQI 65) and environmental Dosha impact. It schedules a morning walk/run, tracking steps and enforcing the ancient Half-Capacity safety ceiling.',
+        features: [
+          'Real-Time Weather & Air Quality API (Open-Meteo)',
+          'Dosha Climate Aggravation Index (Vata/Pitta/Kapha score)',
+          'Pedometer with Dosha-calibrated step targets (7,500 steps)',
+          'Ardha-Shakti Heart Rate Safety Zone (50%–70% max HR: 100–135 bpm)',
+          '3 Stop Signs: Mouth breathing (Vaktram) & brow sweat alert'
+        ],
+        benefit: 'Protects heart resilience, prevents overtraining muscle breakdown (Mamsa Kshaya), and adapts to climate variations.',
+        metric: '4,250 Steps · 185 kcal · Pulse 124 bpm',
+        pill: 'Outdoor Safe Window · Safe Ardha-Shakti Preserved'
+      },
+      {
+        id: 4,
+        time: '12:30 PM',
+        title: 'Charaka Ahara Matra & Midday Lunch Peak',
+        sanskrit: 'त्रिविध कुक्षीयाहार मात्रा (Trividha Kukshi Matra)',
+        icon: '🌾',
+        hologram: '🍽️',
+        desc: 'At noon, the sun and biological Pitta digestive fire (Jatharagni) reach their daily maximum. Jaya calculates exact portion weights based on the stomach division rule from Charaka Vimana 2.',
+        features: [
+          'Trividha Kukshi Calculator: 1/3 Solid (~270g), 1/3 Liquid (~270ml), 1/3 Empty Space for Tridosha Churning',
+          'Desha-Satmya Food Matching: Staple grains tuned to native soil (Anupa, Jangala, Sadharana)',
+          'Clinical Red Rice & Barley substitution for high blood sugar',
+          'Midday Lunch Peak allocation: 45% of daily TDEE (~1,015 kcal)'
+        ],
+        benefit: 'Eliminates post-lunch lethargy, acid reflux, and heavy bloating by never suffocating the gastric fire.',
+        metric: '1/3 Solid 270g · 1/3 Liquid 270ml · 1/3 Space',
+        pill: 'Jangala Satmya · Roasted Barley & Moong Peak'
+      },
+      {
+        id: 5,
+        time: '03:30 PM',
+        title: 'Human Anatomy Twin & Organ Nourishment',
+        sanskrit: 'शारीरिक स्रोतस् डिजिटल ट्विन (Sharira Srotas Twin)',
+        icon: '🧬',
+        hologram: '🩻',
+        desc: 'The user opens their 3D holographic Anatomy Visualizer. 13 organ systems (Circulatory, Digestive, Respiratory, Muscular, Nervous...) display real-time 0% to 100% nourishment levels mapped to Ayurvedic Srotamsi.',
+        features: [
+          'Interactive Human Anatomy with Light Chart & Dark Hologram Modes',
+          'Organ Nourishment % (e.g. Digestive 78%, Circulatory 84%)',
+          'Active Disease Beacons: Points out pain, inflammation, or metabolic imbalance',
+          'Deficit-Balancing Meal Generator: One tap creates a meal targeting lowest organs'
+        ],
+        benefit: 'Visualizes how daily food turns into the 7 bodily tissues (Rasa, Rakta, Mamsa, Meda, Asthi, Majja, Shukra).',
+        metric: '13 Systems Tracked · Overall Vigor 82%',
+        pill: 'Annavaha & Raktavaha Srotas Fully Nourished'
+      },
+      {
+        id: 6,
+        time: '05:00 PM',
+        title: 'Vasanta Ritu (Spring) Bio-Shield',
+        sanskrit: 'वसन्त ऋतु चर्या (Vasanta Ritu Defense)',
+        icon: '🌸',
+        hologram: '🛡️',
+        desc: 'Spring sun rays melt winter-consolidated Kapha into the stomach, dousing Jatharagni. Jaya alerts the user and adjusts their day to prevent spring hay fever, sinus congestion, and fatigue.',
+        features: [
+          'Kapha Liquefaction Severity Analyzer (Charaka Sutra 6.22-26)',
+          '15% Heavy Fat Reduction & +25% Bitter/Pungent Superfoods',
+          'Aged Barley (Yava) & Raw Honey (Madhu) lekhana scraping',
+          'Strict Prohibition on Daytime Naps (Diva-swapna Nishiddha)',
+          'Udvartana dry powder massage prescription'
+        ],
+        benefit: 'Stops spring seasonal allergies before they start. Maintains razor-sharp focus and zero spring sluggishness.',
+        metric: 'Kapha Liquefaction Defense Active',
+        pill: 'Zero Daytime Naps · Purana Yava Antidote'
+      },
+      {
+        id: 7,
+        time: '07:30 PM',
+        title: 'Sunset Light Dinner & Calorie Tapering',
+        sanskrit: 'सायं भोजन (Sayam Bhojana)',
+        icon: '🥣',
+        hologram: '🍵',
+        desc: 'As the sun sets, digestive fire wanes. Jaya prescribes a light, easily digestible evening meal (25% of TDEE) consumed at least 2.5 hours before sleep to prevent toxin formation.',
+        features: [
+          'Light Moong Khichdi or vegetable broth',
+          'Strict ban on curd/yogurt, heavy red meat, and cheese at night',
+          'Golden milk with nutmeg and turmeric for nervous system grounding',
+          'Evening wind-down reminder'
+        ],
+        benefit: 'Ensures the stomach finishes digestion before bedtime so cellular repair and immune regeneration (Ojas) can occur.',
+        metric: 'Dinner 560 kcal (25% TDEE) · 07:30 PM',
+        pill: 'Laghu Ahara · 100% Digested Before Sleep'
+      },
+      {
+        id: 8,
+        time: '09:30 PM',
+        title: 'Bedtime Pain Review & Lab Report Check-in',
+        sanskrit: 'रात्रि समीक्षा व निद्रा (Nidra & Ratri Samiksha)',
+        icon: '🌙',
+        hologram: '✨',
+        desc: 'At bedtime, Jaya asks the user to review the effect of today’s remedies on pain/symptoms, checks medical lab counts (blood sugar, BP), and closes the day with deep restorative sleep.',
+        features: [
+          'Interactive Bedtime Pain & Cure Tracker (0–10 scale check-in)',
+          'Quantitative Lab Report Tracker (HbA1c, Fasting Glucose, BP counts)',
+          'Automated daily progress card & tomorrow’s prep',
+          'Tratak / Brahmari Pranayama wind-down breathing'
+        ],
+        benefit: 'Completes the feedback loop. Adapts tomorrow’s meals and remedies based on real physical pain relief and clinical numbers.',
+        metric: 'Pain Score: 6/10 ➔ 2/10 (67% Reduction)',
+        pill: 'Day Closed with Peace · Deep Nidra Ready'
+      }
+    ];
+
+    let currentIndex = 0;
+    let isPlaying = true;
+    let speedMs = 4500;
+    let timerId = null;
+
+    function renderScene(idx) {
+      currentIndex = idx;
+      const s = scenes[idx];
+
+      document.getElementById('timeBadge').innerText = s.time;
+      document.getElementById('sceneIndicator').innerText = `SCENE ${s.id} OF 8 · ${s.title.toUpperCase()}`;
+      document.getElementById('sceneCounter').innerText = `0${s.id} / 08`;
+      document.getElementById('sceneIcon').innerText = s.icon;
+      document.getElementById('sceneTitle').innerText = s.title;
+      document.getElementById('sceneSanskrit').innerText = s.sanskrit;
+      document.getElementById('sceneDesc').innerText = s.desc;
+      document.getElementById('hologramIcon').innerText = s.hologram;
+      document.getElementById('metricHighlight').innerText = s.metric;
+      document.getElementById('detailPill').innerText = s.pill;
+      document.getElementById('benefitText').innerText = s.benefit;
+
+      // Update features list
+      const featEl = document.getElementById('featureList');
+      featEl.innerHTML = s.features.map(f => `<li><span class="font-medium text-white">${f}</span></li>`).join('');
+
+      // Update dots
+      const dots = document.querySelectorAll('.scene-dot');
+      dots.forEach((d, i) => {
+        if (i === idx) {
+          d.className = 'scene-dot h-2.5 rounded-full bg-amber-400 shadow-md shadow-amber-400/50';
+        } else if (i < idx) {
+          d.className = 'scene-dot h-2.5 rounded-full bg-emerald-500';
+        } else {
+          d.className = 'scene-dot h-2.5 rounded-full bg-emerald-950 border border-emerald-900/60';
+        }
+      });
+
+      // Update bottom cards
+      const cards = document.querySelectorAll('.scene-card');
+      cards.forEach((c, i) => {
+        if (i === idx) {
+          c.className = 'scene-card p-3 rounded-2xl border border-emerald-400 bg-emerald-900/80 text-white shadow-lg text-left transition';
+        } else {
+          c.className = 'scene-card p-3 rounded-2xl border border-emerald-900/40 bg-emerald-950/30 text-emerald-300/70 hover:bg-emerald-900/40 text-left transition';
+        }
+      });
+    }
+
+    function startTimer() {
+      if (timerId) clearInterval(timerId);
+      timerId = setInterval(() => {
+        if (isPlaying) {
+          const next = (currentIndex + 1) % scenes.length;
+          renderScene(next);
+        }
+      }, speedMs);
+    }
+
+    // Init UI elements
+    const dotsContainer = document.getElementById('dotsContainer');
+    scenes.forEach((s, idx) => {
+      const dot = document.createElement('button');
+      dot.className = 'scene-dot h-2.5 rounded-full bg-emerald-950 border border-emerald-900/60 transition-all';
+      dot.onclick = () => {
+        renderScene(idx);
+        isPlaying = false;
+        document.getElementById('playBtn').innerText = '▶ Play Auto-Tour';
+      };
+      dotsContainer.appendChild(dot);
+    });
+
+    const cardsContainer = document.getElementById('sceneCardsGrid');
+    scenes.forEach((s, idx) => {
+      const card = document.createElement('button');
+      card.className = 'scene-card p-3 rounded-2xl border border-emerald-900/40 bg-emerald-950/30 text-emerald-300/70 text-left transition';
+      card.innerHTML = `
+        <div class="flex items-center gap-1.5">
+          <span class="text-base">${s.icon}</span>
+          <span class="text-xs font-bold text-white">${s.time.split('·')[0]}</span>
+        </div>
+        <p class="text-[11px] font-medium text-emerald-200 truncate mt-1">${s.title}</p>
+      `;
+      card.onclick = () => {
+        renderScene(idx);
+        isPlaying = false;
+        document.getElementById('playBtn').innerText = '▶ Play Auto-Tour';
+      };
+      cardsContainer.appendChild(card);
+    });
+
+    // Play / Pause button
+    const playBtn = document.getElementById('playBtn');
+    playBtn.onclick = () => {
+      isPlaying = !isPlaying;
+      playBtn.innerText = isPlaying ? '⏸ Pause' : '▶ Play Auto-Tour';
+      if (isPlaying) startTimer();
+    };
+
+    document.getElementById('nextBtn').onclick = () => {
+      renderScene((currentIndex + 1) % scenes.length);
+      isPlaying = false;
+      playBtn.innerText = '▶ Play Auto-Tour';
+    };
+
+    document.getElementById('prevBtn').onclick = () => {
+      renderScene(currentIndex === 0 ? scenes.length - 1 : currentIndex - 1);
+      isPlaying = false;
+      playBtn.innerText = '▶ Play Auto-Tour';
+    };
+
+    // Speed buttons
+    document.querySelectorAll('.speed-btn').forEach(btn => {
+      btn.onclick = () => {
+        document.querySelectorAll('.speed-btn').forEach(b => {
+          b.className = 'speed-btn px-2.5 py-1 rounded-lg bg-emerald-950 border border-emerald-800/40 text-[11px]';
+        });
+        btn.className = 'speed-btn px-2.5 py-1 rounded-lg bg-emerald-600 font-bold text-white text-[11px]';
+        speedMs = parseInt(btn.getAttribute('data-speed'));
+        startTimer();
+      };
+    });
+
+    // Initial render
+    renderScene(0);
+    startTimer();
+  </script>
+</body>
+</html>

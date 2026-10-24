@@ -284,6 +284,51 @@ assert(dashboardMetabolic.includes('Vasanta Ritu') && dashboardMetabolic.include
 const appMetabolic = fs.readFileSync(path.join(ROOT, 'src/App.tsx'), 'utf-8')
 assert(appMetabolic.includes('Spring Shield & BMR') && appMetabolic.includes('handleOpenMetabolic'), 'App.tsx fast-bar and navigation wired to Spring Shield & BMR')
 
+// ─── SUITE 14: Real-Time Weather & Health Activity Tracker + 24-Hr Tour ────
+console.log('\n► Suite 14: Real-Time Weather, Movement Activity & 24-Hour Animated Tour')
+const weatherEnginePath = path.join(ROOT, 'src/lib/weatherEngine.ts')
+assert(fs.existsSync(weatherEnginePath), 'weatherEngine.ts exists')
+const weatherEngineContent = fs.readFileSync(weatherEnginePath, 'utf-8')
+
+assert(weatherEngineContent.includes('calculateDoshaClimateImpact'), 'Exports calculateDoshaClimateImpact function')
+assert(weatherEngineContent.includes('PRESET_WEATHER_LOCATIONS'), 'Defines PRESET_WEATHER_LOCATIONS for zero-delay climate testing')
+assert(weatherEngineContent.includes('Pranavaha Srotas') && weatherEngineContent.includes('respiratoryAqiRisk'), 'Provides Pranavaha Srotas respiratory AQI alerts')
+assert(weatherEngineContent.includes('fetchLiveWeather'), 'Exports fetchLiveWeather network fetcher')
+
+const activityEnginePath = path.join(ROOT, 'src/lib/activityEngine.ts')
+assert(fs.existsSync(activityEnginePath), 'activityEngine.ts exists')
+const activityEngineContent = fs.readFileSync(activityEnginePath, 'utf-8')
+assert(activityEngineContent.includes('getDoshaStepGoal'), 'Exports getDoshaStepGoal function')
+assert(activityEngineContent.includes('calculateSafeHeartRateZone'), 'Exports calculateSafeHeartRateZone function')
+assert(activityEngineContent.includes('calculateWorkoutCalories'), 'Exports calculateWorkoutCalories function')
+assert(activityEngineContent.includes('logWorkoutSession'), 'Exports logWorkoutSession persistence function')
+
+// Verify UI Components & Integration
+const weatherTrackerComponent = path.join(ROOT, 'src/components/WeatherHealthTracker.tsx')
+assert(fs.existsSync(weatherTrackerComponent), 'WeatherHealthTracker.tsx component exists')
+const weatherTrackerContent = fs.readFileSync(weatherTrackerComponent, 'utf-8')
+assert(weatherTrackerContent.includes('calculateDoshaClimateImpact') && weatherTrackerContent.includes('logWorkoutSession'), 'WeatherHealthTracker wires weather & activity engines')
+
+const animatedJourneyComponent = path.join(ROOT, 'src/components/AnimatedJourneyVideo.tsx')
+assert(fs.existsSync(animatedJourneyComponent), 'AnimatedJourneyVideo.tsx component exists')
+const animatedContent = fs.readFileSync(animatedJourneyComponent, 'utf-8')
+assert(animatedContent.includes('JOURNEY_SCENES') && animatedContent.includes('Brahma Muhurta') && animatedContent.includes('Ahara Matra'), 'AnimatedJourneyVideo contains all classical journey scenes')
+
+const publicTourHtml = path.join(ROOT, 'public/journey_walkthrough.html')
+assert(fs.existsSync(publicTourHtml), 'public/journey_walkthrough.html standalone animation exists')
+
+const dashboardWeather = fs.readFileSync(path.join(ROOT, 'src/components/Dashboard.tsx'), 'utf-8')
+assert(dashboardWeather.includes('Weather & Health Tracker') && dashboardWeather.includes('onOpenWeatherTracker'), 'Dashboard.tsx renders Weather & Health Activity Card')
+assert(dashboardWeather.includes('Watch the 24-Hour Animated Journey Tour'), 'Dashboard.tsx renders Animated Tour Card')
+
+const landingWeather = fs.readFileSync(path.join(ROOT, 'src/components/LandingPage.tsx'), 'utf-8')
+assert(landingWeather.includes('Weather & Run') || landingWeather.includes('Weather & Activity'), 'LandingPage.tsx header & hero include Weather & Activity')
+assert(landingWeather.includes('24-Hr Tour') || landingWeather.includes('Animated Tour'), 'LandingPage.tsx includes Animated Journey Tour')
+
+const appWeather = fs.readFileSync(path.join(ROOT, 'src/App.tsx'), 'utf-8')
+assert(appWeather.includes('WeatherHealthTracker') && appWeather.includes('AnimatedJourneyVideo'), 'App.tsx imports WeatherHealthTracker & AnimatedJourneyVideo')
+assert(appWeather.includes('showWeatherTracker') && appWeather.includes('showAnimatedTour'), 'App.tsx maintains modals for WeatherTracker & AnimatedTour')
+
 // ─── RESULTS SUMMARY ───────────────────────────────────────────────────────
 console.log('\n======================================================')
 console.log(`✨ TEST RESULTS: ${passed} PASSED / ${failed} FAILED`)

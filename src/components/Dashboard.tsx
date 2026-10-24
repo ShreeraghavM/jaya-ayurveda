@@ -12,9 +12,18 @@ interface Props {
   onNavigate: (tab: string) => void
   onOpenHealthIntake?: () => void
   onOpenChapters?: () => void
+  onOpenWeatherTracker?: () => void
+  onOpenAnimatedTour?: () => void
 }
 
-export default function Dashboard({ profile, onNavigate, onOpenHealthIntake, onOpenChapters }: Props) {
+export default function Dashboard({
+  profile,
+  onNavigate,
+  onOpenHealthIntake,
+  onOpenChapters,
+  onOpenWeatherTracker,
+  onOpenAnimatedTour,
+}: Props) {
   const [now, setNow] = useState(new Date())
   const [todayLog, setTodayLog] = useState(getTodayLog())
   const [waterAdded, setWaterAdded] = useState(0)
@@ -214,6 +223,72 @@ export default function Dashboard({ profile, onNavigate, onOpenHealthIntake, onO
           </div>
         </div>
       </div>
+
+      {/* ─── REAL-TIME WEATHER & HEALTH ACTIVITY CARD (Walking/Running & Climate) ─── */}
+      {onOpenWeatherTracker && (
+        <div className="px-5 mb-3">
+          <div
+            onClick={onOpenWeatherTracker}
+            className="cursor-pointer p-4 rounded-3xl bg-gradient-to-r from-sky-950/80 via-[#061d28] to-emerald-950/80 border border-sky-500/50 hover:border-sky-400/80 transition-all shadow-xl group"
+          >
+            <div className="flex items-start justify-between gap-3">
+              <div className="flex items-start gap-3">
+                <span className="text-2xl mt-0.5 group-hover:scale-110 transition-transform">🌦️</span>
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-sky-300 bg-sky-950/90 px-2 py-0.5 rounded-full border border-sky-600/40">
+                      Charaka Sutra 6 & 7
+                    </span>
+                    <span className="text-[10px] font-mono text-emerald-300 font-semibold">Live Weather & Movement</span>
+                  </div>
+                  <h3 className="text-sky-100 font-semibold text-sm">
+                    Weather & Health Tracker: Walking, Running & Climate Shield
+                  </h3>
+                  <p className="text-sky-200/70 text-xs mt-1 leading-relaxed">
+                    Live temperature, humidity, wind, and AQI diagnostic. Track your daily steps, record walking and running workouts, and stay safely in your Ardha-Shakti heart rate zone.
+                  </p>
+                </div>
+              </div>
+              <span className="text-sky-400 text-sm group-hover:translate-x-1 transition-transform shrink-0 mt-2 font-bold">
+                ➔ Open
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ─── 24-HOUR ANIMATED CINEMATIC TOUR BANNER ─── */}
+      {onOpenAnimatedTour && (
+        <div className="px-5 mb-3">
+          <div
+            onClick={onOpenAnimatedTour}
+            className="cursor-pointer p-4 rounded-3xl bg-gradient-to-r from-amber-950/80 via-[#261806] to-emerald-950/70 border border-amber-500/50 hover:border-amber-400/80 transition-all shadow-xl group"
+          >
+            <div className="flex items-start justify-between gap-3">
+              <div className="flex items-start gap-3">
+                <span className="text-2xl mt-0.5 group-hover:scale-110 transition-transform">🎬</span>
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-amber-300 bg-amber-950/90 px-2 py-0.5 rounded-full border border-amber-600/40">
+                      Interactive Walkthrough
+                    </span>
+                    <span className="text-[10px] font-mono text-emerald-300 font-semibold">Register to Sleep</span>
+                  </div>
+                  <h3 className="text-amber-100 font-semibold text-sm">
+                    Watch the 24-Hour Animated Journey Tour
+                  </h3>
+                  <p className="text-amber-200/70 text-xs mt-1 leading-relaxed">
+                    Watch how Jaya guides the user through all 8 phases of the day: Prakriti discovery, Brahma Muhurta, morning weather run, Ahara Matra lunch, 3D anatomy, and bedtime healing review.
+                  </p>
+                </div>
+              </div>
+              <span className="text-amber-400 text-sm group-hover:translate-x-1 transition-transform shrink-0 mt-2 font-bold">
+                ▶ Watch
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ─── CLINICAL HEALTH INTAKE BANNER (Polite & Personalized) ─── */}
       <div className="px-5 mb-3">

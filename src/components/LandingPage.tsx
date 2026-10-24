@@ -14,6 +14,8 @@ interface Props {
   onOpenDietPlan?: () => void
   onOpenProfile?: () => void
   onOpenSpringShield?: () => void
+  onOpenWeatherTracker?: () => void
+  onOpenAnimatedTour?: () => void
 }
 
 const features = [
@@ -50,6 +52,8 @@ export default function LandingPage({
   onOpenDietPlan,
   onOpenProfile,
   onOpenSpringShield,
+  onOpenWeatherTracker,
+  onOpenAnimatedTour,
 }: Props) {
   return (
     <div className="min-h-screen bg-[#08140c] text-emerald-50">
@@ -84,6 +88,26 @@ export default function LandingPage({
                   >
                     <span>🌸</span>
                     <span className="font-semibold text-rose-100">Spring Shield</span>
+                  </button>
+                )}
+                {onOpenWeatherTracker && (
+                  <button
+                    onClick={onOpenWeatherTracker}
+                    className="flex items-center gap-1 px-2.5 py-1.5 rounded-full border border-sky-500/60 bg-sky-950/60 text-xs font-medium text-sky-200 hover:bg-sky-900/60 transition shadow-md"
+                    title="Real-Time Weather & Walking/Running Activity Tracker"
+                  >
+                    <span>🌦️</span>
+                    <span className="font-semibold text-sky-100">Weather & Run</span>
+                  </button>
+                )}
+                {onOpenAnimatedTour && (
+                  <button
+                    onClick={onOpenAnimatedTour}
+                    className="flex items-center gap-1 px-2.5 py-1.5 rounded-full border border-amber-500/60 bg-amber-950/60 text-xs font-medium text-amber-200 hover:bg-amber-900/60 transition shadow-md"
+                    title="Watch 24-Hour Animated Tour (Register to Sleep)"
+                  >
+                    <span>🎬</span>
+                    <span className="font-semibold text-amber-100">24-Hr Tour</span>
                   </button>
                 )}
                 {onOpenAnatomy && (
@@ -205,6 +229,24 @@ export default function LandingPage({
                     🌸 Spring Shield & BMR
                   </Button>
                 )}
+                {onOpenWeatherTracker && (
+                  <Button
+                    onClick={onOpenWeatherTracker}
+                    variant="outline"
+                    className="h-12 rounded-2xl border-sky-500/60 bg-sky-950/50 px-4 text-xs sm:text-sm text-sky-200 hover:bg-sky-900/60 font-semibold shadow-md transition"
+                  >
+                    🌦️ Weather & Activity
+                  </Button>
+                )}
+                {onOpenAnimatedTour && (
+                  <Button
+                    onClick={onOpenAnimatedTour}
+                    variant="outline"
+                    className="h-12 rounded-2xl border-amber-500/60 bg-amber-950/50 px-4 text-xs sm:text-sm text-amber-200 hover:bg-amber-900/60 font-semibold shadow-md transition"
+                  >
+                    🎬 24-Hr Animated Tour
+                  </Button>
+                )}
                 {onOpenAnatomy && (
                   <Button
                     onClick={onOpenAnatomy}
@@ -263,6 +305,38 @@ export default function LandingPage({
 
               {/* 5 CORE FEATURE CALLOUT PILLS GRID (UNDER BUTTONS) */}
               <div className="mt-6 flex flex-col gap-2">
+                {/* Animated Tour Pill */}
+                {onOpenAnimatedTour && (
+                  <div
+                    onClick={onOpenAnimatedTour}
+                    className="inline-flex cursor-pointer items-center justify-between gap-2 px-3.5 py-2.5 rounded-2xl border border-amber-500/60 bg-gradient-to-r from-[#211506] via-[#2d1e08] to-emerald-950/60 hover:border-amber-400 text-xs text-amber-100 transition shadow-lg group"
+                  >
+                    <div className="flex items-center gap-2">
+                      <span className="text-base group-hover:scale-110 transition-transform">🎬</span>
+                      <span className="font-semibold text-amber-200">
+                        24-Hour Animated Journey Tour: <span className="text-amber-300/90 font-normal">Watch how Jaya guides you from Register to Sleep across all 8 phases</span>
+                      </span>
+                    </div>
+                    <span className="text-amber-400 font-bold group-hover:translate-x-1 transition-transform shrink-0">▶ Watch Tour</span>
+                  </div>
+                )}
+
+                {/* Weather & Activity Tracker Pill */}
+                {onOpenWeatherTracker && (
+                  <div
+                    onClick={onOpenWeatherTracker}
+                    className="inline-flex cursor-pointer items-center justify-between gap-2 px-3.5 py-2.5 rounded-2xl border border-sky-500/60 bg-gradient-to-r from-[#061d28] via-[#092635] to-emerald-950/60 hover:border-sky-400 text-xs text-sky-100 transition shadow-lg group"
+                  >
+                    <div className="flex items-center gap-2">
+                      <span className="text-base group-hover:scale-110 transition-transform">🌦️</span>
+                      <span className="font-semibold text-sky-200">
+                        Live Weather & Health Activity Tracker: <span className="text-sky-300/90 font-normal">Climate Dosha Shield & Walking/Running Ardha-Shakti Safe HR</span>
+                      </span>
+                    </div>
+                    <span className="text-sky-400 font-bold group-hover:translate-x-1 transition-transform shrink-0">➔ Open Tracker</span>
+                  </div>
+                )}
+
                 {/* 1. Spring Shield & Ardha-Shakti Pill */}
                 {onOpenSpringShield && (
                   <div

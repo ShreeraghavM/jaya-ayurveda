@@ -30,6 +30,8 @@ import PersonaSwitcher from './components/PersonaSwitcher'
 import CommandPalette from './components/CommandPalette'
 import HealthIntakeConsultation from './components/HealthIntakeConsultation'
 import CharakaExplorer from './components/CharakaExplorer'
+import WeatherHealthTracker from './components/WeatherHealthTracker'
+import AnimatedJourneyVideo from './components/AnimatedJourneyVideo'
 
 type View = 'landing' | 'onboarding' | 'guide' | 'profile' | 'plan' | 'app'
 type Tab = 'home' | 'chat' | 'routine' | 'goals' | 'yoga' | 'diet' | 'remedies' | 'progress'
@@ -57,6 +59,8 @@ export default function App() {
   const [showCommandPalette, setShowCommandPalette] = useState(false)
   const [showHealthIntake, setShowHealthIntake] = useState(false)
   const [showCharakaExplorer, setShowCharakaExplorer] = useState(false)
+  const [showWeatherTracker, setShowWeatherTracker] = useState(false)
+  const [showAnimatedTour, setShowAnimatedTour] = useState(false)
   const [popupTick, setPopupTick] = useState(0)
   const [profileInitialTab, setProfileInitialTab] = useState<'anatomy' | 'lab_reports' | 'bedtime_review' | 'desha_satmya' | 'metabolic' | 'details'>('anatomy')
 
@@ -215,8 +219,38 @@ export default function App() {
           onOpenDietPlan={handleOpenDietPlan}
           onOpenProfile={() => handleOpenProfile('anatomy')}
           onOpenSpringShield={handleOpenMetabolic}
+          onOpenWeatherTracker={() => setShowWeatherTracker(true)}
+          onOpenAnimatedTour={() => setShowAnimatedTour(true)}
         />
         <GrantPitchModal isOpen={showGrantPitch} onClose={() => setShowGrantPitch(false)} />
+        {showWeatherTracker && (
+          <div className="fixed inset-0 z-50 overflow-y-auto bg-black/90 backdrop-blur-md p-3 sm:p-6 animate-in fade-in">
+            <div className="max-w-4xl mx-auto">
+              <WeatherHealthTracker
+                profile={profile || DEMO_PROFILE}
+                onClose={() => setShowWeatherTracker(false)}
+                onOpenDietPlan={() => {
+                  setShowWeatherTracker(false)
+                  setTab('diet')
+                  setView('app')
+                }}
+              />
+            </div>
+          </div>
+        )}
+        {showAnimatedTour && (
+          <div className="fixed inset-0 z-50 overflow-y-auto bg-black/95 backdrop-blur-md p-3 sm:p-6 animate-in fade-in">
+            <div className="max-w-5xl mx-auto">
+              <AnimatedJourneyVideo
+                onClose={() => setShowAnimatedTour(false)}
+                onStartDemo={() => {
+                  setShowAnimatedTour(false)
+                  handleDemo()
+                }}
+              />
+            </div>
+          </div>
+        )}
         {showHealthIntake && (
           <div className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md p-3 sm:p-6 animate-in fade-in">
             <div className="max-w-4xl mx-auto">
@@ -273,8 +307,38 @@ export default function App() {
           onOpenDietPlan={handleOpenDietPlan}
           onOpenProfile={() => handleOpenProfile('anatomy')}
           onOpenSpringShield={handleOpenMetabolic}
+          onOpenWeatherTracker={() => setShowWeatherTracker(true)}
+          onOpenAnimatedTour={() => setShowAnimatedTour(true)}
         />
         <GrantPitchModal isOpen={showGrantPitch} onClose={() => setShowGrantPitch(false)} />
+        {showWeatherTracker && (
+          <div className="fixed inset-0 z-50 overflow-y-auto bg-black/90 backdrop-blur-md p-3 sm:p-6 animate-in fade-in">
+            <div className="max-w-4xl mx-auto">
+              <WeatherHealthTracker
+                profile={profile || DEMO_PROFILE}
+                onClose={() => setShowWeatherTracker(false)}
+                onOpenDietPlan={() => {
+                  setShowWeatherTracker(false)
+                  setTab('diet')
+                  setView('app')
+                }}
+              />
+            </div>
+          </div>
+        )}
+        {showAnimatedTour && (
+          <div className="fixed inset-0 z-50 overflow-y-auto bg-black/95 backdrop-blur-md p-3 sm:p-6 animate-in fade-in">
+            <div className="max-w-5xl mx-auto">
+              <AnimatedJourneyVideo
+                onClose={() => setShowAnimatedTour(false)}
+                onStartDemo={() => {
+                  setShowAnimatedTour(false)
+                  handleDemo()
+                }}
+              />
+            </div>
+          </div>
+        )}
         {showHealthIntake && (
           <div className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md p-3 sm:p-6 animate-in fade-in">
             <div className="max-w-4xl mx-auto">
@@ -336,6 +400,8 @@ export default function App() {
             onNavigate={navigate}
             onOpenHealthIntake={() => setShowHealthIntake(true)}
             onOpenChapters={() => setShowCharakaExplorer(true)}
+            onOpenWeatherTracker={() => setShowWeatherTracker(true)}
+            onOpenAnimatedTour={() => setShowAnimatedTour(true)}
           />
         )
       case 'chat':
@@ -516,6 +582,24 @@ export default function App() {
           </button>
 
           <button
+            onClick={() => setShowWeatherTracker(true)}
+            className="flex items-center gap-1 px-2.5 py-1 rounded-xl bg-sky-950/70 border border-sky-500/50 text-[11px] font-semibold text-sky-200 hover:bg-sky-900/70 hover:text-white transition shadow-sm"
+            title="Real-Time Weather & Walking/Running Activity Tracker"
+          >
+            <span>🌦️</span>
+            <span>Weather & Activity</span>
+          </button>
+
+          <button
+            onClick={() => setShowAnimatedTour(true)}
+            className="flex items-center gap-1 px-2.5 py-1 rounded-xl bg-amber-950/70 border border-amber-500/50 text-[11px] font-semibold text-amber-200 hover:bg-amber-900/70 hover:text-white transition shadow-sm"
+            title="Watch 24-Hour Animated Journey Tour"
+          >
+            <span>🎬</span>
+            <span>24-Hr Tour</span>
+          </button>
+
+          <button
             onClick={handleOpenDietPlan}
             className={`flex items-center gap-1 px-2.5 py-1 rounded-xl border text-[11px] font-medium transition ${
               tab === 'diet' && view === 'app'
@@ -599,6 +683,38 @@ export default function App() {
               onSelectCondition={() => {
                 setShowCharakaExplorer(false)
                 setTab('remedies')
+              }}
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Real-Time Weather & Health Activity Tracker Modal */}
+      {showWeatherTracker && (
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-black/90 backdrop-blur-md p-3 sm:p-6 animate-in fade-in">
+          <div className="max-w-4xl mx-auto">
+            <WeatherHealthTracker
+              profile={profile}
+              onClose={() => setShowWeatherTracker(false)}
+              onOpenDietPlan={() => {
+                setShowWeatherTracker(false)
+                setTab('diet')
+                setView('app')
+              }}
+            />
+          </div>
+        </div>
+      )}
+
+      {/* 24-Hour Animated Journey Tour Modal */}
+      {showAnimatedTour && (
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-black/95 backdrop-blur-md p-3 sm:p-6 animate-in fade-in">
+          <div className="max-w-5xl mx-auto">
+            <AnimatedJourneyVideo
+              onClose={() => setShowAnimatedTour(false)}
+              onStartDemo={() => {
+                setShowAnimatedTour(false)
+                handleDemo()
               }}
             />
           </div>
