@@ -9,9 +9,15 @@ import {
   type MealConfirmation,
   type MealState,
 } from '../lib/store'
+import {
+  calculateCharakaPortioning,
+  getDeshaSatmyaProfile,
+} from '../lib/deshaSatmyaEngine'
+import CharakaMatraCalculator from './CharakaMatraCalculator'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Textarea } from '@/components/ui/textarea'
+import { Badge } from '@/components/ui/badge'
 
 interface Props {
   profile: UserProfile
@@ -38,6 +44,11 @@ export default function DietPlan({ profile }: Props) {
   const [confirmation, setConfirmation] = useState<MealConfirmation>(() => getMealConfirmation())
   const [editing, setEditing] = useState(false)
   const [draft, setDraft] = useState('')
+  const [showMatraCalculator, setShowMatraCalculator] = useState(false)
+  const [deshaProfile, setDeshaProfile] = useState(() => getDeshaSatmyaProfile(profile))
+
+  // Charaka Ahara Matra portioning and Desha-Satmya adaptation
+  const matraCalc = useMemo(() => calculateCharakaPortioning(profile, deshaProfile), [profile, deshaProfile])
 
   const meals = mealPlans[dosha]
   const currentMeals = meals[activeMeal] || []
@@ -74,6 +85,64 @@ export default function DietPlan({ profile }: Props) {
           {profession ? ` and a ${profession.label.toLowerCase()}'s day` : ''}.
         </p>
       </div>
+
+      {/* ─── CHARAKA AHARA MATRA & DESHA-SATMYA 1/3 STOMACH SECTION ─── */}
+      <Card className="mb-4 overflow-hidden rounded-2xl border-amber-500/40 bg-gradient-to-br from-[#1a1205] via-[#100b02] to-[#070501] p-4 text-amber-50 shadow-lg">
+        <div className="flex items-center justify-between gap-2">
+          <div className="flex items-center gap-1.5 flex-wrap">
+            <span className="text-lg">🌾</span>
+            <Badge className="bg-amber-500/20 text-amber-300 border-amber-500/30 text-[9px] font-mono">
+              CHARAKA 1/3 DIVISION
+            </Badge>
+            <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30 text-[9px] font-mono">
+              {matraCalc.nativeSatmyaMeal.regionalHeritage.split('(')[0].trim()} SATMYA
+            </Badge>
+          </div>
+          <button
+            onClick={() => setShowMatraCalculator(!showMatraCalculator)}
+            className="text-[11px] text-amber-400 font-medium underline underline-offset-2 hover:text-amber-200"
+          >
+            {showMatraCalculator ? 'Minimize ✕' : 'Configure Soil & Matra ➔'}
+          </button>
+        </div>
+
+        {showMatraCalculator ? (
+          <div className="mt-4 pt-3 border-t border-amber-900/40">
+            <CharakaMatraCalculator
+              profile={profile}
+              onClose={() => {
+                setShowMatraCalculator(false)
+                setDeshaProfile(getDeshaSatmyaProfile(profile))
+              }}
+            />
+          </div>
+        ) : (
+          <>
+            <div className="mt-3 grid grid-cols-3 gap-2 text-center">
+              <div className="rounded-xl border border-amber-800/40 bg-amber-950/40 p-2">
+                <span className="block text-[9px] uppercase tracking-wider text-amber-400/80 font-mono">1/3 Solids</span>
+                <span className="mt-0.5 block text-sm font-bold text-amber-100 font-mono">~{matraCalc.solidFoodGrams}g</span>
+                <span className="block text-[8px] text-amber-300/60 font-sans">Grains & Veg</span>
+              </div>
+              <div className="rounded-xl border border-cyan-800/40 bg-cyan-950/40 p-2">
+                <span className="block text-[9px] uppercase tracking-wider text-cyan-400/80 font-mono">1/3 Liquids</span>
+                <span className="mt-0.5 block text-sm font-bold text-cyan-100 font-mono">~{matraCalc.liquidFoodMl}ml</span>
+                <span className="block text-[8px] text-cyan-300/60 font-sans">Takra / Rasam</span>
+              </div>
+              <div className="rounded-xl border border-emerald-800/40 bg-emerald-950/40 p-2">
+                <span className="block text-[9px] uppercase tracking-wider text-emerald-400/80 font-mono">1/3 Space</span>
+                <span className="mt-0.5 block text-sm font-bold text-emerald-100 font-mono">~{matraCalc.emptyChurnSpaceMl}ml</span>
+                <span className="block text-[8px] text-emerald-300/60 font-sans">Agni Churning</span>
+              </div>
+            </div>
+
+            <div className="mt-2.5 flex items-center justify-between text-[10px] text-amber-200/80 flex-wrap gap-1">
+              <span>🌾 Native Staple: <strong className="text-amber-100">{matraCalc.nativeSatmyaMeal.stapleGrainName}</strong></span>
+              <span>⚖️ Quality: <strong className="text-amber-100">{matraCalc.heavyFoodRatioPct}% Heavy : {matraCalc.lightFoodRatioPct}% Light</strong></span>
+            </div>
+          </>
+        )}
+      </Card>
 
       {/* Check-in */}
       <Card className="mb-4 overflow-hidden rounded-2xl border-emerald-600/40 bg-gradient-to-br from-emerald-900/50 to-emerald-950/60 p-5">
@@ -206,6 +275,14 @@ export default function DietPlan({ profile }: Props) {
                   <p className="mt-0.5 text-[10px] text-emerald-500/60">
                     {meal.time} · {meal.prepTime} · {meal.calories} cal
                   </p>
+                  <div className="mt-1 flex items-center gap-1.5 flex-wrap">
+                    <span className="rounded-md border border-amber-500/30 bg-amber-950/40 px-1.5 py-0.5 text-[9px] font-mono text-amber-300">
+                      ⚖️ 1/3 Solid: ~{matraCalc.solidFoodGrams}g
+                    </span>
+                    <span className="rounded-md border border-cyan-500/30 bg-cyan-950/40 px-1.5 py-0.5 text-[9px] font-mono text-cyan-300">
+                      💧 1/3 Liquid: ~{matraCalc.liquidFoodMl}ml
+                    </span>
+                  </div>
                 </div>
                 <span className="text-[10px] text-emerald-600/60">{expandedRecipe === i ? '▲' : '▼'}</span>
               </div>

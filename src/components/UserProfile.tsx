@@ -10,6 +10,7 @@ import { Input } from '@/components/ui/input'
 import AnatomyVisualizer from './AnatomyVisualizer'
 import LabReportTracker from './LabReportTracker'
 import BedtimePainCheckin from './BedtimePainCheckin'
+import CharakaMatraCalculator from './CharakaMatraCalculator'
 
 interface Props {
   profile: UserProfile
@@ -21,7 +22,7 @@ interface Props {
   onOpenHealthIntake?: () => void
 }
 
-export type ProfileTab = 'anatomy' | 'lab_reports' | 'bedtime_review' | 'details'
+export type ProfileTab = 'anatomy' | 'lab_reports' | 'bedtime_review' | 'desha_satmya' | 'details'
 
 export default function UserProfile({ profile, session, onSave, onSignOut, onOpenGuide, onBack, onOpenHealthIntake }: Props) {
   const [activeTab, setActiveTab] = useState<ProfileTab>('anatomy')
@@ -95,6 +96,16 @@ export default function UserProfile({ profile, session, onSave, onSignOut, onOpe
             🌙 Bedtime Review
           </button>
           <button
+            onClick={() => setActiveTab('desha_satmya')}
+            className={`flex-1 min-w-[140px] py-2 px-3 rounded-xl text-center text-xs font-medium transition ${
+              activeTab === 'desha_satmya'
+                ? 'bg-amber-600 text-white shadow-sm font-bold'
+                : 'text-amber-400/70 hover:text-amber-200'
+            }`}
+          >
+            🌾 Charaka Ahara Matra
+          </button>
+          <button
             onClick={() => setActiveTab('details')}
             className={`flex-1 min-w-[120px] py-2 px-3 rounded-xl text-center text-xs font-medium transition ${
               activeTab === 'details'
@@ -112,6 +123,7 @@ export default function UserProfile({ profile, session, onSave, onSignOut, onOpe
             dosha={dosha}
             onOpenIntake={onOpenHealthIntake}
             onOpenLabReports={() => setActiveTab('lab_reports')}
+            onOpenMatraCalculator={() => setActiveTab('desha_satmya')}
           />
         )}
 
@@ -128,7 +140,15 @@ export default function UserProfile({ profile, session, onSave, onSignOut, onOpe
           <BedtimePainCheckin onClose={() => setActiveTab('anatomy')} />
         )}
 
-        {/* ─── TAB 4: ACCOUNT & BMI DETAILS ─── */}
+        {/* ─── TAB 4: CHARAKA AHARA MATRA & DESHA-SATMYA ─── */}
+        {activeTab === 'desha_satmya' && (
+          <CharakaMatraCalculator
+            profile={draft}
+            onClose={() => setActiveTab('anatomy')}
+          />
+        )}
+
+        {/* ─── TAB 5: ACCOUNT & BMI DETAILS ─── */}
         {activeTab === 'details' && (
           <div className="max-w-lg mx-auto">
             {/* ACCOUNT */}

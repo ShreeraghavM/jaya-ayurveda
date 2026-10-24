@@ -220,6 +220,36 @@ assert(fs.existsSync(path.join(ROOT, 'src/components/AnatomyVisualizer.tsx')), '
 assert(fs.existsSync(path.join(ROOT, 'src/components/LabReportTracker.tsx')), 'LabReportTracker.tsx component exists')
 assert(fs.existsSync(path.join(ROOT, 'src/components/BedtimePainCheckin.tsx')), 'BedtimePainCheckin.tsx component exists')
 
+// ─── SUITE 12: Charaka Ahara Matra & Desha-Satmya Engine ───────────────────
+console.log('\n► Suite 12: Charaka Ahara Matra & Desha-Satmya Engine')
+const deshaEnginePath = path.join(ROOT, 'src/lib/deshaSatmyaEngine.ts')
+assert(fs.existsSync(deshaEnginePath), 'deshaSatmyaEngine.ts exists')
+const deshaEngineContent = fs.readFileSync(deshaEnginePath, 'utf-8')
+
+assert(deshaEngineContent.includes('DESHA_DEFINITIONS'), 'Defines DESHA_DEFINITIONS dictionary')
+assert(deshaEngineContent.includes('anupa') && deshaEngineContent.includes('jangala') && deshaEngineContent.includes('sadharana'), 'Contains classical 3 Deshas (Anupa, Jangala, Sadharana)')
+assert(deshaEngineContent.includes('Trividha Kukshi') || deshaEngineContent.includes('calculateCharakaPortioning'), 'Implements Trividha Kukshi 1/3 stomach division formula')
+assert(deshaEngineContent.includes('STAPLE_GRAIN_NAMES'), 'Defines indigenous staple grains dictionary')
+assert(deshaEngineContent.includes('Balya') && deshaEngineContent.includes('Madhyama') && deshaEngineContent.includes('Vardhakya'), 'Contains age stages (Balya, Madhyama, Vardhakya) with Guru/Laghu modulation')
+assert(deshaEngineContent.includes('Rakta') && deshaEngineContent.includes('Artava') && deshaEngineContent.includes('Shukra'), 'Modulates tissue focus by gender (Rakta/Artava for female, Mamsa/Shukra for male)')
+assert(deshaEngineContent.includes('Prameha') && deshaEngineContent.includes('Raktashali'), 'Implements clinical grain substitution for Prameha (aged red rice/barley)')
+
+// Verify UI components and integration
+const matraCalculatorPath = path.join(ROOT, 'src/components/CharakaMatraCalculator.tsx')
+assert(fs.existsSync(matraCalculatorPath), 'CharakaMatraCalculator.tsx component exists')
+const matraCalcContent = fs.readFileSync(matraCalculatorPath, 'utf-8')
+assert(matraCalcContent.includes('calculateCharakaPortioning'), 'CharakaMatraCalculator uses calculateCharakaPortioning')
+
+const dietPlanContent = fs.readFileSync(path.join(ROOT, 'src/components/DietPlan.tsx'), 'utf-8')
+assert(dietPlanContent.includes('CharakaMatraCalculator') && dietPlanContent.includes('calculateCharakaPortioning'), 'DietPlan.tsx integrates CharakaMatraCalculator and portioning metrics')
+assert(dietPlanContent.includes('1/3 Solid') && dietPlanContent.includes('1/3 Liquid'), 'DietPlan.tsx displays 1/3 Solid and 1/3 Liquid portion badges')
+
+const userProfileContent = fs.readFileSync(path.join(ROOT, 'src/components/UserProfile.tsx'), 'utf-8')
+assert(userProfileContent.includes('CharakaMatraCalculator') && userProfileContent.includes('desha_satmya'), 'UserProfile.tsx includes Charaka Ahara Matra tab')
+
+const visualizerContent = fs.readFileSync(path.join(ROOT, 'src/components/AnatomyVisualizer.tsx'), 'utf-8')
+assert(visualizerContent.includes('onOpenMatraCalculator'), 'AnatomyVisualizer provides gateway to CharakaMatraCalculator')
+
 // ─── RESULTS SUMMARY ───────────────────────────────────────────────────────
 console.log('\n======================================================')
 console.log(`✨ TEST RESULTS: ${passed} PASSED / ${failed} FAILED`)

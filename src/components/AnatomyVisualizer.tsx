@@ -26,11 +26,12 @@ interface Props {
   dosha?: Dosha
   onOpenIntake?: () => void
   onOpenLabReports?: () => void
+  onOpenMatraCalculator?: () => void
 }
 
 export type AnatomyVisualMode = 'hologram' | 'chart' | 'vector'
 
-export default function AnatomyVisualizer({ dosha = 'Pitta', onOpenIntake, onOpenLabReports }: Props) {
+export default function AnatomyVisualizer({ dosha = 'Pitta', onOpenIntake, onOpenLabReports, onOpenMatraCalculator }: Props) {
   const [visualMode, setVisualMode] = useState<AnatomyVisualMode>('hologram')
   const [selectedSystemId, setSelectedSystemId] = useState<AnatomicalSystemId>('digestive')
   const [selectedOrgan, setSelectedOrgan] = useState<AnatomicalOrgan | null>(null)
@@ -780,6 +781,21 @@ export default function AnatomyVisualizer({ dosha = 'Pitta', onOpenIntake, onOpe
             <p className="text-[11px] text-amber-400/70 italic mt-3">
               {deficitMeal.charakaCitation}
             </p>
+
+            {onOpenMatraCalculator && (
+              <div className="mt-4 pt-3 border-t border-amber-900/40 flex items-center justify-between flex-wrap gap-2">
+                <span className="text-xs text-amber-300/80">
+                  ⚖️ Need exact 1/3 stomach solid grams & native grain matching?
+                </span>
+                <Button
+                  size="sm"
+                  onClick={onOpenMatraCalculator}
+                  className="bg-amber-600 hover:bg-amber-500 text-amber-50 text-xs font-semibold rounded-xl shadow-md"
+                >
+                  🌾 Open Charaka Ahara Matra Calculator ➔
+                </Button>
+              </div>
+            )}
           </div>
         </div>
       </div>
