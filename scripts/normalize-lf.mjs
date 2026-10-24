@@ -1,5 +1,4 @@
 import fs from 'fs'
-import path from 'path'
 
 const files = [
   'src/components/DietPlan.tsx',
@@ -7,6 +6,10 @@ const files = [
   'src/components/AnatomyVisualizer.tsx',
   'src/components/CharakaMatraCalculator.tsx',
   'src/lib/deshaSatmyaEngine.ts',
+  'src/App.tsx',
+  'src/components/LandingPage.tsx',
+  'src/components/Dashboard.tsx',
+  'src/components/SmartPopups.tsx',
 ]
 
 for (const f of files) {

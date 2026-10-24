@@ -91,8 +91,8 @@ export default function SmartPopups({ profile, onNavigate, onCloseDay, refreshKe
   const confirmedCount = Object.values(handled).filter(v => v === 'done').length
 
   return (
-    <div className="fixed inset-x-0 bottom-[86px] z-40 px-3">
-      <div className="mx-auto max-w-lg">
+    <div className="fixed inset-x-0 bottom-[86px] z-40 px-3 pointer-events-none">
+      <div className="mx-auto max-w-lg pointer-events-auto">
         <div
           className="animate-in slide-in-from-bottom-4 fade-in overflow-hidden rounded-2xl border border-emerald-600/40 shadow-2xl shadow-black/50 backdrop-blur-xl duration-300"
           style={{ background: 'linear-gradient(145deg, rgba(6,38,24,0.97), rgba(8,26,16,0.97))' }}

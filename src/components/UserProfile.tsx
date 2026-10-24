@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import type { RegionId, UserProfile } from '../lib/data'
 import { doshaProfiles } from '../lib/data'
 import { bmiPercent, getBmiGuidance, getBmiResult } from '../lib/bmi'
@@ -20,14 +20,21 @@ interface Props {
   onOpenGuide: () => void
   onBack: () => void
   onOpenHealthIntake?: () => void
+  initialTab?: ProfileTab
 }
 
 export type ProfileTab = 'anatomy' | 'lab_reports' | 'bedtime_review' | 'desha_satmya' | 'details'
 
-export default function UserProfile({ profile, session, onSave, onSignOut, onOpenGuide, onBack, onOpenHealthIntake }: Props) {
-  const [activeTab, setActiveTab] = useState<ProfileTab>('anatomy')
+export default function UserProfile({ profile, session, onSave, onSignOut, onOpenGuide, onBack, onOpenHealthIntake, initialTab = 'anatomy' }: Props) {
+  const [activeTab, setActiveTab] = useState<ProfileTab>(initialTab)
   const [draft, setDraft] = useState<UserProfile>(profile)
   const [saved, setSaved] = useState(false)
+
+  useEffect(() => {
+    if (initialTab) {
+      setActiveTab(initialTab)
+    }
+  }, [initialTab])
 
   const dosha = draft.doshaType ?? 'Vata'
   const percentages = doshaPercentages(draft)

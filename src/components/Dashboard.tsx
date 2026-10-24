@@ -153,6 +153,37 @@ export default function Dashboard({ profile, onNavigate, onOpenHealthIntake, onO
         </div>
       </div>
 
+      {/* ─── CHARAKA AHARA MATRA & DESHA-SATMYA 1/3 BANNER ─── */}
+      <div className="px-5 mb-3">
+        <div
+          onClick={() => onNavigate('diet')}
+          className="cursor-pointer p-4 rounded-3xl bg-gradient-to-r from-[#1c1205] via-[#291b08] to-emerald-950/70 border border-amber-500/50 hover:border-amber-400/80 transition-all shadow-xl group"
+        >
+          <div className="flex items-start justify-between gap-3">
+            <div className="flex items-start gap-3">
+              <span className="text-2xl mt-0.5 group-hover:scale-110 transition-transform">🌾</span>
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-amber-300 bg-amber-950/90 px-2 py-0.5 rounded-full border border-amber-600/40">
+                    Charaka Vimana 2.3 & Sutra 6
+                  </span>
+                  <span className="text-[10px] font-mono text-emerald-300 font-semibold">1/3 Stomach Division Rule</span>
+                </div>
+                <h3 className="text-amber-100 font-semibold text-sm">
+                  Charaka Ahara Matra & Desha-Satmya Calculator
+                </h3>
+                <p className="text-amber-200/70 text-xs mt-1 leading-relaxed">
+                  Exact solid portion grams, liquid portion ml, and native birthplace soil food matching calibrated by your age and gender.
+                </p>
+              </div>
+            </div>
+            <span className="text-amber-400 text-sm group-hover:translate-x-1 transition-transform shrink-0 mt-2">
+              ➔
+            </span>
+          </div>
+        </div>
+      </div>
+
       {/* ─── CLINICAL HEALTH INTAKE BANNER (Polite & Personalized) ─── */}
       <div className="px-5 mb-3">
         <div
@@ -220,7 +251,41 @@ export default function Dashboard({ profile, onNavigate, onOpenHealthIntake, onO
 
       {/* ─── QUICK PATHWAYS (gstack Fast Access) ─── */}
       <div className="px-5 mb-6">
+        <p className="text-[10px] font-mono uppercase tracking-wider text-emerald-400/70 mb-2">Direct Feature Access</p>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+          <button
+            onClick={() => onNavigate('profile')}
+            className="flex items-center gap-2.5 p-3 rounded-2xl bg-gradient-to-br from-emerald-950/60 via-indigo-950/40 to-emerald-900/30 border border-emerald-500/40 text-left hover:border-emerald-400 hover:bg-emerald-900/40 transition-all group shadow-sm"
+          >
+            <span className="text-xl group-hover:scale-110 transition-transform">🧬</span>
+            <div>
+              <p className="text-emerald-100 text-xs font-semibold">Anatomy Twin</p>
+              <p className="text-emerald-400/60 text-[10px]">13 Body Systems</p>
+            </div>
+          </button>
+
+          <button
+            onClick={() => onNavigate('diet')}
+            className="flex items-center gap-2.5 p-3 rounded-2xl bg-gradient-to-br from-amber-950/60 via-emerald-950/40 to-emerald-900/30 border border-amber-500/40 text-left hover:border-amber-400 hover:bg-emerald-900/40 transition-all group shadow-sm"
+          >
+            <span className="text-xl group-hover:scale-110 transition-transform">🌾</span>
+            <div>
+              <p className="text-amber-100 text-xs font-semibold">Ahara Matra</p>
+              <p className="text-amber-300/60 text-[10px]">1/3 Stomach Rule</p>
+            </div>
+          </button>
+
+          <button
+            onClick={() => onNavigate('diet')}
+            className="flex items-center gap-2.5 p-3 rounded-2xl bg-gradient-to-br from-emerald-950/60 to-emerald-900/30 border border-emerald-800/40 text-left hover:border-emerald-500/50 hover:bg-emerald-900/40 transition-all group shadow-sm"
+          >
+            <span className="text-xl group-hover:scale-110 transition-transform">🍽️</span>
+            <div>
+              <p className="text-emerald-100 text-xs font-semibold">Diet Plan</p>
+              <p className="text-emerald-400/60 text-[10px]">Dosha Recipes</p>
+            </div>
+          </button>
+
           <button
             onClick={() => {
               if (onOpenChapters) onOpenChapters()
@@ -232,39 +297,6 @@ export default function Dashboard({ profile, onNavigate, onOpenHealthIntake, onO
             <div>
               <p className="text-amber-200 text-xs font-semibold">120 Chapters</p>
               <p className="text-emerald-400/60 text-[10px]">Charaka Samhita</p>
-            </div>
-          </button>
-
-          <button
-            onClick={() => onNavigate('yoga')}
-            className="flex items-center gap-2.5 p-3 rounded-2xl bg-gradient-to-br from-emerald-950/60 to-emerald-900/30 border border-emerald-800/40 text-left hover:border-emerald-500/50 hover:bg-emerald-900/40 transition-all group shadow-sm"
-          >
-            <span className="text-xl group-hover:scale-110 transition-transform">🫁</span>
-            <div>
-              <p className="text-emerald-100 text-xs font-semibold">Pranayama</p>
-              <p className="text-emerald-400/60 text-[10px]">Guided Sphere</p>
-            </div>
-          </button>
-
-          <button
-            onClick={() => onNavigate('chat')}
-            className="flex items-center gap-2.5 p-3 rounded-2xl bg-gradient-to-br from-emerald-950/60 to-emerald-900/30 border border-emerald-800/40 text-left hover:border-emerald-500/50 hover:bg-emerald-900/40 transition-all group shadow-sm"
-          >
-            <span className="text-xl group-hover:scale-110 transition-transform">💬</span>
-            <div>
-              <p className="text-emerald-100 text-xs font-semibold">AI Vaidya</p>
-              <p className="text-emerald-400/60 text-[10px]">Instant Consult</p>
-            </div>
-          </button>
-
-          <button
-            onClick={() => onNavigate('routine')}
-            className="flex items-center gap-2.5 p-3 rounded-2xl bg-gradient-to-br from-emerald-950/60 to-emerald-900/30 border border-emerald-800/40 text-left hover:border-emerald-500/50 hover:bg-emerald-900/40 transition-all group shadow-sm"
-          >
-            <span className="text-xl group-hover:scale-110 transition-transform">🕐</span>
-            <div>
-              <p className="text-emerald-100 text-xs font-semibold">Dinacharya</p>
-              <p className="text-emerald-400/60 text-[10px]">20 Timed Steps</p>
             </div>
           </button>
         </div>

@@ -58,6 +58,31 @@ export default function App() {
   const [showHealthIntake, setShowHealthIntake] = useState(false)
   const [showCharakaExplorer, setShowCharakaExplorer] = useState(false)
   const [popupTick, setPopupTick] = useState(0)
+  const [profileInitialTab, setProfileInitialTab] = useState<'anatomy' | 'lab_reports' | 'bedtime_review' | 'desha_satmya' | 'details'>('anatomy')
+
+  const handleOpenAnatomy = () => {
+    if (!profile) handleDemo()
+    setProfileInitialTab('anatomy')
+    setView('profile')
+  }
+
+  const handleOpenAharaMatra = () => {
+    if (!profile) handleDemo()
+    setProfileInitialTab('desha_satmya')
+    setView('profile')
+  }
+
+  const handleOpenDietPlan = () => {
+    if (!profile) handleDemo()
+    setTab('diet')
+    setView('app')
+  }
+
+  const handleOpenProfile = (initialTab: 'anatomy' | 'lab_reports' | 'bedtime_review' | 'desha_satmya' | 'details' = 'anatomy') => {
+    if (!profile) handleDemo()
+    setProfileInitialTab(initialTab)
+    setView('profile')
+  }
 
   useEffect(() => {
     const saved = getUserProfile()
@@ -176,6 +201,10 @@ export default function App() {
           onOpenGrantDeck={() => setShowGrantPitch(true)}
           onOpenHealthIntake={() => setShowHealthIntake(true)}
           onOpenChapters={() => setShowCharakaExplorer(true)}
+          onOpenAnatomy={handleOpenAnatomy}
+          onOpenAharaMatra={handleOpenAharaMatra}
+          onOpenDietPlan={handleOpenDietPlan}
+          onOpenProfile={() => handleOpenProfile('anatomy')}
         />
         <GrantPitchModal isOpen={showGrantPitch} onClose={() => setShowGrantPitch(false)} />
         {showHealthIntake && (
@@ -229,6 +258,10 @@ export default function App() {
           onOpenGrantDeck={() => setShowGrantPitch(true)}
           onOpenHealthIntake={() => setShowHealthIntake(true)}
           onOpenChapters={() => setShowCharakaExplorer(true)}
+          onOpenAnatomy={handleOpenAnatomy}
+          onOpenAharaMatra={handleOpenAharaMatra}
+          onOpenDietPlan={handleOpenDietPlan}
+          onOpenProfile={() => handleOpenProfile('anatomy')}
         />
         <GrantPitchModal isOpen={showGrantPitch} onClose={() => setShowGrantPitch(false)} />
         {showHealthIntake && (
@@ -274,6 +307,7 @@ export default function App() {
         onOpenGuide={() => openGuide('profile')}
         onBack={() => setView('app')}
         onOpenHealthIntake={() => setShowHealthIntake(true)}
+        initialTab={profileInitialTab}
       />
     )
   }
@@ -393,17 +427,93 @@ export default function App() {
               🌙
             </button>
 
-            {/* User Avatar */}
+            {/* User Avatar & Profile Link */}
             <button
-              onClick={() => setView('profile')}
+              onClick={() => {
+                setProfileInitialTab('details')
+                setView('profile')
+              }}
               aria-label="Profile"
-              className="flex h-7 w-7 items-center justify-center rounded-full border border-emerald-700/50 bg-emerald-900/60 text-[11px] font-medium text-emerald-200 transition hover:bg-emerald-800/60 shadow-sm"
+              className="flex items-center gap-1.5 px-2 py-1 rounded-full border border-emerald-700/50 bg-emerald-900/60 text-[11px] font-medium text-emerald-200 transition hover:bg-emerald-800/60 shadow-sm"
+              title="User Profile & Account Hub"
             >
-              {(profile.name || 'J').charAt(0).toUpperCase()}
+              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-700 text-[10px] font-bold text-emerald-100">
+                {(profile.name || 'J').charAt(0).toUpperCase()}
+              </span>
+              <span className="hidden sm:inline font-semibold text-emerald-100">Profile</span>
             </button>
           </div>
         </div>
       </header>
+
+      {/* ─── 2026 CORE PILLARS FAST BAR ─── */}
+      <div className="bg-[#051108]/95 border-b border-emerald-900/40 px-3 py-1.5 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sticky top-[47px] z-20 backdrop-blur-md">
+        <div className="mx-auto max-w-lg flex items-center gap-1.5 min-w-max">
+          <button
+            onClick={handleOpenAnatomy}
+            className={`flex items-center gap-1 px-2.5 py-1 rounded-xl border text-[11px] font-medium transition shadow-sm ${
+              view === 'profile' && profileInitialTab === 'anatomy'
+                ? 'bg-emerald-700/60 border-emerald-400 text-white font-bold'
+                : 'bg-emerald-950/60 border-emerald-500/40 text-emerald-200 hover:bg-emerald-900/60'
+            }`}
+          >
+            <span>🧬</span>
+            <span className="font-semibold text-emerald-100">Anatomy Visualizer</span>
+          </button>
+
+          <button
+            onClick={handleOpenAharaMatra}
+            className={`flex items-center gap-1 px-2.5 py-1 rounded-xl border text-[11px] font-medium transition shadow-sm ${
+              view === 'profile' && profileInitialTab === 'desha_satmya'
+                ? 'bg-amber-700/60 border-amber-400 text-white font-bold'
+                : 'bg-amber-950/60 border-amber-500/40 text-amber-200 hover:bg-amber-900/60'
+            }`}
+          >
+            <span>🌾</span>
+            <span className="font-semibold text-amber-100">Ahara Matra (1/3)</span>
+          </button>
+
+          <button
+            onClick={handleOpenDietPlan}
+            className={`flex items-center gap-1 px-2.5 py-1 rounded-xl border text-[11px] font-medium transition ${
+              tab === 'diet' && view === 'app'
+                ? 'bg-emerald-700/60 border-emerald-400 text-white font-bold'
+                : 'bg-emerald-950/40 border-emerald-800/40 text-emerald-300 hover:bg-emerald-900/40'
+            }`}
+          >
+            <span>🍽️</span>
+            <span>Diet Plan</span>
+          </button>
+
+          <button
+            onClick={() => handleOpenProfile('details')}
+            className={`flex items-center gap-1 px-2.5 py-1 rounded-xl border text-[11px] font-medium transition ${
+              view === 'profile' && profileInitialTab === 'details'
+                ? 'bg-indigo-700/60 border-indigo-400 text-white font-bold'
+                : 'bg-indigo-950/40 border-indigo-800/40 text-indigo-300 hover:bg-indigo-900/40'
+            }`}
+          >
+            <span>👤</span>
+            <span>User Profile</span>
+          </button>
+
+          <button
+            onClick={() => setShowCharakaExplorer(true)}
+            className="flex items-center gap-1 px-2.5 py-1 rounded-xl bg-amber-950/30 border border-amber-600/30 text-[11px] font-medium text-amber-300/90 hover:bg-amber-900/40 transition"
+          >
+            <span>📜</span>
+            <span>120 Chapters</span>
+          </button>
+
+          <button
+            onClick={() => setShowHealthIntake(true)}
+            className="flex items-center gap-1 px-2.5 py-1 rounded-xl bg-emerald-950/30 border border-emerald-600/30 text-[11px] font-medium text-emerald-300/90 hover:bg-emerald-900/40 transition"
+          >
+            <span>🩺</span>
+            <span>Health Intake</span>
+          </button>
+        </div>
+      </div>
 
       {/* Main Tab Content */}
       <main className="mx-auto max-w-lg">{renderTab()}</main>
