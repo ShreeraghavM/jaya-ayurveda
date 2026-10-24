@@ -14,7 +14,13 @@ import {
   getDeshaSatmyaProfile,
 } from '../lib/deshaSatmyaEngine'
 import { calculateAyurvedicMetabolism } from '../lib/metabolicEngine'
-import { calculateMealMacronutrients, getAyurvedicCookingInstructions } from '../lib/culinaryEngine'
+import {
+  calculateMealMacronutrients,
+  getAyurvedicCookingInstructions,
+  getBhojanaKramaCourses,
+  DISEASE_CULINARY_MODULATIONS,
+} from '../lib/culinaryEngine'
+import { getActiveHealingProtocol } from '../lib/vectorSearch'
 import CharakaMatraCalculator from './CharakaMatraCalculator'
 import MetabolicArdhaShaktiCalculator from './MetabolicArdhaShaktiCalculator'
 import AyurvedicCookingGuide from './AyurvedicCookingGuide'
@@ -51,7 +57,13 @@ export default function DietPlan({ profile }: Props) {
   const [showMatraCalculator, setShowMatraCalculator] = useState(false)
   const [showMetabolicCalc, setShowMetabolicCalc] = useState(false)
   const [showCookingGuide, setShowCookingGuide] = useState(false)
+  const [activeConditionId, setActiveConditionId] = useState<string | null>(
+    () => getActiveHealingProtocol()?.remedy.id ?? null
+  )
   const [deshaProfile, setDeshaProfile] = useState(() => getDeshaSatmyaProfile(profile))
+
+  // Active Clinical Disease Modulation
+  const activeModulation = activeConditionId ? DISEASE_CULINARY_MODULATIONS[activeConditionId] : null
 
   // Charaka Ahara Matra portioning and Desha-Satmya adaptation
   const matraCalc = useMemo(() => calculateCharakaPortioning(profile, deshaProfile), [profile, deshaProfile])
@@ -60,7 +72,15 @@ export default function DietPlan({ profile }: Props) {
   const metabolism = useMemo(() => calculateAyurvedicMetabolism(profile, undefined, true), [profile])
 
   // Charaka Culinary Science, Macronutrient Targets (Carbs, Protein, Fats, Fiber) & Bhojana Krama
-  const macroGoals = useMemo(() => calculateMealMacronutrients(profile), [profile])
+  const macroGoals = useMemo(
+    () => calculateMealMacronutrients(profile, activeConditionId),
+    [profile, activeConditionId]
+  )
+
+  const courses = useMemo(
+    () => getBhojanaKramaCourses(profile, activeConditionId),
+    [profile, activeConditionId]
+  )
 
   const meals = mealPlans[dosha]
   const currentMeals = meals[activeMeal] || []
@@ -97,6 +117,116 @@ export default function DietPlan({ profile }: Props) {
           {profession ? ` and a ${profession.label.toLowerCase()}'s day` : ''}.
         </p>
       </div>
+
+      {/* ─── CLINICAL PATHOLOGY & DISEASE SYNCHRONIZER ─── */}
+      <Card className="mb-4 overflow-hidden rounded-2xl border-emerald-500/40 bg-gradient-to-br from-[#07190f] via-[#04110a] to-[#020805] p-4 text-emerald-50 shadow-lg">
+        <div className="flex items-center justify-between gap-2 mb-2">
+          <div className="flex items-center gap-1.5 flex-wrap">
+            <span className="text-lg">🩺</span>
+            <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30 text-[9px] font-mono">
+              CLINICAL PATHOLOGY SYNCHRONIZER
+            </Badge>
+            <Badge className="bg-amber-500/20 text-amber-300 border-amber-500/30 text-[9px] font-mono">
+              {activeModulation ? activeModulation.charakaCitation : 'CHARAKA CHIKITSA'}
+            </Badge>
+          </div>
+          <span className="text-[10px] text-emerald-400/80 font-mono">
+            {activeModulation ? 'Clinical Mode Active' : 'Wellness Satmya'}
+          </span>
+        </div>
+
+        {/* Quick Disease Selector Buttons */}
+        <div className="flex items-center gap-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden pb-1 pt-0.5">
+          <button
+            onClick={() => setActiveConditionId(null)}
+            className={`px-2 py-1 rounded-xl text-[10px] whitespace-nowrap transition ${
+              !activeConditionId
+                ? 'bg-emerald-600 text-white font-bold shadow-md'
+                : 'bg-emerald-950/40 text-emerald-300/70 hover:bg-emerald-900/40 border border-emerald-800/40'
+            }`}
+          >
+            🌿 General Wellness
+          </button>
+          <button
+            onClick={() => setActiveConditionId('prameha-metabolic')}
+            className={`px-2 py-1 rounded-xl text-[10px] whitespace-nowrap transition ${
+              activeConditionId === 'prameha-metabolic'
+                ? 'bg-amber-600 text-white font-bold shadow-md'
+                : 'bg-amber-950/40 text-amber-300/70 hover:bg-amber-900/40 border border-amber-800/40'
+            }`}
+          >
+            🩸 Diabetes (Prameha)
+          </button>
+          <button
+            onClick={() => setActiveConditionId('amlapitta')}
+            className={`px-2 py-1 rounded-xl text-[10px] whitespace-nowrap transition ${
+              activeConditionId === 'amlapitta'
+                ? 'bg-rose-600 text-white font-bold shadow-md'
+                : 'bg-rose-950/40 text-rose-300/70 hover:bg-rose-900/40 border border-rose-800/40'
+            }`}
+          >
+            🍵 Acid Reflux (Amlapitta)
+          </button>
+          <button
+            onClick={() => setActiveConditionId('grahani-ibs')}
+            className={`px-2 py-1 rounded-xl text-[10px] whitespace-nowrap transition ${
+              activeConditionId === 'grahani-ibs'
+                ? 'bg-cyan-600 text-white font-bold shadow-md'
+                : 'bg-cyan-950/40 text-cyan-300/70 hover:bg-cyan-900/40 border border-cyan-800/40'
+            }`}
+          >
+            🔄 IBS (Grahani)
+          </button>
+          <button
+            onClick={() => setActiveConditionId('raktachapa-hypertension')}
+            className={`px-2 py-1 rounded-xl text-[10px] whitespace-nowrap transition ${
+              activeConditionId === 'raktachapa-hypertension'
+                ? 'bg-indigo-600 text-white font-bold shadow-md'
+                : 'bg-indigo-950/40 text-indigo-300/70 hover:bg-indigo-900/40 border border-indigo-800/40'
+            }`}
+          >
+            🩺 High BP (Raktachapa)
+          </button>
+        </div>
+
+        {/* Active Disease Clinical Banner */}
+        {activeModulation ? (
+          <div className="mt-2.5 pt-2.5 border-t border-emerald-900/40 text-xs space-y-2">
+            <div className="flex items-center justify-between gap-1 flex-wrap">
+              <span className="font-bold text-emerald-100 text-[11px]">{activeModulation.conditionName}</span>
+              <span className="text-[10px] text-amber-300 font-mono">{activeModulation.sanskritName}</span>
+            </div>
+
+            <div className="p-2 rounded-xl bg-amber-950/30 border border-amber-800/40 text-[10px] text-amber-200">
+              <strong className="text-amber-100">🌾 Staple Grain Substitution: </strong>
+              {activeModulation.stapleGrainSubstitute}
+            </div>
+
+            <div className="grid grid-cols-2 gap-2 text-[10px]">
+              <div className="p-2 rounded-xl bg-emerald-950/40 border border-emerald-700/40">
+                <span className="block font-bold text-emerald-300 mb-1">✓ Charaka Pathya (Favor)</span>
+                <ul className="space-y-0.5 text-emerald-100/90">
+                  {activeModulation.pathyaFoods.slice(0, 3).map((f, i) => (
+                    <li key={i}>• {f}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="p-2 rounded-xl bg-red-950/40 border border-red-700/40">
+                <span className="block font-bold text-red-300 mb-1">🚫 Charaka Apathya (Avoid)</span>
+                <ul className="space-y-0.5 text-red-100/90">
+                  {activeModulation.apathyaFoods.slice(0, 3).map((f, i) => (
+                    <li key={i}>• {f}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <p className="mt-2 text-[11px] text-emerald-300/70 leading-relaxed">
+            Personalized to your {dosha} Prakriti and {matraCalc.nativeSatmyaMeal.regionalHeritage.split('(')[0].trim()} native soil. Select any clinical condition above to simulate strict Charaka Chikitsa dietary modifications.
+          </p>
+        )}
+      </Card>
 
       {/* ─── CHARAKA AHARA MATRA & DESHA-SATMYA 1/3 STOMACH SECTION ─── */}
       <Card className="mb-4 overflow-hidden rounded-2xl border-amber-500/40 bg-gradient-to-br from-[#1a1205] via-[#100b02] to-[#070501] p-4 text-amber-50 shadow-lg">
@@ -222,9 +352,15 @@ export default function DietPlan({ profile }: Props) {
             <Badge className="bg-amber-500/20 text-amber-300 border-amber-500/30 text-[9px] font-mono">
               BHOJANA KRAMA (3-COURSE ORDER)
             </Badge>
-            <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30 text-[9px] font-mono">
-              CHARAKA SAMSKĀRA SCIENCE
-            </Badge>
+            {activeModulation ? (
+              <Badge className="bg-amber-500/20 text-amber-200 border-amber-500/30 text-[9px] font-mono">
+                {activeModulation.conditionName.split(',')[0]} Mode
+              </Badge>
+            ) : (
+              <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30 text-[9px] font-mono">
+                NATIVE SATMYA
+              </Badge>
+            )}
           </div>
           <button
             onClick={() => setShowCookingGuide(!showCookingGuide)}
@@ -239,6 +375,8 @@ export default function DietPlan({ profile }: Props) {
             <AyurvedicCookingGuide
               profile={profile}
               mealSlot={activeMeal === 'snacks' ? 'snack' : activeMeal}
+              initialConditionId={activeConditionId}
+              onSelectCondition={setActiveConditionId}
               onClose={() => setShowCookingGuide(false)}
             />
           </div>
@@ -247,24 +385,24 @@ export default function DietPlan({ profile }: Props) {
             <div className="mt-3 grid grid-cols-3 gap-2 text-center text-xs">
               <div className="rounded-xl border border-amber-800/40 bg-amber-950/40 p-2">
                 <span className="block text-[9px] uppercase tracking-wider text-amber-400/80 font-mono">Course 1 (Agra)</span>
-                <span className="mt-0.5 block text-xs font-bold text-amber-100">Rice + Podis + Ghee</span>
-                <span className="block text-[8px] text-amber-300/60 font-sans">Mucosal Guard & Amylase</span>
+                <span className="mt-0.5 block text-xs font-bold text-amber-100 line-clamp-1">{courses[0]?.englishName.split(':')[1]?.trim() || 'Agra Course'}</span>
+                <span className="block text-[8px] text-amber-300/60 font-sans">{courses[0]?.diseaseModulationNote ? 'Clinical Shield' : 'Mucosal Buffer'}</span>
               </div>
               <div className="rounded-xl border border-rose-800/40 bg-rose-950/40 p-2">
                 <span className="block text-[9px] uppercase tracking-wider text-rose-400/80 font-mono">Course 2 (Madhya)</span>
-                <span className="mt-0.5 block text-xs font-bold text-rose-100">Rice + Curry + Ghee</span>
-                <span className="block text-[8px] text-rose-300/60 font-sans">Enzymatic Agni Peak</span>
+                <span className="mt-0.5 block text-xs font-bold text-rose-100 line-clamp-1">{courses[1]?.englishName.split(':')[1]?.trim() || 'Madhya Course'}</span>
+                <span className="block text-[8px] text-rose-300/60 font-sans">{courses[1]?.diseaseModulationNote ? 'Pathya Main' : 'Enzymatic Peak'}</span>
               </div>
               <div className="rounded-xl border border-cyan-800/40 bg-cyan-950/40 p-2">
                 <span className="block text-[9px] uppercase tracking-wider text-cyan-400/80 font-mono">Course 3 (Anta)</span>
-                <span className="mt-0.5 block text-xs font-bold text-cyan-100">Rasam / Takra + Pickle</span>
-                <span className="block text-[8px] text-cyan-300/60 font-sans">Kapha Scraper & Pylorus Seal</span>
+                <span className="mt-0.5 block text-xs font-bold text-cyan-100 line-clamp-1">{courses[2]?.englishName.split(':')[1]?.trim() || 'Anta Course'}</span>
+                <span className="block text-[8px] text-cyan-300/60 font-sans">{courses[2]?.diseaseModulationNote ? 'Pyloric Seal' : 'Digestive Closure'}</span>
               </div>
             </div>
 
             <div className="mt-2.5 flex items-center justify-between text-[10px] text-amber-200/80 flex-wrap gap-1">
-              <span>📊 Lunch Target: <strong className="text-amber-100">~{macroGoals.mealBreakdown.lunch.carbohydratesGrams}g Carbs · ~{macroGoals.mealBreakdown.lunch.proteinGrams}g Protein · ~{macroGoals.mealBreakdown.lunch.healthyFatsGrams}g Fats · ~{macroGoals.mealBreakdown.lunch.dietaryFiberGrams}g Fiber</strong></span>
-              <span>🔥 Rule: <strong className="text-amber-100">Eat Hot (Ushnam Ashniyat) & No Reheating</strong></span>
+              <span>📊 Target: <strong className="text-amber-100">~{macroGoals.mealBreakdown.lunch.carbohydratesGrams}g Carbs ({macroGoals.mealBreakdown.lunch.carbsPercentage}%) · ~{macroGoals.mealBreakdown.lunch.proteinGrams}g Protein · ~{macroGoals.mealBreakdown.lunch.healthyFatsGrams}g Fats · ~{macroGoals.mealBreakdown.lunch.dietaryFiberGrams}g Fiber</strong></span>
+              <span>🔥 Rule: <strong className="text-amber-100">Fresh Warm (Ushnam) & 0 Reheating</strong></span>
             </div>
           </>
         )}
@@ -423,12 +561,23 @@ export default function DietPlan({ profile }: Props) {
             </button>
 
             {expandedRecipe === i && (() => {
-              const cooking = getAyurvedicCookingInstructions(meal.name, dosha)
+              const cooking = getAyurvedicCookingInstructions(meal.name, dosha, activeConditionId)
               const slotKey = activeMeal === 'snacks' ? 'snack' : activeMeal
               const macros = macroGoals.mealBreakdown[slotKey]
 
               return (
                 <div className="border-t border-emerald-900/40 px-4 pb-4 space-y-3 pt-3">
+                  {/* Clinical Disease Directive if active */}
+                  {cooking.clinicalDiseaseNote && (
+                    <div className="rounded-xl border border-amber-500/50 bg-amber-950/40 p-2.5 text-[10px] text-amber-200 flex items-start gap-2">
+                      <span className="text-base shrink-0">🩺</span>
+                      <div>
+                        <strong className="text-amber-100 font-bold">Clinical Pathology Directive: </strong>
+                        <span>{cooking.clinicalDiseaseNote}</span>
+                      </div>
+                    </div>
+                  )}
+
                   {/* Macronutrient Pill Badges */}
                   <div className="rounded-xl border border-amber-900/40 bg-amber-950/30 p-2.5">
                     <div className="flex items-center justify-between text-[10px] text-amber-300 font-bold mb-1.5">

@@ -340,6 +340,10 @@ assert(culinaryEngineContent.includes('getBhojanaKramaCourses'), 'Exports getBho
 assert(culinaryEngineContent.includes('Agra Bhojana') && culinaryEngineContent.includes('Shigru') && culinaryEngineContent.includes('Curry leaf'), 'Course 1 matches Rice + Drumstick, Agastya, Curry leaf, Toor dal podi + A2 Cow Ghee')
 assert(culinaryEngineContent.includes('Madhya Bhojana') && culinaryEngineContent.includes('Sambar'), 'Course 2 matches Rice + Vegetable Curry / Sambar + Ghee')
 assert(culinaryEngineContent.includes('Anta Bhojana') && culinaryEngineContent.includes('Rasam') && culinaryEngineContent.includes('Pickle'), 'Course 3 matches Rice + Digestive Rasam / Buttermilk + Pickles')
+assert(culinaryEngineContent.includes('DISEASE_CULINARY_MODULATIONS'), 'Defines DISEASE_CULINARY_MODULATIONS for pathological plate modulation')
+assert(culinaryEngineContent.includes('Tikta Shaka & Mudga Yusha Agra') && culinaryEngineContent.includes('Charaka Chikitsa 6'), 'Prameha (Diabetes) replaces polished rice with barley and starts with bitter greens')
+assert(culinaryEngineContent.includes('Dadima & Coriander Anta'), 'Amlapitta strictly bans and replaces Tamarind Rasam & spicy pickles with Dadima broth')
+assert(culinaryEngineContent.includes('Takra Kalpana Anta'), 'Grahani IBS prescribes freshly churned Takra with roasted cumin')
 assert(culinaryEngineContent.includes('calculateMealMacronutrients'), 'Exports calculateMealMacronutrients (Carbs, Protein, Healthy Fats, Fiber)')
 assert(culinaryEngineContent.includes('getAyurvedicCookingInstructions'), 'Exports getAyurvedicCookingInstructions (Samskara)')
 
@@ -347,7 +351,9 @@ const cookingGuidePath = path.join(ROOT, 'src/components/AyurvedicCookingGuide.t
 assert(fs.existsSync(cookingGuidePath), 'AyurvedicCookingGuide.tsx exists')
 
 const dietPlanCulinaryContent = fs.readFileSync(path.join(ROOT, 'src/components/DietPlan.tsx'), 'utf-8')
+assert(dietPlanCulinaryContent.includes('CLINICAL PATHOLOGY SYNCHRONIZER'), 'DietPlan.tsx features Clinical Pathology & Disease Synchronizer')
 assert(dietPlanCulinaryContent.includes('AyurvedicCookingGuide') && dietPlanCulinaryContent.includes('BHOJANA KRAMA (3-COURSE ORDER)'), 'DietPlan.tsx features top Bhojana Krama card')
+assert(dietPlanCulinaryContent.includes('Charaka Pathya (Favor)') && dietPlanCulinaryContent.includes('Charaka Apathya (Avoid)'), 'DietPlan.tsx displays Charaka Pathya & Apathya rules')
 assert(dietPlanCulinaryContent.includes('getAyurvedicCookingInstructions') && dietPlanCulinaryContent.includes('Ghrita Samskara'), 'DietPlan.tsx expands recipes with classical cooking method & macros')
 
 const appCulinaryContent = fs.readFileSync(path.join(ROOT, 'src/App.tsx'), 'utf-8')
