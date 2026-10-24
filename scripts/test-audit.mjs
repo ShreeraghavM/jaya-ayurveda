@@ -200,6 +200,26 @@ assert(fs.existsSync(explorerPath), 'CharakaExplorer.tsx component exists')
 assert(kbContent.includes('getAllCharakaChapters') && kbContent.includes('getChaptersBySthana'), 'Exports getAllCharakaChapters & getChaptersBySthana')
 assert(kbContent.includes('searchCharakaChapters') && kbContent.includes('getChapterByCondition'), 'Exports searchCharakaChapters & getChapterByCondition')
 
+// ─── SUITE 11: Human Anatomy & Srotas Digital Twin Engine ───────────────────
+console.log('\n► Suite 11: Human Anatomy & Srotas Digital Twin Engine')
+const anatomyEnginePath = path.join(ROOT, 'src/lib/anatomyEngine.ts')
+assert(fs.existsSync(anatomyEnginePath), 'anatomyEngine.ts exists')
+const anatomyEngineContent = fs.readFileSync(anatomyEnginePath, 'utf-8')
+
+assert(anatomyEngineContent.includes('ANATOMICAL_SYSTEMS'), 'Defines ANATOMICAL_SYSTEMS dictionary')
+assert(anatomyEngineContent.includes('circulatory') && anatomyEngineContent.includes('respiratory') && anatomyEngineContent.includes('digestive'), 'Contains modern organ systems')
+assert(anatomyEngineContent.includes('Raktavaha Srotas') && anatomyEngineContent.includes('Pranavaha Srotas') && anatomyEngineContent.includes('Annavaha'), 'Maps classical Sanskrit Srotamsi')
+assert(anatomyEngineContent.includes('calculateSystemNourishment'), 'Exports calculateSystemNourishment function')
+assert(anatomyEngineContent.includes('generateDeficitBalancingMeal'), 'Exports generateDeficitBalancingMeal function')
+assert(anatomyEngineContent.includes('getDiseaseBeacons') && anatomyEngineContent.includes('clearDiseaseBeacon'), 'Exports disease beacon management')
+assert(anatomyEngineContent.includes('getBedtimePainLogs') && anatomyEngineContent.includes('saveBedtimePainLog'), 'Exports bedtime pain tracking functions')
+assert(anatomyEngineContent.includes('getClinicalLabReports') && anatomyEngineContent.includes('analyzeLabReportNumbers'), 'Exports clinical lab report ingestion & analysis')
+
+// Verify UI components exist
+assert(fs.existsSync(path.join(ROOT, 'src/components/AnatomyVisualizer.tsx')), 'AnatomyVisualizer.tsx component exists')
+assert(fs.existsSync(path.join(ROOT, 'src/components/LabReportTracker.tsx')), 'LabReportTracker.tsx component exists')
+assert(fs.existsSync(path.join(ROOT, 'src/components/BedtimePainCheckin.tsx')), 'BedtimePainCheckin.tsx component exists')
+
 // ─── RESULTS SUMMARY ───────────────────────────────────────────────────────
 console.log('\n======================================================')
 console.log(`✨ TEST RESULTS: ${passed} PASSED / ${failed} FAILED`)

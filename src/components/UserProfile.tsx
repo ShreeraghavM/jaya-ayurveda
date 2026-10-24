@@ -7,6 +7,9 @@ import { doshaPercentages, type AuthSession } from '../lib/store'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
+import AnatomyVisualizer from './AnatomyVisualizer'
+import LabReportTracker from './LabReportTracker'
+import BedtimePainCheckin from './BedtimePainCheckin'
 
 interface Props {
   profile: UserProfile
@@ -15,9 +18,13 @@ interface Props {
   onSignOut: () => void
   onOpenGuide: () => void
   onBack: () => void
+  onOpenHealthIntake?: () => void
 }
 
-export default function UserProfile({ profile, session, onSave, onSignOut, onOpenGuide, onBack }: Props) {
+export type ProfileTab = 'anatomy' | 'lab_reports' | 'bedtime_review' | 'details'
+
+export default function UserProfile({ profile, session, onSave, onSignOut, onOpenGuide, onBack, onOpenHealthIntake }: Props) {
+  const [activeTab, setActiveTab] = useState<ProfileTab>('anatomy')
   const [draft, setDraft] = useState<UserProfile>(profile)
   const [saved, setSaved] = useState(false)
 
@@ -38,11 +45,13 @@ export default function UserProfile({ profile, session, onSave, onSignOut, onOpe
 
   return (
     <div className="min-h-screen bg-[#08140c] pb-24 text-emerald-50">
-      <div className="mx-auto max-w-lg px-4 py-6">
+      <div className="mx-auto max-w-4xl px-4 py-6">
         <div className="mb-5 flex items-center justify-between">
           <div>
-            <p className="text-[10px] uppercase tracking-[0.25em] text-emerald-500/70">Your account</p>
-            <h1 className="mt-1 text-2xl font-semibold tracking-tight">Profile</h1>
+            <p className="text-[10px] uppercase tracking-[0.25em] text-emerald-500/70">
+              Ayurvedic Sharira & Account Hub
+            </p>
+            <h1 className="mt-1 text-2xl font-semibold tracking-tight">User Profile & Anatomy</h1>
           </div>
           <Button
             onClick={onBack}
@@ -53,7 +62,76 @@ export default function UserProfile({ profile, session, onSave, onSignOut, onOpe
           </Button>
         </div>
 
-        {/* ACCOUNT */}
+        {/* TAB NAVIGATION BAR */}
+        <div className="flex gap-1.5 p-1 mb-6 rounded-2xl bg-emerald-950/40 border border-emerald-800/40 overflow-x-auto [scrollbar-width:none]">
+          <button
+            onClick={() => setActiveTab('anatomy')}
+            className={`flex-1 min-w-[120px] py-2 px-3 rounded-xl text-center text-xs font-medium transition ${
+              activeTab === 'anatomy'
+                ? 'bg-emerald-500 text-white shadow-sm font-bold'
+                : 'text-emerald-400/70 hover:text-emerald-200'
+            }`}
+          >
+            🧬 Anatomy & Vitality
+          </button>
+          <button
+            onClick={() => setActiveTab('lab_reports')}
+            className={`flex-1 min-w-[120px] py-2 px-3 rounded-xl text-center text-xs font-medium transition ${
+              activeTab === 'lab_reports'
+                ? 'bg-emerald-500 text-white shadow-sm font-bold'
+                : 'text-emerald-400/70 hover:text-emerald-200'
+            }`}
+          >
+            🔬 Clinical Lab Reports
+          </button>
+          <button
+            onClick={() => setActiveTab('bedtime_review')}
+            className={`flex-1 min-w-[120px] py-2 px-3 rounded-xl text-center text-xs font-medium transition ${
+              activeTab === 'bedtime_review'
+                ? 'bg-indigo-600 text-white shadow-sm font-bold'
+                : 'text-indigo-400/70 hover:text-indigo-200'
+            }`}
+          >
+            🌙 Bedtime Review
+          </button>
+          <button
+            onClick={() => setActiveTab('details')}
+            className={`flex-1 min-w-[120px] py-2 px-3 rounded-xl text-center text-xs font-medium transition ${
+              activeTab === 'details'
+                ? 'bg-emerald-500 text-white shadow-sm font-bold'
+                : 'text-emerald-400/70 hover:text-emerald-200'
+            }`}
+          >
+            ⚙️ Account & BMI
+          </button>
+        </div>
+
+        {/* ─── TAB 1: ANATOMY & VITALITY TWIN ─── */}
+        {activeTab === 'anatomy' && (
+          <AnatomyVisualizer
+            dosha={dosha}
+            onOpenIntake={onOpenHealthIntake}
+            onOpenLabReports={() => setActiveTab('lab_reports')}
+          />
+        )}
+
+        {/* ─── TAB 2: CLINICAL LAB REPORTS ─── */}
+        {activeTab === 'lab_reports' && (
+          <LabReportTracker
+            patientName={draft.name || 'Friend'}
+            onClose={() => setActiveTab('anatomy')}
+          />
+        )}
+
+        {/* ─── TAB 3: BEDTIME REVIEW ─── */}
+        {activeTab === 'bedtime_review' && (
+          <BedtimePainCheckin onClose={() => setActiveTab('anatomy')} />
+        )}
+
+        {/* ─── TAB 4: ACCOUNT & BMI DETAILS ─── */}
+        {activeTab === 'details' && (
+          <div className="max-w-lg mx-auto">
+            {/* ACCOUNT */}
         <Card className="mb-4 rounded-2xl border-emerald-900/50 bg-emerald-950/40 p-5">
           <div className="flex items-start gap-3">
             <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-800/50 text-lg text-emerald-100">
@@ -305,6 +383,8 @@ export default function UserProfile({ profile, session, onSave, onSignOut, onOpe
           Your data is stored in this browser only. Signing out clears the session; clearing site data
           removes your profile permanently.
         </p>
+          </div>
+        )}
       </div>
     </div>
   )

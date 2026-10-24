@@ -273,6 +273,7 @@ export default function App() {
         onSignOut={handleSignOut}
         onOpenGuide={() => openGuide('profile')}
         onBack={() => setView('app')}
+        onOpenHealthIntake={() => setShowHealthIntake(true)}
       />
     )
   }

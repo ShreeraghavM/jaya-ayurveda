@@ -1,10 +1,11 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import type { UserProfile } from '../lib/data'
 import { doshaProfiles } from '../lib/data'
 import { buildTomorrowPlan, reviewDay } from '../lib/smartEngine'
 import { getPopupHandled, getTodayLog } from '../lib/store'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
+import BedtimePainCheckin from './BedtimePainCheckin'
 
 interface Props {
   profile: UserProfile
@@ -12,6 +13,7 @@ interface Props {
 }
 
 export default function GoodNightRitual({ profile, onClose }: Props) {
+  const [showPainCheckin, setShowPainCheckin] = useState(false)
   const dosha = profile.doshaType ?? 'Vata'
   const log = useMemo(() => getTodayLog(), [])
   const handled = useMemo(() => getPopupHandled(), [])
@@ -133,6 +135,39 @@ export default function GoodNightRitual({ profile, onClose }: Props) {
               {tomorrow.focus}
             </p>
           </Card>
+
+          {/* Bedtime Symptom & Pain Review Prompt */}
+          <div className="mt-3 p-4 rounded-2xl border border-indigo-500/40 bg-gradient-to-r from-indigo-950/60 to-black/60 shadow-lg">
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex items-center gap-2.5">
+                <span className="text-2xl">🌙</span>
+                <div>
+                  <p className="text-xs font-bold text-indigo-100">Bedtime Symptom & Pain Check-in</p>
+                  <p className="text-[10px] text-indigo-300/70">
+                    Did today's food & remedies reduce bodily discomfort as projected?
+                  </p>
+                </div>
+              </div>
+              <Button
+                size="sm"
+                onClick={() => setShowPainCheckin(true)}
+                className="bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-mono rounded-xl shrink-0"
+              >
+                Check In ➔
+              </Button>
+            </div>
+          </div>
+
+          {showPainCheckin && (
+            <div className="fixed inset-0 z-50 overflow-y-auto bg-black/90 backdrop-blur-md p-4 animate-in fade-in">
+              <div className="max-w-lg mx-auto">
+                <BedtimePainCheckin
+                  onCompleted={() => setShowPainCheckin(false)}
+                  onClose={() => setShowPainCheckin(false)}
+                />
+              </div>
+            </div>
+          )}
 
           {/* Sleep ritual */}
           <Card className="mt-3 rounded-2xl border-emerald-900/50 bg-emerald-950/40 p-5">

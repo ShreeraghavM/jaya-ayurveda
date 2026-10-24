@@ -122,6 +122,37 @@ export default function Dashboard({ profile, onNavigate, onOpenHealthIntake, onO
         </Card>
       </div>
 
+      {/* ─── HUMAN ANATOMY & SROTAS VITALITY BANNER ─── */}
+      <div className="px-5 mb-3">
+        <div
+          onClick={() => onNavigate('profile')}
+          className="cursor-pointer p-4 rounded-3xl bg-gradient-to-r from-emerald-950/90 via-[#0a2717] to-indigo-950/70 border border-emerald-500/50 hover:border-emerald-400/80 transition-all shadow-xl group"
+        >
+          <div className="flex items-start justify-between gap-3">
+            <div className="flex items-start gap-3">
+              <span className="text-2xl mt-0.5 group-hover:scale-110 transition-transform">🧬</span>
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-300 bg-emerald-900/60 px-2 py-0.5 rounded-full border border-emerald-600/40">
+                    Ayurvedic Digital Twin
+                  </span>
+                  <span className="text-[10px] font-mono text-indigo-300 font-semibold">13 Anatomical Systems</span>
+                </div>
+                <h3 className="text-emerald-50 font-semibold text-sm">
+                  Human Anatomy & Organ Vitality Map
+                </h3>
+                <p className="text-emerald-200/70 text-xs mt-1 leading-relaxed">
+                  Track 0% to 100% organ nourishment from today's meals, observe active pathology beacons, record diagnostic lab counts, and complete your bedtime pain review.
+                </p>
+              </div>
+            </div>
+            <span className="text-emerald-400 text-sm group-hover:translate-x-1 transition-transform shrink-0 mt-2">
+              ➔
+            </span>
+          </div>
+        </div>
+      </div>
+
       {/* ─── CLINICAL HEALTH INTAKE BANNER (Polite & Personalized) ─── */}
       <div className="px-5 mb-3">
         <div
