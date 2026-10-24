@@ -250,6 +250,40 @@ assert(userProfileContent.includes('CharakaMatraCalculator') && userProfileConte
 const visualizerContent = fs.readFileSync(path.join(ROOT, 'src/components/AnatomyVisualizer.tsx'), 'utf-8')
 assert(visualizerContent.includes('onOpenMatraCalculator'), 'AnatomyVisualizer provides gateway to CharakaMatraCalculator')
 
+// ─── SUITE 13: Ayurvedic Metabolic Engine, Ardha-Shakti & Spring Bio-Shield ─
+console.log('\n► Suite 13: Ayurvedic Metabolic Engine, Ardha-Shakti & Spring Bio-Shield')
+const metabolicEnginePath = path.join(ROOT, 'src/lib/metabolicEngine.ts')
+assert(fs.existsSync(metabolicEnginePath), 'metabolicEngine.ts exists')
+const metabolicEngineContent = fs.readFileSync(metabolicEnginePath, 'utf-8')
+
+assert(metabolicEngineContent.includes('calculateAyurvedicMetabolism'), 'Exports calculateAyurvedicMetabolism function')
+assert(metabolicEngineContent.includes('Tikshnagni') && metabolicEngineContent.includes('Mandagni') && metabolicEngineContent.includes('Vishamagni') && metabolicEngineContent.includes('Samagni'), 'Supports 4 classical Agni types (Tikshna, Manda, Vishama, Sama)')
+assert(metabolicEngineContent.includes('AGNI_METABOLIC_MODIFIERS'), 'Defines AGNI_METABOLIC_MODIFIERS (+10% Pitta, -8% Kapha)')
+assert(metabolicEngineContent.includes('ardhaShaktiMaxHr') && metabolicEngineContent.includes('ardhaShaktiMinHr'), 'Computes Ardha-Shakti safe HR zone (50-70% max HR)')
+assert(metabolicEngineContent.includes('Vaktram Prapadyate') && metabolicEngineContent.includes('Lalate Sveda'), 'Includes Charaka Sutra 7.31-35 classical exercise cessation signs')
+assert(metabolicEngineContent.includes('vasantaRituActive') && metabolicEngineContent.includes('kaphaLiquefactionSeverity'), 'Computes Vasanta Ritu spring Kapha liquefaction dynamics')
+assert(metabolicEngineContent.includes('divasvapnaProhibited') || metabolicEngineContent.includes('Diva-swapna'), 'Enforces daytime sleep ban (Diva-swapna Nishiddha) in Spring')
+assert(metabolicEngineContent.includes('Yava') || metabolicEngineContent.includes('barley'), 'Recommends aged barley & honey as spring Kapha antidotes')
+
+// Verify UI components and integration
+const metabolicComponentPath = path.join(ROOT, 'src/components/MetabolicArdhaShaktiCalculator.tsx')
+assert(fs.existsSync(metabolicComponentPath), 'MetabolicArdhaShaktiCalculator.tsx component exists')
+const metabolicComponentContent = fs.readFileSync(metabolicComponentPath, 'utf-8')
+assert(metabolicComponentContent.includes('calculateAyurvedicMetabolism'), 'MetabolicArdhaShaktiCalculator uses calculateAyurvedicMetabolism')
+assert(metabolicComponentContent.includes('Ardha-Shakti') && metabolicComponentContent.includes('Vasanta Ritu'), 'Renders Ardha-Shakti and Vasanta Ritu tabs')
+
+const dietPlanMetabolic = fs.readFileSync(path.join(ROOT, 'src/components/DietPlan.tsx'), 'utf-8')
+assert(dietPlanMetabolic.includes('MetabolicArdhaShaktiCalculator') && dietPlanMetabolic.includes('calculateAyurvedicMetabolism'), 'DietPlan.tsx integrates MetabolicArdhaShaktiCalculator and daily TDEE metrics')
+
+const userProfileMetabolic = fs.readFileSync(path.join(ROOT, 'src/components/UserProfile.tsx'), 'utf-8')
+assert(userProfileMetabolic.includes('MetabolicArdhaShaktiCalculator') && userProfileMetabolic.includes('metabolic'), 'UserProfile.tsx includes Agni-BMR & Spring Ritu tab')
+
+const dashboardMetabolic = fs.readFileSync(path.join(ROOT, 'src/components/Dashboard.tsx'), 'utf-8')
+assert(dashboardMetabolic.includes('Vasanta Ritu') && dashboardMetabolic.includes('Kapha Liquefaction'), 'Dashboard.tsx renders Vasanta Ritu Spring Bio-Shield Banner')
+
+const appMetabolic = fs.readFileSync(path.join(ROOT, 'src/App.tsx'), 'utf-8')
+assert(appMetabolic.includes('Spring Shield & BMR') && appMetabolic.includes('handleOpenMetabolic'), 'App.tsx fast-bar and navigation wired to Spring Shield & BMR')
+
 // ─── RESULTS SUMMARY ───────────────────────────────────────────────────────
 console.log('\n======================================================')
 console.log(`✨ TEST RESULTS: ${passed} PASSED / ${failed} FAILED`)

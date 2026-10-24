@@ -184,6 +184,37 @@ export default function Dashboard({ profile, onNavigate, onOpenHealthIntake, onO
         </div>
       </div>
 
+      {/* ─── VASANTA RITU (SPRING SEASON) BIO-SHIELD BANNER ─── */}
+      <div className="px-5 mb-3">
+        <div
+          onClick={() => onNavigate('diet')}
+          className="cursor-pointer p-4 rounded-3xl bg-gradient-to-r from-[#1c080e] via-[#2a0e16] to-[#0d0306] border border-rose-500/50 hover:border-rose-400/80 transition-all shadow-xl group"
+        >
+          <div className="flex items-start justify-between gap-3">
+            <div className="flex items-start gap-3">
+              <span className="text-2xl mt-0.5 group-hover:scale-110 transition-transform">🌸</span>
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-rose-300 bg-rose-950/90 px-2 py-0.5 rounded-full border border-rose-600/40">
+                    Charaka Sutra 6.22-26
+                  </span>
+                  <span className="text-[10px] font-mono text-emerald-300 font-semibold">Vasanta Ritu Bio-Shield</span>
+                </div>
+                <h3 className="text-rose-100 font-semibold text-sm">
+                  Spring Kapha Liquefaction Defense & Zero Allergies
+                </h3>
+                <p className="text-rose-200/70 text-xs mt-1 leading-relaxed">
+                  Sun rays melt winter mucus flooding Jatharagni. 15% fat reduction, aged barley & honey scraping, and strict daytime nap ban (Diva-swapna Nishiddha).
+                </p>
+              </div>
+            </div>
+            <span className="text-rose-400 text-sm group-hover:translate-x-1 transition-transform shrink-0 mt-2">
+              ➔
+            </span>
+          </div>
+        </div>
+      </div>
+
       {/* ─── CLINICAL HEALTH INTAKE BANNER (Polite & Personalized) ─── */}
       <div className="px-5 mb-3">
         <div

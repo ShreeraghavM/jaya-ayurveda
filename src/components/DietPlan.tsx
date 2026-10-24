@@ -13,7 +13,9 @@ import {
   calculateCharakaPortioning,
   getDeshaSatmyaProfile,
 } from '../lib/deshaSatmyaEngine'
+import { calculateAyurvedicMetabolism } from '../lib/metabolicEngine'
 import CharakaMatraCalculator from './CharakaMatraCalculator'
+import MetabolicArdhaShaktiCalculator from './MetabolicArdhaShaktiCalculator'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Textarea } from '@/components/ui/textarea'
@@ -45,10 +47,14 @@ export default function DietPlan({ profile }: Props) {
   const [editing, setEditing] = useState(false)
   const [draft, setDraft] = useState('')
   const [showMatraCalculator, setShowMatraCalculator] = useState(false)
+  const [showMetabolicCalc, setShowMetabolicCalc] = useState(false)
   const [deshaProfile, setDeshaProfile] = useState(() => getDeshaSatmyaProfile(profile))
 
   // Charaka Ahara Matra portioning and Desha-Satmya adaptation
   const matraCalc = useMemo(() => calculateCharakaPortioning(profile, deshaProfile), [profile, deshaProfile])
+
+  // Charaka Agni-BMR, TDEE, Ardha-Shakti & Vasanta Ritu (Spring) Bio-Shield
+  const metabolism = useMemo(() => calculateAyurvedicMetabolism(profile, undefined, true), [profile])
 
   const meals = mealPlans[dosha]
   const currentMeals = meals[activeMeal] || []
@@ -139,6 +145,64 @@ export default function DietPlan({ profile }: Props) {
             <div className="mt-2.5 flex items-center justify-between text-[10px] text-amber-200/80 flex-wrap gap-1">
               <span>🌾 Native Staple: <strong className="text-amber-100">{matraCalc.nativeSatmyaMeal.stapleGrainName}</strong></span>
               <span>⚖️ Quality: <strong className="text-amber-100">{matraCalc.heavyFoodRatioPct}% Heavy : {matraCalc.lightFoodRatioPct}% Light</strong></span>
+            </div>
+          </>
+        )}
+      </Card>
+
+      {/* ─── AGNI-BMR, TDEE & SPRING (VASANTA RITU) BIO-SHIELD SECTION ─── */}
+      <Card className="mb-4 overflow-hidden rounded-2xl border-rose-500/40 bg-gradient-to-br from-[#1a070c] via-[#100306] to-[#080204] p-4 text-rose-50 shadow-lg">
+        <div className="flex items-center justify-between gap-2">
+          <div className="flex items-center gap-1.5 flex-wrap">
+            <span className="text-lg">🌸</span>
+            <Badge className="bg-rose-500/20 text-rose-300 border-rose-500/30 text-[9px] font-mono">
+              VASANTA RITU (SPRING SHIELD)
+            </Badge>
+            <Badge className="bg-amber-500/20 text-amber-300 border-amber-500/30 text-[9px] font-mono">
+              BMR {metabolism.ayurvedicBmrKcal} kcal · TDEE {metabolism.dailyTdeeKcal} kcal
+            </Badge>
+          </div>
+          <button
+            onClick={() => setShowMetabolicCalc(!showMetabolicCalc)}
+            className="text-[11px] text-rose-300 font-medium underline underline-offset-2 hover:text-rose-100"
+          >
+            {showMetabolicCalc ? 'Minimize ✕' : 'View BMR & Spring Shield ➔'}
+          </button>
+        </div>
+
+        {showMetabolicCalc ? (
+          <div className="mt-4 pt-3 border-t border-rose-900/40">
+            <MetabolicArdhaShaktiCalculator
+              profile={profile}
+              onClose={() => setShowMetabolicCalc(false)}
+            />
+          </div>
+        ) : (
+          <>
+            <div className="mt-3 grid grid-cols-3 gap-2 text-center">
+              <div className="rounded-xl border border-rose-900/40 bg-rose-950/40 p-2">
+                <span className="block text-[9px] uppercase tracking-wider text-rose-400/80 font-mono">Daily TDEE</span>
+                <span className="mt-0.5 block text-sm font-bold text-rose-100 font-mono">~{metabolism.dailyTdeeKcal} kcal</span>
+                <span className="block text-[8px] text-rose-300/60 font-sans">PAL ×{metabolism.physicalActivityMultiplier}</span>
+              </div>
+              <div className="rounded-xl border border-amber-900/40 bg-amber-950/40 p-2">
+                <span className="block text-[9px] uppercase tracking-wider text-amber-300/80 font-mono">Lunch Agni Peak</span>
+                <span className="mt-0.5 block text-sm font-bold text-amber-100 font-mono">~{metabolism.mealPortionsKcal.lunchKcal} kcal</span>
+                <span className="block text-[8px] text-amber-200/60 font-sans">45% Midday Sun</span>
+              </div>
+              <div className="rounded-xl border border-emerald-900/40 bg-emerald-950/40 p-2">
+                <span className="block text-[9px] uppercase tracking-wider text-emerald-400/80 font-mono">Ardha-Shakti HR</span>
+                <span className="mt-0.5 block text-sm font-bold text-emerald-100 font-mono">~{metabolism.exerciseCapacity.ardhaShaktiTargetZoneBpm.targetBpm} bpm</span>
+                <span className="block text-[8px] text-emerald-300/60 font-sans">50% Exertion Zone</span>
+              </div>
+            </div>
+
+            <div className="mt-2.5 p-2 rounded-xl bg-rose-950/30 border border-rose-900/40 text-[10px] text-rose-200/80 leading-relaxed flex items-start gap-1.5">
+              <span>🌸</span>
+              <div>
+                <strong className="text-rose-100">Spring Kapha Defense:</strong> Sun rays liquefy winter mucus. 15% fat reduction applied. Barley, roasted moong & honey activated.
+                <span className="block text-red-300 font-semibold mt-0.5">🚫 Diva-swapna strictly prohibited (No daytime naps in spring).</span>
+              </div>
             </div>
           </>
         )}

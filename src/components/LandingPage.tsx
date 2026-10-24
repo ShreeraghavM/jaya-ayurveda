@@ -13,6 +13,7 @@ interface Props {
   onOpenAharaMatra?: () => void
   onOpenDietPlan?: () => void
   onOpenProfile?: () => void
+  onOpenSpringShield?: () => void
 }
 
 const features = [
@@ -48,6 +49,7 @@ export default function LandingPage({
   onOpenAharaMatra,
   onOpenDietPlan,
   onOpenProfile,
+  onOpenSpringShield,
 }: Props) {
   return (
     <div className="min-h-screen bg-[#08140c] text-emerald-50">
@@ -87,6 +89,16 @@ export default function LandingPage({
               >
                 <span>🌾</span>
                 <span className="font-semibold text-amber-100">Ahara Matra</span>
+              </button>
+            )}
+            {onOpenSpringShield && (
+              <button
+                onClick={onOpenSpringShield}
+                className="flex items-center gap-1 px-2.5 py-1.5 rounded-full border border-rose-500/60 bg-rose-950/60 text-xs font-medium text-rose-200 hover:bg-rose-900/60 transition shadow-md"
+                title="Charaka Spring Bio-Shield & Agni-BMR Calculator"
+              >
+                <span>🌸</span>
+                <span className="font-semibold text-rose-100">Spring Shield</span>
               </button>
             )}
             {onOpenDietPlan && (
@@ -223,6 +235,22 @@ export default function LandingPage({
                     <span className="text-amber-400 font-bold group-hover:translate-x-1 transition-transform shrink-0">➔ Explore 120 Adhyayas</span>
                   </div>
                 )}
+
+                {/* 5. Vasanta Ritu Spring Bio-Shield & Ardha-Shakti Pill */}
+                {onOpenSpringShield && (
+                  <div
+                    onClick={onOpenSpringShield}
+                    className="inline-flex cursor-pointer items-center justify-between gap-2 px-3.5 py-2 rounded-2xl border border-rose-500/60 bg-gradient-to-r from-[#200d14] via-[#1a0a10] to-emerald-950/60 hover:border-rose-400 text-xs text-rose-100 transition shadow-md group"
+                  >
+                    <div className="flex items-center gap-2">
+                      <span className="text-base group-hover:scale-110 transition-transform">🌸</span>
+                      <span className="font-semibold text-rose-200">
+                        Spring Vasanta Ritu Bio-Shield & Agni-BMR: <span className="text-rose-300/90 font-normal">Kapha Liquefaction Defense & Ardha-Shakti Law</span>
+                      </span>
+                    </div>
+                    <span className="text-rose-400 font-bold group-hover:translate-x-1 transition-transform shrink-0">➔ Spring Shield</span>
+                  </div>
+                )}
               </div>
 
               <h1 className="text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
@@ -267,6 +295,15 @@ export default function LandingPage({
                     className="h-11 rounded-2xl border-amber-500/60 bg-amber-950/60 px-4 text-xs text-amber-200 hover:bg-amber-900/60 font-semibold shadow-sm"
                   >
                     🌾 Ahara Matra (1/3)
+                  </Button>
+                )}
+                {onOpenSpringShield && (
+                  <Button
+                    onClick={onOpenSpringShield}
+                    variant="outline"
+                    className="h-11 rounded-2xl border-rose-500/60 bg-rose-950/60 px-4 text-xs text-rose-200 hover:bg-rose-900/60 font-semibold shadow-sm"
+                  >
+                    🌸 Spring Shield & BMR
                   </Button>
                 )}
                 {onOpenDietPlan && (

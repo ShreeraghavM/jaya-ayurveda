@@ -11,6 +11,7 @@ import AnatomyVisualizer from './AnatomyVisualizer'
 import LabReportTracker from './LabReportTracker'
 import BedtimePainCheckin from './BedtimePainCheckin'
 import CharakaMatraCalculator from './CharakaMatraCalculator'
+import MetabolicArdhaShaktiCalculator from './MetabolicArdhaShaktiCalculator'
 
 interface Props {
   profile: UserProfile
@@ -23,7 +24,7 @@ interface Props {
   initialTab?: ProfileTab
 }
 
-export type ProfileTab = 'anatomy' | 'lab_reports' | 'bedtime_review' | 'desha_satmya' | 'details'
+export type ProfileTab = 'anatomy' | 'lab_reports' | 'bedtime_review' | 'desha_satmya' | 'metabolic' | 'details'
 
 export default function UserProfile({ profile, session, onSave, onSignOut, onOpenGuide, onBack, onOpenHealthIntake, initialTab = 'anatomy' }: Props) {
   const [activeTab, setActiveTab] = useState<ProfileTab>(initialTab)
@@ -113,6 +114,16 @@ export default function UserProfile({ profile, session, onSave, onSignOut, onOpe
             🌾 Charaka Ahara Matra
           </button>
           <button
+            onClick={() => setActiveTab('metabolic')}
+            className={`flex-1 min-w-[150px] py-2 px-3 rounded-xl text-center text-xs font-medium transition ${
+              activeTab === 'metabolic'
+                ? 'bg-rose-600 text-white shadow-sm font-bold'
+                : 'text-rose-400/70 hover:text-rose-200'
+            }`}
+          >
+            🔥 Agni-BMR & Spring Ritu
+          </button>
+          <button
             onClick={() => setActiveTab('details')}
             className={`flex-1 min-w-[120px] py-2 px-3 rounded-xl text-center text-xs font-medium transition ${
               activeTab === 'details'
@@ -155,7 +166,15 @@ export default function UserProfile({ profile, session, onSave, onSignOut, onOpe
           />
         )}
 
-        {/* ─── TAB 5: ACCOUNT & BMI DETAILS ─── */}
+        {/* ─── TAB 5: AGNI-BMR, TDEE & SPRING BIO-SHIELD ─── */}
+        {activeTab === 'metabolic' && (
+          <MetabolicArdhaShaktiCalculator
+            profile={draft}
+            onClose={() => setActiveTab('anatomy')}
+          />
+        )}
+
+        {/* ─── TAB 6: ACCOUNT & BMI DETAILS ─── */}
         {activeTab === 'details' && (
           <div className="max-w-lg mx-auto">
             {/* ACCOUNT */}

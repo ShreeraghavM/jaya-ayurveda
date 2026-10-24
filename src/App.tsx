@@ -58,7 +58,7 @@ export default function App() {
   const [showHealthIntake, setShowHealthIntake] = useState(false)
   const [showCharakaExplorer, setShowCharakaExplorer] = useState(false)
   const [popupTick, setPopupTick] = useState(0)
-  const [profileInitialTab, setProfileInitialTab] = useState<'anatomy' | 'lab_reports' | 'bedtime_review' | 'desha_satmya' | 'details'>('anatomy')
+  const [profileInitialTab, setProfileInitialTab] = useState<'anatomy' | 'lab_reports' | 'bedtime_review' | 'desha_satmya' | 'metabolic' | 'details'>('anatomy')
 
   const handleOpenAnatomy = () => {
     if (!profile) handleDemo()
@@ -72,13 +72,19 @@ export default function App() {
     setView('profile')
   }
 
+  const handleOpenMetabolic = () => {
+    if (!profile) handleDemo()
+    setProfileInitialTab('metabolic')
+    setView('profile')
+  }
+
   const handleOpenDietPlan = () => {
     if (!profile) handleDemo()
     setTab('diet')
     setView('app')
   }
 
-  const handleOpenProfile = (initialTab: 'anatomy' | 'lab_reports' | 'bedtime_review' | 'desha_satmya' | 'details' = 'anatomy') => {
+  const handleOpenProfile = (initialTab: 'anatomy' | 'lab_reports' | 'bedtime_review' | 'desha_satmya' | 'metabolic' | 'details' = 'anatomy') => {
     if (!profile) handleDemo()
     setProfileInitialTab(initialTab)
     setView('profile')
@@ -205,6 +211,7 @@ export default function App() {
           onOpenAharaMatra={handleOpenAharaMatra}
           onOpenDietPlan={handleOpenDietPlan}
           onOpenProfile={() => handleOpenProfile('anatomy')}
+          onOpenSpringShield={handleOpenMetabolic}
         />
         <GrantPitchModal isOpen={showGrantPitch} onClose={() => setShowGrantPitch(false)} />
         {showHealthIntake && (
@@ -262,6 +269,7 @@ export default function App() {
           onOpenAharaMatra={handleOpenAharaMatra}
           onOpenDietPlan={handleOpenDietPlan}
           onOpenProfile={() => handleOpenProfile('anatomy')}
+          onOpenSpringShield={handleOpenMetabolic}
         />
         <GrantPitchModal isOpen={showGrantPitch} onClose={() => setShowGrantPitch(false)} />
         {showHealthIntake && (
@@ -471,6 +479,18 @@ export default function App() {
           >
             <span>🌾</span>
             <span className="font-semibold text-amber-100">Ahara Matra (1/3)</span>
+          </button>
+
+          <button
+            onClick={handleOpenMetabolic}
+            className={`flex items-center gap-1 px-2.5 py-1 rounded-xl border text-[11px] font-medium transition shadow-sm ${
+              view === 'profile' && profileInitialTab === 'metabolic'
+                ? 'bg-rose-700/60 border-rose-400 text-white font-bold'
+                : 'bg-rose-950/60 border-rose-500/40 text-rose-200 hover:bg-rose-900/60'
+            }`}
+          >
+            <span>🌸</span>
+            <span className="font-semibold text-rose-100">Spring Shield & BMR</span>
           </button>
 
           <button
