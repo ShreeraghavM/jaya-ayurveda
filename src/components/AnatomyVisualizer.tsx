@@ -1,7 +1,9 @@
 // src/components/AnatomyVisualizer.tsx
 // Interactive Human Anatomy & Srotas Digital Twin Visualizer
-// Features full human vector silhouette, 13 selectable organ systems, 0-100% nourishment meters,
-// pulsating disease beacons, missing nutrient breakdown, and dynamic deficit meal formulation.
+// Supports:
+// 1. Holographic Digital Twin (Picture 2: Bio-luminescent dark anatomy with floating organ nodes & interactive hotspots)
+// 2. Medical Atlas Chart (Picture 1: Classical medical chart view)
+// 3. Interactive Vector Diagram (Pure SVG with anterior/posterior views)
 
 import { useState, useMemo } from 'react'
 import {
@@ -11,9 +13,7 @@ import {
   generateDeficitBalancingMeal,
   getDiseaseBeacons,
   clearDiseaseBeacon,
-  saveDiseaseBeacon,
   type AnatomicalSystemId,
-  type SystemNourishmentStatus,
   type DiseaseBeacon,
   type AnatomicalOrgan,
 } from '@/lib/anatomyEngine'
@@ -28,7 +28,10 @@ interface Props {
   onOpenLabReports?: () => void
 }
 
+export type AnatomyVisualMode = 'hologram' | 'chart' | 'vector'
+
 export default function AnatomyVisualizer({ dosha = 'Pitta', onOpenIntake, onOpenLabReports }: Props) {
+  const [visualMode, setVisualMode] = useState<AnatomyVisualMode>('hologram')
   const [selectedSystemId, setSelectedSystemId] = useState<AnatomicalSystemId>('digestive')
   const [selectedOrgan, setSelectedOrgan] = useState<AnatomicalOrgan | null>(null)
   const [viewAngle, setViewAngle] = useState<'front' | 'back'>('front')
@@ -50,6 +53,12 @@ export default function AnatomyVisualizer({ dosha = 'Pitta', onOpenIntake, onOpe
     clearDiseaseBeacon(beaconId)
     setBeacons(getDiseaseBeacons())
     setClearingBeaconId(null)
+  }
+
+  // Quick organ hotspot click
+  const selectOrganHotspot = (systemId: AnatomicalSystemId, organIndex: number = 0) => {
+    setSelectedSystemId(systemId)
+    setSelectedOrgan(ANATOMICAL_SYSTEMS[systemId].primaryOrgans[organIndex] || null)
   }
 
   return (
@@ -111,29 +120,41 @@ export default function AnatomyVisualizer({ dosha = 'Pitta', onOpenIntake, onOpe
           </div>
         </div>
 
-        {/* Quick action bar */}
-        <div className="mt-4 pt-4 border-t border-emerald-900/40 flex flex-wrap items-center justify-between gap-2 text-xs">
-          <div className="flex items-center gap-2">
-            <span className="text-emerald-400/70">Perspective:</span>
+        {/* ─── DISPLAY MODE TOGGLE ─── */}
+        <div className="mt-4 pt-4 border-t border-emerald-900/40 flex flex-wrap items-center justify-between gap-3 text-xs">
+          <div className="flex items-center gap-1.5 bg-black/40 p-1 rounded-2xl border border-emerald-800/40">
             <button
-              onClick={() => setViewAngle('front')}
-              className={`px-3 py-1 rounded-full text-xs font-mono transition ${
-                viewAngle === 'front'
-                  ? 'bg-emerald-500 text-white font-medium shadow-sm'
-                  : 'bg-emerald-950/60 text-emerald-300/70 hover:text-white'
+              onClick={() => setVisualMode('hologram')}
+              className={`px-3 py-1.5 rounded-xl text-xs font-mono transition flex items-center gap-1.5 ${
+                visualMode === 'hologram'
+                  ? 'bg-emerald-500 text-white font-bold shadow-md'
+                  : 'text-emerald-400/70 hover:text-white'
               }`}
             >
-              Anterior (Front)
+              <span>✨ Holographic Twin</span>
+              <span className="text-[9px] bg-emerald-950/80 px-1.5 py-0.2 rounded-full border border-emerald-400/30">
+                Recommended
+              </span>
             </button>
             <button
-              onClick={() => setViewAngle('back')}
-              className={`px-3 py-1 rounded-full text-xs font-mono transition ${
-                viewAngle === 'back'
-                  ? 'bg-emerald-500 text-white font-medium shadow-sm'
-                  : 'bg-emerald-950/60 text-emerald-300/70 hover:text-white'
+              onClick={() => setVisualMode('chart')}
+              className={`px-3 py-1.5 rounded-xl text-xs font-mono transition flex items-center gap-1 ${
+                visualMode === 'chart'
+                  ? 'bg-emerald-500 text-white font-bold shadow-md'
+                  : 'text-emerald-400/70 hover:text-white'
               }`}
             >
-              Posterior (Spine/Back)
+              <span>📖 Medical Atlas</span>
+            </button>
+            <button
+              onClick={() => setVisualMode('vector')}
+              className={`px-3 py-1.5 rounded-xl text-xs font-mono transition flex items-center gap-1 ${
+                visualMode === 'vector'
+                  ? 'bg-emerald-500 text-white font-bold shadow-md'
+                  : 'text-emerald-400/70 hover:text-white'
+              }`}
+            >
+              <span>📐 Vector Diagram</span>
             </button>
           </div>
 
@@ -141,7 +162,7 @@ export default function AnatomyVisualizer({ dosha = 'Pitta', onOpenIntake, onOpe
             {onOpenLabReports && (
               <button
                 onClick={onOpenLabReports}
-                className="px-3 py-1 rounded-full border border-emerald-700/50 bg-emerald-900/30 text-emerald-200 hover:bg-emerald-800/40 text-xs font-mono transition flex items-center gap-1.5"
+                className="px-3 py-1.5 rounded-full border border-emerald-700/50 bg-emerald-900/30 text-emerald-200 hover:bg-emerald-800/40 text-xs font-mono transition flex items-center gap-1.5"
               >
                 <span>🔬 Doctor Lab Counts</span>
               </button>
@@ -149,7 +170,7 @@ export default function AnatomyVisualizer({ dosha = 'Pitta', onOpenIntake, onOpe
             {onOpenIntake && (
               <button
                 onClick={onOpenIntake}
-                className="px-3 py-1 rounded-full border border-amber-500/50 bg-amber-500/10 text-amber-200 hover:bg-amber-500/20 text-xs font-mono transition flex items-center gap-1.5"
+                className="px-3 py-1.5 rounded-full border border-amber-500/50 bg-amber-500/10 text-amber-200 hover:bg-amber-500/20 text-xs font-mono transition flex items-center gap-1.5"
               >
                 <span>🩺 Report Symptom</span>
               </button>
@@ -248,155 +269,284 @@ export default function AnatomyVisualizer({ dosha = 'Pitta', onOpenIntake, onOpe
       {/* ─── MAIN TWO-COLUMN ANATOMICAL VIEW ─── */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         {/* LEFT COLUMN: INTERACTIVE BODY SILHOUETTE (5 cols) */}
-        <div className="lg:col-span-5 rounded-3xl border border-emerald-800/40 bg-gradient-to-b from-[#08170d] to-[#040c07] p-5 shadow-xl relative">
+        <div className="lg:col-span-5 rounded-3xl border border-emerald-800/40 bg-gradient-to-b from-[#08170d] to-[#040c07] p-4 sm:p-5 shadow-xl relative overflow-hidden">
           <div className="flex items-center justify-between mb-3">
             <span className="text-xs font-mono text-emerald-400 uppercase tracking-wider">
-              Anatomical Silhouette · {viewAngle === 'front' ? 'Ventral' : 'Dorsal'}
+              {visualMode === 'hologram'
+                ? 'Holographic Bio-Luminescent Twin'
+                : visualMode === 'chart'
+                ? 'Color Anatomical Chart'
+                : `Vector Silhouette · ${viewAngle === 'front' ? 'Ventral' : 'Dorsal'}`}
             </span>
-            <span className="text-[10px] text-emerald-500/70">Click organ to inspect</span>
+            <span className="text-[10px] text-emerald-500/70 font-mono">Tap organ to inspect</span>
           </div>
 
-          {/* SVG HUMAN BODY SILHOUETTE */}
-          <div className="relative w-full aspect-[1/1.9] max-w-[320px] mx-auto flex items-center justify-center py-2">
-            <svg
-              viewBox="0 0 200 400"
-              className="w-full h-full drop-shadow-[0_0_25px_rgba(16,185,129,0.15)] select-none"
-            >
-              <defs>
-                {/* Silhouette linear gradient */}
-                <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#0f2b1a" />
-                  <stop offset="50%" stopColor="#081c10" />
-                  <stop offset="100%" stopColor="#030c07" />
-                </linearGradient>
-
-                {/* Pulsating Beacon Animation Filter */}
-                <filter id="glowAlert" x="-50%" y="-50%" width="200%" height="200%">
-                  <feGaussianBlur stdDeviation="4" result="blur" />
-                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                </filter>
-              </defs>
-
-              {/* HUMAN BODY OUTLINE PATH */}
-              {/* Head */}
-              <circle cx="100" cy="45" r="24" fill="url(#bodyGrad)" stroke="#10b981" strokeWidth="1.2" strokeOpacity="0.4" />
-
-              {/* Neck */}
-              <path d="M92 68 L108 68 L110 82 L90 82 Z" fill="url(#bodyGrad)" stroke="#10b981" strokeWidth="1.2" strokeOpacity="0.3" />
-
-              {/* Torso & Shoulders */}
-              <path
-                d="M90 82 C70 86 52 100 48 120 L40 180 C38 195 44 205 52 205 L60 205 C62 185 64 150 70 135 L70 215 C70 235 80 245 92 248 L92 265 L108 265 L108 248 C120 245 130 235 130 215 L130 135 C136 150 138 185 140 205 L148 205 C156 205 162 195 160 180 L152 120 C148 100 130 86 110 82 Z"
-                fill="url(#bodyGrad)"
-                stroke="#10b981"
-                strokeWidth="1.2"
-                strokeOpacity="0.4"
+          {/* ─── MODE 1: HOLOGRAPHIC BIO-LUMINESCENT TWIN (PICTURE 2) ─── */}
+          {visualMode === 'hologram' && (
+            <div className="relative w-full aspect-[9/16] max-w-[340px] mx-auto rounded-2xl overflow-hidden border border-emerald-500/30 bg-[#030705] shadow-2xl">
+              <img
+                src="./anatomy/anatomy_dark_hologram.webp"
+                alt="Holographic Anatomy Digital Twin"
+                className="w-full h-full object-contain select-none"
               />
 
-              {/* Pelvis and Legs */}
-              <path
-                d="M72 240 L70 330 C70 350 68 375 66 385 L84 385 C88 375 92 340 94 300 L97 270 L103 270 L106 300 C108 340 112 375 116 385 L134 385 C132 375 130 350 130 330 L128 240 Z"
-                fill="url(#bodyGrad)"
-                stroke="#10b981"
-                strokeWidth="1.2"
-                strokeOpacity="0.4"
-              />
-
-              {/* Spinal column indicator if posterior view */}
-              {viewAngle === 'back' && (
-                <path
-                  d="M100 70 L100 245"
-                  stroke="#a855f7"
-                  strokeWidth="3"
-                  strokeDasharray="3 4"
-                  strokeOpacity="0.7"
-                />
-              )}
-
-              {/* ─── RENDER VISIBLE ORGANS ─── */}
-              {/* Brain / Crown */}
-              <g
-                className="cursor-pointer group"
-                onClick={() => {
-                  setSelectedSystemId('nervous')
-                  setSelectedOrgan(ANATOMICAL_SYSTEMS.nervous.primaryOrgans[0])
-                }}
+              {/* OVERLAY HOTSPOT BUTTONS DIRECTLY ON ORGANS */}
+              {/* Brain / Crown (Majjavaha Srotas) */}
+              <button
+                onClick={() => selectOrganHotspot('nervous', 0)}
+                style={{ top: '8%', left: '49%' }}
+                className={`absolute -translate-x-1/2 -translate-y-1/2 w-7 h-7 rounded-full flex items-center justify-center text-xs transition shadow-lg ${
+                  selectedSystemId === 'nervous'
+                    ? 'bg-purple-500 text-white ring-4 ring-purple-400 scale-110 z-20'
+                    : 'bg-purple-950/80 border border-purple-400/60 text-purple-200 hover:scale-110 z-10'
+                }`}
+                title="Brain & Cranial Nerves (Majjavaha Srotas)"
               >
+                🧠
+              </button>
+
+              {/* Lungs & Airway (Pranavaha Srotas) */}
+              <button
+                onClick={() => selectOrganHotspot('respiratory', 0)}
+                style={{ top: '27%', left: '46%' }}
+                className={`absolute -translate-x-1/2 -translate-y-1/2 w-7 h-7 rounded-full flex items-center justify-center text-xs transition shadow-lg ${
+                  selectedSystemId === 'respiratory'
+                    ? 'bg-sky-500 text-white ring-4 ring-sky-400 scale-110 z-20'
+                    : 'bg-sky-950/80 border border-sky-400/60 text-sky-200 hover:scale-110 z-10'
+                }`}
+                title="Lungs & Bronchial Tree (Pranavaha Srotas)"
+              >
+                🫁
+              </button>
+
+              {/* Heart (Raktavaha Srotas & Hridaya) */}
+              <button
+                onClick={() => selectOrganHotspot('circulatory', 0)}
+                style={{ top: '28%', left: '54%' }}
+                className={`absolute -translate-x-1/2 -translate-y-1/2 w-7 h-7 rounded-full flex items-center justify-center text-xs transition shadow-lg ${
+                  selectedSystemId === 'circulatory'
+                    ? 'bg-red-500 text-white ring-4 ring-red-400 scale-110 z-20'
+                    : 'bg-red-950/80 border border-red-400/60 text-red-200 hover:scale-110 z-10'
+                }`}
+                title="Heart & Arteries (Raktavaha Srotas)"
+              >
+                ❤️
+              </button>
+
+              {/* Liver (Yakrit & Pitta) */}
+              <button
+                onClick={() => selectOrganHotspot('digestive', 1)}
+                style={{ top: '35%', left: '44%' }}
+                className={`absolute -translate-x-1/2 -translate-y-1/2 w-6 h-6 rounded-full flex items-center justify-center text-[10px] transition shadow-lg ${
+                  selectedSystemId === 'digestive'
+                    ? 'bg-amber-500 text-white ring-4 ring-amber-400 scale-110 z-20'
+                    : 'bg-amber-950/80 border border-amber-400/60 text-amber-200 hover:scale-110 z-10'
+                }`}
+                title="Liver & Gallbladder (Yakrit)"
+              >
+                🩸
+              </button>
+
+              {/* Stomach & Jatharagni */}
+              <button
+                onClick={() => selectOrganHotspot('digestive', 0)}
+                style={{ top: '36%', left: '55%' }}
+                className={`absolute -translate-x-1/2 -translate-y-1/2 w-7 h-7 rounded-full flex items-center justify-center text-xs transition shadow-lg ${
+                  selectedSystemId === 'digestive'
+                    ? 'bg-amber-500 text-white ring-4 ring-amber-400 scale-110 z-20'
+                    : 'bg-amber-950/80 border border-amber-400/60 text-amber-200 hover:scale-110 z-10'
+                }`}
+                title="Stomach & Jatharagni (Annavaha Srotas)"
+              >
+                🥣
+              </button>
+
+              {/* Kidneys (Mutravaha Srotas) */}
+              <button
+                onClick={() => selectOrganHotspot('urinary', 0)}
+                style={{ top: '43%', left: '44%' }}
+                className={`absolute -translate-x-1/2 -translate-y-1/2 w-6 h-6 rounded-full flex items-center justify-center text-[10px] transition shadow-lg ${
+                  selectedSystemId === 'urinary'
+                    ? 'bg-cyan-500 text-white ring-4 ring-cyan-400 scale-110 z-20'
+                    : 'bg-cyan-950/80 border border-cyan-400/60 text-cyan-200 hover:scale-110 z-10'
+                }`}
+                title="Kidneys & Osmoregulation (Mutravaha Srotas)"
+              >
+                💧
+              </button>
+
+              {/* Pelvis & Reproductive (Artavavaha / Shukravaha) */}
+              <button
+                onClick={() => selectOrganHotspot('reproductive', 0)}
+                style={{ top: '56%', left: '50%' }}
+                className={`absolute -translate-x-1/2 -translate-y-1/2 w-7 h-7 rounded-full flex items-center justify-center text-xs transition shadow-lg ${
+                  selectedSystemId === 'reproductive'
+                    ? 'bg-fuchsia-500 text-white ring-4 ring-fuchsia-400 scale-110 z-20'
+                    : 'bg-fuchsia-950/80 border border-fuchsia-400/60 text-fuchsia-200 hover:scale-110 z-10'
+                }`}
+                title="Pelvic Organs & Reproductive Vitality"
+              >
+                🌸
+              </button>
+
+              {/* Knee & Synovial Joints (Asthivaha Srotas) */}
+              <button
+                onClick={() => selectOrganHotspot('skeletal', 1)}
+                style={{ top: '76%', left: '44%' }}
+                className={`absolute -translate-x-1/2 -translate-y-1/2 w-6 h-6 rounded-full flex items-center justify-center text-[10px] transition shadow-lg ${
+                  selectedSystemId === 'skeletal'
+                    ? 'bg-emerald-400 text-emerald-950 ring-4 ring-emerald-300 scale-110 z-20'
+                    : 'bg-slate-900/80 border border-slate-400/60 text-slate-200 hover:scale-110 z-10'
+                }`}
+                title="Knee & Synovial Articulations (Janu Sandhi)"
+              >
+                🦴
+              </button>
+
+              {/* ACTIVE DISEASE BEACONS ON HOLOGRAPHIC IMAGE */}
+              {activeBeacons.map(b => {
+                let top = '36%'
+                let left = '50%'
+                if (b.organId === 'pancreas') {
+                  top = '39%'
+                  left = '50%'
+                } else if (b.organId === 'heart') {
+                  top = '28%'
+                  left = '54%'
+                } else if (b.organId === 'knees') {
+                  top = '76%'
+                  left = '44%'
+                } else if (b.organId === 'uterus_prostate') {
+                  top = '56%'
+                  left = '50%'
+                } else if (b.organId === 'brain') {
+                  top = '8%'
+                  left = '49%'
+                }
+
+                return (
+                  <div
+                    key={`holo-beacon-${b.id}`}
+                    style={{ top, left }}
+                    onClick={() => setSelectedSystemId(b.systemId)}
+                    className="absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer z-30 flex items-center justify-center"
+                  >
+                    <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-rose-400 opacity-75" />
+                    <span className="relative inline-flex items-center justify-center w-6 h-6 rounded-full bg-rose-600 text-[10px] font-bold text-white shadow-lg border border-white">
+                      !
+                    </span>
+                  </div>
+                )
+              })}
+            </div>
+          )}
+
+          {/* ─── MODE 2: MEDICAL ATLAS CHART (PICTURE 1) ─── */}
+          {visualMode === 'chart' && (
+            <div className="relative w-full aspect-[9/16] max-w-[340px] mx-auto rounded-2xl overflow-hidden border border-emerald-500/30 bg-[#eef7f9] shadow-2xl">
+              <img
+                src="./anatomy/anatomy_light_chart.webp"
+                alt="Colorful Anatomical Body Systems Chart"
+                className="w-full h-full object-contain select-none"
+              />
+
+              {/* Overlay clickable targets on the colorful chart */}
+              <div
+                onClick={() => selectOrganHotspot('nervous', 0)}
+                style={{ top: '8%', left: '49%' }}
+                className="absolute -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full cursor-pointer hover:ring-2 hover:ring-purple-500"
+                title="Cerebrum & Cranial Srotas"
+              />
+              <div
+                onClick={() => selectOrganHotspot('respiratory', 0)}
+                style={{ top: '25%', left: '49%' }}
+                className="absolute -translate-x-1/2 -translate-y-1/2 w-14 h-12 rounded-full cursor-pointer hover:ring-2 hover:ring-sky-500"
+                title="Lungs (Phupphusa)"
+              />
+              <div
+                onClick={() => selectOrganHotspot('digestive', 0)}
+                style={{ top: '38%', left: '49%' }}
+                className="absolute -translate-x-1/2 -translate-y-1/2 w-16 h-12 rounded-full cursor-pointer hover:ring-2 hover:ring-amber-500"
+                title="Digestive Tract (Amashaya & Yakrit)"
+              />
+              <div
+                onClick={() => selectOrganHotspot('digestive', 3)}
+                style={{ top: '48%', left: '49%' }}
+                className="absolute -translate-x-1/2 -translate-y-1/2 w-14 h-14 rounded-full cursor-pointer hover:ring-2 hover:ring-amber-500"
+                title="Intestines (Pakvashaya)"
+              />
+            </div>
+          )}
+
+          {/* ─── MODE 3: VECTOR SILHOUETTE DIAGRAM ─── */}
+          {visualMode === 'vector' && (
+            <div className="relative w-full aspect-[1/1.9] max-w-[300px] mx-auto flex items-center justify-center py-2">
+              <svg
+                viewBox="0 0 200 400"
+                className="w-full h-full drop-shadow-[0_0_25px_rgba(16,185,129,0.15)] select-none"
+              >
+                <defs>
+                  <linearGradient id="bodyGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#0f2b1a" />
+                    <stop offset="50%" stopColor="#081c10" />
+                    <stop offset="100%" stopColor="#030c07" />
+                  </linearGradient>
+                </defs>
+
+                {/* Head */}
+                <circle cx="100" cy="45" r="24" fill="url(#bodyGrad2)" stroke="#10b981" strokeWidth="1.2" strokeOpacity="0.4" />
+                {/* Torso */}
+                <path
+                  d="M90 82 C70 86 52 100 48 120 L40 180 C38 195 44 205 52 205 L60 205 C62 185 64 150 70 135 L70 215 C70 235 80 245 92 248 L92 265 L108 265 L108 248 C120 245 130 235 130 215 L130 135 C136 150 138 185 140 205 L148 205 C156 205 162 195 160 180 L152 120 C148 100 130 86 110 82 Z"
+                  fill="url(#bodyGrad2)"
+                  stroke="#10b981"
+                  strokeWidth="1.2"
+                  strokeOpacity="0.4"
+                />
+                {/* Legs */}
+                <path
+                  d="M72 240 L70 330 C70 350 68 375 66 385 L84 385 C88 375 92 340 94 300 L97 270 L103 270 L106 300 C108 340 112 375 116 385 L134 385 C132 375 130 350 130 330 L128 240 Z"
+                  fill="url(#bodyGrad2)"
+                  stroke="#10b981"
+                  strokeWidth="1.2"
+                  strokeOpacity="0.4"
+                />
+
+                {/* Brain */}
                 <circle
                   cx="100"
                   cy="45"
                   r="14"
                   fill={selectedSystemId === 'nervous' ? '#a855f7' : '#581c87'}
-                  fillOpacity="0.5"
-                  stroke="#c084fc"
-                  strokeWidth={selectedSystemId === 'nervous' ? '2.5' : '1'}
-                />
-                <text x="100" y="49" textAnchor="middle" fontSize="12" fill="#fff" className="pointer-events-none">
-                  🧠
-                </text>
-              </g>
-
-              {/* Trachea & Thyroid */}
-              <g
-                className="cursor-pointer"
-                onClick={() => {
-                  setSelectedSystemId('respiratory')
-                  setSelectedOrgan(ANATOMICAL_SYSTEMS.respiratory.primaryOrgans[1])
-                }}
-              >
-                <rect
-                  x="96"
-                  y="72"
-                  width="8"
-                  height="16"
-                  rx="3"
-                  fill={selectedSystemId === 'respiratory' ? '#38bdf8' : '#0369a1'}
                   fillOpacity="0.6"
-                  stroke="#7dd3fc"
-                  strokeWidth="1"
+                  stroke="#c084fc"
+                  className="cursor-pointer"
+                  onClick={() => selectOrganHotspot('nervous', 0)}
                 />
-              </g>
-
-              {/* Lungs */}
-              <g
-                className="cursor-pointer"
-                onClick={() => {
-                  setSelectedSystemId('respiratory')
-                  setSelectedOrgan(ANATOMICAL_SYSTEMS.respiratory.primaryOrgans[0])
-                }}
-              >
-                {/* Left Lung */}
+                {/* Lungs */}
                 <ellipse
                   cx="84"
                   cy="115"
                   rx="14"
                   ry="24"
                   fill={selectedSystemId === 'respiratory' ? '#38bdf8' : '#075985'}
-                  fillOpacity="0.55"
+                  fillOpacity="0.6"
                   stroke="#38bdf8"
-                  strokeWidth={selectedSystemId === 'respiratory' ? '2' : '1'}
+                  className="cursor-pointer"
+                  onClick={() => selectOrganHotspot('respiratory', 0)}
                 />
-                {/* Right Lung */}
                 <ellipse
                   cx="116"
                   cy="115"
                   rx="14"
                   ry="24"
                   fill={selectedSystemId === 'respiratory' ? '#38bdf8' : '#075985'}
-                  fillOpacity="0.55"
+                  fillOpacity="0.6"
                   stroke="#38bdf8"
-                  strokeWidth={selectedSystemId === 'respiratory' ? '2' : '1'}
+                  className="cursor-pointer"
+                  onClick={() => selectOrganHotspot('respiratory', 0)}
                 />
-              </g>
-
-              {/* Heart (Centrally tilted to left) */}
-              <g
-                className="cursor-pointer"
-                onClick={() => {
-                  setSelectedSystemId('circulatory')
-                  setSelectedOrgan(ANATOMICAL_SYSTEMS.circulatory.primaryOrgans[0])
-                }}
-              >
+                {/* Heart */}
                 <circle
                   cx="104"
                   cy="118"
@@ -404,187 +554,32 @@ export default function AnatomyVisualizer({ dosha = 'Pitta', onOpenIntake, onOpe
                   fill={selectedSystemId === 'circulatory' ? '#ef4444' : '#991b1b'}
                   fillOpacity="0.7"
                   stroke="#f87171"
-                  strokeWidth={selectedSystemId === 'circulatory' ? '2.5' : '1'}
+                  className="cursor-pointer"
+                  onClick={() => selectOrganHotspot('circulatory', 0)}
                 />
-                <text x="104" y="122" textAnchor="middle" fontSize="11" fill="#fff" className="pointer-events-none">
-                  ❤️
-                </text>
-              </g>
-
-              {/* Stomach & Spleen */}
-              <g
-                className="cursor-pointer"
-                onClick={() => {
-                  setSelectedSystemId('digestive')
-                  setSelectedOrgan(ANATOMICAL_SYSTEMS.digestive.primaryOrgans[0])
-                }}
-              >
+                {/* Stomach */}
                 <ellipse
                   cx="110"
                   cy="150"
                   rx="13"
                   ry="10"
                   fill={selectedSystemId === 'digestive' ? '#f59e0b' : '#b45309'}
-                  fillOpacity="0.6"
-                  stroke="#fbbf24"
-                  strokeWidth={selectedSystemId === 'digestive' ? '2' : '1'}
-                />
-              </g>
-
-              {/* Liver */}
-              <g
-                className="cursor-pointer"
-                onClick={() => {
-                  setSelectedSystemId('digestive')
-                  setSelectedOrgan(ANATOMICAL_SYSTEMS.digestive.primaryOrgans[1])
-                }}
-              >
-                <path
-                  d="M74 140 C88 140 98 144 98 156 L72 156 Z"
-                  fill={selectedSystemId === 'digestive' ? '#d97706' : '#78350f'}
                   fillOpacity="0.7"
-                  stroke="#f59e0b"
-                  strokeWidth="1.2"
-                />
-              </g>
-
-              {/* Pancreas */}
-              <g
-                className="cursor-pointer"
-                onClick={() => {
-                  setSelectedSystemId('digestive')
-                  setSelectedOrgan(ANATOMICAL_SYSTEMS.digestive.primaryOrgans[2])
-                }}
-              >
-                <rect
-                  x="90"
-                  y="158"
-                  width="20"
-                  height="7"
-                  rx="3"
-                  fill={selectedSystemId === 'digestive' ? '#f59e0b' : '#92400e'}
-                  fillOpacity="0.8"
                   stroke="#fbbf24"
-                  strokeWidth="1.2"
+                  className="cursor-pointer"
+                  onClick={() => selectOrganHotspot('digestive', 0)}
                 />
-              </g>
+              </svg>
+            </div>
+          )}
 
-              {/* Kidneys */}
-              <g
-                className="cursor-pointer"
-                onClick={() => {
-                  setSelectedSystemId('urinary')
-                  setSelectedOrgan(ANATOMICAL_SYSTEMS.urinary.primaryOrgans[0])
-                }}
-              >
-                <ellipse cx="80" cy="168" rx="7" ry="11" fill="#0891b2" fillOpacity="0.6" stroke="#22d3ee" strokeWidth="1" />
-                <ellipse cx="120" cy="168" rx="7" ry="11" fill="#0891b2" fillOpacity="0.6" stroke="#22d3ee" strokeWidth="1" />
-              </g>
-
-              {/* Intestines */}
-              <g
-                className="cursor-pointer"
-                onClick={() => {
-                  setSelectedSystemId('digestive')
-                  setSelectedOrgan(ANATOMICAL_SYSTEMS.digestive.primaryOrgans[3])
-                }}
-              >
-                <rect
-                  x="85"
-                  y="175"
-                  width="30"
-                  height="26"
-                  rx="8"
-                  fill={selectedSystemId === 'digestive' ? '#f59e0b' : '#78350f'}
-                  fillOpacity="0.4"
-                  stroke="#f59e0b"
-                  strokeWidth={selectedSystemId === 'digestive' ? '2' : '1'}
-                  strokeDasharray="4 2"
-                />
-                <text x="100" y="192" textAnchor="middle" fontSize="12" fill="#fff" className="pointer-events-none">
-                  🥣
-                </text>
-              </g>
-
-              {/* Bladder / Uterus / Reproductive */}
-              <g
-                className="cursor-pointer"
-                onClick={() => {
-                  setSelectedSystemId('reproductive')
-                  setSelectedOrgan(ANATOMICAL_SYSTEMS.reproductive.primaryOrgans[0])
-                }}
-              >
-                <ellipse
-                  cx="100"
-                  cy="216"
-                  rx="12"
-                  ry="9"
-                  fill={selectedSystemId === 'reproductive' ? '#d946ef' : '#86198f'}
-                  fillOpacity="0.7"
-                  stroke="#f0abfc"
-                  strokeWidth={selectedSystemId === 'reproductive' ? '2' : '1'}
-                />
-              </g>
-
-              {/* Knee joints */}
-              <g
-                className="cursor-pointer"
-                onClick={() => {
-                  setSelectedSystemId('skeletal')
-                  setSelectedOrgan(ANATOMICAL_SYSTEMS.skeletal.primaryOrgans[1])
-                }}
-              >
-                <circle cx="82" cy="295" r="7" fill="#e2e8f0" fillOpacity="0.5" stroke="#f8fafc" strokeWidth="1.2" />
-                <circle cx="118" cy="295" r="7" fill="#e2e8f0" fillOpacity="0.5" stroke="#f8fafc" strokeWidth="1.2" />
-              </g>
-
-              {/* ─── DISEASE BEACONS GLOW LAYER ─── */}
-              {activeBeacons.map(b => {
-                // Determine coordinate from organ or system
-                let cx = 100
-                let cy = 150
-                if (b.organId === 'pancreas') {
-                  cx = 100
-                  cy = 160
-                } else if (b.organId === 'heart') {
-                  cx = 104
-                  cy = 118
-                } else if (b.organId === 'knees') {
-                  cx = 100
-                  cy = 295
-                } else if (b.organId === 'uterus_prostate') {
-                  cx = 100
-                  cy = 216
-                } else if (b.organId === 'stomach') {
-                  cx = 110
-                  cy = 150
-                } else if (b.organId === 'brain') {
-                  cx = 100
-                  cy = 45
-                }
-
-                return (
-                  <g key={`beacon-svg-${b.id}`} className="cursor-pointer" onClick={() => setSelectedSystemId(b.systemId)}>
-                    <circle cx={cx} cy={cy} r="18" fill="none" stroke="#ef4444" strokeWidth="2" opacity="0.6">
-                      <animate attributeName="r" values="10;24;10" dur="2s" repeatCount="indefinite" />
-                      <animate attributeName="opacity" values="0.8;0;0.8" dur="2s" repeatCount="indefinite" />
-                    </circle>
-                    <circle cx={cx} cy={cy} r="8" fill="#ef4444" filter="url(#glowAlert)" />
-                    <text x={cx} y={cy + 3} textAnchor="middle" fontSize="8" fill="#fff" fontWeight="bold">
-                      !
-                    </text>
-                  </g>
-                )
-              })}
-            </svg>
-          </div>
-
-          <div className="text-center mt-2">
-            <span className="text-[11px] font-medium text-emerald-300">
-              Selected: <span className="text-white font-bold">{selectedMeta.name}</span>
+          {/* Selected Status footer */}
+          <div className="text-center mt-3 pt-3 border-t border-emerald-900/40">
+            <span className="text-xs font-bold text-emerald-200">
+              Active: <span className="text-white">{selectedMeta.name}</span>
             </span>
-            <span className="text-[11px] text-emerald-500/70 block font-mono">
-              {selectedMeta.sanskritSrotas} · {selectedNourishment.percentage}% Nourished
+            <span className="text-[11px] text-emerald-400/70 block font-mono">
+              {selectedMeta.sanskritSrotas} · {selectedNourishment.percentage}% Nourished Today
             </span>
           </div>
         </div>
